@@ -1,0 +1,59 @@
+---
+import { PortableText } from "emdash/ui";
+import Capabilities from "./blocks/Capabilities.astro";
+import Contact from "./blocks/Contact.astro";
+import CTA from "./blocks/CTA.astro";
+import FAQ from "./blocks/FAQ.astro";
+import Features from "./blocks/Features.astro";
+import Hero from "./blocks/Hero.astro";
+import Logos from "./blocks/Logos.astro";
+import Pricing from "./blocks/Pricing.astro";
+import Split from "./blocks/Split.astro";
+import Stats from "./blocks/Stats.astro";
+import Testimonials from "./blocks/Testimonials.astro";
+import Text from "./blocks/Text.astro";
+import FeatureSection from "./blocks/FeatureSection.astro";
+import Slider from "./blocks/Slider.astro";
+import Feed from "./blocks/Feed.astro";
+
+interface Props {
+	value?: any;
+}
+
+const { value } = Astro.props;
+
+const marketingComponents = {
+	"marketing.hero": Hero,
+	marketing_hero: Hero,
+	"marketing.capabilities": Capabilities,
+	marketing_capabilities: Capabilities,
+	"marketing.features": Features,
+	marketing_features: Features,
+	"marketing.testimonials": Testimonials,
+	marketing_testimonials: Testimonials,
+	"marketing.pricing": Pricing,
+	marketing_pricing: Pricing,
+	"marketing.faq": FAQ,
+	marketing_faq: FAQ,
+	"marketing.logos": Logos,
+	marketing_logos: Logos,
+	"marketing.split": Split,
+	marketing_split: Split,
+	"marketing.stats": Stats,
+	marketing_stats: Stats,
+	"marketing.cta": CTA,
+	marketing_cta: CTA,
+	"marketing.contact": Contact,
+	marketing_contact: Contact,
+	"marketing.richtext": Text,
+	marketing_richtext: Text,
+	"marketing.feature_section": FeatureSection,
+	marketing_feature_section: FeatureSection,
+	"marketing.slider": Slider,
+	marketing_slider: Slider,
+	"marketing.feed": Feed,
+	marketing_feed: Feed,
+};
+---
+
+<PortableText value={value} components={{ type: marketingComponents }} />

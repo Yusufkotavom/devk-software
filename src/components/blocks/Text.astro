@@ -1,0 +1,48 @@
+---
+import { PortableText, type BlockComponentProps } from "emdash/ui";
+import type { PageContentBlock } from "../../../emdash-env";
+import "../../styles/prose.css";
+
+type TextBlock = Extract<PageContentBlock, { _type: "marketing_richtext" }>;
+type Props = BlockComponentProps<TextBlock>;
+
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
+const { anchor_id, headline, body } = raw;
+---
+
+<section id={anchor_id || undefined} class="band section text-block-section">
+	<div class="frame">
+		<div class="text-block">
+			{headline && <h2 class="section-headline text-block__headline">{headline}</h2>}
+			<div class="prose text-block__body">
+				{
+					Array.isArray(body) ? (
+						<PortableText value={body} />
+					) : typeof body === "string" ? (
+						body.split("\n\n").map((para: string) => <p>{para}</p>)
+					) : (
+						body && <PortableText value={body} />
+					)
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	/*
+	 * The body renders through the shared `.prose` stylesheet (imported above) —
+	 * the exact same pipeline Portable Text uses on pages and posts — so a Text
+	 * block now supports every node type those bodies do: headings h1-h6,
+	 * ordered/unordered lists, blockquote, hr, inline and fenced code, images
+	 * with captions, tables, embeds and galleries. Only the section chrome lives
+	 * in this component.
+	 */
+	.text-block {
+		max-width: var(--content-width);
+	}
+
+	.text-block__headline {
+		margin-block-end: 24px;
+	}
+</style>
