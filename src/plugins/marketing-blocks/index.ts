@@ -36,6 +36,14 @@ const ICON_OPTIONS = [
 	{ label: "Lock", value: "lock" },
 	{ label: "Clock", value: "clock" },
 	{ label: "Cloud", value: "cloud" },
+	{ label: "Storefront / Kasir", value: "storefront" },
+	{ label: "Shopping Cart", value: "cart" },
+	{ label: "Desktop / PC", value: "desktop" },
+	{ label: "Database", value: "database" },
+	{ label: "CPU / Chip", value: "cpu" },
+	{ label: "Wrench / Install", value: "wrench" },
+	{ label: "Gear / Settings", value: "gear" },
+	{ label: "Rocket", value: "rocket" },
 ];
 
 const CONTACT_ICON_OPTIONS = [
@@ -191,6 +199,11 @@ const definition: PluginDefinition = {
 								action_id: "icon",
 								label: "Icon",
 								options: ICON_OPTIONS,
+							},
+							{
+								type: "text_input",
+								action_id: "imageUrl",
+								label: "Image URL (opsional, ganti icon dengan gambar)",
 							},
 							{ type: "text_input", action_id: "title", label: "Title" },
 							{

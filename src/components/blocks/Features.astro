@@ -37,14 +37,27 @@ const iconMap: Record<string, string> = {
 	file: "ph:file-text",
 	sun: "ph:sun",
 	trend: "ph:trend-up",
+	storefront: "ph:storefront",
+	cart: "ph:shopping-cart",
+	desktop: "ph:desktop",
+	database: "ph:database",
+	cpu: "ph:cpu",
+	wrench: "ph:wrench",
+	gear: "ph:gear",
+	rocket: "ph:rocket",
 };
 
 const items = features.map((f: any) => {
 	const linkLabel = f.link_label ?? f.linkLabel;
 	const linkUrl = f.link_url ?? f.linkUrl;
+	const rawIcon = String(f.icon ?? "").trim();
+	const iconName = iconMap[rawIcon] || (rawIcon.startsWith("ph:") ? rawIcon : rawIcon ? `ph:${rawIcon}` : "ph:sparkle");
+	const imageUrl = f.imageUrl ?? f.image_url ?? f.image ?? null;
+
 	return {
 		...f,
-		iconName: iconMap[f.icon] ?? "ph:sparkle",
+		iconName,
+		imageUrl,
 		link: linkLabel && linkUrl ? { label: linkLabel, url: sanitizeHref(linkUrl) } : undefined,
 	};
 });
@@ -65,9 +78,15 @@ const items = features.map((f: any) => {
 				<ul class="features" role="list" style={`--cols:${columns}`}>
 					{items.map((feature: any) => (
 						<li class="card feature">
-							<span class="icon-tile" aria-hidden="true">
-								<Icon name={feature.iconName} />
-							</span>
+							{feature.imageUrl ? (
+								<div class="feature__media">
+									<img src={feature.imageUrl} alt={feature.title} class="feature__img" loading="lazy" />
+								</div>
+							) : (
+								<span class="icon-tile" aria-hidden="true">
+									<Icon name={feature.iconName} />
+								</span>
+							)}
 							<h3 class="feature__title">{feature.title}</h3>
 							{toParagraphs(feature.description ?? "").map((paragraph: string) => (
 								<p class="feature__description">{paragraph}</p>
@@ -98,6 +117,23 @@ const items = features.map((f: any) => {
 		display: flex;
 		flex-direction: column;
 		padding: 28px 28px 32px;
+	}
+
+	.feature__media {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-block-end: 8px;
+		max-height: 120px;
+		overflow: hidden;
+		border-radius: var(--radius-md, 12px);
+	}
+
+	.feature__img {
+		max-height: 80px;
+		width: auto;
+		max-width: 100%;
+		object-fit: contain;
 	}
 
 	.feature__title {
