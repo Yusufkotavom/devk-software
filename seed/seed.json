@@ -2,15 +2,15 @@
   "$schema": "https://emdashcms.com/seed.schema.json",
   "version": "1",
   "meta": {
-    "name": "Blog + Marketing Starter",
-    "description": "A complete blog with UI plus modular marketing block builder",
+    "name": "Devk Software House",
+    "description": "Software house: POS kasir, CRM, CMS, aplikasi custom, dan jasa install software.",
     "author": "EmDash"
   },
   "settings": {
-    "title": "Halden",
-    "tagline": "Thoughts, updates, and products built with EmDash",
+    "title": "Devk Software Development",
+    "tagline": "POS kasir, CRM, CMS & aplikasi custom untuk bisnis Anda",
     "seo": {
-      "titleSeparator": "\u2014"
+      "titleSeparator": "—"
     }
   },
   "blockTypes": [
@@ -1242,6 +1242,203 @@
   "content": {
     "pages": [
       {
+        "id": "home",
+        "slug": "home",
+        "status": "published",
+        "data": {
+          "title": "Home",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "home-hero",
+              "centered": true,
+              "eyebrow": "Software House",
+              "headline": "Software custom untuk bisnis yang serius.",
+              "subheadline": "Kami bangun POS kasir, CRM, CMS, dan aplikasi custom yang pas dengan alur kerja Anda — cepat, rapi, dan siap dipakai.",
+              "primary_cta_label": "Konsultasi gratis",
+              "primary_cta_url": "/contact",
+              "secondary_cta_label": "Lihat layanan",
+              "secondary_cta_url": "/#layanan"
+            },
+            {
+              "_type": "marketing_logos",
+              "_version": 1,
+              "_key": "home-logos",
+              "headline": "Dipercaya oleh",
+              "logos": [
+                {
+                  "name": "Kotacom"
+                },
+                {
+                  "name": "VitPOS"
+                },
+                {
+                  "name": "ServisPro"
+                },
+                {
+                  "name": "Koperasi"
+                },
+                {
+                  "name": "UMKM Retail"
+                },
+                {
+                  "name": "Diskominfo"
+                }
+              ]
+            },
+            {
+              "_type": "marketing_features",
+              "_version": 1,
+              "_key": "layanan",
+              "eyebrow": "Layanan",
+              "headline": "Produk & jasa pengembangan software",
+              "anchor_id": "layanan",
+              "features": [
+                {
+                  "icon": "gauge",
+                  "title": "POS Kasir",
+                  "description": "Mesin kasir modern untuk toko, kafe, dan retail: transaksi, stok, dan laporan penjualan real-time."
+                },
+                {
+                  "icon": "users",
+                  "title": "CRM",
+                  "description": "Kelola pelanggan, pipeline, dan follow-up. Pantau prospek sampai jadi deal."
+                },
+                {
+                  "icon": "file",
+                  "title": "CMS & Website",
+                  "description": "Website company profile dan sistem konten yang mudah dikelola tim Anda sendiri."
+                },
+                {
+                  "icon": "code",
+                  "title": "Aplikasi Custom",
+                  "description": "Dashboard, ERP, dan integrasi API yang dibangun sesuai proses bisnis Anda."
+                },
+                {
+                  "icon": "plug",
+                  "title": "Jasa Install Software",
+                  "description": "Pasang, konfigurasi, dan migrasi software POS/CRM/VPS — online maupun on-site."
+                },
+                {
+                  "icon": "shield",
+                  "title": "Maintenance & Support",
+                  "description": "Garansi, update, dan dukungan teknis berkelanjutan setelah rilis."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_split",
+              "_version": 1,
+              "_key": "home-install",
+              "eyebrow": "Jasa Install Software",
+              "headline": "Software siap pakai, kami yang pasang.",
+              "body": "Beli lisensi tapi bingung setup? Butuh instalasi di server atau VPS Anda? Kami bantu pasang, konfigurasi, migrasi data, dan training tim — online lewat remote maupun on-site.",
+              "points": "Instalasi POS kasir & CRM\nSetup server / VPS, domain & SSL\nMigrasi data dari sistem lama\nTraining & pendampingan tim",
+              "cta_label": "Chat via WhatsApp",
+              "cta_url": "https://wa.me/6285799520350",
+              "image_first": false
+            },
+            {
+              "_type": "marketing_stats",
+              "_version": 1,
+              "_key": "home-stats",
+              "headline": "Angka yang berbicara",
+              "subheadline": "Dipercaya bisnis dari berbagai skala.",
+              "stats": [
+                {
+                  "value": "50+",
+                  "label": "Proyek dirilis"
+                },
+                {
+                  "value": "30+",
+                  "label": "Klien aktif"
+                },
+                {
+                  "value": "99%",
+                  "label": "Uptime layanan"
+                },
+                {
+                  "value": "24/7",
+                  "label": "Support"
+                }
+              ]
+            },
+            {
+              "_type": "marketing_pricing",
+              "_version": 1,
+              "_key": "home-pricing",
+              "plans": [
+                {
+                  "name": "Starter",
+                  "price": "Mulai 5jt",
+                  "period": "/proyek",
+                  "description": "Website & CMS company profile",
+                  "features": "Desain custom\nCMS mudah dipakai\nSEO dasar\nSetup domain + hosting",
+                  "cta_label": "Konsultasi",
+                  "cta_url": "/contact"
+                },
+                {
+                  "name": "Business",
+                  "price": "Mulai 15jt",
+                  "period": "/proyek",
+                  "description": "POS kasir / CRM untuk operasional",
+                  "features": "POS kasir / CRM\nMulti-user & role\nLaporan & dashboard\nIntegrasi WhatsApp\nGaransi 3 bulan",
+                  "cta_label": "Minta penawaran",
+                  "cta_url": "/contact",
+                  "highlighted": true,
+                  "badge": "Paling populer"
+                },
+                {
+                  "name": "Enterprise",
+                  "price": "Custom",
+                  "description": "Aplikasi & integrasi skala besar",
+                  "features": "Aplikasi custom / ERP\nIntegrasi API & payment\nDeploy on-premise / cloud\nSLA & maintenance",
+                  "cta_label": "Hubungi sales",
+                  "cta_url": "/contact"
+                }
+              ]
+            },
+            {
+              "_type": "marketing_faq",
+              "_version": 1,
+              "_key": "home-faq",
+              "headline": "Pertanyaan yang sering ditanya",
+              "subheadline": "Belum menemukan jawabannya? Chat kami.",
+              "items": [
+                {
+                  "question": "Berapa lama pengerjaan proyek?",
+                  "answer": "Website/CMS 2–4 minggu. POS kasir atau CRM 4–8 minggu, tergantung kompleksitas fitur dan integrasi."
+                },
+                {
+                  "question": "Apakah source code jadi milik kami?",
+                  "answer": "Ya. Untuk proyek custom, source code dan akses server sepenuhnya milik Anda setelah pelunasan."
+                },
+                {
+                  "question": "Bisa install di server/VPS kami sendiri?",
+                  "answer": "Bisa. Kami dukung deployment on-premise maupun cloud, termasuk konfigurasi domain, SSL, dan backup."
+                },
+                {
+                  "question": "Ada garansi dan maintenance?",
+                  "answer": "Ada. Setiap proyek bergaransi bug-fix, dan tersedia paket maintenance bulanan."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "home-cta",
+              "headline": "Siap digitalisasi bisnis Anda?",
+              "body": "Ceritakan kebutuhan Anda — kami bantu pilih solusi yang paling pas, tanpa biaya konsultasi awal.",
+              "primary_cta_label": "Mulai konsultasi",
+              "primary_cta_url": "/contact",
+              "secondary_cta_label": "Chat WhatsApp",
+              "secondary_cta_url": "https://wa.me/6285799520350"
+            }
+          ]
+        }
+      },
+      {
         "id": "pricing",
         "slug": "pricing",
         "status": "published",
@@ -1353,14 +1550,14 @@
                 {
                   "icon": "email",
                   "title": "General questions",
-                  "description": "Ask about Halden, partnerships, press, or a building you\u2019d like us to look at.",
+                  "description": "Ask about Halden, partnerships, press, or a building you’d like us to look at.",
                   "link_label": "hello@halden.example",
                   "link_url": "mailto:hello@halden.example"
                 },
                 {
                   "icon": "support",
                   "title": "Customer support",
-                  "description": "Get help with your account, a meter integration, or a building that\u2019s already connected.",
+                  "description": "Get help with your account, a meter integration, or a building that’s already connected.",
                   "link_label": "support@halden.example",
                   "link_url": "mailto:support@halden.example"
                 },
@@ -1383,7 +1580,7 @@
         "slug": "building-for-the-long-term",
         "status": "published",
         "data": {
-          "title": "Building for the Long Term",
+          "title": "Membangun Software yang Bertahan Lama",
           "excerpt": "The frameworks will change. The databases will change. What survives is the clarity of your thinking.",
           "featured_image": {
             "$media": {
@@ -1490,7 +1687,7 @@
         "slug": "the-case-for-static",
         "status": "published",
         "data": {
-          "title": "The Case for Static",
+          "title": "Kenapa Website Cepat Itu Penting",
           "excerpt": "Static sites aren't a step backwards. They're what you get when you take performance and simplicity seriously.",
           "featured_image": {
             "$media": {
@@ -1582,7 +1779,7 @@
         "slug": "learning-in-public",
         "status": "published",
         "data": {
-          "title": "Learning in Public",
+          "title": "Belajar Sambil Membangun Produk",
           "excerpt": "Writing about what you're learning is the fastest way to find out what you don't actually understand.",
           "featured_image": {
             "$media": {
@@ -1668,7 +1865,7 @@
         "slug": "small-tools-big-impact",
         "status": "published",
         "data": {
-          "title": "Small Tools, Big Impact",
+          "title": "Tools Kecil, Dampak Besar untuk Bisnis",
           "excerpt": "The best developer tools do one thing well and get out of your way. A love letter to focused software.",
           "featured_image": {
             "$media": {
@@ -1754,7 +1951,7 @@
         "slug": "designing-with-constraints",
         "status": "published",
         "data": {
-          "title": "Designing with Constraints",
+          "title": "Mendesain dengan Batasan Nyata",
           "excerpt": "Limitations aren't obstacles to creativity. They're the structure that makes creativity possible.",
           "featured_image": {
             "$media": {
@@ -1840,7 +2037,7 @@
         "slug": "a-weekend-with-a-side-project",
         "status": "published",
         "data": {
-          "title": "A Weekend with a Side Project",
+          "title": "Membuat POS Kasir dalam Sebulan",
           "excerpt": "No stakeholders, no deadlines, no Jira tickets. Just you and a dumb idea that might turn into something.",
           "featured_image": {
             "$media": {
@@ -1926,7 +2123,7 @@
         "slug": "notes-on-simplicity",
         "status": "published",
         "data": {
-          "title": "Notes on Simplicity",
+          "title": "Catatan soal Kesederhanaan Sistem",
           "excerpt": "Simplicity isn't the absence of complexity. It's the result of understanding a problem well enough to solve it cleanly.",
           "featured_image": {
             "$media": {
