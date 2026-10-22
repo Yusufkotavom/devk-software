@@ -215,7 +215,7 @@ const year = new Date().getFullYear();
 													</div>
 													<ul class="site-nav__sub">
 														<li>
-															<a href={item.url} aria-current={navCurrent(item.url)}>
+															<a href={item.url} class={item.cssClasses || undefined} aria-current={navCurrent(item.url)}>
 																{item.label}
 															</a>
 														</li>
@@ -225,6 +225,7 @@ const year = new Date().getFullYear();
 																	href={child.url}
 																	target={child.target}
 																	rel={child.target === "_blank" ? "noopener noreferrer" : undefined}
+																	class={child.cssClasses || undefined}
 																	aria-current={navCurrent(child.url)}
 																>
 																	{child.label}
@@ -238,6 +239,7 @@ const year = new Date().getFullYear();
 													href={item.url}
 													target={item.target}
 													rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+													class={item.cssClasses || undefined}
 													aria-current={navCurrent(item.url)}
 													>
 													{item.label}
@@ -1318,6 +1320,44 @@ const year = new Date().getFullYear();
 				background: var(--color-fill);
 			}
 
+			.site-nav a.btn-primary,
+			.site-nav a.button,
+			.site-nav a.btn-accent {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 6px 14px;
+				border-radius: var(--radius-full);
+				background: var(--color-brand);
+				color: var(--color-on-brand) !important;
+				font-weight: 600;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+				transition: opacity var(--transition-fast), transform var(--transition-fast);
+			}
+
+			.site-nav a.btn-primary:hover,
+			.site-nav a.button:hover,
+			.site-nav a.btn-accent:hover {
+				opacity: 0.9;
+				transform: translateY(-1px);
+			}
+
+			.site-nav a.btn-outline {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 5px 13px;
+				border-radius: var(--radius-full);
+				border: 1px solid var(--color-border-strong);
+				color: var(--color-text) !important;
+				font-weight: 500;
+				background: transparent;
+			}
+
+			.site-nav a.btn-outline:hover {
+				background: var(--color-fill);
+			}
+
 			.site-nav a[aria-current] {
 				color: var(--color-text);
 				background: var(--color-surface);
@@ -1727,46 +1767,58 @@ const year = new Date().getFullYear();
 				}
 			}
 
-			/* Phones: brand + actions on the first row; the nav becomes a
-			   collapsible top panel (Linear-style), toggled by the burger. */
-			@media (max-width: 640px) {
+			/* Tablet & Phones: Vercel-style clean drawer / mobile sheet panel */
+			@media (max-width: 960px) {
 				.site-header {
-					position: relative;
+					position: sticky;
+					top: 0;
+					z-index: 50;
 				}
 
 				.site-header__inner {
-					flex-wrap: wrap;
-					row-gap: var(--spacing-1);
-					padding-block: var(--spacing-3) var(--spacing-2);
+					flex-wrap: nowrap;
+					padding-block: var(--spacing-2);
 				}
 
 				.nav-toggle {
 					display: inline-grid;
+					place-items: center;
+					width: 36px;
+					height: 36px;
+					padding: 0;
+					border: 1px solid var(--color-border);
+					border-radius: var(--radius-sm, 6px);
+					background: var(--color-surface);
+					color: var(--color-text);
+					cursor: pointer;
 				}
 
-				/* The nav collapses into a floating dropdown panel anchored to the
-				   header, so it takes NO height in the closed state (a hidden
-				   in-flow panel would otherwise leave an empty strip). */
+				.nav-toggle:hover {
+					background: var(--color-fill);
+				}
+
+				/* Collapsible mobile panel (Vercel inspired: clean, fast, structured) */
 				.site-nav {
 					position: absolute;
-					top: 100%;
-					inset-inline: 0;
+					top: calc(100% + 8px);
+					inset-inline: var(--sheet-inset, 16px);
 					z-index: 40;
 					margin-inline-start: 0;
-					padding: var(--spacing-3) var(--frame-padding) var(--spacing-5);
+					padding: 12px;
 					background: var(--color-surface);
-					border-bottom: 1px solid var(--color-border);
-					box-shadow: var(--shadow-lg);
-					max-height: min(72vh, 560px);
+					border: 1px solid var(--color-border);
+					border-radius: 18px;
+					box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.25);
+					max-height: calc(100dvh - 80px);
 					overflow-y: auto;
 					overscroll-behavior: contain;
 					opacity: 0;
 					visibility: hidden;
-					transform: translateY(-8px);
+					transform: translateY(-6px);
 					transition:
-						opacity var(--transition-base),
-						transform var(--transition-base),
-						visibility var(--transition-base);
+						opacity var(--transition-fast),
+						transform var(--transition-fast),
+						visibility var(--transition-fast);
 				}
 
 				html.nav-open .site-nav {
@@ -1779,22 +1831,46 @@ const year = new Date().getFullYear();
 					flex-direction: column;
 					flex-wrap: nowrap;
 					align-items: stretch;
-					gap: 2px;
+					gap: 4px;
 				}
 
 				.site-nav a,
 				.site-nav__group-label {
 					display: flex;
+					align-items: center;
 					justify-content: space-between;
 					width: 100%;
-					padding: 12px 10px;
+					min-height: 44px;
+					padding: 8px 14px;
 					border-radius: 10px;
-					font-size: var(--font-size-base);
+					font-size: 15px;
+					font-weight: 500;
+					color: var(--color-text-secondary);
 				}
 
-				/* The group wrapper must fill the row so its chevron sits at the
-				   far right, and the submenu (a sibling, not a child) stacks
-				   directly beneath the label. */
+				.site-nav a:hover,
+				.site-nav__group-label:hover {
+					color: var(--color-text);
+					background: var(--color-fill);
+				}
+
+				.site-nav a[aria-current] {
+					color: var(--color-text);
+					font-weight: 600;
+					background: var(--color-fill);
+					box-shadow: none;
+				}
+
+				/* Mobile button items */
+				.site-nav a.btn-primary,
+				.site-nav a.button,
+				.site-nav a.btn-accent {
+					margin-top: 6px;
+					justify-content: center;
+					min-height: 42px;
+				}
+
+				/* Group wrapper */
 				.site-nav__group {
 					display: flex;
 					align-items: center;
@@ -1806,18 +1882,18 @@ const year = new Date().getFullYear();
 					flex: 1;
 				}
 
-				/* Submenus become inline accordions on mobile */
+				/* Submenus accordion */
 				.site-nav ul.site-nav__sub {
 					position: static;
 					inset: auto;
 					z-index: auto;
 					display: none;
 					min-width: 0;
-					margin: 0;
-					padding: 2px 0 4px 16px;
-					background: none;
-					border: 0;
-					border-radius: 0;
+					margin: 2px 0 6px 0;
+					padding: 6px 6px 6px 14px;
+					background: var(--color-fill);
+					border: 1px solid var(--color-border);
+					border-radius: 12px;
 					box-shadow: none;
 					opacity: 1;
 					visibility: visible;
@@ -1825,22 +1901,25 @@ const year = new Date().getFullYear();
 				}
 
 				.site-nav .has-children.is-open ul.site-nav__sub {
-					display: block;
+					display: flex;
+					flex-direction: column;
+					gap: 2px;
 				}
 
 				.site-nav .has-children.is-open .site-nav__chevron {
 					transform: rotate(180deg);
 				}
 
-				.site-nav .has-children:hover ul.site-nav__sub {
-					opacity: 1;
-					visibility: visible;
+				.site-nav ul.site-nav__sub a {
+					min-height: 38px;
+					padding: 6px 12px;
+					font-size: 14px;
+					color: var(--color-text-secondary);
 				}
 
-				.site-nav ul.site-nav__sub a {
-					padding: 9px 10px;
-					font-size: var(--font-size-sm);
-					color: var(--color-text-secondary);
+				.site-nav ul.site-nav__sub a:hover {
+					color: var(--color-text);
+					background: var(--color-surface);
 				}
 
 				.site-search {
@@ -1849,8 +1928,9 @@ const year = new Date().getFullYear();
 
 				.site-search-link {
 					display: inline-grid;
-					width: 2.5rem;
-					height: 2.5rem;
+					place-items: center;
+					width: 36px;
+					height: 36px;
 				}
 			}
 
