@@ -10,7 +10,7 @@
     "title": "Devk Software Development",
     "tagline": "POS kasir, CRM, CMS & aplikasi custom untuk bisnis Anda",
     "seo": {
-      "titleSeparator": "—"
+      "titleSeparator": "\u2014"
     }
   },
   "blockTypes": [
@@ -112,9 +112,22 @@
         {
           "version": 1,
           "fields": [
-            { "slug": "headline", "label": "Headline", "type": "string", "required": true },
-            { "slug": "subheadline", "label": "Subheadline", "type": "text" },
-            { "slug": "eyebrow", "label": "Eyebrow Label", "type": "string" },
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "required": true
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "text"
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Eyebrow Label",
+              "type": "string"
+            },
             {
               "slug": "items",
               "label": "Bento Cards",
@@ -124,21 +137,46 @@
                 "minItems": 1,
                 "maxItems": 9,
                 "subFields": [
-                  { "slug": "title", "label": "Title", "type": "string", "required": true },
-                  { "slug": "description", "label": "Description", "type": "text", "required": true },
-                  { "slug": "tag", "label": "Category Tag (contoh: SPEED, SECURITY)", "type": "string" },
-                  { "slug": "badge", "label": "Small Badge", "type": "string" },
+                  {
+                    "slug": "title",
+                    "label": "Title",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "description",
+                    "label": "Description",
+                    "type": "text",
+                    "required": true
+                  },
+                  {
+                    "slug": "tag",
+                    "label": "Category Tag (contoh: SPEED, SECURITY)",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "badge",
+                    "label": "Small Badge",
+                    "type": "string"
+                  },
                   {
                     "slug": "col_span",
                     "label": "Lebar Kartu (Kolom)",
                     "type": "select",
-                    "options": ["1", "2", "3"]
+                    "options": [
+                      "1",
+                      "2",
+                      "3"
+                    ]
                   },
                   {
                     "slug": "row_span",
                     "label": "Tinggi Kartu (Baris)",
                     "type": "select",
-                    "options": ["1", "2"]
+                    "options": [
+                      "1",
+                      "2"
+                    ]
                   },
                   {
                     "slug": "icon",
@@ -159,14 +197,34 @@
                       "check"
                     ]
                   },
-                  { "slug": "image_url", "label": "Image URL (Opsional)", "type": "string" },
-                  { "slug": "code_snippet", "label": "Code Snippet (Opsional, ala terminal/editor)", "type": "text" },
-                  { "slug": "link_url", "label": "Link URL", "type": "string" },
-                  { "slug": "link_label", "label": "Link Label", "type": "string" }
+                  {
+                    "slug": "image_url",
+                    "label": "Image URL (Opsional)",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "code_snippet",
+                    "label": "Code Snippet (Opsional, ala terminal/editor)",
+                    "type": "text"
+                  },
+                  {
+                    "slug": "link_url",
+                    "label": "Link URL",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "link_label",
+                    "label": "Link Label",
+                    "type": "string"
+                  }
                 ]
               }
             },
-            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
           ]
         }
       ]
@@ -181,11 +239,32 @@
         {
           "version": 1,
           "fields": [
-            { "slug": "headline", "label": "Headline", "type": "string", "required": true },
-            { "slug": "subheadline", "label": "Subheadline", "type": "text" },
-            { "slug": "eyebrow", "label": "Eyebrow Label", "type": "string" },
-            { "slug": "us_title", "label": "Nama Platform Kita (default: Platform Kami)", "type": "string" },
-            { "slug": "competitor_title", "label": "Nama Kompetitor / Cara Lama", "type": "string" },
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "required": true
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "text"
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Eyebrow Label",
+              "type": "string"
+            },
+            {
+              "slug": "us_title",
+              "label": "Nama Platform Kita (default: Platform Kami)",
+              "type": "string"
+            },
+            {
+              "slug": "competitor_title",
+              "label": "Nama Kompetitor / Cara Lama",
+              "type": "string"
+            },
             {
               "slug": "rows",
               "label": "Daftar Fitur / Kriteria",
@@ -195,16 +274,47 @@
                 "minItems": 1,
                 "maxItems": 15,
                 "subFields": [
-                  { "slug": "feature_name", "label": "Nama Fitur", "type": "string", "required": true },
-                  { "slug": "feature_desc", "label": "Keterangan Singkat", "type": "string" },
-                  { "slug": "us_value", "label": "Nilai Kita (ketik 'yes' untuk centang hijau atau teks)", "type": "string", "required": true },
-                  { "slug": "competitor_value", "label": "Nilai Kompetitor (ketik 'no' untuk silang abu atau teks)", "type": "string", "required": true }
+                  {
+                    "slug": "feature_name",
+                    "label": "Nama Fitur",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "feature_desc",
+                    "label": "Keterangan Singkat",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "us_value",
+                    "label": "Nilai Kita (ketik 'yes' untuk centang hijau atau teks)",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "competitor_value",
+                    "label": "Nilai Kompetitor (ketik 'no' untuk silang abu atau teks)",
+                    "type": "string",
+                    "required": true
+                  }
                 ]
               }
             },
-            { "slug": "cta_label", "label": "Label Tombol CTA Bawah", "type": "string" },
-            { "slug": "cta_url", "label": "URL Tombol CTA Bawah", "type": "string" },
-            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+            {
+              "slug": "cta_label",
+              "label": "Label Tombol CTA Bawah",
+              "type": "string"
+            },
+            {
+              "slug": "cta_url",
+              "label": "URL Tombol CTA Bawah",
+              "type": "string"
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
           ]
         }
       ]
@@ -219,7 +329,11 @@
         {
           "version": 1,
           "fields": [
-            { "slug": "headline", "label": "Headline Teks di Atas Logo", "type": "string" },
+            {
+              "slug": "headline",
+              "label": "Headline Teks di Atas Logo",
+              "type": "string"
+            },
             {
               "slug": "logos",
               "label": "Daftar Logo Klien/Partner",
@@ -229,13 +343,31 @@
                 "minItems": 1,
                 "maxItems": 20,
                 "subFields": [
-                  { "slug": "name", "label": "Nama Brand / Klien", "type": "string", "required": true },
-                  { "slug": "logo_url", "label": "URL File Logo (SVG/PNG transparan)", "type": "string", "required": true },
-                  { "slug": "link_url", "label": "Link Target (Opsional)", "type": "string" }
+                  {
+                    "slug": "name",
+                    "label": "Nama Brand / Klien",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "logo_url",
+                    "label": "URL File Logo (SVG/PNG transparan)",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "link_url",
+                    "label": "Link Target (Opsional)",
+                    "type": "string"
+                  }
                 ]
               }
             },
-            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
           ]
         }
       ]
@@ -250,9 +382,23 @@
         {
           "version": 1,
           "fields": [
-            { "slug": "headline", "label": "Headline", "type": "string", "defaultValue": "Build your next blog or microsite today" },
-            { "slug": "subheadline", "label": "Introduction", "type": "text", "defaultValue": "EmDash combines with Astro to create one end-to-end TypeScript CMS and frontend." },
-            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "defaultValue": "Build your next blog or microsite today"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Introduction",
+              "type": "text",
+              "defaultValue": "EmDash combines with Astro to create one end-to-end TypeScript CMS and frontend."
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
           ]
         }
       ]
@@ -267,9 +413,24 @@
         {
           "version": 1,
           "fields": [
-            { "slug": "eyebrow", "label": "Eyebrow", "type": "string", "defaultValue": "SHOWCASE" },
-            { "slug": "headline", "label": "Headline", "type": "string", "defaultValue": "Karya & Implementasi Terbaik" },
-            { "slug": "subheadline", "label": "Subheadline", "type": "text", "defaultValue": "Geser untuk melihat proyek dan solusi yang telah kami bangun." },
+            {
+              "slug": "eyebrow",
+              "label": "Eyebrow",
+              "type": "string",
+              "defaultValue": "SHOWCASE"
+            },
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "defaultValue": "Karya & Implementasi Terbaik"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "text",
+              "defaultValue": "Geser untuk melihat proyek dan solusi yang telah kami bangun."
+            },
             {
               "slug": "slides",
               "label": "Slides",
@@ -279,15 +440,44 @@
                 "minItems": 1,
                 "maxItems": 12,
                 "subFields": [
-                  { "slug": "title", "label": "Judul Slide", "type": "string", "required": true, "defaultValue": "Modern Web Platform" },
-                  { "slug": "description", "label": "Deskripsi", "type": "text", "defaultValue": "Pembangunan sistem berskala enterprise dengan performa ultra-cepat." },
-                  { "slug": "imageUrl", "label": "Image URL", "type": "string" },
-                  { "slug": "linkLabel", "label": "Link Label", "type": "string", "defaultValue": "Lihat Detail" },
-                  { "slug": "linkUrl", "label": "Link URL", "type": "string", "defaultValue": "#" }
+                  {
+                    "slug": "title",
+                    "label": "Judul Slide",
+                    "type": "string",
+                    "required": true,
+                    "defaultValue": "Modern Web Platform"
+                  },
+                  {
+                    "slug": "description",
+                    "label": "Deskripsi",
+                    "type": "text",
+                    "defaultValue": "Pembangunan sistem berskala enterprise dengan performa ultra-cepat."
+                  },
+                  {
+                    "slug": "image_url",
+                    "label": "Image URL",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "link_label",
+                    "label": "Link Label",
+                    "type": "string",
+                    "defaultValue": "Lihat Detail"
+                  },
+                  {
+                    "slug": "link_url",
+                    "label": "Link URL",
+                    "type": "string",
+                    "defaultValue": "#"
+                  }
                 ]
               }
             },
-            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
           ]
         }
       ]
@@ -302,33 +492,91 @@
         {
           "version": 1,
           "fields": [
-            { "slug": "eyebrow", "label": "Eyebrow", "type": "string", "defaultValue": "TERBARU" },
-            { "slug": "headline", "label": "Headline", "type": "string", "defaultValue": "Artikel & Wawasan Teknis" },
-            { "slug": "subheadline", "label": "Subheadline", "type": "text", "defaultValue": "Pelajari tips, tutorial arsitektur software, dan praktik terbaik." },
+            {
+              "slug": "eyebrow",
+              "label": "Eyebrow",
+              "type": "string",
+              "defaultValue": "TERBARU"
+            },
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "defaultValue": "Artikel & Wawasan Teknis"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "text",
+              "defaultValue": "Pelajari tips, tutorial arsitektur software, dan praktik terbaik."
+            },
             {
               "slug": "source",
               "label": "Tipe Konten",
               "type": "select",
-              "options": ["posts", "products", "pages"],
+              "validation": {
+                "options": [
+                  "posts",
+                  "products",
+                  "pages"
+                ]
+              },
               "defaultValue": "posts"
             },
             {
               "slug": "mode",
               "label": "Mode Pemilihan",
-              "options": ["latest", "by_category", "by_tag"],
+              "type": "select",
+              "validation": {
+                "options": [
+                  "latest",
+                  "by_category",
+                  "by_tag"
+                ]
+              },
               "defaultValue": "latest"
             },
-            { "slug": "term", "label": "Category / Tag Slug (opsional)", "type": "string" },
-            { "slug": "limit", "label": "Jumlah Item", "type": "number", "defaultValue": 6 },
+            {
+              "slug": "term",
+              "label": "Category / Tag Slug (opsional)",
+              "type": "string"
+            },
+            {
+              "slug": "limit",
+              "label": "Jumlah Item",
+              "type": "number",
+              "defaultValue": 6
+            },
             {
               "slug": "layout",
               "label": "Tampilan Grid / List",
-              "options": ["grid", "list", "slide"],
+              "type": "select",
+              "validation": {
+                "options": [
+                  "grid",
+                  "list",
+                  "slide"
+                ]
+              },
               "defaultValue": "grid"
             },
-            { "slug": "ctaLabel", "label": "Label Tombol View All", "type": "string", "defaultValue": "Lihat Semua" },
-            { "slug": "ctaUrl", "label": "URL Tombol View All", "type": "string", "defaultValue": "/posts" },
-            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+            {
+              "slug": "cta_label",
+              "label": "Label Tombol View All",
+              "type": "string",
+              "defaultValue": "Lihat Semua"
+            },
+            {
+              "slug": "cta_url",
+              "label": "URL Tombol View All",
+              "type": "string",
+              "defaultValue": "/posts"
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
           ]
         }
       ]
@@ -363,7 +611,13 @@
               "slug": "columns",
               "label": "Jumlah Kolom (2, 3, atau 4)",
               "type": "select",
-              "options": ["2", "3", "4"]
+              "validation": {
+                "options": [
+                  "2",
+                  "3",
+                  "4"
+                ]
+              }
             },
             {
               "slug": "features",
@@ -939,10 +1193,12 @@
               "slug": "variant",
               "label": "Tampilan Blok",
               "type": "select",
-              "options": [
-                { "label": "Card (Kotak Netral)", "value": "card" },
-                { "label": "Banner (Highlight Hijau)", "value": "banner" }
-              ]
+              "validation": {
+                "options": [
+                  "card",
+                  "banner"
+                ]
+              }
             },
             {
               "slug": "anchor_id",
@@ -1104,26 +1360,26 @@
               "required": true,
               "validation": {
                 "minItems": 1,
-                "maxItems": 8
-              },
-              "fields": [
-                {
-                  "slug": "step_number",
-                  "label": "Step Number (e.g. 01, 02 or Step 1)",
-                  "type": "string"
-                },
-                {
-                  "slug": "title",
-                  "label": "Title",
-                  "type": "string",
-                  "required": true
-                },
-                {
-                  "slug": "description",
-                  "label": "Description",
-                  "type": "text"
-                }
-              ]
+                "maxItems": 8,
+                "subFields": [
+                  {
+                    "slug": "step_number",
+                    "label": "Step Number (e.g. 01, 02 or Step 1)",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "title",
+                    "label": "Title",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "description",
+                    "label": "Description",
+                    "type": "text"
+                  }
+                ]
+              }
             },
             {
               "slug": "anchor_id",
@@ -1166,41 +1422,41 @@
               "required": true,
               "validation": {
                 "minItems": 1,
-                "maxItems": 6
-              },
-              "fields": [
-                {
-                  "slug": "label",
-                  "label": "Tab Label",
-                  "type": "string",
-                  "required": true
-                },
-                {
-                  "slug": "title",
-                  "label": "Title",
-                  "type": "string"
-                },
-                {
-                  "slug": "description",
-                  "label": "Description",
-                  "type": "text"
-                },
-                {
-                  "slug": "image",
-                  "label": "Image / Preview Screenshot",
-                  "type": "image"
-                },
-                {
-                  "slug": "cta_label",
-                  "label": "CTA Button Text",
-                  "type": "string"
-                },
-                {
-                  "slug": "cta_url",
-                  "label": "CTA Link URL",
-                  "type": "string"
-                }
-              ]
+                "maxItems": 6,
+                "subFields": [
+                  {
+                    "slug": "label",
+                    "label": "Tab Label",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "title",
+                    "label": "Title",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "description",
+                    "label": "Description",
+                    "type": "text"
+                  },
+                  {
+                    "slug": "image",
+                    "label": "Image / Preview Screenshot",
+                    "type": "image"
+                  },
+                  {
+                    "slug": "cta_label",
+                    "label": "CTA Button Text",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "cta_url",
+                    "label": "CTA Button URL",
+                    "type": "string"
+                  }
+                ]
+              }
             },
             {
               "slug": "anchor_id",
@@ -1454,10 +1710,22 @@
           "label": "Tipe Skema Schema.org",
           "type": "select",
           "options": [
-            { "label": "ProfessionalService", "value": "ProfessionalService" },
-            { "label": "Organization", "value": "Organization" },
-            { "label": "LocalBusiness", "value": "LocalBusiness" },
-            { "label": "Corporation", "value": "Corporation" }
+            {
+              "label": "ProfessionalService",
+              "value": "ProfessionalService"
+            },
+            {
+              "label": "Organization",
+              "value": "Organization"
+            },
+            {
+              "label": "LocalBusiness",
+              "value": "LocalBusiness"
+            },
+            {
+              "label": "Corporation",
+              "value": "Corporation"
+            }
           ]
         },
         {
@@ -1879,7 +2147,7 @@
               "centered": true,
               "eyebrow": "Software House",
               "headline": "Software custom untuk bisnis yang serius.",
-              "subheadline": "Kami bangun POS kasir, CRM, CMS, dan aplikasi custom yang pas dengan alur kerja Anda — cepat, rapi, dan siap dipakai.",
+              "subheadline": "Kami bangun POS kasir, CRM, CMS, dan aplikasi custom yang pas dengan alur kerja Anda \u2014 cepat, rapi, dan siap dipakai.",
               "primary_cta_label": "Konsultasi gratis",
               "primary_cta_url": "/contact",
               "secondary_cta_label": "Lihat layanan",
@@ -1942,7 +2210,7 @@
                 {
                   "icon": "plug",
                   "title": "Jasa Install Software",
-                  "description": "Pasang, konfigurasi, dan migrasi software POS/CRM/VPS — online maupun on-site."
+                  "description": "Pasang, konfigurasi, dan migrasi software POS/CRM/VPS \u2014 online maupun on-site."
                 },
                 {
                   "icon": "shield",
@@ -1957,7 +2225,7 @@
               "_key": "home-install",
               "eyebrow": "Jasa Install Software",
               "headline": "Software siap pakai, kami yang pasang.",
-              "body": "Beli lisensi tapi bingung setup? Butuh instalasi di server atau VPS Anda? Kami bantu pasang, konfigurasi, migrasi data, dan training tim — online lewat remote maupun on-site.",
+              "body": "Beli lisensi tapi bingung setup? Butuh instalasi di server atau VPS Anda? Kami bantu pasang, konfigurasi, migrasi data, dan training tim \u2014 online lewat remote maupun on-site.",
               "points": "Instalasi POS kasir & CRM\nSetup server / VPS, domain & SSL\nMigrasi data dari sistem lama\nTraining & pendampingan tim",
               "cta_label": "Chat via WhatsApp",
               "cta_url": "https://wa.me/6285799520350",
@@ -2032,7 +2300,7 @@
               "items": [
                 {
                   "question": "Berapa lama pengerjaan proyek?",
-                  "answer": "Website/CMS 2–4 minggu. POS kasir atau CRM 4–8 minggu, tergantung kompleksitas fitur dan integrasi."
+                  "answer": "Website/CMS 2\u20134 minggu. POS kasir atau CRM 4\u20138 minggu, tergantung kompleksitas fitur dan integrasi."
                 },
                 {
                   "question": "Apakah source code jadi milik kami?",
@@ -2053,7 +2321,7 @@
               "_version": 1,
               "_key": "home-cta",
               "headline": "Siap digitalisasi bisnis Anda?",
-              "body": "Ceritakan kebutuhan Anda — kami bantu pilih solusi yang paling pas, tanpa biaya konsultasi awal.",
+              "body": "Ceritakan kebutuhan Anda \u2014 kami bantu pilih solusi yang paling pas, tanpa biaya konsultasi awal.",
               "primary_cta_label": "Mulai konsultasi",
               "primary_cta_url": "/contact",
               "secondary_cta_label": "Chat WhatsApp",
@@ -2174,14 +2442,14 @@
                 {
                   "icon": "email",
                   "title": "General questions",
-                  "description": "Ask about Halden, partnerships, press, or a building you’d like us to look at.",
+                  "description": "Ask about Halden, partnerships, press, or a building you\u2019d like us to look at.",
                   "link_label": "hello@halden.example",
                   "link_url": "mailto:hello@halden.example"
                 },
                 {
                   "icon": "support",
                   "title": "Customer support",
-                  "description": "Get help with your account, a meter integration, or a building that’s already connected.",
+                  "description": "Get help with your account, a meter integration, or a building that\u2019s already connected.",
                   "link_label": "support@halden.example",
                   "link_url": "mailto:support@halden.example"
                 },

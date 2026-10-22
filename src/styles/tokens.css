@@ -181,6 +181,13 @@
 		--section-space: clamp(72px, 8vw, 112px);
 		--radius-sheet: clamp(20px, 2.2vw, 32px);
 		--radius-media: 24px;
+
+		/* Floating pill header tokens (Marketing template alignment) */
+		--glass-bg: light-dark(rgb(255 255 255 / 0.82), rgb(20 19 18 / 0.8));
+		--shadow-glass:
+			inset 0 0 0 1px light-dark(rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.08)),
+			0 0 0 1px var(--color-border),
+			0 12px 32px -12px light-dark(rgb(20 19 18 / 0.18), rgb(0 0 0 / 0.6));
 	}
 
 	/*
