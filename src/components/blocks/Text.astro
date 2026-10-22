@@ -42,6 +42,23 @@ const { anchor_id, headline, body } = raw;
 		max-width: var(--content-width);
 	}
 
+	/*
+	 * Allow embedded sections / blocks (e.g. Slider, Feed, Pricing, Features)
+	 * within rich text to break out to the full container frame width (1200px)
+	 * while regular text remains comfortable for reading.
+	 */
+	.text-block:has(> .text-block__body > section.band),
+	.text-block:has(> .text-block__body > .band) {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.text-block__body > section.band,
+	.text-block__body > .band {
+		width: 100%;
+		max-width: 100%;
+	}
+
 	.text-block__headline {
 		margin-block-end: 24px;
 	}

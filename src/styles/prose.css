@@ -238,3 +238,13 @@
 .prose .emdash-file {
 	border-radius: var(--radius-lg) !important;
 }
+
+/*
+  Full-width breakout for embedded marketing blocks (sections with .band/.frame)
+  placed inside rich text / posts / pages.
+*/
+.prose > section.band,
+.prose > .band {
+	max-width: 100% !important;
+	width: 100% !important;
+}
