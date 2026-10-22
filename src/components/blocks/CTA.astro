@@ -32,8 +32,7 @@ const secondaryCta =
 		<div
 			class:list={[
 				"cta",
-				"sheet",
-				image ? ["cta--photo", "settle"] : ["cta--themed", "sheet--sunken"],
+				image ? "cta--photo" : "cta--clean",
 			]}
 		>
 			{image && (
@@ -76,12 +75,41 @@ const secondaryCta =
 	.cta {
 		display: grid;
 		align-items: center;
-		min-height: clamp(480px, 42vw, 640px);
+		min-height: clamp(380px, 36vw, 540px);
+	}
+
+	.cta--clean {
+		text-align: center;
+		padding-block: clamp(64px, 8vw, 120px);
+		border-block: 1px solid var(--color-border);
+		background: transparent;
+	}
+
+	.cta--clean .cta__content {
+		padding-block: 0;
+	}
+
+	.cta--clean .cta__headline,
+	.cta--clean .cta__body {
+		margin-inline: auto;
+	}
+
+	.cta--clean .cta__headline {
+		max-width: 18ch;
+		letter-spacing: -0.03em;
+	}
+
+	.cta--clean .cta__actions {
+		justify-content: center;
+		margin-inline: auto;
 	}
 
 	.cta--photo {
 		color: #fff;
 		background-color: var(--color-night);
+		border-radius: var(--radius-xl);
+		overflow: hidden;
+		position: relative;
 	}
 
 	.cta--photo::before {
