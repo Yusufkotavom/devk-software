@@ -1,0 +1,101 @@
+---
+import { sanitizeHref } from "emdash";
+
+interface LogoItem {
+	name: string;
+	logo_url: string;
+	link_url?: string;
+}
+
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
+const { anchor_id, headline = "Dipercaya oleh berbagai bisnis dan developer" } = raw;
+const logos: LogoItem[] = Array.isArray(raw.logos) ? raw.logos : [];
+const duplicatedLogos = [...logos, ...logos, ...logos]; // Repeat for seamless loop
+---
+
+<section id={anchor_id || undefined} class="band section marquee-section">
+	<div class="frame">
+		{headline && <p class="marquee-headline">{headline}</p>}
+	</div>
+
+	<div class="marquee-container">
+		<div class="marquee-track">
+			{
+				duplicatedLogos.map((item) => {
+					const cleanUrl = item.link_url ? sanitizeHref(item.link_url) : null;
+					return (
+						<div class="marquee-item">
+							{cleanUrl ? (
+								<a href={cleanUrl} target="_blank" rel="noopener noreferrer" class="marquee-link">
+									<img src={item.logo_url} alt={item.name} class="marquee-logo" loading="lazy" />
+								</a>
+							) : (
+								<img src={item.logo_url} alt={item.name} class="marquee-logo" loading="lazy" />
+							)}
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.marquee-section {
+		padding-block: clamp(2rem, 3.5vw, 4rem);
+		overflow: hidden;
+		position: relative;
+	}
+	.marquee-headline {
+		text-align: center;
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--text-muted, #71717a);
+		margin-bottom: 2rem;
+	}
+	.marquee-container {
+		width: 100%;
+		overflow: hidden;
+		display: flex;
+		mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+		-webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+	}
+	.marquee-track {
+		display: flex;
+		gap: 3.5rem;
+		align-items: center;
+		animation: scroll 35s linear infinite;
+		width: max-content;
+		padding-inline: 1rem;
+	}
+	.marquee-track:hover {
+		animation-play-state: paused;
+	}
+	.marquee-item {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.marquee-logo {
+		height: 32px;
+		max-width: 130px;
+		object-fit: contain;
+		filter: grayscale(100%) opacity(0.65);
+		transition: all 0.25s ease;
+	}
+	.marquee-logo:hover {
+		filter: grayscale(0%) opacity(1);
+		transform: scale(1.05);
+	}
+	@keyframes scroll {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-33.333%);
+		}
+	}
+</style>

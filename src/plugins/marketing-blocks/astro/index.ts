@@ -16,6 +16,9 @@ import Feed from "../../../components/blocks/Feed.astro";
 import Steps from "../../../components/blocks/Steps.astro";
 import Tabs from "../../../components/blocks/Tabs.astro";
 import WhatsAppCTA from "../../../components/blocks/WhatsAppCTA.astro";
+import BentoGrid from "../../../components/blocks/BentoGrid.astro";
+import ComparisonTable from "../../../components/blocks/ComparisonTable.astro";
+import MarqueeLogos from "../../../components/blocks/MarqueeLogos.astro";
 
 export const blockComponents = {
 	"marketing.hero": Hero,
@@ -55,6 +58,15 @@ export const blockComponents = {
 	"marketing.whatsapp_cta": WhatsAppCTA,
 	"marketing_whatsapp_cta": WhatsAppCTA,
 	"whatsapp_cta": WhatsAppCTA,
+	"marketing.bento_grid": BentoGrid,
+	"marketing_bento_grid": BentoGrid,
+	"bento_grid": BentoGrid,
+	"marketing.comparison_table": ComparisonTable,
+	"marketing_comparison_table": ComparisonTable,
+	"comparison_table": ComparisonTable,
+	"marketing.marquee_logos": MarqueeLogos,
+	"marketing_marquee_logos": MarqueeLogos,
+	"marquee_logos": MarqueeLogos,
 };
 
 export default blockComponents;

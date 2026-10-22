@@ -103,6 +103,144 @@
       ]
     },
     {
+      "slug": "marketing_bento_grid",
+      "label": "Bento Grid Showcase",
+      "description": "Grid modern asimetris ala Vercel/Linear untuk fitur, visual, dan code snippet",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            { "slug": "headline", "label": "Headline", "type": "string", "required": true },
+            { "slug": "subheadline", "label": "Subheadline", "type": "text" },
+            { "slug": "eyebrow", "label": "Eyebrow Label", "type": "string" },
+            {
+              "slug": "items",
+              "label": "Bento Cards",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 9,
+                "subFields": [
+                  { "slug": "title", "label": "Title", "type": "string", "required": true },
+                  { "slug": "description", "label": "Description", "type": "text", "required": true },
+                  { "slug": "tag", "label": "Category Tag (contoh: SPEED, SECURITY)", "type": "string" },
+                  { "slug": "badge", "label": "Small Badge", "type": "string" },
+                  {
+                    "slug": "col_span",
+                    "label": "Lebar Kartu (Kolom)",
+                    "type": "select",
+                    "options": ["1", "2", "3"]
+                  },
+                  {
+                    "slug": "row_span",
+                    "label": "Tinggi Kartu (Baris)",
+                    "type": "select",
+                    "options": ["1", "2"]
+                  },
+                  {
+                    "slug": "icon",
+                    "label": "Icon",
+                    "type": "select",
+                    "options": [
+                      "zap",
+                      "shield",
+                      "users",
+                      "chart",
+                      "code",
+                      "globe",
+                      "sparkle",
+                      "cpu",
+                      "database",
+                      "rocket",
+                      "lock",
+                      "check"
+                    ]
+                  },
+                  { "slug": "image_url", "label": "Image URL (Opsional)", "type": "string" },
+                  { "slug": "code_snippet", "label": "Code Snippet (Opsional, ala terminal/editor)", "type": "text" },
+                  { "slug": "link_url", "label": "Link URL", "type": "string" },
+                  { "slug": "link_label", "label": "Link Label", "type": "string" }
+                ]
+              }
+            },
+            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_comparison_table",
+      "label": "Comparison Table",
+      "description": "Tabel komparasi fitur kami vs alternatif / cara konvensional",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            { "slug": "headline", "label": "Headline", "type": "string", "required": true },
+            { "slug": "subheadline", "label": "Subheadline", "type": "text" },
+            { "slug": "eyebrow", "label": "Eyebrow Label", "type": "string" },
+            { "slug": "us_title", "label": "Nama Platform Kita (default: Platform Kami)", "type": "string" },
+            { "slug": "competitor_title", "label": "Nama Kompetitor / Cara Lama", "type": "string" },
+            {
+              "slug": "rows",
+              "label": "Daftar Fitur / Kriteria",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 15,
+                "subFields": [
+                  { "slug": "feature_name", "label": "Nama Fitur", "type": "string", "required": true },
+                  { "slug": "feature_desc", "label": "Keterangan Singkat", "type": "string" },
+                  { "slug": "us_value", "label": "Nilai Kita (ketik 'yes' untuk centang hijau atau teks)", "type": "string", "required": true },
+                  { "slug": "competitor_value", "label": "Nilai Kompetitor (ketik 'no' untuk silang abu atau teks)", "type": "string", "required": true }
+                ]
+              }
+            },
+            { "slug": "cta_label", "label": "Label Tombol CTA Bawah", "type": "string" },
+            { "slug": "cta_url", "label": "URL Tombol CTA Bawah", "type": "string" },
+            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_marquee_logos",
+      "label": "Logo Marquee (Infinite Scroll)",
+      "description": "Slider logo berjalan halus otomatis tanpa jeda untuk social proof",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            { "slug": "headline", "label": "Headline Teks di Atas Logo", "type": "string" },
+            {
+              "slug": "logos",
+              "label": "Daftar Logo Klien/Partner",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 20,
+                "subFields": [
+                  { "slug": "name", "label": "Nama Brand / Klien", "type": "string", "required": true },
+                  { "slug": "logo_url", "label": "URL File Logo (SVG/PNG transparan)", "type": "string", "required": true },
+                  { "slug": "link_url", "label": "Link Target (Opsional)", "type": "string" }
+                ]
+              }
+            },
+            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+          ]
+        }
+      ]
+    },
+    {
       "slug": "marketing_features",
       "label": "Features",
       "description": "A grid of product or service features",
@@ -127,6 +265,12 @@
               "slug": "eyebrow",
               "label": "Label above headline",
               "type": "string"
+            },
+            {
+              "slug": "columns",
+              "label": "Jumlah Kolom (2, 3, atau 4)",
+              "type": "select",
+              "options": ["2", "3", "4"]
             },
             {
               "slug": "features",
@@ -163,7 +307,15 @@
                       "bell",
                       "file",
                       "sun",
-                      "trend"
+                      "trend",
+                      "storefront",
+                      "cart",
+                      "desktop",
+                      "database",
+                      "cpu",
+                      "wrench",
+                      "gear",
+                      "rocket"
                     ]
                   },
                   {
@@ -177,6 +329,21 @@
                     "label": "Description (leave a blank line between paragraphs)",
                     "type": "text",
                     "required": true
+                  },
+                  {
+                    "slug": "link_url",
+                    "label": "Link URL (contoh: /services, /products, https://...)",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "link_label",
+                    "label": "Link Label (contoh: Pelajari lebih lanjut)",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "image_url",
+                    "label": "Custom Image URL (Opsional, menggantikan icon)",
+                    "type": "string"
                   }
                 ]
               }
@@ -1076,7 +1243,10 @@
               "marketing_richtext",
               "marketing_steps",
               "marketing_tabs",
-              "marketing_whatsapp_cta"
+              "marketing_whatsapp_cta",
+              "marketing_bento_grid",
+              "marketing_comparison_table",
+              "marketing_marquee_logos"
             ],
             "maxItems": 20
           }
@@ -1150,7 +1320,10 @@
               "marketing_richtext",
               "marketing_steps",
               "marketing_tabs",
-              "marketing_whatsapp_cta"
+              "marketing_whatsapp_cta",
+              "marketing_bento_grid",
+              "marketing_comparison_table",
+              "marketing_marquee_logos"
             ],
             "maxItems": 20
           }

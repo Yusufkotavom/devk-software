@@ -1,0 +1,236 @@
+---
+import { Icon } from "astro-iconset/components";
+import ScaleIn from "@astroanimate/core/ScaleIn";
+import FadeInText from "@astroanimate/core/FadeInText";
+
+interface FeatureRow {
+	feature_name: string;
+	feature_desc?: string;
+	us_value: string; // "yes", "no", or custom text
+	competitor_value: string;
+}
+
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
+const {
+	anchor_id,
+	eyebrow,
+	headline,
+	subheadline,
+	us_title = "Platform Kami",
+	competitor_title = "Cara Konvensional",
+	cta_label,
+	cta_url,
+} = raw;
+
+const rows: FeatureRow[] = Array.isArray(raw.rows) ? raw.rows : [];
+---
+
+<section id={anchor_id || undefined} class="band section comparison-section">
+	<div class="frame">
+		<header class="section-header">
+			{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+			{headline && (
+				<h2 class="section-headline">
+					<FadeInText text={headline} duration={0.8} once={true} />
+					{subheadline && " "}
+					{subheadline && <span class="section-headline__muted">{subheadline}</span>}
+				</h2>
+			)}
+		</header>
+
+		<ScaleIn class="comparison-card" duration={0.8} initialScale={0.96} enhance={true}>
+			<div class="table-wrap">
+				<table class="comparison-table">
+					<thead>
+						<tr>
+							<th class="th-feature">Fitur & Kemampuan</th>
+							<th class="th-us">
+								<div class="header-us">
+									<span class="badge-recommend">Rekomendasi</span>
+									<span class="title-us">{us_title}</span>
+								</div>
+							</th>
+							<th class="th-competitor">{competitor_title}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((row) => {
+								const usIsCheck = row.us_value.toLowerCase() === "yes" || row.us_value.toLowerCase() === "true";
+								const compIsCross = row.competitor_value.toLowerCase() === "no" || row.competitor_value.toLowerCase() === "false";
+
+								return (
+									<tr>
+										<td class="td-feature">
+											<div class="feature-title">{row.feature_name}</div>
+											{row.feature_desc && <div class="feature-desc">{row.feature_desc}</div>}
+										</td>
+										<td class="td-us">
+											{usIsCheck ? (
+												<div class="check-pill">
+													<Icon name="ph:check-circle-fill" class="icon-check" />
+													<span>Tersedia & Siap Pakai</span>
+												</div>
+											) : (
+												<span class="val-text val-text--highlight">{row.us_value}</span>
+											)}
+										</td>
+										<td class="td-competitor">
+											{compIsCross ? (
+												<div class="cross-pill">
+													<Icon name="ph:x-circle" class="icon-cross" />
+													<span>Tidak Ada / Manual</span>
+												</div>
+											) : (
+												<span class="val-text">{row.competitor_value}</span>
+											)}
+										</td>
+									</tr>
+								);
+							})
+						}
+					</tbody>
+				</table>
+			</div>
+
+			{cta_label && cta_url && (
+				<div class="comparison-cta">
+					<a href={cta_url} class="comparison-cta__btn">
+						<span>{cta_label}</span>
+						<Icon name="ph:arrow-right" class="arrow" />
+					</a>
+				</div>
+			)}
+		</ScaleIn>
+	</div>
+</section>
+
+<style>
+	.comparison-section {
+		padding-block: clamp(3rem, 5vw, 6rem);
+	}
+	.section-header {
+		margin-block-end: clamp(2rem, 3.5vw, 3.5rem);
+		max-width: 65ch;
+	}
+	.comparison-card {
+		background: var(--surface-2, #18181b);
+		border: 1px solid var(--border-color, #27272a);
+		border-radius: var(--radius-lg, 1rem);
+		overflow: hidden;
+		box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+	}
+	.table-wrap {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	.comparison-table {
+		width: 100%;
+		border-collapse: collapse;
+		text-align: left;
+		font-size: 0.95rem;
+	}
+	th, td {
+		padding: 1.25rem 1.5rem;
+		border-bottom: 1px solid var(--border-color, #27272a);
+	}
+	thead tr {
+		background: rgba(255, 255, 255, 0.02);
+	}
+	.th-feature {
+		width: 44%;
+		color: var(--text-muted, #a1a1aa);
+		font-weight: 600;
+	}
+	.th-us {
+		width: 32%;
+		background: rgba(37, 211, 102, 0.05);
+		border-inline: 1px solid rgba(37, 211, 102, 0.15);
+	}
+	.th-competitor {
+		width: 24%;
+		color: var(--text-muted, #a1a1aa);
+		font-weight: 600;
+	}
+	.header-us {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+	.badge-recommend {
+		align-self: flex-start;
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		background: #25d366;
+		color: #000;
+		padding: 0.15rem 0.5rem;
+		border-radius: 9999px;
+	}
+	.title-us {
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--text-color, #fafafa);
+	}
+	.td-feature {
+		color: var(--text-color, #fafafa);
+	}
+	.feature-title {
+		font-weight: 600;
+	}
+	.feature-desc {
+		font-size: 0.85rem;
+		color: var(--text-muted, #a1a1aa);
+		margin-top: 0.25rem;
+	}
+	.td-us {
+		background: rgba(37, 211, 102, 0.02);
+		border-inline: 1px solid rgba(37, 211, 102, 0.15);
+	}
+	.check-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #25d366;
+		font-weight: 600;
+		font-size: 0.9rem;
+	}
+	.cross-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--text-muted, #71717a);
+		font-size: 0.9rem;
+	}
+	.val-text {
+		font-weight: 500;
+		color: var(--text-muted, #a1a1aa);
+	}
+	.val-text--highlight {
+		color: #25d366;
+		font-weight: 600;
+	}
+	.comparison-cta {
+		padding: 1.5rem;
+		background: rgba(255, 255, 255, 0.02);
+		display: flex;
+		justify-content: center;
+	}
+	.comparison-cta__btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
+		padding: 0.75rem 1.75rem;
+		background: #25d366;
+		color: #ffffff !important;
+		font-weight: 700;
+		border-radius: var(--radius-md, 0.75rem);
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+	.comparison-cta__btn:hover {
+		background: #20ba59;
+		transform: translateY(-2px);
+	}
+</style>
