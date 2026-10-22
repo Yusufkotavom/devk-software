@@ -1,6 +1,6 @@
 # Arsitektur & Dokumentasi Teknis devk-software
 
-Dokumen ini mendeskripsikan implementasi teknis situs resmi platform software Kotacom (`https://software.devk.my.id/`).
+Dokumen ini mendeskripsikan implementasi teknis situs resmi platform software Kotacom (`https://devk.my.id/`).
 
 ## 1. Ikhtisar Sistem
 - **Aplikasi Dokploy:** `devk-software` (Swarm service: `devk-software-app-vavdlg`)

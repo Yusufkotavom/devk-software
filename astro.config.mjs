@@ -37,7 +37,7 @@ function getDatabaseAdapter() {
 const database = getDatabaseAdapter();
 
 export default defineConfig({
-	site: process.env.EMDASH_SITE_URL || "https://software.devk.my.id",
+	site: process.env.EMDASH_SITE_URL || "https://devk.my.id",
 	output: "server",
 	adapter: node({
 		mode: "standalone",
@@ -57,7 +57,7 @@ export default defineConfig({
 	image: {
 		layout: "constrained",
 		responsiveStyles: true,
-		domains: ["software.devk.my.id", "localhost"],
+		domains: ["devk.my.id", "software.devk.my.id", "localhost"],
 		remotePatterns: [
 			{ protocol: "https" },
 			{ protocol: "http" },
@@ -119,7 +119,7 @@ export default defineConfig({
 			},
 		}),
 		emdash({
-			siteUrl: process.env.EMDASH_SITE_URL || "https://software.devk.my.id",
+			siteUrl: process.env.EMDASH_SITE_URL || "https://devk.my.id",
 			database,
 			storage: local({
 				directory: uploadsDirectory,

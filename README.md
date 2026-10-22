@@ -2,7 +2,7 @@
 
 Platform resmi software & web engineering Kotacom berbasis [EmDash CMS](https://github.com/emdash-cms/emdash) & [Astro](https://astro.build/).
 
-- **Live URL:** [https://software.devk.my.id/](https://software.devk.my.id/)
+- **Live URL:** [https://devk.my.id/](https://devk.my.id/)
 - **Repository:** `Yusufkotavom/devk-software` (branch `main`)
 - **Hosting / Deploy:** Dokploy (App: `devk-software`, Swarm service: `devk-software-app-vavdlg`)
 - **Database:** PostgreSQL di Dokploy container (`devk-software-db-hfl2l5`)
