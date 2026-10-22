@@ -241,19 +241,21 @@ const iconMap: Record<string, string> = {
 	}
 	.bento-card__tag {
 		font-size: 0.75rem;
-		font-weight: 700;
+		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: #10b981;
-		background: rgba(16, 185, 129, 0.1);
+		color: var(--text-color, #fafafa);
+		background: rgba(255, 255, 255, 0.08);
+		border: 1px solid rgba(255, 255, 255, 0.12);
 		padding: 0.2rem 0.6rem;
 		border-radius: 9999px;
 	}
 	.bento-card__badge {
 		font-size: 0.75rem;
-		font-weight: 600;
+		font-weight: 500;
 		color: var(--text-muted, #a1a1aa);
-		background: var(--surface-3, #27272a);
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.08);
 		padding: 0.2rem 0.6rem;
 		border-radius: 9999px;
 	}
@@ -303,10 +305,8 @@ const iconMap: Record<string, string> = {
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
+		background: #3f3f46;
 	}
-	.dot--red { background: #ef4444; }
-	.dot--yellow { background: #f59e0b; }
-	.dot--green { background: #10b981; }
 	.bento-card__code pre {
 		padding: 12px;
 		margin: 0;

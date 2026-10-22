@@ -21,14 +21,32 @@ function initSlider(root: HTMLElement) {
 	};
 
 	const update = () => {
-		const i = Math.round(track.scrollLeft / step());
+		const currentStep = step();
+		const i = Math.round(track.scrollLeft / currentStep) % (dots.length || 1);
 		dots.forEach((dot, di) => dot.setAttribute("aria-current", di === i ? "true" : "false"));
-		if (prev) prev.disabled = track.scrollLeft <= 2;
-		if (next) next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+		// Keep buttons always enabled for infinite loop
+		if (prev) prev.disabled = false;
+		if (next) next.disabled = false;
 	};
 
-	prev?.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
-	next?.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+	prev?.addEventListener("click", () => {
+		const currentStep = step();
+		if (track.scrollLeft <= 5) {
+			track.scrollTo({ left: track.scrollWidth - track.clientWidth, behavior: "smooth" });
+		} else {
+			track.scrollBy({ left: -currentStep, behavior: "smooth" });
+		}
+	});
+
+	next?.addEventListener("click", () => {
+		const currentStep = step();
+		if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 5) {
+			track.scrollTo({ left: 0, behavior: "smooth" });
+		} else {
+			track.scrollBy({ left: currentStep, behavior: "smooth" });
+		}
+	});
+
 	dots.forEach((dot, di) =>
 		dot.addEventListener("click", () => track.scrollTo({ left: di * step(), behavior: "smooth" })),
 	);

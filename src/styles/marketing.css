@@ -123,10 +123,10 @@
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		color: var(--color-text-secondary);
-		padding: 4px 10px 4px 8px;
-		border-radius: var(--radius-full);
-		background: var(--color-brand-accent-subtle);
-		border: 1px solid color-mix(in srgb, var(--color-brand-accent) 20%, transparent);
+		padding: 0;
+		border-radius: 0;
+		background: transparent;
+		border: none;
 		width: fit-content;
 	}
 
@@ -509,12 +509,35 @@
 			animation-delay: calc(var(--rise-index, 0) * 80ms);
 		}
 
+		/* Pure CSS scroll-driven reveal (0 KB JS, GPU accelerated) */
 		@supports (animation-timeline: view()) {
+			.section-headline,
+			.card,
+			.bento-card,
+			.plan,
+			.slide,
+			.comparison-table-wrapper {
+				animation: view-fade-up linear both;
+				animation-timeline: view();
+				animation-range: entry 0% cover 25%;
+			}
+
 			.settle img {
 				animation: media-settle linear both;
 				animation-timeline: view();
 				animation-range: entry 0% cover 45%;
 			}
+		}
+	}
+
+	@keyframes view-fade-up {
+		from {
+			opacity: 0.35;
+			translate: 0 16px;
+		}
+		to {
+			opacity: 1;
+			translate: 0 0;
 		}
 	}
 
