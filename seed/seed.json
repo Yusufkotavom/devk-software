@@ -646,6 +646,54 @@
       ]
     },
     {
+      "slug": "marketing_whatsapp_cta",
+      "label": "WhatsApp CTA Box",
+      "description": "Blok ajakan chat WhatsApp dengan nomor terpusat & tracking sumber",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Judul CTA (Opsional)",
+              "type": "string"
+            },
+            {
+              "slug": "body",
+              "label": "Deskripsi / Penjelasan Singkat (Opsional)",
+              "type": "text"
+            },
+            {
+              "slug": "label",
+              "label": "Label Tombol (contoh: Chat WhatsApp Sekarang)",
+              "type": "string"
+            },
+            {
+              "slug": "custom_message",
+              "label": "Pesan Kustom WhatsApp (opsional, support {title} & {url})",
+              "type": "text"
+            },
+            {
+              "slug": "variant",
+              "label": "Tampilan Blok",
+              "type": "select",
+              "options": [
+                { "label": "Card (Kotak Netral)", "value": "card" },
+                { "label": "Banner (Highlight Hijau)", "value": "banner" }
+              ]
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (contoh: cta-wa)",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "slug": "marketing_contact",
       "label": "Contact options",
       "description": "Cards that point readers to the right email address, phone number or page",
@@ -1026,7 +1074,8 @@
               "marketing_contact",
               "marketing_richtext",
               "marketing_steps",
-              "marketing_tabs"
+              "marketing_tabs",
+              "marketing_whatsapp_cta"
             ],
             "maxItems": 20
           }
@@ -1099,7 +1148,8 @@
               "marketing_contact",
               "marketing_richtext",
               "marketing_steps",
-              "marketing_tabs"
+              "marketing_tabs",
+              "marketing_whatsapp_cta"
             ],
             "maxItems": 20
           }
@@ -1219,6 +1269,41 @@
           "slug": "enabled",
           "label": "Aktifkan Floating WhatsApp",
           "type": "boolean"
+        },
+        {
+          "slug": "append_source_url",
+          "label": "Sertakan URL Halaman Sumber (Auto tracking)",
+          "type": "boolean"
+        },
+        {
+          "slug": "include_page_title",
+          "label": "Sertakan Judul Halaman dalam Pesan",
+          "type": "boolean"
+        },
+        {
+          "slug": "source_label",
+          "label": "Label Teks Sumber (contoh: Sumber / Dari Halaman)",
+          "type": "string"
+        },
+        {
+          "slug": "product_cta_label",
+          "label": "Label Tombol WhatsApp di Produk (contoh: Beli / Chat via WhatsApp)",
+          "type": "string"
+        },
+        {
+          "slug": "post_cta_label",
+          "label": "Label Tombol WhatsApp di Artikel (contoh: Tanya / Konsultasi via WhatsApp)",
+          "type": "string"
+        },
+        {
+          "slug": "product_message_template",
+          "label": "Template Pesan Produk (Gunakan {title} dan {url})",
+          "type": "text"
+        },
+        {
+          "slug": "post_message_template",
+          "label": "Template Pesan Artikel (Gunakan {title} dan {url})",
+          "type": "text"
         },
         {
           "slug": "phone_number",

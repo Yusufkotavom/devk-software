@@ -15,6 +15,7 @@ import Slider from "../../../components/blocks/Slider.astro";
 import Feed from "../../../components/blocks/Feed.astro";
 import Steps from "../../../components/blocks/Steps.astro";
 import Tabs from "../../../components/blocks/Tabs.astro";
+import WhatsAppCTA from "../../../components/blocks/WhatsAppCTA.astro";
 
 export const blockComponents = {
 	"marketing.hero": Hero,
@@ -51,6 +52,9 @@ export const blockComponents = {
 	"marketing_steps": Steps,
 	"marketing.tabs": Tabs,
 	"marketing_tabs": Tabs,
+	"marketing.whatsapp_cta": WhatsAppCTA,
+	"marketing_whatsapp_cta": WhatsAppCTA,
+	"whatsapp_cta": WhatsAppCTA,
 };
 
 export default blockComponents;

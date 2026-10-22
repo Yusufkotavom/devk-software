@@ -1,39 +1,20 @@
 ---
-import { getEmDashCollection } from "emdash";
+import { getWhatsAppSettings, buildWhatsAppHref } from "../utils/whatsapp";
 
-interface WhatsAppSetting {
-	title?: string;
-	whatsapp_number?: string;
-	callout_text?: string;
-	default_message?: string;
-	enabled?: boolean | number;
-	phone_number?: string;
-}
+const setting = await getWhatsAppSettings();
+const isEnabled = setting ? (setting.enabled === true || setting.enabled === 1 || setting.enabled === "1") : true;
+const calloutText = setting?.callout_text?.trim() || "Chat WhatsApp";
 
-let setting: WhatsAppSetting | null = null;
-
-try {
-	const res = await getEmDashCollection("whatsapp_settings", { limit: 1 });
-	if (res && res.entries && res.entries.length > 0) {
-		setting = res.entries[0].data as WhatsAppSetting;
-	}
-} catch (e) {
-	// If collection not found or query fails, leave null
-}
-
-const isEnabled = setting && (setting.enabled === true || setting.enabled === 1 || setting.enabled === "1");
-const rawNumber = setting?.whatsapp_number?.trim() || "";
-const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
-const defaultMessage = setting?.default_message?.trim() || "";
-const calloutText = setting?.callout_text?.trim() || "";
-
-const waUrl = cleanNumber
-	? `https://wa.me/${cleanNumber}${defaultMessage ? `?text=${encodeURIComponent(defaultMessage)}` : ""}`
-	: "";
+const currentUrl = Astro.url.href;
+const waUrl = buildWhatsAppHref(setting, {
+	pageUrl: currentUrl,
+	pageTitle: Astro.props.pageTitle || "",
+	context: "floating",
+});
 ---
 
 {
-	isEnabled && cleanNumber && (
+	isEnabled && waUrl !== "#" && (
 		<div class="floating-wa-container" id="floating-whatsapp">
 			{calloutText && (
 				<a
