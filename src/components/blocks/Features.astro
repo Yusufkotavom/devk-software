@@ -10,8 +10,31 @@ type FeaturesBlock = Extract<PageContentBlock, { _type: "marketing_features" }>;
 type Props = BlockComponentProps<FeaturesBlock>;
 
 const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
-const { anchor_id, eyebrow, headline, subheadline } = raw;
-const features = Array.isArray(raw.features) ? raw.features : [];
+const { anchor_id, eyebrow, headline = "Solusi Lengkap untuk Kebutuhan Software & IT Anda", subheadline = "Koleksi tools, infrastruktur, dan layanan terintegrasi untuk akselerasi pertumbuhan bisnis modern." } = raw;
+const rawFeatures: FeatureItem[] = Array.isArray(raw.features) && raw.features.length > 0 ? raw.features : [
+	{
+		title: "Performa Tinggi & Tanpa Lag",
+		description: "Arsitektur modern dengan optimasi SSR rendering dan caching edge untuk load time instan.",
+		icon: "rocket",
+		link_label: "Pelajari Lebih Lanjut",
+		link_url: "/posts"
+	},
+	{
+		title: "Keamanan Standar Industri",
+		description: "Proteksi data berlapis, validasi ketat, serta enkripsi end-to-end pada setiap transaksi dan API.",
+		icon: "shield",
+		link_label: "Pelajari Lebih Lanjut",
+		link_url: "/posts"
+	},
+	{
+		title: "Integrasi & Kustomisasi Fleksibel",
+		description: "Mudah disesuaikan dengan workflow tim Anda, mendukung API eksternal dan WhatsApp.",
+		icon: "gear",
+		link_label: "Pelajari Lebih Lanjut",
+		link_url: "/posts"
+	}
+];
+const features: FeatureItem[] = rawFeatures;
 const columns = String(raw.columns ?? "3");
 const panel = String(raw.panel ?? "none"); // none | sunken | ink
 const hasPanel = panel === "sunken" || panel === "ink";

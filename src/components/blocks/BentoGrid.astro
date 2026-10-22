@@ -19,8 +19,45 @@ interface BentoItem {
 }
 
 const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
-const { anchor_id, eyebrow, headline, subheadline } = raw;
-const items: BentoItem[] = Array.isArray(raw.items) ? raw.items : [];
+const { anchor_id, eyebrow, headline = "Arsitektur Modern untuk Skala Tanpa Batas", subheadline = "Semua yang Anda butuhkan untuk membangun, meluncurkan, dan menskalakan platform digital Anda." } = raw;
+const rawItems: BentoItem[] = Array.isArray(raw.items) && raw.items.length > 0 ? raw.items : [
+	{
+		title: "Performa Kelas Dunia",
+		description: "Waktu respon sub-100ms dengan rendering server native dan caching cerdas pada setiap endpoint.",
+		tag: "SPEED",
+		icon: "rocket",
+		col_span: "2",
+		row_span: "1",
+		link_url: "/posts"
+	},
+	{
+		title: "API-First & Headless",
+		description: "Data terpusat dengan akses fleksibel melalui REST API, webhook otomatis, dan SDK modern.",
+		tag: "ARCHITECTURE",
+		icon: "code",
+		col_span: "1",
+		row_span: "1",
+		code_snippet: "curl -X GET https://software.devk.my.id/api/products"
+	},
+	{
+		title: "Keamanan Enterprise",
+		description: "Isolasi container Docker Swarm dan proteksi edge security melindungi seluruh transaksi pengguna.",
+		tag: "SECURITY",
+		icon: "shield",
+		col_span: "1",
+		row_span: "1"
+	},
+	{
+		title: "Integrasi WhatsApp Sentral",
+		description: "Hubungkan penjualan, customer support, dan notifikasi otomatis langsung ke nomor WhatsApp bisnis Anda.",
+		tag: "CONVERSION",
+		icon: "sparkle",
+		col_span: "2",
+		row_span: "1",
+		link_url: "/products"
+	}
+];
+const items: BentoItem[] = rawItems;
 
 const iconMap: Record<string, string> = {
 	zap: "ph:lightning",

@@ -241,6 +241,99 @@
       ]
     },
     {
+      "slug": "marketing_capabilities",
+      "label": "Capabilities Grid",
+      "description": "Feature bento with tech illustrations",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            { "slug": "headline", "label": "Headline", "type": "string", "defaultValue": "Build your next blog or microsite today" },
+            { "slug": "subheadline", "label": "Introduction", "type": "text", "defaultValue": "EmDash combines with Astro to create one end-to-end TypeScript CMS and frontend." },
+            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_slider",
+      "label": "Slider",
+      "description": "Horizontal slides of images and cards",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            { "slug": "eyebrow", "label": "Eyebrow", "type": "string", "defaultValue": "SHOWCASE" },
+            { "slug": "headline", "label": "Headline", "type": "string", "defaultValue": "Karya & Implementasi Terbaik" },
+            { "slug": "subheadline", "label": "Subheadline", "type": "text", "defaultValue": "Geser untuk melihat proyek dan solusi yang telah kami bangun." },
+            {
+              "slug": "slides",
+              "label": "Slides",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 12,
+                "subFields": [
+                  { "slug": "title", "label": "Judul Slide", "type": "string", "required": true, "defaultValue": "Modern Web Platform" },
+                  { "slug": "description", "label": "Deskripsi", "type": "text", "defaultValue": "Pembangunan sistem berskala enterprise dengan performa ultra-cepat." },
+                  { "slug": "imageUrl", "label": "Image URL", "type": "string" },
+                  { "slug": "linkLabel", "label": "Link Label", "type": "string", "defaultValue": "Lihat Detail" },
+                  { "slug": "linkUrl", "label": "Link URL", "type": "string", "defaultValue": "#" }
+                ]
+              }
+            },
+            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_feed",
+      "label": "Content Feed",
+      "description": "List posts, products or pages by tag, category or latest",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            { "slug": "eyebrow", "label": "Eyebrow", "type": "string", "defaultValue": "TERBARU" },
+            { "slug": "headline", "label": "Headline", "type": "string", "defaultValue": "Artikel & Wawasan Teknis" },
+            { "slug": "subheadline", "label": "Subheadline", "type": "text", "defaultValue": "Pelajari tips, tutorial arsitektur software, dan praktik terbaik." },
+            {
+              "slug": "source",
+              "label": "Tipe Konten",
+              "type": "select",
+              "options": ["posts", "products", "pages"],
+              "defaultValue": "posts"
+            },
+            {
+              "slug": "mode",
+              "label": "Mode Pemilihan",
+              "options": ["latest", "by_category", "by_tag"],
+              "defaultValue": "latest"
+            },
+            { "slug": "term", "label": "Category / Tag Slug (opsional)", "type": "string" },
+            { "slug": "limit", "label": "Jumlah Item", "type": "number", "defaultValue": 6 },
+            {
+              "slug": "layout",
+              "label": "Tampilan Grid / List",
+              "options": ["grid", "list", "slide"],
+              "defaultValue": "grid"
+            },
+            { "slug": "ctaLabel", "label": "Label Tombol View All", "type": "string", "defaultValue": "Lihat Semua" },
+            { "slug": "ctaUrl", "label": "URL Tombol View All", "type": "string", "defaultValue": "/posts" },
+            { "slug": "anchor_id", "label": "Section ID", "type": "string" }
+          ]
+        }
+      ]
+    },
+    {
       "slug": "marketing_features",
       "label": "Features",
       "description": "A grid of product or service features",
@@ -1246,7 +1339,10 @@
               "marketing_whatsapp_cta",
               "marketing_bento_grid",
               "marketing_comparison_table",
-              "marketing_marquee_logos"
+              "marketing_marquee_logos",
+              "marketing_capabilities",
+              "marketing_slider",
+              "marketing_feed"
             ],
             "maxItems": 20
           }
@@ -1323,7 +1419,10 @@
               "marketing_whatsapp_cta",
               "marketing_bento_grid",
               "marketing_comparison_table",
-              "marketing_marquee_logos"
+              "marketing_marquee_logos",
+              "marketing_capabilities",
+              "marketing_slider",
+              "marketing_feed"
             ],
             "maxItems": 20
           }

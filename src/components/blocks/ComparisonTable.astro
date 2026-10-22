@@ -14,15 +14,43 @@ const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.pro
 const {
 	anchor_id,
 	eyebrow,
-	headline,
-	subheadline,
-	us_title = "Platform Kami",
-	competitor_title = "Cara Konvensional",
-	cta_label,
-	cta_url,
+	headline = "Mengapa Memilih Devk Software?",
+	subheadline = "Bandingkan langsung arsitektur platform modern kami dengan pendekatan website konvensional.",
+	our_label = "Devk Platform",
+	competitor_label = "Solusi Konvensional",
+	cta_label = "Mulai Konsultasi",
+	cta_url = "#contact",
 } = raw;
 
-const rows: FeatureRow[] = Array.isArray(raw.rows) ? raw.rows : [];
+const defaultRows: FeatureRow[] = [
+	{
+		feature_name: "Kecepatan Render & Core Web Vitals (99+ Score)",
+		our_value: "yes",
+		competitor_value: "no",
+	},
+	{
+		feature_name: "Tanpa Biaya Lisensi Bulanan Plugin",
+		our_value: "yes",
+		competitor_value: "no",
+	},
+	{
+		feature_name: "Infrastruktur Terisolasi (Docker Swarm)",
+		our_value: "yes",
+		competitor_value: "no",
+	},
+	{
+		feature_name: "Integrasi Chat WhatsApp dengan Tracking Sumber Halaman",
+		our_value: "yes",
+		competitor_value: "no",
+	},
+	{
+		feature_name: "Optimasi SEO Teknis & Schema Terstruktur Native",
+		our_value: "yes",
+		competitor_value: "no",
+	},
+];
+
+const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.rows : defaultRows;
 ---
 
 <section id={anchor_id || undefined} class="band section comparison-section">
