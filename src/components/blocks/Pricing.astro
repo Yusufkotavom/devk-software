@@ -47,13 +47,15 @@ const plans = rawPlans.map((plan: any) => ({
 		role="list"
 	>
 		{
-			plans.map((plan) => (
+			plans.map((plan, idx) => (
 				<ScaleIn
 					as="li"
 					class:list={["card", "plan", { "plan--highlighted": plan.highlighted }]}
-					duration={0.5}
-					initialScale={0.94}
+					duration={1.0}
+					delay={idx * 0.15}
+					initialScale={0.90}
 					enhance={true}
+					easing="cubic-bezier(0.16, 1, 0.3, 1)"
 				>
 					<div class="plan__head">
 						<PlanHeading class="plan__name">{plan.name}</PlanHeading>

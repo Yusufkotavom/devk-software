@@ -42,7 +42,14 @@ const secondaryCta =
 				</div>
 			)}
 			<div class="cta__content">
-				<FadeInText as="h2" class="display cta__headline" duration={0.6} distance={20} enhance={true}>
+				<FadeInText
+					as="h2"
+					class="display cta__headline"
+					duration={1.2}
+					distance={30}
+					enhance={true}
+					easing="cubic-bezier(0.16, 1, 0.3, 1)"
+				>
 					{headline}
 				</FadeInText>
 				{paragraphs.map((paragraph) => <p class="cta__body">{paragraph}</p>)}

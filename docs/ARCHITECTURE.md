@@ -18,15 +18,15 @@ Untuk menjamin skor Core Web Vitals dan Page Speed (skor 95-100), seluruh efek v
 
 ### Komponen Animasi per Block
 1. **Hero (`marketing_hero`):**
-   - Menggunakan `<FadeInText>` pada `hero__headline` (`duration: 0.7s`, `distance: 16px`).
+   - Menggunakan `<FadeInText>` (`duration: 1.2s`, `distance: 24px`, easing cubic-bezier).
 2. **Stats (`marketing_stats`):**
-   - Menggunakan `<ScaleIn>` pada item statistik (`initialScale: 0.95`, `duration: 0.5s`).
+   - Menggunakan `<ScaleIn>` (`initialScale: 0.88`, `duration: 1.0s`, stagger delay `0.15s`).
 3. **Features (`marketing_features`):**
-   - Menggunakan `<ScaleIn>` pada masing-masing kartu fitur (`initialScale: 0.96`, `duration: 0.45s`).
+   - Menggunakan `<ScaleIn>` (`initialScale: 0.90`, `duration: 1.0s`, stagger delay `0.12s`).
 4. **Pricing (`marketing_pricing`):**
-   - Menggunakan `<ScaleIn>` pada kartu tier paket (`initialScale: 0.96`, `duration: 0.5s`).
+   - Menggunakan `<ScaleIn>` (`initialScale: 0.90`, `duration: 1.0s`, stagger delay `0.15s`).
 5. **CTA Banner (`marketing_cta`):**
-   - Menggunakan `<FadeInText>` pada judul headline banner (`duration: 0.6s`).
+   - Menggunakan `<FadeInText>` (`duration: 1.2s`, `distance: 30px`).
 
 ## 3. Pola Komponen & Integrasi Konten (Zero-Hardcode)
 - Seluruh halaman utama (`/`) dibangun secara modular dari database CMS (`ec_pages`).
