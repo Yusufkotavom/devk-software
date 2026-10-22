@@ -81,7 +81,7 @@ export function buildWhatsAppMessage(
 	} else if (context === "post") {
 		baseMessage =
 			setting?.post_message_template?.trim() ||
-			"Halo, saya baru saja membaca artikel *{title}* dan ingin konsultasi lebih lanjut.";
+			"Halo Devk, saya membaca artikel *{title}* dan ingin konsultasi kebutuhan jasa/solusi software untuk bisnis saya.";
 	}
 
 	baseMessage = baseMessage.replace(/\{title\}/g, pageTitle).replace(/\{url\}/g, pageUrl);
