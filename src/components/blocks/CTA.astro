@@ -150,18 +150,19 @@ const secondaryCta =
 
 	.cta__content {
 		padding-block: 72px;
+		padding-inline: clamp(24px, 5vw, 64px);
 	}
 
 	.cta__headline {
 		max-width: 560px;
-		font-size: clamp(44px, 5.2vw, 76px);
-		line-height: 0.98;
+		font-size: clamp(32px, 4.2vw, 56px);
+		line-height: 1.05;
 	}
 
 	.cta__body {
-		max-width: 42ch;
+		max-width: 44ch;
 		margin-block-start: 20px;
-		font-size: 18px;
+		font-size: 17px;
 		color: var(--color-text-secondary);
 	}
 
@@ -186,6 +187,7 @@ const secondaryCta =
 
 	:is(.cta--themed, .cta--night) .cta__content {
 		padding-block: clamp(72px, 8vw, 112px);
+		padding-inline: 24px;
 	}
 
 	:is(.cta--themed, .cta--night) .cta__headline,
@@ -209,20 +211,35 @@ const secondaryCta =
 	@media (max-width: 960px) {
 		.cta--photo {
 			align-items: end;
-			min-height: 560px;
+			min-height: 520px;
 		}
 
 		:is(.cta--photo, .cta--photo:dir(rtl))::before {
 			background: linear-gradient(
 				to top,
-				rgb(15 14 13 / 0.9),
-				rgb(15 14 13 / 0.6) 50%,
-				rgb(15 14 13 / 0.1)
+				rgb(15 14 13 / 0.95),
+				rgb(15 14 13 / 0.75) 50%,
+				rgb(15 14 13 / 0.2)
 			);
 		}
 
 		.cta__content {
-			padding-block: 40px;
+			padding-block: clamp(32px, 6vw, 48px);
+			padding-inline: clamp(20px, 5vw, 32px);
+		}
+
+		.cta__headline {
+			font-size: clamp(24px, 6vw, 32px);
+			line-height: 1.15;
+		}
+
+		.cta__body {
+			font-size: 15px;
+			margin-block-start: 14px;
+		}
+
+		.cta__actions {
+			margin-block-start: 24px;
 		}
 	}
 </style>

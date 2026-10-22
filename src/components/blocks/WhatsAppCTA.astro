@@ -73,63 +73,73 @@ const displayBody = body || "Tim kami siap membantu konsultasi spesifikasi, cust
 		padding-block: var(--space-4, 2rem);
 	}
 	.wa-block {
-		background: var(--surface-2, #18181b);
-		border: 1px solid var(--border-color, #27272a);
-		border-radius: var(--radius-lg, 1rem);
-		padding: clamp(1.5rem, 4vw, 2.5rem);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl, 1rem);
+		padding: clamp(1.25rem, 3.5vw, 2.5rem);
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 1.25rem;
 		align-items: flex-start;
-		box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2);
+		box-shadow: var(--shadow-sm);
 		position: relative;
 		overflow: hidden;
+		max-width: 100%;
 	}
 	@media (min-width: 768px) {
 		.wa-block {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
+			gap: 2rem;
 		}
 	}
 	.wa-block--banner {
-		background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(24, 24, 27, 0.95) 100%);
-		border-color: rgba(37, 211, 102, 0.3);
+		background: var(--color-surface);
+		border-color: var(--color-border);
 	}
 	.wa-block__badge {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.25rem 0.75rem;
-		border-radius: 9999px;
-		background: rgba(37, 211, 102, 0.12);
-		color: #25d366;
+		padding: 0.2rem 0.65rem;
+		border-radius: var(--radius-full);
+		background: var(--color-fill);
+		color: var(--color-text-secondary);
 		font-size: 0.75rem;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		margin-bottom: 0.75rem;
+		margin-bottom: 0.5rem;
 	}
 	.wa-block__badge-dot {
 		width: 6px;
 		height: 6px;
 		border-radius: 50%;
 		background: #25d366;
-		box-shadow: 0 0 8px #25d366;
 	}
 	.wa-block__headline {
-		font-size: clamp(1.25rem, 2vw, 1.75rem);
-		font-weight: 700;
-		color: var(--text-color, #fafafa);
-		line-height: 1.25;
+		font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+		font-weight: 600;
+		color: var(--color-text);
+		line-height: 1.2;
 		margin: 0 0 0.5rem 0;
+		letter-spacing: -0.02em;
 	}
 	.wa-block__body {
 		font-size: 0.95rem;
-		color: var(--text-muted, #a1a1aa);
+		color: var(--color-text-secondary);
 		line-height: 1.5;
 		margin: 0;
 		max-width: 48ch;
+	}
+	.wa-block__action {
+		width: 100%;
+	}
+	@media (min-width: 768px) {
+		.wa-block__action {
+			width: auto;
+		}
 	}
 	.wa-block__btn {
 		display: inline-flex;
@@ -137,22 +147,28 @@ const displayBody = body || "Tim kami siap membantu konsultasi spesifikasi, cust
 		justify-content: center;
 		gap: 0.625rem;
 		padding: 0.875rem 1.75rem;
-		border-radius: var(--radius-md, 0.75rem);
-		background: #25d366;
-		color: #ffffff !important;
+		border-radius: var(--radius-lg, 0.75rem);
+		background: var(--color-brand);
+		color: var(--color-on-brand) !important;
 		font-size: 0.95rem;
 		font-weight: 600;
 		text-decoration: none;
 		white-space: nowrap;
-		box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
-		transition: all 0.2s ease;
+		box-shadow: var(--shadow-sm);
+		transition: background 0.2s ease, transform 0.2s ease;
+		width: 100%;
+	}
+	@media (min-width: 768px) {
+		.wa-block__btn {
+			width: auto;
+		}
 	}
 	.wa-block__btn:hover {
-		background: #20ba59;
-		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+		background: var(--color-brand-hover);
+		transform: translateY(-1px);
 	}
 	.wa-block__btn-icon {
 		flex-shrink: 0;
+		color: #25d366;
 	}
 </style>
