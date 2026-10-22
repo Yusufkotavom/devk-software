@@ -1,0 +1,256 @@
+---
+import type { BlockComponentProps } from "emdash/ui";
+import { Image } from "emdash/ui";
+import { FadeInText } from "@astroanimate/core";
+
+interface TabItem {
+	label: string;
+	title?: string;
+	description?: string;
+	image?: any;
+	cta_label?: string;
+	cta_url?: string;
+}
+
+interface TabsBlock {
+	headline?: string;
+	subheadline?: string;
+	eyebrow?: string;
+	tabs?: TabItem[];
+	anchor_id?: string;
+}
+
+type Props = BlockComponentProps<TabsBlock>;
+
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
+const { headline, subheadline, eyebrow, tabs = [], anchor_id } = raw;
+const uniqueId = `tabs-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<section id={anchor_id || undefined} class="band section tabs-section" data-tabs-root={uniqueId}>
+	<div class="frame">
+		{
+			(headline || eyebrow || subheadline) && (
+				<header class="section-header section-header--center">
+					{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+					{headline && (
+						<FadeInText
+							as="h2"
+							class="section-headline tabs__headline"
+							duration={1.2}
+							distance={24}
+							easing="cubic-bezier(0.16, 1, 0.3, 1)"
+							enhance={true}
+						>
+							{headline}
+							{subheadline && <span class="section-headline__muted"> {subheadline}</span>}
+						</FadeInText>
+					)}
+				</header>
+			)
+		}
+
+		{
+			Array.isArray(tabs) && tabs.length > 0 && (
+				<div class="tabs-container">
+					<div class="tabs-nav" role="tablist" aria-label="Content Tabs">
+						{tabs.map((tab: TabItem, idx: number) => (
+							<button
+								type="button"
+								role="tab"
+								id={`${uniqueId}-tab-${idx}`}
+								aria-controls={`${uniqueId}-panel-${idx}`}
+								aria-selected={idx === 0 ? "true" : "false"}
+								tabindex={idx === 0 ? 0 : -1}
+								class:list={["tab-btn", { "tab-btn--active": idx === 0 }]}
+								data-tab-target={`${uniqueId}-panel-${idx}`}
+							>
+								{tab.label}
+							</button>
+						))}
+					</div>
+
+					<div class="tabs-panels">
+						{tabs.map((tab: TabItem, idx: number) => (
+							<div
+								id={`${uniqueId}-panel-${idx}`}
+								role="tabpanel"
+								aria-labelledby={`${uniqueId}-tab-${idx}`}
+								hidden={idx !== 0}
+								class:list={["tab-panel", { "tab-panel--active": idx === 0 }]}
+							>
+								<div class="tab-panel__content">
+									{tab.title && <h3 class="tab-panel__title">{tab.title}</h3>}
+									{tab.description && <p class="tab-panel__desc">{tab.description}</p>}
+									{tab.cta_label && tab.cta_url && (
+										<div class="tab-panel__action">
+											<a href={tab.cta_url} class="btn btn-primary">
+												{tab.cta_label}
+											</a>
+										</div>
+									)}
+								</div>
+
+								{tab.image && (
+									<div class="tab-panel__media">
+										<Image
+											image={tab.image}
+											sizes="(min-width: 1024px) 560px, 92vw"
+											class="tab-panel__img"
+										/>
+									</div>
+								)}
+							</div>
+						))}
+					</div>
+				</div>
+			)
+		}
+	</div>
+</section>
+
+<script is:inline>
+	(() => {
+		const initTabs = () => {
+			document.querySelectorAll("[data-tabs-root]").forEach((root) => {
+				const buttons = root.querySelectorAll("[role='tab']");
+				const panels = root.querySelectorAll("[role='tabpanel']");
+
+				buttons.forEach((btn) => {
+					btn.addEventListener("click", () => {
+						const targetId = btn.getAttribute("data-tab-target");
+
+						buttons.forEach((b) => {
+							b.setAttribute("aria-selected", "false");
+							b.setAttribute("tabindex", "-1");
+							b.classList.remove("tab-btn--active");
+						});
+						panels.forEach((p) => {
+							p.hidden = true;
+							p.classList.remove("tab-panel--active");
+						});
+
+						btn.setAttribute("aria-selected", "true");
+						btn.setAttribute("tabindex", "0");
+						btn.classList.add("tab-btn--active");
+
+						const targetPanel = root.querySelector(`#${targetId}`);
+						if (targetPanel) {
+							targetPanel.hidden = false;
+							targetPanel.classList.add("tab-panel--active");
+						}
+					});
+				});
+			});
+		};
+
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", initTabs);
+		} else {
+			initTabs();
+		}
+	})();
+</script>
+
+<style>
+	.tabs__headline {
+		margin-top: 8px;
+	}
+
+	.tabs-container {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.tabs-nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 6px;
+		background: var(--color-sunken);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-full);
+		width: fit-content;
+		margin-inline: auto;
+		max-width: 100%;
+	}
+
+	.tab-btn {
+		background: transparent;
+		border: none;
+		padding: 0.625rem 1.25rem;
+		border-radius: var(--radius-full);
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+		cursor: pointer;
+		transition: all var(--transition-fast);
+		white-space: nowrap;
+	}
+
+	.tab-btn:hover {
+		color: var(--color-text);
+	}
+
+	.tab-btn--active {
+		background: var(--color-surface);
+		color: var(--color-text);
+		box-shadow: var(--shadow-sm);
+		font-weight: 600;
+	}
+
+	.tab-panel {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+		padding: clamp(2rem, 3vw, 3.5rem);
+		border-radius: var(--radius-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-sm);
+		align-items: center;
+	}
+
+	@media (min-width: 768px) {
+		.tab-panel {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.tab-panel[hidden] {
+		display: none;
+	}
+
+	.tab-panel__title {
+		font-family: var(--font-heading);
+		font-size: clamp(1.5rem, 2vw, 2rem);
+		font-weight: 600;
+		line-height: var(--leading-tight);
+		color: var(--color-text);
+		margin: 0 0 1rem 0;
+	}
+
+	.tab-panel__desc {
+		font-size: 1.0625rem;
+		line-height: var(--leading-relaxed);
+		color: var(--color-text-secondary);
+		margin: 0 0 1.75rem 0;
+	}
+
+	.tab-panel__media {
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background: var(--color-sunken);
+	}
+
+	.tab-panel__img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
+</style>

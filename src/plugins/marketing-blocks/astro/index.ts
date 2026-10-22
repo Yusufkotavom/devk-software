@@ -13,6 +13,8 @@ import Text from "../../../components/blocks/Text.astro";
 import FeatureSection from "../../../components/blocks/FeatureSection.astro";
 import Slider from "../../../components/blocks/Slider.astro";
 import Feed from "../../../components/blocks/Feed.astro";
+import Steps from "../../../components/blocks/Steps.astro";
+import Tabs from "../../../components/blocks/Tabs.astro";
 
 export const blockComponents = {
 	"marketing.hero": Hero,
@@ -45,6 +47,10 @@ export const blockComponents = {
 	"marketing_slider": Slider,
 	"marketing.feed": Feed,
 	"marketing_feed": Feed,
+	"marketing.steps": Steps,
+	"marketing_steps": Steps,
+	"marketing.tabs": Tabs,
+	"marketing_tabs": Tabs,
 };
 
 export default blockComponents;

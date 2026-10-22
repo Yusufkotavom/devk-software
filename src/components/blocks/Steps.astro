@@ -1,0 +1,139 @@
+---
+import type { BlockComponentProps } from "emdash/ui";
+import { FadeInText, ScaleIn } from "@astroanimate/core";
+
+interface StepItem {
+	step_number?: string;
+	title: string;
+	description?: string;
+}
+
+interface StepsBlock {
+	headline?: string;
+	subheadline?: string;
+	eyebrow?: string;
+	steps?: StepItem[];
+	anchor_id?: string;
+}
+
+type Props = BlockComponentProps<StepsBlock>;
+
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
+const { headline, subheadline, eyebrow, steps = [], anchor_id } = raw;
+---
+
+<section id={anchor_id || undefined} class="band section steps-section">
+	<div class="frame">
+		{
+			(headline || eyebrow || subheadline) && (
+				<header class="section-header section-header--center">
+					{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+					{headline && (
+						<FadeInText
+							as="h2"
+							class="section-headline steps__headline"
+							duration={1.2}
+							distance={24}
+							easing="cubic-bezier(0.16, 1, 0.3, 1)"
+							enhance={true}
+						>
+							{headline}
+							{subheadline && <span class="section-headline__muted"> {subheadline}</span>}
+						</FadeInText>
+					)}
+				</header>
+			)
+		}
+
+		{
+			Array.isArray(steps) && steps.length > 0 && (
+				<ol class="steps__grid" role="list">
+					{steps.map((step: StepItem, idx: number) => {
+						const num = step.step_number || String(idx + 1).padStart(2, "0");
+						return (
+							<ScaleIn
+								as="li"
+								class="steps__item"
+								duration={1.0}
+								delay={idx * 0.12}
+								easing="cubic-bezier(0.16, 1, 0.3, 1)"
+								enhance={true}
+							>
+								<div class="step-card">
+									<div class="step-card__num-badge">{num}</div>
+									<h3 class="step-card__title">{step.title}</h3>
+									{step.description && <p class="step-card__desc">{step.description}</p>}
+								</div>
+							</ScaleIn>
+						);
+					})}
+				</ol>
+			)
+		}
+	</div>
+</section>
+
+<style>
+	.steps__headline {
+		margin-top: 8px;
+	}
+
+	.steps__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: clamp(1rem, 2.5vw, 2rem);
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.step-card {
+		position: relative;
+		height: 100%;
+		padding: clamp(1.5rem, 2vw, 2.25rem);
+		border-radius: var(--radius-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-sm);
+		display: flex;
+		flex-direction: column;
+		transition: border-color var(--transition-fast), transform var(--transition-fast);
+	}
+
+	.step-card:hover {
+		border-color: var(--color-border-strong);
+		transform: translateY(-2px);
+	}
+
+	.step-card__num-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		border-radius: var(--radius-lg);
+		background: var(--color-sunken);
+		border: 1px solid var(--color-border);
+		font-family: var(--font-mono, monospace);
+		font-weight: 700;
+		font-size: 1.125rem;
+		color: var(--color-text);
+		margin-bottom: 1.25rem;
+	}
+
+	.step-card__title {
+		font-family: var(--font-heading);
+		font-size: 1.25rem;
+		font-weight: 600;
+		line-height: var(--leading-snug);
+		color: var(--color-text);
+		margin: 0 0 0.75rem 0;
+	}
+
+	.step-card__desc {
+		font-size: 0.95rem;
+		line-height: var(--leading-relaxed);
+		color: var(--color-text-secondary);
+		margin: 0;
+	}
+</style>

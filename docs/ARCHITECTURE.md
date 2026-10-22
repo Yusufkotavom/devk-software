@@ -39,3 +39,10 @@ SEO dikelola secara terpusat dan dinamis melalui CMS EmDash (`seo_settings` coll
   - `WebSite` dengan `SearchAction` dinamis.
   - `WebPage` / `ItemPage` / `Article` sesuai konteks halaman dan artikel.
 - **OpenGraph & Dynamic Cards:** Menggunakan endpoint `/og/card.png` dan `/og/[collection]/[slug].png` otomatis terhubung dengan identitas site.
+
+## 5. Katalog Produk & Model Block Tambahan
+- **Collection Products:** Didukung routing lengkap di `/products` dan `/products/[slug]`, tersinkronisasi 100 entitas produk hardware/PC.
+- **Model Block Marketing Baru:**
+  - `Steps.astro` (`marketing_steps`): Numbered sequence workflow (01, 02, 03) untuk panduan alur kerja / onboarding didukung animasi `@astroanimate/core`.
+  - `Tabs.astro` (`marketing_tabs`): Tab switcher interaktif untuk memamerkan fitur/produk tanpa library runtime berat.
+- **Breakout Embed Block:** Block section yang di-embed di dalam field RichText otomatis breakout 100% mengikuti kontainer `.frame` 1200px.

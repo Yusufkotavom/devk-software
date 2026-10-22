@@ -763,6 +763,145 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "marketing_steps",
+      "label": "Steps / How It Works",
+      "description": "Numbered workflow sequence (01, 02, 03) explaining a process, onboarding, or methodology",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "string"
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Eyebrow",
+              "type": "string"
+            },
+            {
+              "slug": "steps",
+              "label": "Steps",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 8
+              },
+              "fields": [
+                {
+                  "slug": "step_number",
+                  "label": "Step Number (e.g. 01, 02 or Step 1)",
+                  "type": "string"
+                },
+                {
+                  "slug": "title",
+                  "label": "Title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "slug": "description",
+                  "label": "Description",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_tabs",
+      "label": "Example Tabs / Content Tabs",
+      "description": "Interactive tabbed switcher showcase for features, product editions, or workflows",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "string"
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Eyebrow",
+              "type": "string"
+            },
+            {
+              "slug": "tabs",
+              "label": "Tabs",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 6
+              },
+              "fields": [
+                {
+                  "slug": "label",
+                  "label": "Tab Label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "slug": "title",
+                  "label": "Title",
+                  "type": "string"
+                },
+                {
+                  "slug": "description",
+                  "label": "Description",
+                  "type": "text"
+                },
+                {
+                  "slug": "image",
+                  "label": "Image / Preview Screenshot",
+                  "type": "image"
+                },
+                {
+                  "slug": "cta_label",
+                  "label": "CTA Button Text",
+                  "type": "string"
+                },
+                {
+                  "slug": "cta_url",
+                  "label": "CTA Link URL",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID",
+              "type": "string"
+            }
+          ]
+        }
+      ]
     }
   ],
   "collections": [
@@ -807,6 +946,51 @@
       ]
     },
     {
+      "slug": "products",
+      "label": "Products",
+      "labelSingular": "Product",
+      "urlPattern": "/products/{slug}",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "search",
+        "seo"
+      ],
+      "commentsEnabled": false,
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Product Name",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "price",
+          "label": "Price",
+          "type": "string"
+        },
+        {
+          "slug": "featured_image",
+          "label": "Featured Image",
+          "type": "image"
+        },
+        {
+          "slug": "content",
+          "label": "Description & Specs",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "excerpt",
+          "label": "Short Summary",
+          "type": "text"
+        }
+      ]
+    },
+    {
       "slug": "pages",
       "label": "Pages",
       "labelSingular": "Page",
@@ -840,7 +1024,9 @@
               "marketing_stats",
               "marketing_cta",
               "marketing_contact",
-              "marketing_richtext"
+              "marketing_richtext",
+              "marketing_steps",
+              "marketing_tabs"
             ],
             "maxItems": 20
           }
@@ -911,7 +1097,9 @@
               "marketing_stats",
               "marketing_cta",
               "marketing_contact",
-              "marketing_richtext"
+              "marketing_richtext",
+              "marketing_steps",
+              "marketing_tabs"
             ],
             "maxItems": 20
           }
