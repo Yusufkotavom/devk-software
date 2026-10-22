@@ -1,0 +1,163 @@
+---
+import { getEmDashCollection } from "emdash";
+
+interface Props {
+	origin: string;
+	pathname: string;
+	pageTitle?: string | null;
+	description?: string | null;
+	image?: string | null;
+	type?: "website" | "article";
+	publishedTime?: string | null;
+	modifiedTime?: string | null;
+	author?: string | null;
+}
+
+const {
+	origin,
+	pathname,
+	pageTitle,
+	description,
+	image,
+	type = "website",
+	publishedTime,
+	modifiedTime,
+	author,
+} = Astro.props;
+
+interface SeoSettingRow {
+	title?: string;
+	organization_name?: string;
+	organization_type?: string;
+	description?: string;
+	phone?: string;
+	email?: string;
+	address_locality?: string;
+	address_region?: string;
+	address_country?: string;
+	same_as?: string;
+	services?: string;
+	default_og_image?: string;
+}
+
+let seoRow: SeoSettingRow | null = null;
+try {
+	const res = await getEmDashCollection("seo_settings", { limit: 1 });
+	if (res && res.entries && res.entries.length > 0) {
+		seoRow = res.entries[0].data as SeoSettingRow;
+	}
+} catch {
+	seoRow = null;
+}
+
+const orgName = seoRow?.organization_name?.trim() || "Devk Software Development";
+const orgType = seoRow?.organization_type?.trim() || "ProfessionalService";
+const orgDesc = seoRow?.description?.trim() || description || "Jasa pembuatan software custom, POS kasir, CRM, dan web application.";
+const orgPhone = seoRow?.phone?.trim() || "+6285799520350";
+const orgEmail = seoRow?.email?.trim();
+const locality = seoRow?.address_locality?.trim() || "Surabaya";
+const region = seoRow?.address_region?.trim() || "Jawa Timur";
+const country = seoRow?.address_country?.trim() || "ID";
+
+const sameAsList = (seoRow?.same_as || "")
+	.split("\n")
+	.map((s) => s.trim())
+	.filter(Boolean);
+
+const servicesList = (seoRow?.services || "")
+	.split("\n")
+	.map((s) => s.trim())
+	.filter(Boolean);
+
+const currentUrl = `${origin}${pathname === "/" ? "" : pathname}`;
+const logoUrl = image || seoRow?.default_og_image || `${origin}/images/logo.png`;
+
+// 1. Organization / Business schema
+const organizationSchema: Record<string, any> = {
+	"@type": orgType,
+	"@id": `${origin}/#organization`,
+	"name": orgName,
+	"url": origin,
+	"logo": {
+		"@type": "ImageObject",
+		"url": logoUrl,
+	},
+	"description": orgDesc,
+	"telephone": orgPhone,
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": locality,
+		"addressRegion": region,
+		"addressCountry": country,
+	},
+};
+
+if (orgEmail) organizationSchema["email"] = orgEmail;
+if (sameAsList.length > 0) organizationSchema["sameAs"] = sameAsList;
+
+if (servicesList.length > 0) {
+	organizationSchema["hasOfferCatalog"] = {
+		"@type": "OfferCatalog",
+		"name": "Software & Web Services",
+		"itemListElement": servicesList.map((service, idx) => ({
+			"@type": "Offer",
+			"itemOffered": {
+				"@type": "Service",
+				"name": service,
+			},
+			"position": idx + 1,
+		})),
+	};
+}
+
+// 2. WebSite schema
+const websiteSchema = {
+	"@type": "WebSite",
+	"@id": `${origin}/#website`,
+	"url": origin,
+	"name": orgName,
+	"publisher": { "@id": `${origin}/#organization` },
+	"inLanguage": "id-ID",
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": `${origin}/search?q={search_term_string}`,
+		"query-input": "required name=search_term_string",
+	},
+};
+
+// 3. Page / Article schema
+const isHome = pathname === "/" || pathname === "";
+const pageSchema: Record<string, any> = type === "article"
+	? {
+			"@type": "Article",
+			"@id": `${currentUrl}/#article`,
+			"isPartOf": { "@id": `${origin}/#website` },
+			"author": {
+				"@type": "Organization",
+				"name": author || orgName,
+			},
+			"headline": pageTitle || orgName,
+			"datePublished": publishedTime || undefined,
+			"dateModified": modifiedTime || publishedTime || undefined,
+			"mainEntityOfPage": currentUrl,
+			"image": image || undefined,
+	  }
+	: {
+			"@type": isHome ? "WebPage" : "ItemPage",
+			"@id": `${currentUrl}/#webpage`,
+			"url": currentUrl,
+			"name": pageTitle || orgName,
+			"isPartOf": { "@id": `${origin}/#website` },
+			"about": { "@id": `${origin}/#organization` },
+			"description": description || orgDesc,
+			"inLanguage": "id-ID",
+	  };
+
+const graph = [organizationSchema, websiteSchema, pageSchema];
+const jsonLd = JSON.stringify({
+	"@context": "https://schema.org",
+	"@graph": graph,
+});
+---
+
+<script type="application/ld+json" set:html={jsonLd} />

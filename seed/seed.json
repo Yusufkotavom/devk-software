@@ -919,6 +919,84 @@
       ]
     },
     {
+      "slug": "seo_settings",
+      "label": "SEO & Schema Settings",
+      "labelSingular": "SEO & Schema Setting",
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Nama Konfigurasi",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "organization_name",
+          "label": "Nama Organisasi / Bisnis",
+          "type": "string"
+        },
+        {
+          "slug": "organization_type",
+          "label": "Tipe Skema Schema.org",
+          "type": "select",
+          "options": [
+            { "label": "ProfessionalService", "value": "ProfessionalService" },
+            { "label": "Organization", "value": "Organization" },
+            { "label": "LocalBusiness", "value": "LocalBusiness" },
+            { "label": "Corporation", "value": "Corporation" }
+          ]
+        },
+        {
+          "slug": "description",
+          "label": "Deskripsi Bisnis (Default Schema)",
+          "type": "text"
+        },
+        {
+          "slug": "phone",
+          "label": "Nomor Telepon Resmi (E.164, contoh: +6285799520350)",
+          "type": "string"
+        },
+        {
+          "slug": "email",
+          "label": "Email Resmi Kontak",
+          "type": "string"
+        },
+        {
+          "slug": "address_locality",
+          "label": "Kota / Wilayah (contoh: Surabaya)",
+          "type": "string"
+        },
+        {
+          "slug": "address_region",
+          "label": "Provinsi (contoh: Jawa Timur)",
+          "type": "string"
+        },
+        {
+          "slug": "address_country",
+          "label": "Negara (contoh: ID)",
+          "type": "string"
+        },
+        {
+          "slug": "same_as",
+          "label": "Social Profiles / SameAs URLs (Pisahkan baris baru)",
+          "type": "text"
+        },
+        {
+          "slug": "services",
+          "label": "Daftar Layanan Ditawarkan (Pisahkan baris baru)",
+          "type": "text"
+        },
+        {
+          "slug": "default_og_image",
+          "label": "URL Default Social/OG Image",
+          "type": "string"
+        }
+      ]
+    },
+    {
       "slug": "whatsapp_settings",
       "label": "WhatsApp Settings",
       "labelSingular": "WhatsApp Setting",

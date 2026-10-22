@@ -28,9 +28,14 @@ Untuk menjamin skor Core Web Vitals dan Page Speed (skor 95-100), seluruh efek v
 5. **CTA Banner (`marketing_cta`):**
    - Menggunakan `<FadeInText>` (`duration: 1.2s`, `distance: 30px`).
 
-## 3. Pola Komponen & Integrasi Konten (Zero-Hardcode)
-- Seluruh halaman utama (`/`) dibangun secara modular dari database CMS (`ec_pages`).
-- `MarketingBlocks.astro` mengonsumsi single source of truth dari `src/plugins/marketing-blocks/astro`.
-- Repeater fitur mendukung:
-  - Fallback icon Phosphor dinamis (`icon` -> `ph:<nama>`).
-  - Gambar kustom via `imageUrl` (otomatis switch dari icon ke `<img>` dengan `loading="lazy"`).
+## 4. Struktur SEO & Schema.org Dinamis (`StructuredData.astro`)
+
+SEO dikelola secara terpusat dan dinamis melalui CMS EmDash (`seo_settings` collection) tanpa hardcoded value:
+- **Schema.org Graph Otomatis:**
+  - `ProfessionalService` / `Organization` / `LocalBusiness` (tipe entitas dapat diatur di admin).
+  - Kontak resmi: `telephone`, `email`, dan alamat terstruktur (`addressLocality`, `addressRegion`, `addressCountry`).
+  - `hasOfferCatalog`: Otomatis meng-generate `Service` catalog dari daftar baris layanan yang diinput di CMS.
+  - Social proof: Menghubungkan profil media sosial via `sameAs`.
+  - `WebSite` dengan `SearchAction` dinamis.
+  - `WebPage` / `ItemPage` / `Article` sesuai konteks halaman dan artikel.
+- **OpenGraph & Dynamic Cards:** Menggunakan endpoint `/og/card.png` dan `/og/[collection]/[slug].png` otomatis terhubung dengan identitas site.
