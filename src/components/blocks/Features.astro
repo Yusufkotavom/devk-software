@@ -2,6 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
+import ScaleIn from "@astroanimate/core/ScaleIn";
 import type { PageContentBlock } from "../../../emdash-env";
 import { toParagraphs } from "../../utils/text";
 
@@ -77,7 +78,7 @@ const items = features.map((f: any) => {
 				</header>
 				<ul class="features" role="list" style={`--cols:${columns}`}>
 					{items.map((feature: any) => (
-						<li class="card feature">
+						<ScaleIn as="li" class="card feature" duration={0.45} initialScale={0.96}>
 							{feature.imageUrl ? (
 								<div class="feature__media">
 									<img src={feature.imageUrl} alt={feature.title} class="feature__img" loading="lazy" />
@@ -97,7 +98,7 @@ const items = features.map((f: any) => {
 									<Icon name="ph:arrow-right" aria-hidden="true" class="arrow" />
 								</a>
 							)}
-						</li>
+						</ScaleIn>
 					))}
 				</ul>
 			</div>

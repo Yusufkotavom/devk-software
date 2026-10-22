@@ -1,5 +1,6 @@
 ---
 import type { BlockComponentProps } from "emdash/ui";
+import ScaleIn from "@astroanimate/core/ScaleIn";
 import type { PageContentBlock } from "../../../emdash-env";
 import { toParagraphs } from "../../utils/text";
 
@@ -28,7 +29,7 @@ const hasPanel = panel === "sunken" || panel === "ink";
 				}
 				<dl class="stats__list">
 					{stats.map((stat: any) => (
-						<div class="stats__item">
+						<ScaleIn as="div" class="stats__item" duration={0.5} initialScale={0.95}>
 							<dt class="stats__label">{stat.label}</dt>
 							<dd class="stats__body">
 								<span class="stats__value">{stat.value}</span>
@@ -36,7 +37,7 @@ const hasPanel = panel === "sunken" || panel === "ink";
 									<span class="stats__note">{p}</span>
 								))}
 							</dd>
-						</div>
+						</ScaleIn>
 					))}
 				</dl>
 			</div>

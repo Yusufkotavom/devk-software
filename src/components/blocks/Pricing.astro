@@ -2,6 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
+import ScaleIn from "@astroanimate/core/ScaleIn";
 import type { PageContentBlock } from "../../../emdash-env";
 import { toParagraphs } from "../../utils/text";
 
@@ -47,7 +48,12 @@ const plans = rawPlans.map((plan: any) => ({
 	>
 		{
 			plans.map((plan) => (
-				<li class:list={["card", "plan", { "plan--highlighted": plan.highlighted }]}>
+				<ScaleIn
+					as="li"
+					class:list={["card", "plan", { "plan--highlighted": plan.highlighted }]}
+					duration={0.5}
+					initialScale={0.96}
+				>
 					<div class="plan__head">
 						<PlanHeading class="plan__name">{plan.name}</PlanHeading>
 						{plan.badge && <span class="plan__badge">{plan.badge}</span>}
@@ -84,7 +90,7 @@ const plans = rawPlans.map((plan: any) => ({
 							{plan.cta.label}
 						</a>
 					</div>
-				</li>
+				</ScaleIn>
 			))
 		}
 	</ul>

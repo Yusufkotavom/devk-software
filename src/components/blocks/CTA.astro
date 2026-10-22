@@ -1,6 +1,7 @@
 ---
 import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
+import FadeInText from "@astroanimate/core/FadeInText";
 import type { PageContentBlock } from "../../../emdash-env";
 import { toParagraphs } from "../../utils/text";
 
@@ -41,7 +42,9 @@ const secondaryCta =
 				</div>
 			)}
 			<div class="cta__content">
-				<h2 class="display cta__headline">{headline}</h2>
+				<FadeInText as="h2" class="display cta__headline" duration={0.6}>
+					{headline}
+				</FadeInText>
 				{paragraphs.map((paragraph) => <p class="cta__body">{paragraph}</p>)}
 				{(primaryCta || secondaryCta) && (
 					<div class="actions cta__actions">

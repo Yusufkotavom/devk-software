@@ -2,6 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
+import FadeInText from "@astroanimate/core/FadeInText";
 import type { PageContentBlock } from "../../../emdash-env";
 
 type HeroBlock = Extract<PageContentBlock, { _type: "marketing_hero" }>;
@@ -41,7 +42,9 @@ const secondaryCta =
 			)
 		}
 		{eyebrow && !eyebrowUrl && <p class="hero__announce rise">{eyebrow}</p>}
-		<h1 class="hero__headline rise">{headline}</h1>
+		<FadeInText as="h1" class="hero__headline rise" duration={0.7} distance={16}>
+			{headline}
+		</FadeInText>
 		{
 			(subheadline || primaryCta || secondaryCta) && (
 				<div class="hero__row rise">

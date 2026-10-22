@@ -1,42 +1,40 @@
-# EmDash Marketing Template
+# devk-software (Kotacom Software Platform)
 
-A conversion-focused landing page template built with [EmDash](https://github.com/emdash-cms/emdash). Runs on any Node.js server with SQLite and local file storage. Modular content blocks let you assemble pages from reusable sections without touching code.
+Platform resmi software & web engineering Kotacom berbasis [EmDash CMS](https://github.com/emdash-cms/emdash) & [Astro](https://astro.build/).
 
-![Marketing template homepage](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-light-desktop.jpg)
+- **Live URL:** [https://software.devk.my.id/](https://software.devk.my.id/)
+- **Repository:** `Yusufkotavom/devk-software` (branch `main`)
+- **Hosting / Deploy:** Dokploy (App: `devk-software`, Service: `app-devk-software-67j6h1`)
+- **Database:** PostgreSQL di Dokploy container (`devk-software-db`)
+- **Styles & Theme:** Warm editorial minimalism ("Ink" style)
 
-## What's Included
+## Architecture & Tech Stack
 
-- Hero section with CTAs
-- Feature grid
-- Testimonials
-- Pricing cards
-- FAQ accordion
-- Contact page with direct email links
-- SEO metadata and JSON-LD
-- Dark/light mode
+- **Framework:** Astro SSR (`@astrojs/node` standalone)
+- **CMS:** EmDash CMS with Block Kit (`ec_pages`, `marketing-blocks`)
+- **Animations:** `@astroanimate/core` (Zero-runtime JS, pure CSS hardware-accelerated animations)
+- **Icons:** `astro-iconset` with Phosphor icons dynamic fallback (`ph:*`)
+- **Database Client:** PostgreSQL adapter via `DATABASE_URL`
 
-## Pages
+## Block & CMS Architecture
 
-| Page | Route |
-|---|---|
-| Homepage | `/` |
-| Pricing | `/pricing` |
-| Contact | `/contact` |
-| 404 | fallback |
+Halaman utama (`/`) dan semua sub-halaman dimotori 100% oleh CMS block tanpa hardcoded markup:
+- `marketing_hero`: Hero banner dengan headline animasi, announcement badge, & dual CTAs.
+- `marketing_logos`: Endless marquee client logos dengan hover pause & reduced motion support.
+- `marketing_features`: Grid kartu fitur dengan dukungan icon Phosphor atau gambar (`imageUrl`).
+- `marketing_split`: Layout 2-kolom editorial image & checklist.
+- `marketing_stats`: Grid metrik & statistik dengan entrance scale transition.
+- `marketing_pricing`: Tier pricing dengan visual highlight & badge.
+- `marketing_faq`: Accordion FAQ interaktif native `<details>`.
+- `marketing_cta`: Full-width banner call-to-action.
+- `marketing_feed`: Feed artikel / blog card grid otomatis dari CMS.
 
-## Screenshots
+## Animation Guidelines (`@astroanimate/core`)
 
-| | Desktop | Mobile |
-|---|---|---|
-| Light | ![homepage light desktop](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-light-desktop.jpg) | ![homepage light mobile](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-light-mobile.jpg) |
-| Dark | ![homepage dark desktop](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-dark-desktop.jpg) | ![homepage dark mobile](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-dark-mobile.jpg) |
-
-## Infrastructure
-
-- **Runtime:** Node.js
-- **Database:** SQLite (local file)
-- **Storage:** Local filesystem
-- **Framework:** Astro with `@astrojs/node`
+Animasi pada block dirancang menjaga Page Speed (Lighthouse 95+):
+- **Zero runtime overhead:** Dijalankan murni via CSS keyframes & view-timeline.
+- **GPU Compositor only:** Menggunakan `transform` dan `opacity` (menghindari reflow / layout shifts).
+- **Reduced motion:** Otomatis disable ketika sistem pengguna mengaktifkan `prefers-reduced-motion`.
 
 ## Getting Started
 
@@ -45,15 +43,4 @@ pnpm install
 pnpm dev
 ```
 
-Open http://localhost:4321/_emdash/admin and complete the setup wizard. EmDash runs database migrations and applies the marketing seed during setup. The site is available at http://localhost:4321.
-
-## Want Cloudflare Instead?
-
-See the [Cloudflare variant](../marketing-cloudflare) for a version that deploys to Cloudflare Workers with D1 and R2.
-
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdash-cms/templates/tree/main/marketing-cloudflare)
-
-## See Also
-
-- [All templates](../)
-- [EmDash documentation](https://docs.emdashcms.com/)
+Server lokal berjalan di `http://localhost:4321` dan admin CMS di `http://localhost:4321/_emdash/admin`.
