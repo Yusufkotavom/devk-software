@@ -71,7 +71,8 @@
 		--font-size-3xl: 2rem;
 		--font-size-4xl: 2.5rem;
 		--font-size-5xl: 3.5rem;
-		--font-size-display: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem); /* page titles */
+		--font-size-display: clamp(1.875rem, 1.4rem + 1.8vw, 3rem); /* page titles */
+		--font-size-hero: clamp(2rem, 1.6rem + 2vw, 3.75rem); /* hero h1 on mobile to desktop */
 
 		/* Line heights */
 		--leading-tight: 1.1;
