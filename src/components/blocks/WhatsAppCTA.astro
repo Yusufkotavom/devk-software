@@ -10,6 +10,7 @@ interface Props {
 	anchor_id?: string;
 }
 
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
 const {
 	headline,
 	body,
@@ -17,7 +18,7 @@ const {
 	custom_message,
 	variant = "card",
 	anchor_id,
-} = Astro.props;
+} = raw;
 
 const setting = await getWhatsAppSettings();
 const currentUrl = Astro.url.href;
