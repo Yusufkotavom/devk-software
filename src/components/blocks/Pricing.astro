@@ -205,18 +205,29 @@ const plans = rawPlans.map((plan: any) => ({
 
 	.plan--highlighted {
 		background: var(--color-surface);
-		border: 2px solid var(--color-brand);
-		box-shadow: var(--shadow-card-hover);
+		border: 1px solid var(--color-brand-accent);
+		box-shadow: 0 0 0 1px var(--color-brand-accent-glow), var(--shadow-card-hover);
 		position: relative;
 	}
 
+	.plan--highlighted::before {
+		content: "";
+		position: absolute;
+		inset-inline: 0;
+		inset-block-start: -1px;
+		height: 2px;
+		background: linear-gradient(90deg, transparent, var(--color-brand-accent), transparent);
+		border-radius: var(--radius-full);
+	}
+
 	.plan--highlighted .plan__badge {
-		background: var(--color-brand);
-		color: var(--color-on-brand);
+		background: var(--color-brand-accent);
+		color: #ffffff;
+		font-weight: 600;
 	}
 
 	.plan--highlighted .tick {
-		background: var(--color-fill);
-		color: var(--color-brand);
+		background: var(--color-brand-accent-subtle);
+		color: var(--color-brand-accent);
 	}
 </style>

@@ -188,6 +188,25 @@ const iconMap: Record<string, string> = {
 		flex-direction: column;
 		position: relative;
 	}
+
+	.bento-card::after {
+		content: "+";
+		position: absolute;
+		top: 6px;
+		right: 8px;
+		font-family: var(--font-mono, monospace);
+		font-size: 11px;
+		line-height: 1;
+		color: var(--color-brand-accent);
+		opacity: 0.35;
+		pointer-events: none;
+		transition: opacity 0.2s ease;
+	}
+
+	.bento-card:hover::after {
+		opacity: 0.9;
+	}
+
 	.bento-card:hover {
 		border-color: rgba(255, 255, 255, 0.2);
 		transform: translateY(-2px);

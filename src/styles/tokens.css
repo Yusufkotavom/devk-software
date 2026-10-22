@@ -41,6 +41,12 @@
 		--color-on-brand: light-dark(#ffffff, #0a0a0a);
 		--color-brand-ring: color-mix(in srgb, var(--color-brand) 15%, transparent);
 
+		/* Devk Brand Accent - Dark Red / Crimson */
+		--color-brand-accent: light-dark(#991b1b, #ef4444);
+		--color-brand-accent-hover: light-dark(#7f1d1d, #f87171);
+		--color-brand-accent-subtle: light-dark(rgba(153, 27, 27, 0.08), rgba(239, 68, 68, 0.15));
+		--color-brand-accent-glow: light-dark(rgba(153, 27, 27, 0.35), rgba(239, 68, 68, 0.45));
+
 		/* EmDash search theming */
 		--emdash-search-bg: var(--color-surface);
 		--emdash-search-text: var(--color-text);
