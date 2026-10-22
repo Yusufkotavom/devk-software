@@ -3,8 +3,8 @@
 Dokumen ini mendeskripsikan implementasi teknis situs resmi platform software Kotacom (`https://software.devk.my.id/`).
 
 ## 1. Ikhtisar Sistem
-- **Aplikasi Dokploy:** `devk-software` (Service: `app-devk-software-67j6h1`)
-- **Database:** PostgreSQL container Dokploy (`devk-software-db`)
+- **Aplikasi Dokploy:** `devk-software` (Swarm service: `devk-software-app-vavdlg`)
+- **Database:** PostgreSQL container Dokploy (`devk-software-db-hfl2l5`)
 - **Repository:** `Yusufkotavom/devk-software` (Branch: `main`)
 - **Framework:** Astro SSR dengan `@astrojs/node` standalone
 - **CMS:** EmDash headless CMS dengan Block Kit terpadu
