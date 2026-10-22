@@ -78,7 +78,7 @@ const items = features.map((f: any) => {
 				</header>
 				<ul class="features" role="list" style={`--cols:${columns}`}>
 					{items.map((feature: any) => (
-						<ScaleIn as="li" class="card feature" duration={0.45} initialScale={0.96}>
+						<ScaleIn as="li" class="card feature" duration={0.45} initialScale={0.94} enhance={true}>
 							{feature.imageUrl ? (
 								<div class="feature__media">
 									<img src={feature.imageUrl} alt={feature.title} class="feature__img" loading="lazy" />

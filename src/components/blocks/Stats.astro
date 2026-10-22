@@ -29,7 +29,7 @@ const hasPanel = panel === "sunken" || panel === "ink";
 				}
 				<dl class="stats__list">
 					{stats.map((stat: any) => (
-						<ScaleIn as="div" class="stats__item" duration={0.5} initialScale={0.95}>
+						<ScaleIn as="div" class="stats__item" duration={0.5} initialScale={0.92} enhance={true}>
 							<dt class="stats__label">{stat.label}</dt>
 							<dd class="stats__body">
 								<span class="stats__value">{stat.value}</span>

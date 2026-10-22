@@ -52,7 +52,8 @@ const plans = rawPlans.map((plan: any) => ({
 					as="li"
 					class:list={["card", "plan", { "plan--highlighted": plan.highlighted }]}
 					duration={0.5}
-					initialScale={0.96}
+					initialScale={0.94}
+					enhance={true}
 				>
 					<div class="plan__head">
 						<PlanHeading class="plan__name">{plan.name}</PlanHeading>

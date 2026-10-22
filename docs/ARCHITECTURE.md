@@ -11,8 +11,9 @@ Dokumen ini mendeskripsikan implementasi teknis situs resmi platform software Ko
 
 ## 2. Standar Animasi & Page Speed (`@astroanimate/core`)
 Untuk menjamin skor Core Web Vitals dan Page Speed (skor 95-100), seluruh efek visual diatur dengan kaidah:
-- **Zero-runtime JavaScript:** Komponen animasi dirender murni sebagai CSS native animation di sisi server Astro.
-- **Hardware-accelerated properties:** Hanya memicu `opacity` dan `transform` pada GPU compositor, mencegah layout shift (CLS) dan repaint (FID/INP).
+- Zero-runtime / ultra-lightweight IntersectionObserver (aktif via `enhance={true}`).
+- Animasi terpicu saat elemen masuk ke viewport ketika pengguna scroll.
+- Hardware-accelerated properties: `transform` dan `opacity` murni.
 - **A11y & Motion:** Terbungkus query `@media (prefers-reduced-motion)` bawaan.
 
 ### Komponen Animasi per Block
