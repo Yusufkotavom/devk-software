@@ -12,6 +12,7 @@ import { Comments, CommentForm } from "emdash/ui/comments";
 import Base from "../../layouts/Base.astro";
 import Byline from "../../components/Byline.astro";
 import PostCard from "../../components/PostCard.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { formatDate } from "../../utils/locale";
 import { getReadingTime } from "../../utils/reading-time";
 import { resolveBlogSiteIdentity } from "../../utils/site-identity";
@@ -142,21 +143,12 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Topik Ini via WhatsA
 		<header class="intro post-header">
 			<div class="frame">
 				<div class="post-header__inner">
-					<a href="/posts" class="arrow-link back-link">
-						<svg
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.75"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							aria-hidden="true"
-						>
-							<path d="M19 12H5"></path>
-							<path d="m12 19-7-7 7-7"></path>
-						</svg>
-						All posts
-					</a>
+					<Breadcrumb
+						items={[
+							{ label: "Blog", href: "/posts" },
+							{ label: post.data.title },
+						]}
+					/>
 					{
 						tags.length > 0 && (
 							<ul class="chips post-header__tags" aria-label="Tags">
