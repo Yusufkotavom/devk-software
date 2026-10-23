@@ -8,11 +8,14 @@ import {
 } from "../engine/runner.js";
 
 export interface ViewState {
-  activeTab: "generate" | "datasets" | "preview" | "history";
+  activeTab: "generate" | "datasets" | "preview" | "history" | "ai_settings";
   editingDatasetId?: string;
   selectedTemplateId?: string;
   selectedDatasetId?: string;
   selectedTarget?: "pages" | "posts";
+  aiEndpoint?: string;
+  aiApiKey?: string;
+  aiModel?: string;
   previewResult?: RenderedContent;
   dryRunResult?: {
     total: number;
@@ -71,6 +74,9 @@ export function renderPluginUi(
       }),
       elements.button("tab_history", `📜 Runs & Delete (${runs.length})`, {
         style: state.activeTab === "history" ? "primary" : "secondary",
+      }),
+      elements.button("tab_ai_settings", "🤖 AI Settings", {
+        style: state.activeTab === "ai_settings" ? "primary" : "secondary",
       }),
     ])
   );
@@ -506,6 +512,61 @@ export function renderPluginUi(
         })
       );
     }
+  }
+
+  // =========================================================================
+  // 5. AI SETTINGS TAB
+  // =========================================================================
+  else if (state.activeTab === "ai_settings") {
+    result.push(blocks.section("### 🤖 AI Generator & Shortcode Settings"));
+    result.push(
+      blocks.section(
+        "Configure OpenAI-compatible endpoint for `{{ai:...}}` dynamic shortcodes. Ini memungkinkan generator membuat paragraf unik, studi kasus, atau FAQ per-baris tanpa duplikasi konten."
+      )
+    );
+
+    result.push(
+      blocks.form({
+        fields: [
+          elements.textInput(
+            "ai_endpoint",
+            "AI API Endpoint",
+            {
+              initialValue: state.aiEndpoint || "http://172.18.0.1:20128/v1/chat/completions",
+            }
+          ),
+          elements.textInput(
+            "ai_api_key",
+            "API Key (Bearer Token)",
+            {
+              initialValue: state.aiApiKey || "sk-e1c...b74e",
+            }
+          ),
+          elements.textInput(
+            "ai_model",
+            "Model Name",
+            {
+              initialValue: state.aiModel || "daily",
+            }
+          ),
+        ],
+        submit: {
+          label: "Save AI Configuration",
+          actionId: "save_ai_settings",
+        },
+      })
+    );
+
+    result.push(blocks.divider());
+    result.push(blocks.section("#### 📖 Panduan Penggunaan Shortcode AI & Spintax"));
+    result.push(
+      blocks.section(
+        "- **Spintax Native:** `{Pilihan 1|Pilihan 2|Pilihan 3}` (Mengacak kata per artikel, 100% cepat & tanpa API token).\n" +
+        "- **Shortcode AI:** `{{ai: Tulis 2 paragraf pengantar tentang tantangan bisnis di {kabupaten} yang butuh software kasir POS}}`\n" +
+        "- **Shortcode AI FAQ:** `{{ai: Buat 3 pertanyaan dan jawaban FAQ tentang jasa pembuatan website di {kabupaten}}}`\n" +
+        "Token variabel seperti `{{kabupaten}}` atau `{{layanan}}` di dalam prompt AI akan otomatis diganti dengan data baris CSV sebelum dikirim ke AI."
+      )
+    );
   }
 
   return result;

@@ -2,6 +2,7 @@ import { definePlugin, type RouteContext } from "emdash";
 import { parseCsv } from "./engine/csv.js";
 import {
   renderRow,
+  renderRowAsync,
   dryRun,
   executeRun,
   bulkDeleteRun,
@@ -53,6 +54,9 @@ export function createPlugin() {
           let selectedDatasetId: string | undefined = (await kv.get("sel_dataset_id")) || undefined;
           let selectedTarget: "pages" | "posts" | undefined = (await kv.get("sel_target")) || undefined;
           let previewResult: RenderedContent | undefined = (await kv.get("preview_result")) || undefined;
+          let aiEndpoint: string | undefined = (await kv.get("ai_endpoint")) || "http://172.18.0.1:20128/v1/chat/completions";
+          let aiApiKey: string | undefined = (await kv.get("ai_api_key")) || "sk-e1c...b74e";
+          let aiModel: string | undefined = (await kv.get("ai_model")) || "daily";
           let dryRunResult:
             | {
                 total: number;
@@ -255,7 +259,8 @@ export function createPlugin() {
               toast = { type: "error", message: `Row ${rowIdx + 1} does not exist in dataset (total: ${ds.rows.length}).` };
             } else {
               const effective = target ? { ...tpl, targetCollection: target } : tpl;
-              previewResult = renderRow(effective, ds.rows[rowIdx]);
+              const aiConfig = { endpoint: aiEndpoint, apiKey: aiApiKey, model: aiModel };
+              previewResult = await renderRowAsync(effective, ds.rows[rowIdx], aiConfig);
               dryRunResult = undefined;
               await kv.set("preview_result", previewResult);
               await kv.set("dryrun_result", null);
@@ -280,7 +285,8 @@ export function createPlugin() {
               };
             } else {
               const effective = selectedTarget ? { ...tpl, targetCollection: selectedTarget } : tpl;
-              const res = await dryRun(effective, ds, content, "skip_existing");
+              const aiConfig = { endpoint: aiEndpoint, apiKey: aiApiKey, model: aiModel };
+              const res = await dryRun(effective, ds, content, "skip_existing", aiConfig);
               dryRunResult = res;
               await kv.set("dryrun_result", dryRunResult);
               toast = {
@@ -321,7 +327,8 @@ export function createPlugin() {
               };
             } else {
               const effective = target ? { ...tpl, targetCollection: target } : tpl;
-              const run = await executeRun(effective, ds, content, mode, scheduleInterval);
+              const aiConfig = { endpoint: aiEndpoint, apiKey: aiApiKey, model: aiModel };
+              const run = await executeRun(effective, ds, content, mode, scheduleInterval, aiConfig);
               lastRunResult = run;
               await storage.runs.put(run.id, run);
               await kv.set("last_run_result", lastRunResult);
@@ -363,6 +370,25 @@ export function createPlugin() {
             }
           }
 
+          // -------------------------------------------------------------
+          // 7. SAVE AI SETTINGS
+          // -------------------------------------------------------------
+          else if (input.type === "form_submit" && input.action_id === "save_ai_settings") {
+            const values = input.values || {};
+            aiEndpoint = String(values.ai_endpoint || "").trim() || "http://172.18.0.1:20128/v1/chat/completions";
+            aiApiKey = String(values.ai_api_key || "").trim() || "sk-e1c...b74e";
+            aiModel = String(values.ai_model || "").trim() || "daily";
+
+            await kv.set("ai_endpoint", aiEndpoint);
+            await kv.set("ai_api_key", aiApiKey);
+            await kv.set("ai_model", aiModel);
+
+            toast = {
+              type: "success",
+              message: "AI settings saved successfully!",
+            };
+          }
+
           // Load updated lists for view rendering
           const currentTemplates = await getTemplates();
           const currentDatasets = await getDatasets();
@@ -377,6 +403,9 @@ export function createPlugin() {
             selectedTemplateId,
             selectedDatasetId,
             selectedTarget,
+            aiEndpoint,
+            aiApiKey,
+            aiModel,
           };
 
           const blocks = renderPluginUi(viewState, currentTemplates, currentDatasets, currentRuns);

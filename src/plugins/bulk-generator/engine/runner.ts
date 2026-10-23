@@ -1,4 +1,11 @@
-import { substituteTokens, slugify, deepSubstituteTokens } from "./tokens.js";
+import {
+  substituteTokens,
+  substituteTokensAsync,
+  slugify,
+  deepSubstituteTokens,
+  deepSubstituteTokensAsync,
+  type AiConfig,
+} from "./tokens.js";
 import { markdownToPortableText } from "./portable-text.js";
 import type { PluginContext } from "emdash";
 
@@ -159,7 +166,113 @@ export interface RenderedContent {
 }
 
 /**
- * Render a single row against a template
+ * Render a single row against a template (async supporting AI tokens)
+ */
+export async function renderRowAsync(
+  template: TemplateRecord,
+  row: Record<string, string>,
+  aiConfig?: AiConfig
+): Promise<RenderedContent> {
+  const title = await substituteTokensAsync(template.titlePattern, row, aiConfig);
+  const slugSource = title || (await substituteTokensAsync(template.slugPattern, row, aiConfig));
+  const slug = slugify(slugSource);
+  const excerpt = await substituteTokensAsync(template.excerptPattern || "", row, aiConfig);
+  const seoTitle = template.seoTitlePattern ? await substituteTokensAsync(template.seoTitlePattern, row, aiConfig) : undefined;
+  const seoDesc = template.seoDescPattern ? await substituteTokensAsync(template.seoDescPattern, row, aiConfig) : undefined;
+
+  let payload: Record<string, unknown> = {};
+  let bodyText = "";
+
+  if (template.targetCollection === "posts") {
+    let richContent: unknown[] | null = null;
+    if (template.blocksJson && template.blocksJson.trim()) {
+      try {
+        const parsed = JSON.parse(template.blocksJson);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          richContent = await deepSubstituteTokensAsync(parsed, row, aiConfig);
+        }
+      } catch {
+        // Fallback
+      }
+    }
+
+    if (richContent) {
+      payload = {
+        title,
+        content: richContent,
+      };
+    } else {
+      const rawBody = template.bodyPattern || "";
+      bodyText = await substituteTokensAsync(rawBody, row, aiConfig);
+      payload = {
+        title,
+        content: markdownToPortableText(bodyText),
+      };
+    }
+
+    if (excerpt) {
+      payload.excerpt = excerpt;
+    }
+  } else {
+    // Pages collection (Blocks)
+    let blocksContent: unknown[] = [];
+    if (template.blocksJson && template.blocksJson.trim()) {
+      try {
+        const parsed = JSON.parse(template.blocksJson);
+        blocksContent = await deepSubstituteTokensAsync(parsed, row, aiConfig);
+      } catch {
+        // Fallback
+      }
+    }
+
+    if (!blocksContent || !Array.isArray(blocksContent) || blocksContent.length === 0) {
+      const rawBody = template.bodyPattern || "";
+      bodyText = await substituteTokensAsync(rawBody, row, aiConfig);
+      blocksContent = [
+        {
+          _type: "marketing_hero",
+          _version: 1,
+          _key: "hero_" + slug.substring(0, 8),
+          headline: title,
+          subheadline: excerpt,
+          centered: true,
+        },
+        {
+          _type: "marketing_richtext",
+          _version: 1,
+          _key: "text_" + slug.substring(0, 8),
+          headline: title,
+          body: markdownToPortableText(bodyText),
+        },
+      ];
+    } else {
+      bodyText = JSON.stringify(blocksContent, null, 2);
+    }
+
+    payload = {
+      title,
+      content: blocksContent,
+    };
+  }
+
+  if (seoTitle || seoDesc) {
+    payload.seo = {
+      title: seoTitle || title,
+      description: seoDesc || excerpt,
+    };
+  }
+
+  return {
+    slug,
+    title,
+    excerpt,
+    bodyText,
+    payload,
+  };
+}
+
+/**
+ * Render a single row against a template (sync)
  */
 export function renderRow(template: TemplateRecord, row: Record<string, string>): RenderedContent {
   const title = substituteTokens(template.titlePattern, row);
@@ -335,7 +448,8 @@ export async function dryRun(
   template: TemplateRecord,
   dataset: DatasetRecord,
   content: NonNullable<PluginContext["content"]>,
-  mode: "skip_existing" | "update_existing" | "create_only" = "skip_existing"
+  mode: "skip_existing" | "update_existing" | "create_only" = "skip_existing",
+  aiConfig?: AiConfig
 ) {
   const items: RunItemLog[] = [];
   let willCreate = 0;
@@ -344,7 +458,7 @@ export async function dryRun(
 
   for (let idx = 0; idx < dataset.rows.length; idx++) {
     const row = dataset.rows[idx];
-    const rendered = renderRow(template, row);
+    const rendered = await renderRowAsync(template, row, aiConfig);
     const existing = await findBySlug(content, template.targetCollection, rendered.slug, rendered.title);
 
     if (existing) {
@@ -408,7 +522,8 @@ export async function executeRun(
   dataset: DatasetRecord,
   content: NonNullable<PluginContext["content"]>,
   mode: "skip_existing" | "update_existing" | "create_only" = "skip_existing",
-  postsPerDay: number = 0
+  postsPerDay: number = 0,
+  aiConfig?: AiConfig
 ): Promise<RunRecord> {
   const runId = "run_" + Date.now();
   const items: RunItemLog[] = [];
@@ -422,7 +537,7 @@ export async function executeRun(
 
   for (let idx = 0; idx < dataset.rows.length; idx++) {
     const row = dataset.rows[idx];
-    const rendered = renderRow(template, row);
+    const rendered = await renderRowAsync(template, row, aiConfig);
 
     // Calculate scheduled_at if drip schedule enabled
     let scheduledDate: Date | null = null;
