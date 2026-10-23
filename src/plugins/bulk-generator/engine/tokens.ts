@@ -20,6 +20,22 @@ export function slugify(text: string): string {
 }
 
 /**
+ * Replace spintax patterns: {opsi A|opsi B|opsi C}
+ */
+export function resolveSpintax(text: string): string {
+  if (!text) return "";
+  let result = text;
+  const spintaxRegex = /\{([^{}]+)\}/g;
+  while (spintaxRegex.test(result)) {
+    result = result.replace(spintaxRegex, (_, choices) => {
+      const parts = choices.split("|");
+      return parts[Math.floor(Math.random() * parts.length)].trim();
+    });
+  }
+  return result;
+}
+
+/**
  * Replace {{token}} or {{token | filter}} in a template string
  * Filters supported:
  * - slug: converts to URL slug
@@ -30,7 +46,7 @@ export function slugify(text: string): string {
 export function substituteTokens(template: string, row: Record<string, string>): string {
   if (!template) return "";
 
-  return template.replace(/\{\{\s*([a-zA-Z0-9_\-]+)(?:\s*\|\s*([a-zA-Z0-9_\-]+))?\s*\}\}/g, (_, key, filter) => {
+  let res = template.replace(/\{\{\s*([a-zA-Z0-9_\-]+)(?:\s*\|\s*([a-zA-Z0-9_\-]+))?\s*\}\}/g, (_, key, filter) => {
     let val = row[key] ?? row[key.trim()] ?? "";
 
     if (filter) {
@@ -43,6 +59,8 @@ export function substituteTokens(template: string, row: Record<string, string>):
 
     return val;
   });
+
+  return resolveSpintax(res);
 }
 
 /**

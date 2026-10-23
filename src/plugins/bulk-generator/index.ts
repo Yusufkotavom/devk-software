@@ -246,10 +246,10 @@ export function createPlugin() {
 
             if (!tpl || !ds) {
               toast = { type: "error", message: "Selected template or dataset not found." };
-            } else if (target === "posts" && !tpl.bodyPattern?.trim()) {
+            } else if (target === "posts" && !tpl.bodyPattern?.trim() && !tpl.blocksJson?.trim()) {
               toast = {
                 type: "error",
-                message: "Template has no Post Body Pattern — fill it in Page Templates first.",
+                message: "Template has no content — fill Post Body Pattern or Page Blocks in Page Templates first.",
               };
             } else if (!ds.rows[rowIdx]) {
               toast = { type: "error", message: `Row ${rowIdx + 1} does not exist in dataset (total: ${ds.rows.length}).` };
@@ -273,10 +273,10 @@ export function createPlugin() {
 
             if (!tpl || !ds) {
               toast = { type: "error", message: "Please select template and dataset first." };
-            } else if (selectedTarget === "posts" && !tpl.bodyPattern?.trim()) {
+            } else if (selectedTarget === "posts" && !tpl.bodyPattern?.trim() && !tpl.blocksJson?.trim()) {
               toast = {
                 type: "error",
-                message: "Template has no Post Body Pattern — fill it in Page Templates first.",
+                message: "Template has no content — fill Post Body Pattern or Page Blocks in Page Templates first.",
               };
             } else {
               const effective = selectedTarget ? { ...tpl, targetCollection: selectedTarget } : tpl;
@@ -299,6 +299,7 @@ export function createPlugin() {
             const dsId = String(values.gen_dataset_id || "");
             const mode = String(values.gen_mode || "skip_existing") as any;
             const target = String(values.gen_target || "") as "pages" | "posts";
+            const scheduleInterval = parseInt(String(values.gen_schedule_interval || "0"), 10);
 
             selectedTemplateId = tplId;
             selectedDatasetId = dsId;
@@ -313,14 +314,14 @@ export function createPlugin() {
 
             if (!tpl || !ds) {
               toast = { type: "error", message: "Template or Dataset not found." };
-            } else if (target === "posts" && !tpl.bodyPattern?.trim()) {
+            } else if (target === "posts" && !tpl.bodyPattern?.trim() && !tpl.blocksJson?.trim()) {
               toast = {
                 type: "error",
-                message: "Template has no Post Body Pattern — fill it in Page Templates first.",
+                message: "Template has no content — fill Post Body Pattern or Page Blocks in Page Templates first.",
               };
             } else {
               const effective = target ? { ...tpl, targetCollection: target } : tpl;
-              const run = await executeRun(effective, ds, content, mode);
+              const run = await executeRun(effective, ds, content, mode, scheduleInterval);
               lastRunResult = run;
               await storage.runs.put(run.id, run);
               await kv.set("last_run_result", lastRunResult);

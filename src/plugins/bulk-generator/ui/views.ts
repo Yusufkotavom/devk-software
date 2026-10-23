@@ -147,6 +147,18 @@ export function renderPluginUi(
           ],
           { initialValue: "skip_existing" }
         ),
+        elements.select(
+          "gen_schedule_interval",
+          "5. Publishing Schedule (Drip Feed)",
+          [
+            { label: "Instant (Publish immediately)", value: "0" },
+            { label: "1 post per day (Natural SEO indexing)", value: "1" },
+            { label: "2 posts per day", value: "2" },
+            { label: "3 posts per day", value: "3" },
+            { label: "5 posts per day", value: "5" },
+          ],
+          { initialValue: "0" }
+        ),
       ];
 
       result.push(

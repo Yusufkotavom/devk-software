@@ -176,12 +176,33 @@ export function renderRow(template: TemplateRecord, row: Record<string, string>)
   let bodyText = "";
 
   if (template.targetCollection === "posts") {
-    const rawBody = template.bodyPattern || "";
-    bodyText = substituteTokens(rawBody, row);
-    payload = {
-      title,
-      content: markdownToPortableText(bodyText),
-    };
+    // If blocksJson exists (rich text / blocks from Page Templates), substitute tokens in it
+    let richContent: unknown[] | null = null;
+    if (template.blocksJson && template.blocksJson.trim()) {
+      try {
+        const parsed = JSON.parse(template.blocksJson);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          richContent = deepSubstituteTokens(parsed, row);
+        }
+      } catch {
+        // Fallback to markdown
+      }
+    }
+
+    if (richContent) {
+      payload = {
+        title,
+        content: richContent,
+      };
+    } else {
+      const rawBody = template.bodyPattern || "";
+      bodyText = substituteTokens(rawBody, row);
+      payload = {
+        title,
+        content: markdownToPortableText(bodyText),
+      };
+    }
+
     if (excerpt) {
       payload.excerpt = excerpt;
     }
@@ -386,7 +407,8 @@ export async function executeRun(
   template: TemplateRecord,
   dataset: DatasetRecord,
   content: NonNullable<PluginContext["content"]>,
-  mode: "skip_existing" | "update_existing" | "create_only" = "skip_existing"
+  mode: "skip_existing" | "update_existing" | "create_only" = "skip_existing",
+  postsPerDay: number = 0
 ): Promise<RunRecord> {
   const runId = "run_" + Date.now();
   const items: RunItemLog[] = [];
@@ -395,9 +417,24 @@ export async function executeRun(
   let skipped = 0;
   let errors = 0;
 
+  const nowMs = Date.now();
+  const oneDayMs = 24 * 60 * 60 * 1000;
+
   for (let idx = 0; idx < dataset.rows.length; idx++) {
     const row = dataset.rows[idx];
     const rendered = renderRow(template, row);
+
+    // Calculate scheduled_at if drip schedule enabled
+    let scheduledDate: Date | null = null;
+    if (postsPerDay > 0) {
+      const dayOffset = Math.floor(idx / postsPerDay);
+      // stagger by hours within the day
+      const hourSlot = (idx % postsPerDay) * Math.floor(12 / Math.max(1, postsPerDay)) + 8; // start around 08:00
+      const targetTime = new Date(nowMs + dayOffset * oneDayMs);
+      targetTime.setHours(hourSlot, 0, 0, 0);
+      scheduledDate = targetTime;
+      rendered.payload.scheduled_at = scheduledDate.toISOString();
+    }
 
     try {
       const existing = await findBySlug(content, template.targetCollection, rendered.slug, rendered.title);
@@ -419,7 +456,9 @@ export async function executeRun(
             existing.id,
             rendered.payload
           );
-          await publishIfNeeded(content, template.targetCollection, updatedItem.id, template.defaultStatus);
+          if (!scheduledDate) {
+            await publishIfNeeded(content, template.targetCollection, updatedItem.id, template.defaultStatus);
+          }
           updated++;
           items.push({
             rowIdx: idx + 1,
@@ -427,7 +466,7 @@ export async function executeRun(
             title: rendered.title,
             action: "update",
             id: updatedItem.id,
-            message: "Updated successfully",
+            message: scheduledDate ? `Updated (Scheduled: ${scheduledDate.toISOString().slice(0, 10)})` : "Updated successfully",
           });
         } else {
           errors++;
@@ -445,7 +484,9 @@ export async function executeRun(
           template.targetCollection,
           rendered.payload
         );
-        await publishIfNeeded(content, template.targetCollection, newItem.id, template.defaultStatus);
+        if (!scheduledDate) {
+          await publishIfNeeded(content, template.targetCollection, newItem.id, template.defaultStatus);
+        }
         created++;
         items.push({
           rowIdx: idx + 1,
@@ -453,7 +494,7 @@ export async function executeRun(
           title: rendered.title,
           action: "create",
           id: newItem.id,
-          message: "Created successfully",
+          message: scheduledDate ? `Created (Scheduled: ${scheduledDate.toISOString().slice(0, 10)})` : "Created successfully",
         });
       }
     } catch (err: any) {
