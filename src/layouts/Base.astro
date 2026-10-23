@@ -61,16 +61,16 @@ if (Astro.cache?.enabled) {
 const { siteTitle, siteTagline, siteLogo } = resolveBlogSiteIdentity(
 	settingsResult.data,
 );
-const titleIncludesSiteName =
-	title === siteTitle ||
-	title.endsWith(` | ${siteTitle}`) ||
-	title.endsWith(` — ${siteTitle}`) ||
-	title.includes(` | ${siteTitle} | ${siteTitle}`) ||
-	title.includes(` — ${siteTitle} — ${siteTitle}`);
-const normalizedTitle = title
-	.replace(` | ${siteTitle} | ${siteTitle}`, ` | ${siteTitle}`)
-	.replace(` — ${siteTitle} — ${siteTitle}`, ` — ${siteTitle}`);
-const fullTitle = titleIncludesSiteName ? normalizedTitle : `${normalizedTitle} — ${siteTitle}`;
+
+// Normalize title & strip repetitive brand suffixes
+let cleanTitle = (title || "").trim();
+// Remove duplicate brand suffixes if already present
+cleanTitle = cleanTitle
+	.replace(/\s*[|—]\s*Devk(\s*[|—]\s*Devk)+/gi, "")
+	.replace(/\s*[|—]\s*Devk$/i, "")
+	.trim();
+
+const fullTitle = cleanTitle ? `${cleanTitle} | ${siteTitle}` : siteTitle;
 
 const menu = menuResult.data;
 const menuItems = menu?.items ?? [];
@@ -107,12 +107,12 @@ const pageCtx = createPublicPageContext({
 	kind: content ? "content" : "custom",
 	pageType: type,
 	title: fullTitle,
-	pageTitle: pageTitle ?? title,
+	pageTitle: cleanTitle || pageTitle || title,
 	description,
 	canonical,
 	image,
 	content,
-	seo: { ogImage: image, robots },
+	seo: { ogTitle: cleanTitle || pageTitle || title, ogImage: image, robots },
 	articleMeta: { publishedTime, modifiedTime, author },
 	siteName: siteTitle,
 });
