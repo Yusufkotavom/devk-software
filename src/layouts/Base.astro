@@ -45,13 +45,17 @@ const {
 	author,
 	content,
 } = Astro.props;
-const [settingsResult, menuResult] = await Promise.all([
+const [settingsResult, menuResult, footerMenuResult] = await Promise.all([
 	getSiteSettingsWithCacheHint(),
 	getMenuWithCacheHint("primary"),
+	getMenuWithCacheHint("footer"),
 ]);
 if (Astro.cache?.enabled) {
 	Astro.cache.set(settingsResult.cacheHint);
 	Astro.cache.set(menuResult.cacheHint);
+	if (footerMenuResult?.cacheHint) {
+		Astro.cache.set(footerMenuResult.cacheHint);
+	}
 }
 
 const { siteTitle, siteTagline, siteLogo } = resolveBlogSiteIdentity(
@@ -70,6 +74,9 @@ const fullTitle = titleIncludesSiteName ? normalizedTitle : `${normalizedTitle} 
 
 const menu = menuResult.data;
 const menuItems = menu?.items ?? [];
+
+const footerMenu = footerMenuResult?.data;
+const footerMenuItems = footerMenu?.items ?? [];
 
 // Optional header call-to-action, managed in the CMS (header_settings collection).
 // No hardcoded fallback: if the CTA label or URL is empty, nothing renders.
@@ -452,7 +459,41 @@ const year = new Date().getFullYear();
 					{siteTagline && <p class="site-footer__tagline">{siteTagline}</p>}
 				</div>
 				{
-					menuItems.length > 0 && (
+					footerMenuItems.length > 0 ? (
+						footerMenuItems.map((col: any) => {
+							const children = col.children ?? [];
+							const colId = `footer-col-${col.label.toLowerCase().replace(/[^a-z0-9]/g, "-")}`;
+							return (
+								<nav class="site-footer__col" aria-labelledby={colId}>
+									<h2 id={colId} class="eyebrow">
+										{col.url && col.url !== "#" ? (
+											<a href={col.url}>{col.label}</a>
+										) : (
+											col.label
+										)}
+									</h2>
+									<ul class="site-footer__links">
+										{children.map((child: any) => (
+											<li>
+												<a
+													href={child.url}
+													target={child.target}
+													rel={
+														child.target === "_blank"
+															? "noopener noreferrer"
+															: undefined
+													}
+													class={child.cssClasses || undefined}
+												>
+													{child.label}
+												</a>
+											</li>
+										))}
+									</ul>
+								</nav>
+							);
+						})
+					) : menuItems.length > 0 ? (
 						<nav class="site-footer__col" aria-labelledby="footer-navigate">
 							<h2 id="footer-navigate" class="eyebrow">
 								Navigate
@@ -475,7 +516,7 @@ const year = new Date().getFullYear();
 								))}
 							</ul>
 						</nav>
-					)
+					) : null
 				}
 				<div class="site-footer__col">
 					<h2 class="eyebrow">Connect</h2>
@@ -1629,9 +1670,18 @@ const year = new Date().getFullYear();
 			/* Footer */
 			.site-footer__grid {
 				display: grid;
-				grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
-				gap: var(--spacing-10);
+				grid-template-columns: minmax(0, 1.6fr) repeat(auto-fit, minmax(170px, 1fr));
+				gap: var(--spacing-8);
 				padding-block: var(--spacing-16) var(--spacing-12);
+			}
+
+			.site-footer__col .eyebrow a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.site-footer__col .eyebrow a:hover {
+				color: var(--color-text);
 			}
 
 			.site-footer__tagline {
