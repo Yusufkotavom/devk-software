@@ -80,14 +80,43 @@ const readingTime = getReadingTime(post.data.content);
 // no extra query needed.
 const tags = post.data.terms?.tag ?? [];
 
-// Fetch a few extra recent posts in case the current post is among them.
-const { entries: recentPosts, cacheHint: recentPostsCacheHint } =
+// Fetch recent posts with semantic topic prioritization.
+const { entries: allRecentPosts, cacheHint: recentPostsCacheHint } =
 	await getEmDashCollection("posts", {
 		orderBy: { published_at: "desc" },
-		limit: 4,
+		limit: 10,
 	});
 if (Astro.cache?.enabled) Astro.cache.set(recentPostsCacheHint);
-const otherPosts = recentPosts.filter((p) => p.id !== post.id).slice(0, 3);
+
+// Prioritize related posts by matching slug topic clusters
+const currentSlug = String(slug);
+const isSoftwarePost = currentSlug.includes("pos") || currentSlug.includes("crm") || currentSlug.includes("astro");
+const isRemotePost = currentSlug.includes("autocad") || currentSlug.includes("adobe") || currentSlug.includes("install-online");
+const isHardwarePost = currentSlug.includes("lemot") || currentSlug.includes("ssd") || currentSlug.includes("komputer");
+
+const candidatePosts = allRecentPosts.filter((p) => p.id !== post.id);
+const relatedRanked = candidatePosts.sort((a, b) => {
+	const aSlug = String(a.id);
+	const bSlug = String(b.id);
+	if (isSoftwarePost) {
+		const aMatch = aSlug.includes("pos") || aSlug.includes("crm") || aSlug.includes("astro");
+		const bMatch = bSlug.includes("pos") || bSlug.includes("crm") || bSlug.includes("astro");
+		if (aMatch && !bMatch) return -1;
+		if (!aMatch && bMatch) return 1;
+	} else if (isRemotePost) {
+		const aMatch = aSlug.includes("autocad") || aSlug.includes("adobe") || aSlug.includes("install");
+		const bMatch = bSlug.includes("autocad") || bSlug.includes("adobe") || bSlug.includes("install");
+		if (aMatch && !bMatch) return -1;
+		if (!aMatch && bMatch) return 1;
+	} else if (isHardwarePost) {
+		const aMatch = aSlug.includes("lemot") || aSlug.includes("ssd") || aSlug.includes("komputer");
+		const bMatch = bSlug.includes("lemot") || bSlug.includes("ssd") || bSlug.includes("komputer");
+		if (aMatch && !bMatch) return -1;
+		if (!aMatch && bMatch) return 1;
+	}
+	return 0;
+});
+const otherPosts = relatedRanked.slice(0, 3);
 
 // Single batched query for related-posts tags, rather than one
 // getEntryTerms() call per related post.

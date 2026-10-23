@@ -60,8 +60,13 @@ const { siteTitle, siteTagline, siteLogo } = resolveBlogSiteIdentity(
 const titleIncludesSiteName =
 	title === siteTitle ||
 	title.endsWith(` | ${siteTitle}`) ||
-	title.endsWith(` — ${siteTitle}`);
-const fullTitle = titleIncludesSiteName ? title : `${title} — ${siteTitle}`;
+	title.endsWith(` — ${siteTitle}`) ||
+	title.includes(` | ${siteTitle} | ${siteTitle}`) ||
+	title.includes(` — ${siteTitle} — ${siteTitle}`);
+const normalizedTitle = title
+	.replace(` | ${siteTitle} | ${siteTitle}`, ` | ${siteTitle}`)
+	.replace(` — ${siteTitle} — ${siteTitle}`, ` — ${siteTitle}`);
+const fullTitle = titleIncludesSiteName ? normalizedTitle : `${normalizedTitle} — ${siteTitle}`;
 
 const menu = menuResult.data;
 const menuItems = menu?.items ?? [];
