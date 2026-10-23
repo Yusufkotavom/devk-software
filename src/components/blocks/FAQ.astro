@@ -12,6 +12,22 @@ const blockKey = (Astro.props as any).blockKey ?? raw._key ?? "faq";
 const { anchor_id, headline, subheadline } = raw;
 const items = Array.isArray(raw.items) ? raw.items : [];
 const hasIntro = Boolean(headline || subheadline);
+
+const faqSchema =
+	items.length > 0
+		? JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "FAQPage",
+				mainEntity: items.map((item: any) => ({
+					"@type": "Question",
+					name: String(item.question ?? ""),
+					acceptedAnswer: {
+						"@type": "Answer",
+						text: String(item.answer ?? ""),
+					},
+				})),
+		  })
+		: null;
 ---
 
 <section
@@ -47,6 +63,7 @@ const hasIntro = Boolean(headline || subheadline);
 		}
 	</div>
 	</div>
+	{faqSchema && <script type="application/ld+json" set:html={faqSchema} />}
 </section>
 
 <style>

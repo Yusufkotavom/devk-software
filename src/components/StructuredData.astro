@@ -40,6 +40,15 @@ interface SeoSettingRow {
 	default_og_image?: string;
 }
 
+const DEFAULT_SERVICES = [
+	"Jasa Pembuatan Software Custom & Web Application",
+	"Aplikasi POS Kasir Toko & Ritel Tanpa Biaya Bulanan",
+	"Sistem CRM Penjualan B2B & Manajemen Pipeline",
+	"Jasa Install Software Online Jarak Jauh (AutoCAD, SketchUp, Adobe)",
+	"Servis Komputer & Laptop Surabaya - Sidoarjo On-Site",
+	"Upgrade SSD M.2 NVMe & RAM Laptop Surabaya",
+];
+
 let seoRow: SeoSettingRow | null = null;
 try {
 	const res = await getEmDashCollection("seo_settings", { limit: 1 });
@@ -50,12 +59,15 @@ try {
 	seoRow = null;
 }
 
-const orgName = seoRow?.organization_name?.trim() || "Devk Software Development";
+const orgName = seoRow?.organization_name?.trim() || "Devk Software & IT Ecosystem";
 const orgType = seoRow?.organization_type?.trim() || "ProfessionalService";
-const orgDesc = seoRow?.description?.trim() || description || "Jasa pembuatan software custom, POS kasir, CRM, dan web application.";
+const orgDesc =
+	seoRow?.description?.trim() ||
+	description ||
+	"Penyedia jasa pembuatan software custom, POS kasir offline-first, jasa install software online remote se-Indonesia, dan servis komputer panggilan Surabaya-Sidoarjo.";
 const orgPhone = seoRow?.phone?.trim() || "+6285799520350";
 const orgEmail = seoRow?.email?.trim();
-const locality = seoRow?.address_locality?.trim() || "Surabaya";
+const locality = seoRow?.address_locality?.trim() || "Surabaya & Sidoarjo";
 const region = seoRow?.address_region?.trim() || "Jawa Timur";
 const country = seoRow?.address_country?.trim() || "ID";
 
@@ -64,10 +76,11 @@ const sameAsList = (seoRow?.same_as || "")
 	.map((s) => s.trim())
 	.filter(Boolean);
 
-const servicesList = (seoRow?.services || "")
+const rawServices = (seoRow?.services || "")
 	.split("\n")
 	.map((s) => s.trim())
 	.filter(Boolean);
+const servicesList = rawServices.length > 0 ? rawServices : DEFAULT_SERVICES;
 
 const currentUrl = `${origin}${pathname === "/" ? "" : pathname}`;
 const logoUrl = image || seoRow?.default_og_image || `${origin}/images/logo.png`;
@@ -94,6 +107,19 @@ const organizationSchema: Record<string, any> = {
 
 if (orgEmail) organizationSchema["email"] = orgEmail;
 if (sameAsList.length > 0) organizationSchema["sameAs"] = sameAsList;
+organizationSchema["areaServed"] = [
+	{ "@type": "City", "name": "Surabaya" },
+	{ "@type": "City", "name": "Sidoarjo" },
+	{ "@type": "Country", "name": "Indonesia" },
+];
+organizationSchema["priceRange"] = "Rp 50.000 - Rp 35.000.000+";
+organizationSchema["openingHoursSpecification"] = {
+	"@type": "OpeningHoursSpecification",
+	"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+	"opens": "08:00",
+	"closes": "22:00",
+};
+organizationSchema["knowsLanguage"] = ["id-ID", "en-US"];
 
 if (servicesList.length > 0) {
 	organizationSchema["hasOfferCatalog"] = {
