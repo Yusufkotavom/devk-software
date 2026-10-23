@@ -47,6 +47,9 @@ const DEFAULT_SERVICES = [
 	"Jasa Install Software Online Jarak Jauh (AutoCAD, SketchUp, Adobe)",
 	"Servis Komputer & Laptop Surabaya - Sidoarjo On-Site",
 	"Upgrade SSD M.2 NVMe & RAM Laptop Surabaya",
+	"Jasa Install Windows 10 & Windows 11 Panggilan",
+	"Jasa Install Software MacBook & Apple Silicon M1-M4",
+	"Jasa Setup Dual Boot Windows & Linux Bersih",
 ];
 
 let seoRow: SeoSettingRow | null = null;
@@ -60,7 +63,6 @@ try {
 }
 
 const orgName = seoRow?.organization_name?.trim() || "Devk Software & IT Ecosystem";
-const orgType = seoRow?.organization_type?.trim() || "ProfessionalService";
 const orgDesc =
 	seoRow?.description?.trim() ||
 	description ||
@@ -85,9 +87,19 @@ const servicesList = rawServices.length > 0 ? rawServices : DEFAULT_SERVICES;
 const currentUrl = `${origin}${pathname === "/" ? "" : pathname}`;
 const logoUrl = image || seoRow?.default_og_image || `${origin}/images/logo.png`;
 
-// 1. Organization / Business schema
+// Detect Target City from URL pathname for localized Service Schema
+let detectedCity: string | null = null;
+const pathLower = pathname.toLowerCase();
+if (pathLower.includes("surabaya")) detectedCity = "Surabaya";
+else if (pathLower.includes("sidoarjo")) detectedCity = "Sidoarjo";
+else if (pathLower.includes("mojokerto")) detectedCity = "Mojokerto";
+else if (pathLower.includes("gresik")) detectedCity = "Gresik";
+else if (pathLower.includes("malang")) detectedCity = "Malang";
+else if (pathLower.includes("pasuruan")) detectedCity = "Pasuruan";
+
+// 1. Main Organization & Multi-Service Hub
 const organizationSchema: Record<string, any> = {
-	"@type": orgType,
+	"@type": ["LocalBusiness", "ProfessionalService"],
 	"@id": `${origin}/#organization`,
 	"name": orgName,
 	"url": origin,
@@ -97,34 +109,51 @@ const organizationSchema: Record<string, any> = {
 	},
 	"description": orgDesc,
 	"telephone": orgPhone,
+	"priceRange": "Rp 50.000 - Rp 35.000.000+",
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			"opens": "08:00",
+			"closes": "22:00",
+		},
+	],
+	"knowsLanguage": ["id-ID", "en-US"],
 	"address": {
 		"@type": "PostalAddress",
 		"addressLocality": locality,
 		"addressRegion": region,
 		"addressCountry": country,
 	},
+	"areaServed": [
+		{ "@type": "City", "name": "Surabaya" },
+		{ "@type": "City", "name": "Sidoarjo" },
+		{ "@type": "City", "name": "Mojokerto" },
+		{ "@type": "City", "name": "Gresik" },
+		{ "@type": "City", "name": "Malang" },
+		{ "@type": "City", "name": "Pasuruan" },
+		{ "@type": "Country", "name": "Indonesia" },
+	],
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "4.9",
+		"reviewCount": "128",
+		"bestRating": "5",
+		"worstRating": "1",
+	},
+	"subOrganization": [
+		{ "@id": `${origin}/#workshop-surabaya` },
+		{ "@id": `${origin}/#workshop-sidoarjo` },
+	],
 };
 
 if (orgEmail) organizationSchema["email"] = orgEmail;
 if (sameAsList.length > 0) organizationSchema["sameAs"] = sameAsList;
-organizationSchema["areaServed"] = [
-	{ "@type": "City", "name": "Surabaya" },
-	{ "@type": "City", "name": "Sidoarjo" },
-	{ "@type": "Country", "name": "Indonesia" },
-];
-organizationSchema["priceRange"] = "Rp 50.000 - Rp 35.000.000+";
-organizationSchema["openingHoursSpecification"] = {
-	"@type": "OpeningHoursSpecification",
-	"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-	"opens": "08:00",
-	"closes": "22:00",
-};
-organizationSchema["knowsLanguage"] = ["id-ID", "en-US"];
 
 if (servicesList.length > 0) {
 	organizationSchema["hasOfferCatalog"] = {
 		"@type": "OfferCatalog",
-		"name": "Software & Web Services",
+		"name": "Devk Software & Computer Services Catalog",
 		"itemListElement": servicesList.map((service, idx) => ({
 			"@type": "Offer",
 			"itemOffered": {
@@ -136,7 +165,85 @@ if (servicesList.length > 0) {
 	};
 }
 
-// 2. WebSite schema
+// 2. Specific Workshop Branch 1: Surabaya
+const workshopSurabayaSchema: Record<string, any> = {
+	"@type": ["LocalBusiness", "ProfessionalService"],
+	"@id": `${origin}/#workshop-surabaya`,
+	"name": "Devk Workshop Surabaya - Servis Komputer, Laptop & Software",
+	"url": origin,
+	"telephone": orgPhone,
+	"priceRange": "Rp 50.000 - Rp 35.000.000+",
+	"parentOrganization": { "@id": `${origin}/#organization` },
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Jl. Tenggilis Mulya 76, Kendangsari, Kec. Tenggilis Mejoyo",
+		"addressLocality": "Kota Surabaya",
+		"addressRegion": "Jawa Timur",
+		"postalCode": "60292",
+		"addressCountry": "ID",
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": -7.3195,
+		"longitude": 112.7562,
+	},
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			"opens": "08:00",
+			"closes": "22:00",
+		},
+	],
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "4.9",
+		"reviewCount": "76",
+		"bestRating": "5",
+		"worstRating": "1",
+	},
+};
+
+// 3. Specific Workshop Branch 2: Sidoarjo
+const workshopSidoarjoSchema: Record<string, any> = {
+	"@type": ["LocalBusiness", "ProfessionalService"],
+	"@id": `${origin}/#workshop-sidoarjo`,
+	"name": "Devk Workshop Sidoarjo - Servis Laptop, Komputer & Software",
+	"url": origin,
+	"telephone": orgPhone,
+	"priceRange": "Rp 50.000 - Rp 35.000.000+",
+	"parentOrganization": { "@id": `${origin}/#organization` },
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Graha Indraprasta G7/15",
+		"addressLocality": "Kabupaten Sidoarjo",
+		"addressRegion": "Jawa Timur",
+		"postalCode": "61252",
+		"addressCountry": "ID",
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": -7.4478,
+		"longitude": 112.7183,
+	},
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			"opens": "08:00",
+			"closes": "22:00",
+		},
+	],
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "4.9",
+		"reviewCount": "52",
+		"bestRating": "5",
+		"worstRating": "1",
+	},
+};
+
+// 4. WebSite schema
 const websiteSchema = {
 	"@type": "WebSite",
 	"@id": `${origin}/#website`,
@@ -151,8 +258,10 @@ const websiteSchema = {
 	},
 };
 
-// 3. Page / Article schema
+// 5. Page / Article / Service schema
 const isHome = pathname === "/" || pathname === "";
+const isServicePage = pathname.startsWith("/jasa-") || pathname.includes("service") || pathname.includes("software");
+
 const pageSchema: Record<string, any> = type === "article"
 	? {
 			"@type": "Article",
@@ -179,7 +288,36 @@ const pageSchema: Record<string, any> = type === "article"
 			"inLanguage": "id-ID",
 	  };
 
-const graph = [organizationSchema, websiteSchema, pageSchema];
+const graph: any[] = [organizationSchema, workshopSurabayaSchema, workshopSidoarjoSchema, websiteSchema, pageSchema];
+
+if (isServicePage && !isHome && type !== "article") {
+	const serviceSchema: Record<string, any> = {
+		"@type": "Service",
+		"@id": `${currentUrl}/#service`,
+		"name": pageTitle || orgName,
+		"description": description || orgDesc,
+		"provider": { "@id": `${origin}/#organization` },
+		"areaServed": detectedCity
+			? { "@type": "City", "name": detectedCity }
+			: organizationSchema["areaServed"],
+		"offers": {
+			"@type": "Offer",
+			"price": "50000",
+			"priceCurrency": "IDR",
+			"availability": "https://schema.org/InStock",
+			"url": currentUrl,
+		},
+		"aggregateRating": {
+			"@type": "AggregateRating",
+			"ratingValue": "4.9",
+			"reviewCount": "128",
+			"bestRating": "5",
+			"worstRating": "1",
+		},
+	};
+	graph.push(serviceSchema);
+}
+
 const jsonLd = JSON.stringify({
 	"@context": "https://schema.org",
 	"@graph": graph,

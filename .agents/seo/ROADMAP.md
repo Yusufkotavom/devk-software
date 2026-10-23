@@ -104,6 +104,11 @@ flowchart TD
   - [x] **Surabaya**: `/jasa-install-windows-10-surabaya`, `/jasa-install-windows-11-surabaya`, `/jasa-install-software-macbook-surabaya`, `/jasa-install-software-windows-surabaya`, `/jasa-install-linux-surabaya`, `/jasa-install-dual-boot-surabaya` (LIVE).
   - [x] **Mojokerto**: `/jasa-install-windows-10-mojokerto`, `/jasa-install-windows-11-mojokerto`, `/jasa-install-software-macbook-mojokerto`, `/jasa-install-software-windows-mojokerto`, `/jasa-install-linux-mojokerto`, `/jasa-install-dual-boot-mojokerto` (LIVE).
 - [x] Produksi 6 Aset Visual Material Design CTA (+Nomor WA 085799520350 + Paket Pricing Plan) terdaftar di Media Library.
+- [x] Setup Schema.org `LocalBusiness` & `ProfessionalService` multi-cabang (Workshop Surabaya & Sidoarjo) terstruktur dengan geocoordinates, jam operasional, aggregate rating, dan deteksi otomatis halaman layanan di `src/components/StructuredData.astro`.
+- [x] Ekspansi Klaster Geo-Targeted 3 Kota Baru (Gresik, Malang, Pasuruan) — 18 Halaman Baru LIVE:
+  - [x] **Gresik**: `/jasa-install-windows-10-gresik`, `/jasa-install-windows-11-gresik`, `/jasa-install-software-macbook-gresik`, `/jasa-install-software-windows-gresik`, `/jasa-install-linux-gresik`, `/jasa-install-dual-boot-gresik` (LIVE).
+  - [x] **Malang**: `/jasa-install-windows-10-malang`, `/jasa-install-windows-11-malang`, `/jasa-install-software-macbook-malang`, `/jasa-install-software-windows-malang`, `/jasa-install-linux-malang`, `/jasa-install-dual-boot-malang` (LIVE).
+  - [x] **Pasuruan**: `/jasa-install-windows-10-pasuruan`, `/jasa-install-windows-11-pasuruan`, `/jasa-install-software-macbook-pasuruan`, `/jasa-install-software-windows-pasuruan`, `/jasa-install-linux-pasuruan`, `/jasa-install-dual-boot-pasuruan` (LIVE).
 - [ ] Publikasi 4 artikel blog studi kasus penerapan sistem POS & CRM untuk bisnis ritel/F&B.
 
 ### Fase 4: Dominasi Kata Kunci Long-Tail & Edukasi (Bulan 4+)
