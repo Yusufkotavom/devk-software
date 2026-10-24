@@ -1,7 +1,9 @@
 ---
 import type { ContentEntry } from "emdash";
+import { PortableText } from "emdash/ui";
 import type { Page } from "../../emdash-env";
 import MarketingBlocks from "./MarketingBlocks.astro";
+import "../styles/prose.css";
 
 interface Props {
 	page: ContentEntry<Page>;
@@ -12,12 +14,48 @@ interface Props {
 const { page, heading } = Astro.props;
 const title = heading ?? page.data.title;
 const titleEdit = heading === undefined ? (page as any).edit?.title : {};
-const blocks = (page.data.content ?? []) as any[];
-const hasHero = Array.isArray(blocks) && blocks.some((block: any) => block._type === "marketing_hero" || block._type === "marketing.hero");
+
+// Support both:
+// 1. Separate "blocks" field and "content" field
+// 2. Legacy fallback where marketing blocks were saved directly in "content"
+const rawBlocks = (page.data as any).blocks;
+const rawContent = page.data.content;
+
+const isMarketingBlockArray = (val: any) =>
+	Array.isArray(val) &&
+	val.length > 0 &&
+	val.some(
+		(item: any) =>
+			item &&
+			typeof item === "object" &&
+			"_type" in item &&
+			(String(item._type).startsWith("marketing_") || String(item._type).startsWith("marketing.")),
+	);
+
+let blocks: any[] = [];
+let richContent: any = null;
+
+if (Array.isArray(rawBlocks) && rawBlocks.length > 0) {
+	blocks = rawBlocks;
+}
+
+if (rawContent) {
+	if (isMarketingBlockArray(rawContent) && blocks.length === 0) {
+		blocks = rawContent;
+	} else if (!isMarketingBlockArray(rawContent)) {
+		richContent = rawContent;
+	}
+}
+
+const hasBlocks = blocks.length > 0;
+const hasRichContent = !!richContent && (Array.isArray(richContent) ? richContent.length > 0 : true);
+const hasHero = hasBlocks && blocks.some((b: any) => b._type === "marketing_hero" || b._type === "marketing.hero");
+const blocksEdit = (page as any).edit?.blocks ?? (page as any).edit?.content ?? {};
+const contentEdit = (page as any).edit?.content ?? {};
 ---
 
 {
-	blocks.length > 0 ? (
+	hasBlocks || hasRichContent ? (
 		<>
 			{!hasHero && (
 				<header class="intro page-header">
@@ -28,9 +66,22 @@ const hasHero = Array.isArray(blocks) && blocks.some((block: any) => block._type
 					</div>
 				</header>
 			)}
-			<div class="page-blocks" {...page.edit.content}>
-				<MarketingBlocks value={blocks} />
-			</div>
+
+			{hasBlocks && (
+				<div class="page-blocks" {...blocksEdit}>
+					<MarketingBlocks value={blocks} />
+				</div>
+			)}
+
+			{hasRichContent && (
+				<section class="band page-rich-content">
+					<div class="frame">
+						<div class="prose mx-auto" {...contentEdit}>
+							<PortableText value={richContent} />
+						</div>
+					</div>
+				</section>
+			)}
 		</>
 	) : (
 		<section class="band section empty-state-section">
@@ -38,7 +89,7 @@ const hasHero = Array.isArray(blocks) && blocks.some((block: any) => block._type
 				<h1 class="intro__title empty-state__title">{title}</h1>
 				{Astro.locals.user && (
 					<>
-						<p class="lead">This page has no blocks yet. Add some in the editor, then publish.</p>
+						<p class="lead">This page has no content yet. Add content or blocks in the editor, then publish.</p>
 						<div class="actions">
 							<a href={`/_emdash/admin/content/pages/${page.data.id}`} class="btn btn-lg">
 								Edit page
@@ -59,5 +110,11 @@ const hasHero = Array.isArray(blocks) && blocks.some((block: any) => block._type
 		max-width: var(--content-width, 740px);
 		margin-inline: auto;
 		padding-inline: var(--spacing-4, 1.5rem);
+	}
+	.page-rich-content {
+		padding-block: clamp(2rem, 1.5rem + 2vw, 4rem);
+	}
+	.page-rich-content .prose {
+		max-width: var(--content-width, 740px);
 	}
 </style>

@@ -1575,7 +1575,13 @@
         },
         {
           "slug": "content",
-          "label": "Content",
+          "label": "Content (Rich Text)",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "blocks",
+          "label": "Marketing Blocks",
           "type": "blocks",
           "validation": {
             "allowedTypes": [

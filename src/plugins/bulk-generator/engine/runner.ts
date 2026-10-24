@@ -251,7 +251,8 @@ export async function renderRowAsync(
 
     payload = {
       title,
-      content: blocksContent,
+      content: markdownToPortableText(bodyText),
+      blocks: blocksContent,
     };
   }
 
@@ -357,7 +358,8 @@ export function renderRow(template: TemplateRecord, row: Record<string, string>)
 
     payload = {
       title,
-      content: blocksContent,
+      content: markdownToPortableText(bodyText),
+      blocks: blocksContent,
     };
   }
 

@@ -1,6 +1,5 @@
 ---
 import { decodeSlug, getEmDashEntry, getSeoMeta, getSiteSettings } from "emdash";
-import { PortableText } from "emdash/ui";
 import Base from "../layouts/Base.astro";
 import PageView from "../components/PageView.astro";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
@@ -18,26 +17,15 @@ if (!page) return Astro.rewrite("/404");
 if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
 
-const content = page.data.content;
-const isBlocks =
-	Array.isArray(content) &&
-	content.length > 0 &&
-	content.some(
-		(block: any) =>
-			block &&
-			typeof block === "object" &&
-			"_type" in block &&
-			(String(block._type).startsWith("marketing_") || String(block._type).startsWith("marketing.")),
-	);
-
+const blocks = (page.data as any).blocks ?? (Array.isArray(page.data.content) && page.data.content.some((b: any) => b && typeof b === "object" && "_type" in b && (String(b._type).startsWith("marketing_") || String(b._type).startsWith("marketing."))) ? page.data.content : []);
 const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
-const heroDefaults = isBlocks ? heroSeoDefaults(content as any, siteOrigin) : {};
+const heroDefaults = heroSeoDefaults(blocks as any, siteOrigin);
+
 const seo = getSeoMeta(page, {
 	siteTitle,
 	siteUrl: siteOrigin,
 	path: `/${page.id}`,
 	...heroDefaults,
-	// Fall back to the auto-generated branded card when the hero has no photo.
 	defaultOgImage: heroDefaults.defaultOgImage ?? buildOgImageUrl(siteOrigin, "pages", slug),
 });
 ---
@@ -51,36 +39,5 @@ const seo = getSeoMeta(page, {
 	robots={seo.robots}
 	content={{ collection: "pages", id: page.data.id, slug: page.id }}
 >
-	{
-		isBlocks ? (
-			<PageView page={page as any} />
-		) : (
-			<article class="band page">
-				<div class="frame page__layout">
-					<header class="page__header">
-						<h1 class="page__title" {...page.edit.title}>{page.data.title}</h1>
-					</header>
-
-					<div class="prose page__body" {...page.edit.content}>
-						<PortableText value={content} />
-					</div>
-				</div>
-			</article>
-		)
-	}
+	<PageView page={page as any} />
 </Base>
-
-<style>
-	.page {
-		padding-block: clamp(3rem, 2rem + 4vw, 5.5rem) clamp(4rem, 3rem + 4vw, 7rem);
-	}
-
-	.page__layout {
-		max-width: var(--content-width);
-		margin-inline: auto;
-	}
-
-	.page__header {
-		margin-block-end: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-	}
-</style>
