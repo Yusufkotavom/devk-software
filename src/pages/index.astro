@@ -13,11 +13,12 @@ if (Astro.cache?.enabled && cacheHint) Astro.cache.set(cacheHint);
 const settings = await getSiteSettings();
 const { siteTitle, siteTagline } = resolveBlogSiteIdentity(settings);
 
-const content = homePage?.data?.content ?? [];
-const hasHomePage = !!homePage && Array.isArray(content) && content.length > 0;
+const blocks = (homePage?.data as any)?.blocks ?? (Array.isArray(homePage?.data?.content) && (homePage?.data?.content as any[]).some((b: any) => b && typeof b === "object" && "_type" in b && (String(b._type).startsWith("marketing_") || String(b._type).startsWith("marketing."))) ? homePage?.data?.content : []);
+const content = homePage?.data?.content;
+const hasHomePage = !!homePage && ((Array.isArray(blocks) && blocks.length > 0) || (Array.isArray(content) && content.length > 0));
 
 const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
-const heroDefaults = hasHomePage ? heroSeoDefaults(content as any, siteOrigin) : {};
+const heroDefaults = hasHomePage ? heroSeoDefaults(blocks as any, siteOrigin) : {};
 const seo = homePage
 	? getSeoMeta(homePage, {
 			siteTitle,
