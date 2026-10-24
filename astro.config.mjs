@@ -39,6 +39,16 @@ const database = getDatabaseAdapter();
 export default defineConfig({
 	site: process.env.EMDASH_SITE_URL || "https://devk.my.id",
 	output: "server",
+	redirects: {
+		"/remote-install-os-software": "/jasa-install-software-online",
+		"/remote-install-autocad": "/jasa-install-autocad-online",
+		"/remote-install-adobe-cc": "/jasa-install-adobe-creative-cloud-online",
+		"/remote-install-spss-skripsi": "/jasa-install-spss-online",
+		"/software-development-surabaya": "/jasa-pembuatan-software",
+		"/aplikasi-pos-kasir-surabaya": "/jasa-pembuatan-aplikasi-pos-kasir",
+		"/aplikasi-crm-penjualan-b2b": "/jasa-pembuatan-crm",
+		"/upgrade-ssd-ram-laptop-surabaya": "/jasa-install-komputer-surabaya-sidoarjo",
+	},
 	adapter: node({
 		mode: "standalone",
 	}),
