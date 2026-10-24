@@ -40,6 +40,7 @@ export default defineConfig({
 	site: process.env.EMDASH_SITE_URL || "https://devk.my.id",
 	output: "server",
 	redirects: {
+		"/sitemap-index.xml": "/sitemap.xml",
 		"/remote-install-os-software": "/jasa-install-software-online",
 		"/remote-install-autocad": "/jasa-install-autocad-online",
 		"/remote-install-adobe-cc": "/jasa-install-adobe-creative-cloud-online",
