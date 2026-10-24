@@ -50,6 +50,12 @@ export default defineConfig({
 		"/aplikasi-crm-penjualan-b2b": "/jasa-pembuatan-crm",
 		"/upgrade-ssd-ram-laptop-surabaya": "/jasa-install-komputer-surabaya-sidoarjo",
 	},
+	security: {
+		allowedDomains: [
+			{ protocol: "https", hostname: "**.eu.org" },
+			{ protocol: "https", hostname: "devk.my.id" }
+		],
+	},
 	adapter: node({
 		mode: "standalone",
 	}),
