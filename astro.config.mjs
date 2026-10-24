@@ -52,8 +52,12 @@ export default defineConfig({
 	},
 	security: {
 		allowedDomains: [
+			{ protocol: "https", hostname: "kc.devk.my.id" },
+			{ protocol: "https", hostname: "devk.my.id" },
+			{ protocol: "https", hostname: "**.devk.my.id" },
 			{ protocol: "https", hostname: "**.eu.org" },
-			{ protocol: "https", hostname: "devk.my.id" }
+			{ protocol: "https", hostname: "localhost" },
+			{ protocol: "http", hostname: "localhost" }
 		],
 	},
 	adapter: node({
@@ -74,7 +78,7 @@ export default defineConfig({
 	image: {
 		layout: "constrained",
 		responsiveStyles: true,
-		domains: ["devk.my.id", "software.devk.my.id", "localhost"],
+		domains: ["devk.my.id", "software.devk.my.id", "kc.devk.my.id", "localhost"],
 		remotePatterns: [
 			{ protocol: "https" },
 			{ protocol: "http" },

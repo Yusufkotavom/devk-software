@@ -5,6 +5,7 @@ import PageView from "../components/PageView.astro";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
 import { heroSeoDefaults } from "../utils/page";
 import { buildOgImageUrl } from "../lib/og/url";
+import { getSiteOrigin } from "../utils/origin";
 
 const { entry: homePage, cacheHint } = await getEmDashEntry("pages", "home");
 if (Astro.cache?.enabled && cacheHint) Astro.cache.set(cacheHint);
@@ -15,14 +16,15 @@ const { siteTitle, siteTagline } = resolveBlogSiteIdentity(settings);
 const content = homePage?.data?.content ?? [];
 const hasHomePage = !!homePage && Array.isArray(content) && content.length > 0;
 
-const heroDefaults = hasHomePage ? heroSeoDefaults(content as any, Astro.url.origin) : {};
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+const heroDefaults = hasHomePage ? heroSeoDefaults(content as any, siteOrigin) : {};
 const seo = homePage
 	? getSeoMeta(homePage, {
 			siteTitle,
-			siteUrl: Astro.url.origin,
+			siteUrl: siteOrigin,
 			path: "/",
 			...heroDefaults,
-			defaultOgImage: heroDefaults.defaultOgImage ?? buildOgImageUrl(Astro.url.origin, "pages", "home"),
+			defaultOgImage: heroDefaults.defaultOgImage ?? buildOgImageUrl(siteOrigin, "pages", "home"),
 	  })
 	: { title: siteTitle, description: siteTagline };
 ---

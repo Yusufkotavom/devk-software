@@ -1,11 +1,13 @@
 ---
 import { getWhatsAppSettings, buildWhatsAppHref } from "../utils/whatsapp";
+import { getSiteOrigin } from "../utils/origin";
 
 const setting = await getWhatsAppSettings();
 const isEnabled = setting ? (setting.enabled === true || setting.enabled === 1 || setting.enabled === "1") : true;
 const calloutText = setting?.callout_text?.trim() || "Chat WhatsApp";
 
-const currentUrl = Astro.url.href;
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+const currentUrl = `${siteOrigin}${Astro.url.pathname}${Astro.url.search}`;
 const waUrl = buildWhatsAppHref(setting, {
 	pageUrl: currentUrl,
 	pageTitle: Astro.props.pageTitle || "",

@@ -1,5 +1,6 @@
 ---
 import { getWhatsAppSettings, buildWhatsAppHref } from "../../utils/whatsapp";
+import { getSiteOrigin } from "../../utils/origin";
 
 interface Props {
 	headline?: string;
@@ -21,7 +22,8 @@ const {
 } = raw;
 
 const setting = await getWhatsAppSettings();
-const currentUrl = Astro.url.href;
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+const currentUrl = `${siteOrigin}${Astro.url.pathname}${Astro.url.search}`;
 
 const waUrl = buildWhatsAppHref(setting, {
 	pageUrl: currentUrl,

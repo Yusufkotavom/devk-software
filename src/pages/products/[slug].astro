@@ -13,6 +13,7 @@ import Breadcrumb from "../../components/Breadcrumb.astro";
 import { formatDate } from "../../utils/locale";
 import { resolveBlogSiteIdentity } from "../../utils/site-identity";
 import { buildOgImageUrl } from "../../lib/og/url";
+import { getSiteOrigin } from "../../utils/origin";
 import "../../styles/prose.css";
 
 const slug = decodeSlug(Astro.params.slug);
@@ -35,25 +36,26 @@ function getImageUrl(img: unknown): string | undefined {
 	if (!img || typeof img !== "object") return undefined;
 	const image = img as Record<string, unknown>;
 	if (typeof image.src === "string" && image.src) {
-		return image.src.startsWith("http") ? image.src : `${Astro.url.origin}${image.src}`;
+		return image.src.startsWith("http") ? image.src : `${siteOrigin}${image.src}`;
 	}
 	const meta = image.meta as Record<string, unknown> | undefined;
 	const storageKey =
 		(typeof meta?.storageKey === "string" ? meta.storageKey : undefined) ||
 		(typeof image.id === "string" ? image.id : undefined);
 	if (storageKey) {
-		return `${Astro.url.origin}/_emdash/api/media/file/${storageKey}`;
+		return `${siteOrigin}/_emdash/api/media/file/${storageKey}`;
 	}
 	return undefined;
 }
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
 const featuredImageUrl = getImageUrl(product.data.featured_image);
 // Plan B fallback: the auto-generated OG card doubles as the feature image.
-const productOgFallback = buildOgImageUrl(Astro.url.origin, "products", slug);
+const productOgFallback = buildOgImageUrl(siteOrigin, "products", slug);
 const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
 
 const seo = getSeoMeta(product, {
 	siteTitle,
-	siteUrl: Astro.url.origin,
+	siteUrl: siteOrigin,
 	path: Astro.url.pathname.replace(/\/$/, ""),
 	defaultOgImage: featuredImageUrl ?? productOgFallback,
 });
@@ -72,7 +74,7 @@ const createdDate = createdAt ? formatDate(createdAt, "long") : null;
 import { getWhatsAppSettings, buildWhatsAppHref } from "../../utils/whatsapp";
 
 const setting = await getWhatsAppSettings();
-const productUrl = Astro.url.href;
+const productUrl = `${siteOrigin}${Astro.url.pathname}`;
 const productWaUrl = buildWhatsAppHref(setting, {
 	pageUrl: productUrl,
 	pageTitle: product.data.title,

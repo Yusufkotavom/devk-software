@@ -13,6 +13,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import StructuredData from "../components/StructuredData.astro";
 import { getSiteLocale } from "../utils/locale";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
+import { getSiteOrigin } from "../utils/origin";
 import "../styles/tokens.css";
 import "../styles/theme.css";
 import "../styles/marketing.css";
@@ -158,7 +159,7 @@ const year = new Date().getFullYear();
 		<title>{fullTitle}</title>
 		<EmDashHead page={pageCtx} />
 		<StructuredData
-			origin={Astro.url.origin}
+			origin={getSiteOrigin(Astro.site, Astro.url.origin)}
 			pathname={Astro.url.pathname}
 			pageTitle={pageTitle ?? title}
 			description={description}
