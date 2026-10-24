@@ -37,7 +37,7 @@ function getDatabaseAdapter() {
 const database = getDatabaseAdapter();
 
 export default defineConfig({
-	site: process.env.EMDASH_SITE_URL || "https://devk.my.id",
+	site: process.env.EMDASH_SITE_URL || undefined,
 	output: "server",
 	redirects: {
 		"/sitemap-index.xml": "/sitemap.xml",
@@ -130,7 +130,7 @@ export default defineConfig({
 			},
 		}),
 		emdash({
-			siteUrl: process.env.EMDASH_SITE_URL || "https://devk.my.id",
+			siteUrl: process.env.EMDASH_SITE_URL || undefined,
 			database,
 			storage: local({
 				directory: uploadsDirectory,
