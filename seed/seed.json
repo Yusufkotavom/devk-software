@@ -2260,17 +2260,17 @@
               "headline": "Eksplorasi Topik Utama Kami",
               "features": [
                 {
-                  "icon": "book",
+                  "icon": "file",
                   "title": "Literasi & Buku",
                   "description": "Rangkuman buku terbaik, tips self-publishing, panduan kepenulisan, dan industri perbukuan nasional."
                 },
                 {
-                  "icon": "code",
+                  "icon": "cpu",
                   "title": "Teknologi & Software",
                   "description": "Tutorial komputasi praktis, optimasi software kreatif, sistem operasi, dan direktori tools produktivitas."
                 },
                 {
-                  "icon": "globe",
+                  "icon": "storefront",
                   "title": "Bisnis & Transformasi Digital",
                   "description": "Wawasan otomatisasi usaha, POS kasir ritel, sistem operasional, dan pengembangan UMKM modern."
                 }
