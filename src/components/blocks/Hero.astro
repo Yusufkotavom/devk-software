@@ -2,6 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
+import BookMockup from "../ui/BookMockup.astro";
 import FadeInText from "@astroanimate/core/FadeInText";
 import type { PageContentBlock } from "../../../emdash-env";
 
@@ -69,26 +70,30 @@ const secondaryCta =
 		}
 	</div>
 	{
-		image && (
+		(image || raw.show_mockup) && (
 			<div class="frame hero__media-wrap">
-				<figure class="media hero__media settle">
-					<div class="media__img">
-						{typeof image === "string" ? (
-							<img src={image} alt={headline || "Hero"} class="w-full h-full object-cover rounded-xl" />
-						) : (
-							<Image
-								image={image}
-								priority
-								sizes="(min-width: 1264px) 1136px, 92vw"
-							/>
+				{image === "mockup" || raw.show_mockup ? (
+					<BookMockup title={headline} eyebrow={eyebrow} />
+				) : (
+					<figure class="media hero__media settle">
+						<div class="media__img">
+							{typeof image === "string" ? (
+								<img src={image} alt={headline || "Hero"} class="w-full h-full object-cover rounded-xl" />
+							) : (
+								<Image
+									image={image}
+									priority
+									sizes="(min-width: 1264px) 1136px, 92vw"
+								/>
+							)}
+						</div>
+						{image_caption && (
+							<figcaption class="media-chip">
+								{image_caption}
+							</figcaption>
 						)}
-					</div>
-					{image_caption && (
-						<figcaption class="media-chip">
-							{image_caption}
-						</figcaption>
-					)}
-				</figure>
+					</figure>
+				)}
 			</div>
 		)
 	}

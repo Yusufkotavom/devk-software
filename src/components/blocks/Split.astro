@@ -2,6 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
+import BookMockup from "../ui/BookMockup.astro";
 import type { PageContentBlock } from "../../../emdash-env";
 import { toParagraphs } from "../../utils/text";
 
@@ -60,21 +61,27 @@ const cta =
 				</a>
 			)}
 		</div>
-		{image && (
-			<figure class="media settle split__media">
-				<div class="media__img">
-					{typeof image === "string" ? (
-						<img src={image} alt={headline || "Deliverables"} loading="lazy" class="w-full h-full object-cover rounded-xl" />
-					) : (
-						<Image image={image} sizes="(max-width: 960px) 100vw, 600px" />
-					)}
+		{(image || raw.show_mockup) && (
+			image === "mockup" || raw.show_mockup ? (
+				<div class="split__media settle">
+					<BookMockup title={headline} eyebrow={eyebrow} />
 				</div>
-				{image_caption && (
-					<figcaption class="media-chip">
-						{image_caption}
-					</figcaption>
-				)}
-			</figure>
+			) : (
+				<figure class="media settle split__media">
+					<div class="media__img">
+						{typeof image === "string" ? (
+							<img src={image} alt={headline || "Deliverables"} loading="lazy" class="w-full h-full object-cover rounded-xl" />
+						) : (
+							<Image image={image} sizes="(max-width: 960px) 100vw, 600px" />
+						)}
+					</div>
+					{image_caption && (
+						<figcaption class="media-chip">
+							{image_caption}
+						</figcaption>
+					)}
+				</figure>
+			)
 		)}
 	</div>
 </section>

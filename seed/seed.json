@@ -10,7 +10,7 @@
     "title": "Devk Software Development",
     "tagline": "POS kasir, CRM, CMS & aplikasi custom untuk bisnis Anda",
     "seo": {
-      "titleSeparator": "—"
+      "titleSeparator": "\u2014"
     }
   },
   "blockTypes": [
@@ -1609,6 +1609,2694 @@
             "maxItems": 20
           }
         }
+      ],
+      "data": [
+        {
+          "id": "01M5SJ1791MZFSGQHS6DBDM4TN",
+          "slug": "about",
+          "title": "Tentang Kami",
+          "status": "published",
+          "authorId": null,
+          "content": [
+            {
+              "_key": "ab1",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ab1s",
+                  "text": "Kami adalah portal publikasi digital independen yang berfokus pada penyebaran wawasan literasi, referensi buku bermutu, ulasan industri kreatif, dan transformasi teknologi informasi untuk masyarakat modern.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab2",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "ab2s",
+                  "text": "Visi & Misi Redaksi",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab3",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ab3s",
+                  "text": "Misi kami adalah menghadirkan bacaan berkualitas tinggi yang menggabungkan kedalaman analisis, kejernihan penjelasan, dan kegunaan praktis. Kami meyakini bahwa akses terhadap informasi yang terverifikasi dan edukatif adalah fondasi penting bagi kemajuan literasi bangsa.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab4",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "ab4s",
+                  "text": "Pilar Bahasan Utama",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab5",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ab5s",
+                  "text": "1. Industri Buku & Literasi: Mengulas dunia perbukuan, panduan teknis penerbitan naskah, self-publishing, tata letak buku, hingga review karya sastra dan buku edukatif.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab6",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ab6s",
+                  "text": "2. Teknologi & Komputasi Praktis: Membahas optimasi perangkat lunak, arsitektur sistem, efisiensi kerja digital, dan pemecahan masalah perangkat keras sehari-hari.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab7",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ab7s",
+                  "text": "3. Ekosistem Bisnis & Digitalisasi: Panduan adopsi teknologi bagi UMKM, pengelolaan POS kasir ritel, CRM penjualan, dan integrasi operasional modern.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab8",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "ab8s",
+                  "text": "Bagian dari Ekosistem Sinergi",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab9",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ab9s",
+                  "text": "Situs ini beroperasi dalam sinergi erat dengan ekosistem digital dan jasa percetakan terkemuka, termasuk Kotacom (spesialis cetak buku dan solusi cetak digital) serta Devk Software House (pengembangan software kustom dan servis IT terpadu). Kolaborasi ini memastikan setiap topik yang kami angkat berpijak pada praktik nyata di industri.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab10",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "ab10s",
+                  "text": "Integritas dan Koreksi",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ab11",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ab11s",
+                  "text": "Kami menjunjung tinggi akurasi dan etika editorial. Jika Anda menemukan ketidaktepatan data dalam artikel kami atau ingin menyampaikan tanggapan redaksi, silakan hubungi tim kami melalui halaman Kontak.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": [],
+          "publishedAt": "2026-10-25T12:54:39Z",
+          "createdAt": "2026-10-25T12:54:39Z",
+          "updatedAt": "2026-10-25T12:54:39Z"
+        },
+        {
+          "id": "01M5SK1H7NGRD1X5KR2KH3BWWY",
+          "slug": "biaya-cetak-buku",
+          "title": "Biaya Cetak Buku & Simulasi Harga Transparan",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-biaya-cetak-buku",
+              "_type": "marketing_hero",
+              "image": "mockup",
+              "eyebrow": "TRANSPARANSI BIAYA",
+              "headline": "Kalkulator & Estimasi Biaya Cetak Buku",
+              "subheadline": "Daftar estimasi biaya cetak buku terlengkap berdasarkan jumlah halaman, pilihan kertas, dan oplah pesanan. Tanpa biaya tersembunyi.",
+              "image_caption": "Standar Produksi & Hasil Cetak Buku Fisik",
+              "primary_cta_url": "#cta",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "secondary_cta_url": "#pricing",
+              "secondary_cta_label": "Cek Pilihan Paket"
+            },
+            {
+              "_key": "stats-biaya-cetak-buku",
+              "_type": "marketing_stats",
+              "stats": [
+                {
+                  "label": "Buku Dicetak",
+                  "value": "50.000+",
+                  "description": "Eksemplar terdistribusi ke seluruh Indonesia"
+                },
+                {
+                  "label": "Kepuasan Penulis",
+                  "value": "99.4%",
+                  "description": "Ulasan bintang 5 dari 1.200+ penulis & komunitas"
+                },
+                {
+                  "label": "Minimal Order",
+                  "value": "1 Eks",
+                  "description": "Bebas cetak satuan tanpa beban biaya master plat"
+                },
+                {
+                  "label": "Garansi Mutu",
+                  "value": "100%",
+                  "description": "Ganti baru gratis jika ditemukan cacat potong / jilid"
+                }
+              ],
+              "headline": "Kredibilitas Produksi & Jaminan Kualitas",
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+            },
+            {
+              "_key": "deliverables-biaya-cetak-buku",
+              "body": "Setiap eksemplar naskah diproduksi dengan kelengkapan standar toko buku nasional siap pajang dan siap edar tanpa kekurangan satu komponen pun.",
+              "_type": "marketing_split",
+              "image": "/og/square/pages/biaya-cetak-buku.png",
+              "points": "Buku fisik cetak beresolusi tinggi 1200 DPI tajam & anti-luntur\nPilihan kertas isi impor Bookpaper krem elegan atau HVS putih premium\nCover tebal Art Carton 260 gsm berlapis laminasi doff / glossy tahan gores & air\nJilid lem panas (Perfect Binding) kokoh pabrikan tidak mudah copot\nGratis pembatas buku (bookmark) custom eksklusif senada cover\nFree kemasan shrink wrap plastik pelindung satuan tiap eksemplar\nPengecekan teknis layout margin, bleed, & ketebalan punggung (spine) gratis\nKemasan pengiriman box karton tebal berlapis bubble wrap aman antar pulau",
+              "cta_url": "#cta",
+              "eyebrow": "PAKET LENGKAP PENERBITAN",
+              "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
+              "anchor_id": "deliverables",
+              "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+            },
+            {
+              "_key": "features-biaya-cetak-buku",
+              "_type": "marketing_features",
+              "columns": "3",
+              "eyebrow": "FAKTOR BIAYA",
+              "features": [
+                {
+                  "icon": "file",
+                  "title": "Jumlah Halaman & Ukuran",
+                  "description": "Ukuran populer A5, B5, atau A4 dengan perhitungan biaya per lembar yang fleksibel."
+                },
+                {
+                  "icon": "star",
+                  "title": "Pilihan Bahan Kertas",
+                  "description": "Bookpaper ringan hemat ongkir, HVS tajam untuk tabel teknis, atau Art Paper untuk foto warna."
+                },
+                {
+                  "icon": "shield",
+                  "title": "Volume Oplah Pesanan",
+                  "description": "Semakin banyak eksemplar yang dicetak dalam satu kloter, semakin murah biaya per buku."
+                }
+              ],
+              "headline": "Elemen yang Menentukan Ongkos Cetak",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+            },
+            {
+              "_key": "why-us-biaya-cetak-buku",
+              "rows": [
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Teks tajam ultra-presisi, hitam pekat, raster halus tanpa garis putus",
+                  "feature_name": "Mesin Cetak Digital Press 1200 DPI",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Krem natural, ringan, tidak tembus pandang, nyaman dibaca berjam-jam",
+                  "feature_name": "Kertas Bookpaper Impor Khusus Buku",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
+                  "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Bisa pesan mulai 1 eksemplar untuk dummy proofing atau koleksi pribadi",
+                  "feature_name": "Cetak Satuan Bebas Tanpa Minimal Order",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Diinspeksi teknisi profesional sebelum produksi agar tidak ada teks terpotong",
+                  "feature_name": "Free Review Margin & Ketebalan Punggung (Spine)",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Garansi fisik ganti baru jika terdapat cacat potong, salah halaman, atau cacat jilid",
+                  "feature_name": "Garansi 100% Retur Cetak Ulang Gratis",
+                  "competitor_value": "no"
+                }
+              ],
+              "_type": "marketing_comparison_table",
+              "cta_url": "#cta",
+              "eyebrow": "KOMPARASI KUALITAS",
+              "headline": "Mengapa Memilih Layanan Cetak Kami?",
+              "us_title": "Kotabook / Percetakan Kami",
+              "anchor_id": "why-us",
+              "cta_label": "Buktikan Kualitasnya Sekarang",
+              "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
+              "competitor_title": "Percetakan Biasa / Fotokopi"
+            },
+            {
+              "_key": "logos-biaya-cetak-buku",
+              "_type": "marketing_logos",
+              "logos": [
+                {
+                  "name": "DIGITAL PRESS 1200 DPI"
+                },
+                {
+                  "name": "PERFECT BINDING ISO 9001"
+                },
+                {
+                  "name": "FSC CERTIFIED ECO PAPER"
+                },
+                {
+                  "name": "PERPUSNAS RI ISBN READY"
+                },
+                {
+                  "name": "WORKSHOP KOTACOM NETWORK"
+                },
+                {
+                  "name": "SHRINK WRAP PROTECTED"
+                }
+              ],
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+            },
+            {
+              "_key": "pricing-biaya-cetak-buku",
+              "_type": "marketing_pricing",
+              "plans": [
+                {
+                  "name": "Oplah 1\u20139 Eks",
+                  "price": "Rp 24.000",
+                  "period": "/buku (Cover Doff + Lem Panas)",
+                  "cta_url": "#cta",
+                  "features": "Bebas minimal order\nIsi Bookpaper 57 gsm\nCover full color laminasi\nTanpa biaya master plat\nWaktu kerja 1-2 hari",
+                  "cta_label": "Cek Biaya Satuan",
+                  "description": "Biaya satuan untuk proofing naskah atau kebutuhan pribadi terbatas.",
+                  "highlighted": false
+                },
+                {
+                  "name": "Oplah 50 Eks",
+                  "badge": "Paling Hemat",
+                  "price": "Rp 16.500",
+                  "period": "/buku (Cover Doff + Lem Panas)",
+                  "cta_url": "#cta",
+                  "features": "Hemat 30% per eksemplar\nGratis penanda buku (bookmark)\nFree wrapping plastik rapi\nPrioritas jalur produksi cepat",
+                  "cta_label": "Simulasi 50 Buku",
+                  "description": "Solusi paling ideal untuk kelas pelatihan, seminar, dan komunitas.",
+                  "highlighted": true
+                },
+                {
+                  "name": "Oplah 200+ Eks",
+                  "price": "Rp 12.500",
+                  "period": "/buku (Cover Doff + Lem Panas)",
+                  "cta_url": "#cta",
+                  "features": "Harga skala grosir termurah\nBisa upgrade jilid hardcover\nFree dummy sample fisik sebelum cetak massal\nBisa dibantu ISBN Kotacom",
+                  "cta_label": "Hitung Biaya Grosir",
+                  "description": "Biaya skala komersial untuk distribusi toko dan instansi pendidikan.",
+                  "highlighted": false
+                }
+              ],
+              "headline": "Tabel Simulasi Biaya Cetak (Ukuran A5, 100 Halaman)",
+              "anchor_id": "pricing"
+            },
+            {
+              "_key": "steps-biaya-cetak-buku",
+              "_type": "marketing_steps",
+              "steps": [
+                {
+                  "title": "Kirimkan Data Spesifikasi Naskah",
+                  "description": "Informasikan jumlah halaman, ukuran buku (A5/B5/A4), dan jenis kertas yang diinginkan.",
+                  "step_number": "01"
+                },
+                {
+                  "title": "Tentukan Jumlah Oplah",
+                  "description": "Beri tahu jumlah eksemplar yang ingin dicetak (misal: 1 eks, 25 eks, atau 100 eks).",
+                  "step_number": "02"
+                },
+                {
+                  "title": "Terima Surat Penawaran Resmi",
+                  "description": "Admin kami menghitungkan rincian ongkos cetak + estimasi ongkos kirim ke kota Anda.",
+                  "step_number": "03"
+                },
+                {
+                  "title": "Konfirmasi & Mulai Produksi",
+                  "description": "Setelah biaya disetujui, produksi langsung berjalan dan nomor resi dikirimkan saat buku jalan.",
+                  "step_number": "04"
+                }
+              ],
+              "eyebrow": "HITUNG CEPAT",
+              "headline": "Cara Mendapatkan Estimasi Biaya Akurat",
+              "anchor_id": "steps",
+              "subheadline": "Hanya 3 menit untuk mendapatkan rincian penawaran harga naskah Anda."
+            },
+            {
+              "_key": "faq-biaya-cetak-buku",
+              "_type": "marketing_faq",
+              "items": [
+                {
+                  "answer": "Tidak ada, harga sudah termasuk cetak cover depan-belakang full color dengan laminasi doff atau glossy.",
+                  "question": "Apakah ada biaya tambahan untuk cover warna?"
+                },
+                {
+                  "answer": "Tentu saja, kami menyediakan potongan harga progresif mulai dari pemesanan 50, 100, hingga 1.000 eksemplar.",
+                  "question": "Apakah ada diskon untuk cetak dalam jumlah ratusan?"
+                },
+                {
+                  "answer": "Untuk pesanan reguler, DP minimal 50% saat konfirmasi cetak dan pelunasan saat buku siap dikirimkan.",
+                  "question": "Bagaimana skema pembayaran cetak buku?"
+                }
+              ],
+              "headline": "FAQ Biaya & Pembayaran",
+              "anchor_id": "faq",
+              "subheadline": "Informasi tentang transparansi harga dan ketentuan pesanan."
+            },
+            {
+              "_key": "wa-biaya-cetak-buku",
+              "body": "Chat tim admin percetakan kami sekarang untuk simulasi kalkulasi ongkos cetak buku sesuai spesifikasi naskah Anda.",
+              "_type": "marketing_whatsapp_cta",
+              "label": "Hitung Biaya via WhatsApp",
+              "variant": "card",
+              "headline": "Dapatkan Rincian Biaya Naskah Anda Gratis",
+              "anchor_id": "cta",
+              "custom_message": "Halo Kotabook, saya ingin simulasi biaya cetak buku."
+            },
+            {
+              "_key": "moneysite-biaya-cetak-buku",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "secondary_cta_url": "https://devk.my.id",
+              "secondary_cta_label": "Software & Jasa IT Devk"
+            }
+          ],
+          "publishedAt": "2026-10-25T13:12:17Z",
+          "createdAt": "2026-10-25T13:12:17Z",
+          "updatedAt": "2026-10-25T14:10:14Z"
+        },
+        {
+          "id": "01M5SK1HDZNKM87BT6F2HHN3FK",
+          "slug": "cetak-ebook-ke-buku-fisik",
+          "title": "Jasa Cetak Ebook Jadi Buku Fisik Jilid Rapi",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_hero",
+              "image": "mockup",
+              "eyebrow": "DIGITAL TO PRINT",
+              "headline": "Ubah Ebook & File PDF Menjadi Buku Bacaan Nyata",
+              "subheadline": "Lelah membaca di layar monitor atau tablet? Cetak dokumen PDF, modul kursus, dan ebook Anda menjadi buku fisik jilid lem panas yang nyaman dibaca.",
+              "image_caption": "Standar Produksi & Hasil Cetak Buku Fisik",
+              "primary_cta_url": "#cta",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "secondary_cta_url": "#pricing",
+              "secondary_cta_label": "Cek Pilihan Paket"
+            },
+            {
+              "_key": "stats-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_stats",
+              "stats": [
+                {
+                  "label": "Buku Dicetak",
+                  "value": "50.000+",
+                  "description": "Eksemplar terdistribusi ke seluruh Indonesia"
+                },
+                {
+                  "label": "Kepuasan Penulis",
+                  "value": "99.4%",
+                  "description": "Ulasan bintang 5 dari 1.200+ penulis & komunitas"
+                },
+                {
+                  "label": "Minimal Order",
+                  "value": "1 Eks",
+                  "description": "Bebas cetak satuan tanpa beban biaya master plat"
+                },
+                {
+                  "label": "Garansi Mutu",
+                  "value": "100%",
+                  "description": "Ganti baru gratis jika ditemukan cacat potong / jilid"
+                }
+              ],
+              "headline": "Kredibilitas Produksi & Jaminan Kualitas",
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+            },
+            {
+              "_key": "deliverables-cetak-ebook-ke-buku-fisik",
+              "body": "Setiap eksemplar naskah diproduksi dengan kelengkapan standar toko buku nasional siap pajang dan siap edar tanpa kekurangan satu komponen pun.",
+              "_type": "marketing_split",
+              "image": "/og/square/pages/cetak-ebook-ke-buku-fisik.png",
+              "points": "Buku fisik cetak beresolusi tinggi 1200 DPI tajam & anti-luntur\nPilihan kertas isi impor Bookpaper krem elegan atau HVS putih premium\nCover tebal Art Carton 260 gsm berlapis laminasi doff / glossy tahan gores & air\nJilid lem panas (Perfect Binding) kokoh pabrikan tidak mudah copot\nGratis pembatas buku (bookmark) custom eksklusif senada cover\nFree kemasan shrink wrap plastik pelindung satuan tiap eksemplar\nPengecekan teknis layout margin, bleed, & ketebalan punggung (spine) gratis\nKemasan pengiriman box karton tebal berlapis bubble wrap aman antar pulau",
+              "cta_url": "#cta",
+              "eyebrow": "PAKET LENGKAP PENERBITAN",
+              "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
+              "anchor_id": "deliverables",
+              "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+            },
+            {
+              "_key": "features-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_features",
+              "columns": "3",
+              "eyebrow": "KEUNGGULAN KONVERSI",
+              "features": [
+                {
+                  "icon": "star",
+                  "title": "Kertas Bookpaper Adem di Mata",
+                  "description": "Bebas dari paparan radiasi layar ponsel. Kertas Bookpaper membuat mata tetap segar membaca berjam-jam."
+                },
+                {
+                  "icon": "file",
+                  "title": "Bisa Tambah Catatan & Highlight",
+                  "description": "Lebih mudah membuat anotasi, stabilo poin penting, dan membuka halaman referensi secara cepat."
+                },
+                {
+                  "icon": "shield",
+                  "title": "Jilid Lem Panas Seperti Buku Toko",
+                  "description": "Bukan sekadar fotokopi spiral, tapi buku rapi berpunggung lem panas dengan cover laminasi elegan."
+                }
+              ],
+              "headline": "Lebih Nyaman Dibaca & Tidak Melelahkan Mata",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+            },
+            {
+              "_key": "why-us-cetak-ebook-ke-buku-fisik",
+              "rows": [
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Teks tajam ultra-presisi, hitam pekat, raster halus tanpa garis putus",
+                  "feature_name": "Mesin Cetak Digital Press 1200 DPI",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Krem natural, ringan, tidak tembus pandang, nyaman dibaca berjam-jam",
+                  "feature_name": "Kertas Bookpaper Impor Khusus Buku",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
+                  "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Bisa pesan mulai 1 eksemplar untuk dummy proofing atau koleksi pribadi",
+                  "feature_name": "Cetak Satuan Bebas Tanpa Minimal Order",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Diinspeksi teknisi profesional sebelum produksi agar tidak ada teks terpotong",
+                  "feature_name": "Free Review Margin & Ketebalan Punggung (Spine)",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Garansi fisik ganti baru jika terdapat cacat potong, salah halaman, atau cacat jilid",
+                  "feature_name": "Garansi 100% Retur Cetak Ulang Gratis",
+                  "competitor_value": "no"
+                }
+              ],
+              "_type": "marketing_comparison_table",
+              "cta_url": "#cta",
+              "eyebrow": "KOMPARASI KUALITAS",
+              "headline": "Mengapa Memilih Layanan Cetak Kami?",
+              "us_title": "Kotabook / Percetakan Kami",
+              "anchor_id": "why-us",
+              "cta_label": "Buktikan Kualitasnya Sekarang",
+              "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
+              "competitor_title": "Percetakan Biasa / Fotokopi"
+            },
+            {
+              "_key": "logos-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_logos",
+              "logos": [
+                {
+                  "name": "DIGITAL PRESS 1200 DPI"
+                },
+                {
+                  "name": "PERFECT BINDING ISO 9001"
+                },
+                {
+                  "name": "FSC CERTIFIED ECO PAPER"
+                },
+                {
+                  "name": "PERPUSNAS RI ISBN READY"
+                },
+                {
+                  "name": "WORKSHOP KOTACOM NETWORK"
+                },
+                {
+                  "name": "SHRINK WRAP PROTECTED"
+                }
+              ],
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+            },
+            {
+              "_key": "pricing-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_pricing",
+              "plans": [
+                {
+                  "name": "Single Ebook Print",
+                  "price": "Rp 29.000",
+                  "period": "/buku (~120 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Cukup kirimkan link/file PDF\nPilihan Bookpaper atau HVS\nCover custom dari halaman pertama PDF\nJilid lem panas presisi",
+                  "cta_label": "Cetak Ebook Satuan",
+                  "description": "Cetak 1 buku saja dari koleksi ebook favorit atau paper riset Anda.",
+                  "highlighted": false
+                },
+                {
+                  "name": "Bundling Koleksi (3\u20135 Buku)",
+                  "badge": "Pilihan Pembaca",
+                  "price": "Rp 23.500",
+                  "period": "/buku (~120 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Diskon biaya per buku\nGratis desain punggung buku (spine)\nFree wrapping plastik pelindung\nPengerjaan cepat 2-3 hari",
+                  "cta_label": "Cetak Seri Ebook",
+                  "description": "Cetak seri ebook, modul belajar bertahap, atau rangkuman materi lengkap.",
+                  "highlighted": true
+                },
+                {
+                  "name": "Paket Modul Belajar (>20 Buku)",
+                  "price": "Rp 17.500",
+                  "period": "/buku (~120 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Harga hemat skala kelompok\nPilihan cover laminasi doff/glossy\nBisa campur halaman warna & hitam putih\nPengiriman kargo hemat ke seluruh Indonesia",
+                  "cta_label": "Order Modul Belajar",
+                  "description": "Untuk mentor kursus, pelatihan kerja, dan materi kelas bimbingan belajar.",
+                  "highlighted": false
+                }
+              ],
+              "headline": "Paket Cetak File Ebook PDF",
+              "anchor_id": "pricing"
+            },
+            {
+              "_key": "steps-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_steps",
+              "steps": [
+                {
+                  "title": "Kirimkan File Ebook (PDF)",
+                  "description": "Unggah file ebook melalui WhatsApp atau share folder Google Drive Anda.",
+                  "step_number": "01"
+                },
+                {
+                  "title": "Pilih Jenis Kertas & Ukuran",
+                  "description": "Pilih ukuran bacaan yang nyaman (A5 untuk buku santai, B5 untuk jurnal teknis).",
+                  "step_number": "02"
+                },
+                {
+                  "title": "Proses Digital Printing",
+                  "description": "Kami cetak isi dokumen, membuatkan cover menarik, dan menjilidnya dengan lem panas.",
+                  "step_number": "03"
+                },
+                {
+                  "title": "Buku Fisik Dikirim",
+                  "description": "Buku siap dinikmati di meja baca Anda tanpa perlu menatap layar elektronik lagi.",
+                  "step_number": "04"
+                }
+              ],
+              "eyebrow": "PROSES MUDAH",
+              "headline": "Cara Praktis Cetak File Ebook",
+              "anchor_id": "steps",
+              "subheadline": "Tanpa ribet keluar rumah, file ebook Anda langsung diproses cetak."
+            },
+            {
+              "_key": "faq-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_faq",
+              "items": [
+                {
+                  "answer": "Tim kami dapat menggunakan halaman judul pertama file PDF sebagai cover, atau membantu membuatkan cover minimalis gratis.",
+                  "question": "Bagaimana jika file ebook saya tidak memiliki desain cover?"
+                },
+                {
+                  "answer": "Bisa, mesin kami mencetak teks font asing, karakter alfabet, dan rumus teknis dengan presisi 1200 DPI tanpa buram.",
+                  "question": "Apakah bisa mencetak ebook berbahasa asing / dokumen teknis?"
+                },
+                {
+                  "answer": "Kerahasiaan dokumen Anda terjamin 100%. File hanya digunakan untuk keperluan cetak Anda dan tidak dibagikan ke pihak ketiga.",
+                  "question": "Apakah file ebook saya terjamin keamanannya?"
+                }
+              ],
+              "headline": "Pertanyaan Cetak Ebook",
+              "anchor_id": "faq",
+              "subheadline": "Semua yang perlu Anda ketahui tentang cetak file digital."
+            },
+            {
+              "_key": "wa-cetak-ebook-ke-buku-fisik",
+              "body": "Kirimkan file PDF Anda sekarang dan rasakan nikmatnya membaca buku fisik asli di tangan Anda.",
+              "_type": "marketing_whatsapp_cta",
+              "label": "Kirim File Ebook via WA",
+              "variant": "card",
+              "headline": "Ingin Baca Ebook Lebih Nyaman Tanpa Layar?",
+              "anchor_id": "cta",
+              "custom_message": "Halo Ebookku, saya ingin cetak file ebook PDF menjadi buku fisik."
+            },
+            {
+              "_key": "moneysite-cetak-ebook-ke-buku-fisik",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "secondary_cta_url": "https://devk.my.id",
+              "secondary_cta_label": "Software & Jasa IT Devk"
+            }
+          ],
+          "publishedAt": "2026-10-25T13:12:17Z",
+          "createdAt": "2026-10-25T13:12:17Z",
+          "updatedAt": "2026-10-25T14:10:14Z"
+        },
+        {
+          "id": "01M5QDQ9K1M5EDT4GVYDHJZHME",
+          "slug": "contact",
+          "title": "Kontak Kami",
+          "status": "published",
+          "authorId": null,
+          "content": [
+            {
+              "_key": "ct1",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ct1s",
+                  "text": "Kami selalu senang mendengar masukan, pertanyaan, tanggapan editorial, maupun peluang kerjasama dari para pembaca dan mitra bisnis.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct2",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "ct2s",
+                  "text": "Saluran Komunikasi Resmi",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct3",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ct3s",
+                  "text": "Untuk pertanyaan umum, tanggapan artikel, atau hak jawab redaksi, silakan hubungi kami melalui:",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct4",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ct4s",
+                  "text": "\u2022 Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct5",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ct5s",
+                  "text": "\u2022 WhatsApp Layanan: +62 857-9952-0350",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct6",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ct6s",
+                  "text": "\u2022 Jam Operasional Redaksi: Senin \u2013 Sabtu, pukul 08.00 \u2013 17.00 WIB",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct7",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "ct7s",
+                  "text": "Kerjasama & Publikasi Tamu",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct8",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ct8s",
+                  "text": "Bagi Anda penulis, penerbit, akademisi, atau pemilik bisnis yang ingin mengirimkan press release, resensi buku, atau artikel ulasan teknologi, silakan lampirkan draf lengkap beserta identitas diri melalui email resmi kami dengan subjek [KERJASAMA PUBLIKASI].",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct9",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "ct9s",
+                  "text": "Hak Jawab & Koreksi Fakta",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "ct10",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "ct10s",
+                  "text": "Jika terdapat informasi yang keliru atau memerlukan pembaruan dalam salah satu artikel kami, mohon sertakan URL artikel bersangkutan dan dokumen referensi pendukung agar redaksi dapat memproses verifikasi secepatnya.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": [],
+          "publishedAt": "2026-10-24T17:00:51.169Z",
+          "createdAt": "2026-10-24T17:00:51.169Z",
+          "updatedAt": "2026-10-25T12:54:39Z"
+        },
+        {
+          "id": "01M5SJ17M8ZJX0YMFZFWD1N1HA",
+          "slug": "disclaimer",
+          "title": "Penafian (Disclaimer)",
+          "status": "published",
+          "authorId": null,
+          "content": [
+            {
+              "_key": "dc1",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "dc1s",
+                  "text": "Semua informasi yang dipublikasikan di situs web ini diterbitkan dengan itikad baik dan bertujuan untuk memberikan informasi serta wawasan umum semata.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "dc2",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "dc2s",
+                  "text": "Bukan Nasihat Hukum atau Profesional",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "dc3",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "dc3s",
+                  "text": "Konten dalam situs ini, termasuk namun tidak terbatas pada ulasan perangkat lunak, tutorial instalasi, panduan penerbitan buku, dan tips bisnis, tidak boleh ditafsirkan sebagai nasihat hukum, keuangan, atau profesional yang mengikat. Setiap tindakan yang Anda ambil atas informasi yang Anda temukan di situs web ini merupakan risiko Anda sendiri sepenuhnya.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "dc4",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "dc4s",
+                  "text": "Tautan Eksternal & Afiliasi",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "dc5",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "dc5s",
+                  "text": "Melalui situs web kami, Anda dapat mengunjungi situs-situs web lain dengan mengikuti hyperlink ke situs eksternal tersebut. Meskipun kami berupaya hanya menyediakan tautan berkualitas ke situs web yang bermanfaat dan beretika, kami tidak memiliki kendali atas konten dan sifat situs web tersebut. Tautan ke situs web lain tidak menyiratkan rekomendasi untuk semua konten yang ditemukan di situs-situs tersebut.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "dc6",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "dc6s",
+                  "text": "Batasan Tanggung Jawab",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "dc7",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "dc7s",
+                  "text": "Pengelola situs web ini tidak bertanggung jawab atas kerugian dan/atau kerusakan dalam bentuk apa pun yang timbul sehubungan dengan penggunaan situs web kami atau ketergantungan pada informasi yang disajikan di sini.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": [],
+          "publishedAt": "2026-10-25T12:54:39Z",
+          "createdAt": "2026-10-25T12:54:39Z",
+          "updatedAt": "2026-10-25T12:54:39Z"
+        },
+        {
+          "id": "01M5QDQ9HH2MJXHE449YGNA4FP",
+          "slug": "home",
+          "title": "Home",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "univ-hero",
+              "_type": "marketing_hero",
+              "eyebrow": "PORTAL INFORMASI & PUBLIKASI INDEPENDEN",
+              "_version": 1,
+              "centered": true,
+              "headline": "Wawasan Mendalam, Panduan Praktis & Referensi Terpercaya",
+              "subheadline": "Menyajikan kurasi artikel pilihan seputar literasi, ulasan buku, transformasi teknologi, dan panduan digital praktis untuk pembaca cerdas.",
+              "primary_cta_url": "/posts",
+              "primary_cta_label": "Jelajahi Artikel Terbaru",
+              "secondary_cta_url": "/about",
+              "secondary_cta_label": "Tentang Kami"
+            },
+            {
+              "_key": "univ-topics",
+              "_type": "marketing_features",
+              "eyebrow": "KATEGORI & FOKUS BAHASAN",
+              "_version": 1,
+              "features": [
+                {
+                  "icon": "file",
+                  "title": "Literasi & Buku",
+                  "description": "Rangkuman buku terbaik, tips self-publishing, panduan kepenulisan, dan industri perbukuan nasional."
+                },
+                {
+                  "icon": "cpu",
+                  "title": "Teknologi & Software",
+                  "description": "Tutorial komputasi praktis, optimasi software kreatif, sistem operasi, dan direktori tools produktivitas."
+                },
+                {
+                  "icon": "storefront",
+                  "title": "Bisnis & Transformasi Digital",
+                  "description": "Wawasan otomatisasi usaha, POS kasir ritel, sistem operasional, dan pengembangan UMKM modern."
+                }
+              ],
+              "headline": "Eksplorasi Topik Utama Kami"
+            },
+            {
+              "_key": "univ-feed",
+              "mode": "latest",
+              "_type": "marketing_feed",
+              "limit": 6,
+              "layout": "grid",
+              "source": "posts",
+              "cta_url": "/posts",
+              "eyebrow": "TERBARU & PILIHAN REDAKSI",
+              "_version": 1,
+              "headline": "Artikel Pilihan Hari Ini",
+              "cta_label": "Lihat Semua Artikel",
+              "subheadline": "Baca ulasan mendalam dan perspektif terbaru dari para penulis redaksi."
+            },
+            {
+              "_key": "univ-cta",
+              "body": "Kami terbuka untuk kerjasama publikasi, penerbitan naskah, dan konsultasi kebutuhan digital bisnis Anda.",
+              "_type": "marketing_cta",
+              "_version": 1,
+              "headline": "Terhubung dengan Ekosistem Digital Kami",
+              "primary_cta_url": "/contact",
+              "primary_cta_label": "Hubungi Tim Redaksi",
+              "secondary_cta_url": "https://kotacom.id",
+              "secondary_cta_label": "Kunjungi Kotacom"
+            }
+          ],
+          "publishedAt": "2026-10-24T17:00:51.121Z",
+          "createdAt": "2026-10-24T17:00:51.122Z",
+          "updatedAt": "2026-10-25T12:54:39Z"
+        },
+        {
+          "id": "01M5SK1HT59BRQB4PES5W7BJDQ",
+          "slug": "jasa-cetak-buku-hardcover",
+          "title": "Jasa Cetak Buku Hardcover Mewah & Satuan",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-buku-hardcover",
+              "_type": "marketing_hero",
+              "image": "mockup",
+              "eyebrow": "PREMIUM BOOK BINDING",
+              "headline": "Cetak Buku Hardcover Elegan & Tahan Puluhan Tahun",
+              "subheadline": "Pilihan eksklusif untuk buku tahunan, biografi, buku kenangan keluarga, portofolio arsitektur, dan laporan institusi dengan board tebal dan pita pembatas.",
+              "image_caption": "Standar Produksi & Hasil Cetak Buku Fisik",
+              "primary_cta_url": "#cta",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "secondary_cta_url": "#pricing",
+              "secondary_cta_label": "Cek Pilihan Paket"
+            },
+            {
+              "_key": "stats-jasa-cetak-buku-hardcover",
+              "_type": "marketing_stats",
+              "stats": [
+                {
+                  "label": "Buku Dicetak",
+                  "value": "50.000+",
+                  "description": "Eksemplar terdistribusi ke seluruh Indonesia"
+                },
+                {
+                  "label": "Kepuasan Penulis",
+                  "value": "99.4%",
+                  "description": "Ulasan bintang 5 dari 1.200+ penulis & komunitas"
+                },
+                {
+                  "label": "Minimal Order",
+                  "value": "1 Eks",
+                  "description": "Bebas cetak satuan tanpa beban biaya master plat"
+                },
+                {
+                  "label": "Garansi Mutu",
+                  "value": "100%",
+                  "description": "Ganti baru gratis jika ditemukan cacat potong / jilid"
+                }
+              ],
+              "headline": "Kredibilitas Produksi & Jaminan Kualitas",
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+            },
+            {
+              "_key": "deliverables-jasa-cetak-buku-hardcover",
+              "body": "Setiap eksemplar naskah diproduksi dengan kelengkapan standar toko buku nasional siap pajang dan siap edar tanpa kekurangan satu komponen pun.",
+              "_type": "marketing_split",
+              "image": "/og/square/pages/jasa-cetak-buku-hardcover.png",
+              "points": "Buku fisik cetak beresolusi tinggi 1200 DPI tajam & anti-luntur\nPilihan kertas isi impor Bookpaper krem elegan atau HVS putih premium\nCover tebal Art Carton 260 gsm berlapis laminasi doff / glossy tahan gores & air\nJilid lem panas (Perfect Binding) kokoh pabrikan tidak mudah copot\nGratis pembatas buku (bookmark) custom eksklusif senada cover\nFree kemasan shrink wrap plastik pelindung satuan tiap eksemplar\nPengecekan teknis layout margin, bleed, & ketebalan punggung (spine) gratis\nKemasan pengiriman box karton tebal berlapis bubble wrap aman antar pulau",
+              "cta_url": "#cta",
+              "eyebrow": "PAKET LENGKAP PENERBITAN",
+              "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
+              "anchor_id": "deliverables",
+              "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+            },
+            {
+              "_key": "features-jasa-cetak-buku-hardcover",
+              "_type": "marketing_features",
+              "columns": "3",
+              "eyebrow": "KUALITAS PREMIUM",
+              "features": [
+                {
+                  "icon": "shield",
+                  "title": "Board Kokoh Tebal No. 30/40",
+                  "description": "Menggunakan bahan karton board import tebal yang kaku, lurus, dan tidak mudah melengkung."
+                },
+                {
+                  "icon": "star",
+                  "title": "Aksen Foil Emas & Spot UV",
+                  "description": "Pilihan finishing tulisan cover emboss timbul, hot print emas/perak, dan laminasi doff velvet beludru."
+                },
+                {
+                  "icon": "file",
+                  "title": "Aksesoris Buku Eksklusif",
+                  "description": "Dilengkapi pita pembatas rajut satin elegan, kapital band rapi di ujung punggung, dan wrapping khusus."
+                }
+              ],
+              "headline": "Detail Finishing Spesifikasi Mewah",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+            },
+            {
+              "_key": "why-us-jasa-cetak-buku-hardcover",
+              "rows": [
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Teks tajam ultra-presisi, hitam pekat, raster halus tanpa garis putus",
+                  "feature_name": "Mesin Cetak Digital Press 1200 DPI",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Krem natural, ringan, tidak tembus pandang, nyaman dibaca berjam-jam",
+                  "feature_name": "Kertas Bookpaper Impor Khusus Buku",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
+                  "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Bisa pesan mulai 1 eksemplar untuk dummy proofing atau koleksi pribadi",
+                  "feature_name": "Cetak Satuan Bebas Tanpa Minimal Order",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Diinspeksi teknisi profesional sebelum produksi agar tidak ada teks terpotong",
+                  "feature_name": "Free Review Margin & Ketebalan Punggung (Spine)",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Garansi fisik ganti baru jika terdapat cacat potong, salah halaman, atau cacat jilid",
+                  "feature_name": "Garansi 100% Retur Cetak Ulang Gratis",
+                  "competitor_value": "no"
+                }
+              ],
+              "_type": "marketing_comparison_table",
+              "cta_url": "#cta",
+              "eyebrow": "KOMPARASI KUALITAS",
+              "headline": "Mengapa Memilih Layanan Cetak Kami?",
+              "us_title": "Kotabook / Percetakan Kami",
+              "anchor_id": "why-us",
+              "cta_label": "Buktikan Kualitasnya Sekarang",
+              "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
+              "competitor_title": "Percetakan Biasa / Fotokopi"
+            },
+            {
+              "_key": "logos-jasa-cetak-buku-hardcover",
+              "_type": "marketing_logos",
+              "logos": [
+                {
+                  "name": "DIGITAL PRESS 1200 DPI"
+                },
+                {
+                  "name": "PERFECT BINDING ISO 9001"
+                },
+                {
+                  "name": "FSC CERTIFIED ECO PAPER"
+                },
+                {
+                  "name": "PERPUSNAS RI ISBN READY"
+                },
+                {
+                  "name": "WORKSHOP KOTACOM NETWORK"
+                },
+                {
+                  "name": "SHRINK WRAP PROTECTED"
+                }
+              ],
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+            },
+            {
+              "_key": "pricing-jasa-cetak-buku-hardcover",
+              "_type": "marketing_pricing",
+              "plans": [
+                {
+                  "name": "Hardcover Satuan (1\u20135 Eks)",
+                  "price": "Rp 65.000",
+                  "period": "/buku (~150 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Bisa pesan 1 eksemplar saja\nHardcover board tebal kokoh\nLaminasi cover Doff / Glossy\nPita pembatas buku satin\nWaktu pengerjaan 3 hari",
+                  "cta_label": "Pesan Hardcover Satuan",
+                  "description": "Ideal untuk buku skripsi/tesis mewah, buku portofolio, atau kenang-kenangan pribadi.",
+                  "highlighted": false
+                },
+                {
+                  "name": "Paket Buku Kenangan (20\u201350 Eks)",
+                  "badge": "Paling Diminati",
+                  "price": "Rp 48.000",
+                  "period": "/buku (~150 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Diskon harga volume pesanan\nPilihan kertas isi Art Paper warna\nFinishing laminasi cover mewah\nFree wrapping kardus satuan per buku",
+                  "cta_label": "Order Buku Kenangan",
+                  "description": "Paling disukai untuk buku biografi keluarga, reuni akbar, dan peringatan instansi.",
+                  "highlighted": true
+                },
+                {
+                  "name": "Paket Korporat (>100 Eks)",
+                  "price": "Rp 36.000",
+                  "period": "/buku (~150 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Harga paling kompetitif\nBisa upgrade foil emas / spot UV\nOpsi box kemasan eksklusif\nPengecekan dummy fisik gratis",
+                  "cta_label": "Konsultasi Korporat",
+                  "description": "Untuk annual report BUMN/swasta, buku sejarah lembaga, dan souvenir VIP.",
+                  "highlighted": false
+                }
+              ],
+              "headline": "Paket Cetak Buku Hardcover",
+              "anchor_id": "pricing"
+            },
+            {
+              "_key": "steps-jasa-cetak-buku-hardcover",
+              "_type": "marketing_steps",
+              "steps": [
+                {
+                  "title": "Konsultasi Konsep & Finishing",
+                  "description": "Tentukan ukuran buku, ketebalan board, dan aksen cover (emas/perak/spot UV).",
+                  "step_number": "01"
+                },
+                {
+                  "title": "Pembuatan Dummy & Layout Isi",
+                  "description": "Kami pastikan margin dan lekukan engsel cover (hinge) terukur presisi.",
+                  "step_number": "02"
+                },
+                {
+                  "title": "Penjilidan Lem & Perakitan Board",
+                  "description": "Penjilidan blok isi, pemasangan endpaper tebal, pita pembatas, dan pengeleman case board.",
+                  "step_number": "03"
+                },
+                {
+                  "title": "Finishing Press & Pengeringan",
+                  "description": "Buku dipress selama beberapa jam agar board menempel rata sempurna sebelum dipacking.",
+                  "step_number": "04"
+                }
+              ],
+              "eyebrow": "PROSES PRESISI TINGGI",
+              "headline": "Pembuatan Buku Hardcover Berkualitas",
+              "anchor_id": "steps",
+              "subheadline": "Kombinasi teknologi mesin modern dan ketelitian tangan ahli penjilidan."
+            },
+            {
+              "_key": "faq-jasa-cetak-buku-hardcover",
+              "_type": "marketing_faq",
+              "items": [
+                {
+                  "answer": "Bisa! Kami melayani pembuatan buku hardcover custom mulai dari 1 eksemplar.",
+                  "question": "Apakah buku hardcover bisa dicetak hanya 1 buku?"
+                },
+                {
+                  "answer": "Paling populer adalah Bookpaper 72 gsm untuk novel/biografi, serta Matte Paper atau Art Paper 120/150 gsm untuk buku foto penuh warna.",
+                  "question": "Apa saja pilihan kertas isi untuk buku hardcover?"
+                },
+                {
+                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3\u20134 hari kerja.",
+                  "question": "Berapa lama pengerjaan buku hardcover?"
+                }
+              ],
+              "headline": "FAQ Cetak Hardcover",
+              "anchor_id": "faq",
+              "subheadline": "Informasi teknis pembuatan buku hardcover."
+            },
+            {
+              "_key": "wa-jasa-cetak-buku-hardcover",
+              "body": "Beri sentuhan kemewahan dan keabadian pada naskah berharga Anda dengan jilid hardcover standar penerbit internasional.",
+              "_type": "marketing_whatsapp_cta",
+              "label": "Chat Spesialis Hardcover",
+              "variant": "card",
+              "headline": "Abadikan Karya Anda Dalam Buku Hardcover Mewah",
+              "anchor_id": "cta",
+              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak buku hardcover."
+            },
+            {
+              "_key": "moneysite-jasa-cetak-buku-hardcover",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "secondary_cta_url": "https://devk.my.id",
+              "secondary_cta_label": "Software & Jasa IT Devk"
+            }
+          ],
+          "publishedAt": "2026-10-25T13:12:17Z",
+          "createdAt": "2026-10-25T13:12:17Z",
+          "updatedAt": "2026-10-25T14:10:14Z"
+        },
+        {
+          "id": "01M5SK1GTT86N59NTHKAHWFPMR",
+          "slug": "jasa-cetak-buku-satuan",
+          "title": "Jasa Cetak Buku Satuan Murah & Cepat",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-buku-satuan",
+              "_type": "marketing_hero",
+              "image": "mockup",
+              "eyebrow": "PRINT ON DEMAND INDONESIA",
+              "headline": "Jasa Cetak Buku Satuan Tanpa Minimal Order",
+              "subheadline": "Cetak novel, buku ajar, komik, atau dummy skripsi mulai 1 buku saja. Kualitas mesin digital press dengan jilid lem panas presisi.",
+              "image_caption": "Standar Produksi & Hasil Cetak Buku Fisik",
+              "primary_cta_url": "#cta",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "secondary_cta_url": "#pricing",
+              "secondary_cta_label": "Cek Pilihan Paket"
+            },
+            {
+              "_key": "stats-jasa-cetak-buku-satuan",
+              "_type": "marketing_stats",
+              "stats": [
+                {
+                  "label": "Buku Dicetak",
+                  "value": "50.000+",
+                  "description": "Eksemplar terdistribusi ke seluruh Indonesia"
+                },
+                {
+                  "label": "Kepuasan Penulis",
+                  "value": "99.4%",
+                  "description": "Ulasan bintang 5 dari 1.200+ penulis & komunitas"
+                },
+                {
+                  "label": "Minimal Order",
+                  "value": "1 Eks",
+                  "description": "Bebas cetak satuan tanpa beban biaya master plat"
+                },
+                {
+                  "label": "Garansi Mutu",
+                  "value": "100%",
+                  "description": "Ganti baru gratis jika ditemukan cacat potong / jilid"
+                }
+              ],
+              "headline": "Kredibilitas Produksi & Jaminan Kualitas",
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+            },
+            {
+              "_key": "deliverables-jasa-cetak-buku-satuan",
+              "body": "Setiap eksemplar naskah diproduksi dengan kelengkapan standar toko buku nasional siap pajang dan siap edar tanpa kekurangan satu komponen pun.",
+              "_type": "marketing_split",
+              "image": "/og/square/pages/jasa-cetak-buku-satuan.png",
+              "points": "Buku fisik cetak beresolusi tinggi 1200 DPI tajam & anti-luntur\nPilihan kertas isi impor Bookpaper krem elegan atau HVS putih premium\nCover tebal Art Carton 260 gsm berlapis laminasi doff / glossy tahan gores & air\nJilid lem panas (Perfect Binding) kokoh pabrikan tidak mudah copot\nGratis pembatas buku (bookmark) custom eksklusif senada cover\nFree kemasan shrink wrap plastik pelindung satuan tiap eksemplar\nPengecekan teknis layout margin, bleed, & ketebalan punggung (spine) gratis\nKemasan pengiriman box karton tebal berlapis bubble wrap aman antar pulau",
+              "cta_url": "#cta",
+              "eyebrow": "PAKET LENGKAP PENERBITAN",
+              "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
+              "anchor_id": "deliverables",
+              "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+            },
+            {
+              "_key": "features-jasa-cetak-buku-satuan",
+              "_type": "marketing_features",
+              "columns": "3",
+              "eyebrow": "KEUNGGULAN LAYANAN",
+              "features": [
+                {
+                  "icon": "file",
+                  "title": "Bebas Tanpa Minimal Order",
+                  "description": "Bisa cetak 1 eksemplar saja untuk proofing naskah, koleksi pribadi, portofolio, atau hadiah istimewa."
+                },
+                {
+                  "icon": "star",
+                  "title": "Kertas Bookpaper & HVS Lengkap",
+                  "description": "Tersedia Bookpaper krem 57/72 gsm standar novel internasional, HVS putih 70/80 gsm, hingga Art Paper."
+                },
+                {
+                  "icon": "shield",
+                  "title": "Finishing Jilid Lem Panas",
+                  "description": "Cover Art Carton 260 gsm laminasi doff/glossy dan jilid lem panas (perfect binding) anti-rontok."
+                }
+              ],
+              "headline": "Standar Cetak Penerbit Profesional",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+            },
+            {
+              "_key": "why-us-jasa-cetak-buku-satuan",
+              "rows": [
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Teks tajam ultra-presisi, hitam pekat, raster halus tanpa garis putus",
+                  "feature_name": "Mesin Cetak Digital Press 1200 DPI",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Krem natural, ringan, tidak tembus pandang, nyaman dibaca berjam-jam",
+                  "feature_name": "Kertas Bookpaper Impor Khusus Buku",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
+                  "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Bisa pesan mulai 1 eksemplar untuk dummy proofing atau koleksi pribadi",
+                  "feature_name": "Cetak Satuan Bebas Tanpa Minimal Order",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Diinspeksi teknisi profesional sebelum produksi agar tidak ada teks terpotong",
+                  "feature_name": "Free Review Margin & Ketebalan Punggung (Spine)",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Garansi fisik ganti baru jika terdapat cacat potong, salah halaman, atau cacat jilid",
+                  "feature_name": "Garansi 100% Retur Cetak Ulang Gratis",
+                  "competitor_value": "no"
+                }
+              ],
+              "_type": "marketing_comparison_table",
+              "cta_url": "#cta",
+              "eyebrow": "KOMPARASI KUALITAS",
+              "headline": "Mengapa Memilih Layanan Cetak Kami?",
+              "us_title": "Kotabook / Percetakan Kami",
+              "anchor_id": "why-us",
+              "cta_label": "Buktikan Kualitasnya Sekarang",
+              "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
+              "competitor_title": "Percetakan Biasa / Fotokopi"
+            },
+            {
+              "_key": "logos-jasa-cetak-buku-satuan",
+              "_type": "marketing_logos",
+              "logos": [
+                {
+                  "name": "DIGITAL PRESS 1200 DPI"
+                },
+                {
+                  "name": "PERFECT BINDING ISO 9001"
+                },
+                {
+                  "name": "FSC CERTIFIED ECO PAPER"
+                },
+                {
+                  "name": "PERPUSNAS RI ISBN READY"
+                },
+                {
+                  "name": "WORKSHOP KOTACOM NETWORK"
+                },
+                {
+                  "name": "SHRINK WRAP PROTECTED"
+                }
+              ],
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+            },
+            {
+              "_key": "pricing-jasa-cetak-buku-satuan",
+              "_type": "marketing_pricing",
+              "plans": [
+                {
+                  "name": "Paket Satuan (POD)",
+                  "price": "Rp 25.000",
+                  "period": "/buku (A5 ~100 hal)",
+                  "cta_url": "#cta",
+                  "features": "Minimal order 1 eksemplar\nUkuran standar A5 (14x20 cm)\nIsi Bookpaper 57 gsm hitam putih\nCover Art Carton 260 gsm laminasi\nJilid lem panas rapi & presisi",
+                  "cta_label": "Pesan Satuan",
+                  "description": "Solusi tepat untuk cetak dummy naskah, skripsi, atau terbitan perdana.",
+                  "highlighted": false
+                },
+                {
+                  "name": "Paket Komunitas (10\u201350 Eks)",
+                  "badge": "Paling Populer",
+                  "price": "Rp 18.500",
+                  "period": "/buku (A5 ~100 hal)",
+                  "cta_url": "#cta",
+                  "features": "Minimal order 10 eksemplar\nDiskon biaya per eksemplar\nGratis pembatas buku (bookmark)\nFree wrapping plastik per buku\nPrioritas pengerjaan 2-3 hari",
+                  "cta_label": "Order Paket Komunitas",
+                  "description": "Paling hemat untuk penulis indie, edisi terbatas, dan promosi komunitas.",
+                  "highlighted": true
+                },
+                {
+                  "name": "Paket Grosir (>100 Eks)",
+                  "price": "Rp 14.000",
+                  "period": "/buku (A5 ~100 hal)",
+                  "cta_url": "#cta",
+                  "features": "Minimal order 100 eksemplar\nHarga grosir kompetitif\nPilihan kertas khusus / isi warna\nFree sample dummy sebelum massal\nDukungan legalitas ISBN Kotacom",
+                  "cta_label": "Konsultasi Grosir",
+                  "description": "Untuk yayasan, penerbit indie, sekolah, dan distribusi toko buku.",
+                  "highlighted": false
+                }
+              ],
+              "headline": "Pilihan Paket & Estimasi Biaya Cetak",
+              "anchor_id": "pricing"
+            },
+            {
+              "_key": "steps-jasa-cetak-buku-satuan",
+              "_type": "marketing_steps",
+              "steps": [
+                {
+                  "title": "Kirimkan File Naskah (PDF)",
+                  "description": "Kirim file isi dan cover siap cetak melalui WhatsApp atau link Google Drive.",
+                  "step_number": "01"
+                },
+                {
+                  "title": "Pengecekan Layout & Dummy Proof",
+                  "description": "Tim kami memeriksa margin, bleed, serta punggung buku (spine) agar tidak ada teks terpotong.",
+                  "step_number": "02"
+                },
+                {
+                  "title": "Produksi Cetak Digital Press",
+                  "description": "Naskah dicetak dengan mesin digital press resolusi tinggi, dilanjutkan jilid lem panas dan laminasi.",
+                  "step_number": "03"
+                },
+                {
+                  "title": "Quality Control & Pengiriman",
+                  "description": "Buku dicek fisik satu per satu, di-wrapping plastik pelindung, dan dikirim aman ke alamat Anda.",
+                  "step_number": "04"
+                }
+              ],
+              "eyebrow": "PROSES MUDAH & CEPAT",
+              "headline": "4 Langkah Praktis Cetak Naskah Anda",
+              "anchor_id": "steps",
+              "subheadline": "Dari file naskah di komputer Anda hingga menjadi buku cetak fisik di tangan."
+            },
+            {
+              "_key": "faq-jasa-cetak-buku-satuan",
+              "_type": "marketing_faq",
+              "items": [
+                {
+                  "answer": "Ya, kami melayani cetak buku mulai dari 1 eksemplar tanpa plat film menggunakan teknologi digital press on demand.",
+                  "question": "Apakah benar-benar bisa cetak buku hanya 1 eksemplar?"
+                },
+                {
+                  "answer": "Untuk pesanan 1\u201310 buku rata-rata selesai dalam 1\u20132 hari kerja setelah file naskah diverifikasi siap cetak.",
+                  "question": "Berapa lama waktu pengerjaan cetak buku satuan?"
+                },
+                {
+                  "answer": "Bookpaper berwarna krem kekuningan yang nyaman di mata untuk membaca novel teks panjang. HVS berwarna putih bersih yang umum dipakai dokumen atau modul.",
+                  "question": "Apa perbedaan kertas Bookpaper dan HVS?"
+                },
+                {
+                  "answer": "Ya, kami dapat membantu pengurusan legalitas ISBN dan barcode buku melalui jaringan penerbitan resmi Kotacom.",
+                  "question": "Apakah ada bantuan pengurusan ISBN?"
+                }
+              ],
+              "headline": "Pertanyaan Umum Cetak Satuan",
+              "anchor_id": "faq",
+              "subheadline": "Jawaban lengkap seputar spesifikasi teknis, waktu pengerjaan, dan pengiriman."
+            },
+            {
+              "_key": "wa-jasa-cetak-buku-satuan",
+              "body": "Konsultasikan naskah Anda hari ini bersama tim spesialis kami. Dapatkan review layout gratis dan penawaran harga terbaik.",
+              "_type": "marketing_whatsapp_cta",
+              "label": "Chat WhatsApp Cetak Satuan",
+              "variant": "card",
+              "headline": "Cetak Buku Satuan Anda Sekarang",
+              "anchor_id": "cta",
+              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak buku satuan."
+            },
+            {
+              "_key": "moneysite-jasa-cetak-buku-satuan",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "secondary_cta_url": "https://devk.my.id",
+              "secondary_cta_label": "Software & Jasa IT Devk"
+            }
+          ],
+          "publishedAt": "2026-10-25T13:12:17Z",
+          "createdAt": "2026-10-25T13:12:17Z",
+          "updatedAt": "2026-10-25T14:10:14Z"
+        },
+        {
+          "id": "01M5SK1HM6KQVKPJENJTN92340",
+          "slug": "jasa-cetak-modul-dan-buku-ajar",
+          "title": "Jasa Cetak Modul Pembelajaran & Buku Ajar Kampus",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_hero",
+              "image": "mockup",
+              "eyebrow": "SOLUSI EDUKASI & PELATIHAN",
+              "headline": "Cetak Modul Bimbel & Buku Ajar Murah",
+              "subheadline": "Spesialisasi percetakan modul pelatihan, buku diktat kuliah, lembar kerja siswa, dan modul bimbel dengan harga grosir dan jilid awet tahan lama.",
+              "image_caption": "Standar Produksi & Hasil Cetak Buku Fisik",
+              "primary_cta_url": "#cta",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "secondary_cta_url": "#pricing",
+              "secondary_cta_label": "Cek Pilihan Paket"
+            },
+            {
+              "_key": "stats-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_stats",
+              "stats": [
+                {
+                  "label": "Buku Dicetak",
+                  "value": "50.000+",
+                  "description": "Eksemplar terdistribusi ke seluruh Indonesia"
+                },
+                {
+                  "label": "Kepuasan Penulis",
+                  "value": "99.4%",
+                  "description": "Ulasan bintang 5 dari 1.200+ penulis & komunitas"
+                },
+                {
+                  "label": "Minimal Order",
+                  "value": "1 Eks",
+                  "description": "Bebas cetak satuan tanpa beban biaya master plat"
+                },
+                {
+                  "label": "Garansi Mutu",
+                  "value": "100%",
+                  "description": "Ganti baru gratis jika ditemukan cacat potong / jilid"
+                }
+              ],
+              "headline": "Kredibilitas Produksi & Jaminan Kualitas",
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+            },
+            {
+              "_key": "deliverables-jasa-cetak-modul-dan-buku-ajar",
+              "body": "Setiap eksemplar naskah diproduksi dengan kelengkapan standar toko buku nasional siap pajang dan siap edar tanpa kekurangan satu komponen pun.",
+              "_type": "marketing_split",
+              "image": "/og/square/pages/jasa-cetak-modul-dan-buku-ajar.png",
+              "points": "Buku fisik cetak beresolusi tinggi 1200 DPI tajam & anti-luntur\nPilihan kertas isi impor Bookpaper krem elegan atau HVS putih premium\nCover tebal Art Carton 260 gsm berlapis laminasi doff / glossy tahan gores & air\nJilid lem panas (Perfect Binding) kokoh pabrikan tidak mudah copot\nGratis pembatas buku (bookmark) custom eksklusif senada cover\nFree kemasan shrink wrap plastik pelindung satuan tiap eksemplar\nPengecekan teknis layout margin, bleed, & ketebalan punggung (spine) gratis\nKemasan pengiriman box karton tebal berlapis bubble wrap aman antar pulau",
+              "cta_url": "#cta",
+              "eyebrow": "PAKET LENGKAP PENERBITAN",
+              "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
+              "anchor_id": "deliverables",
+              "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+            },
+            {
+              "_key": "features-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_features",
+              "columns": "3",
+              "eyebrow": "KEUNGGULAN EDUKASI",
+              "features": [
+                {
+                  "icon": "shield",
+                  "title": "Jilid Kokoh untuk Buka-Tutup Sering",
+                  "description": "Pilihan jilid lem panas fleksibel atau jilid spiral kawat yang mudah dibuka mendatar saat belajar."
+                },
+                {
+                  "icon": "star",
+                  "title": "Harga Grosir Edukasi Terjangkau",
+                  "description": "Potongan harga khusus untuk dosen, guru, pemilik lembaga kursus, dan pengelola bimbel."
+                },
+                {
+                  "icon": "desktop",
+                  "title": "Pilihan Cetak Full Color & Monokrom",
+                  "description": "Cetak lembar diagram/grafik berwarna tajam, dipadu isi teks monokrom efisien."
+                }
+              ],
+              "headline": "Dirancang Khusus Pemakaian Rutin Mahasiswa & Siswa",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+            },
+            {
+              "_key": "why-us-jasa-cetak-modul-dan-buku-ajar",
+              "rows": [
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Teks tajam ultra-presisi, hitam pekat, raster halus tanpa garis putus",
+                  "feature_name": "Mesin Cetak Digital Press 1200 DPI",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Krem natural, ringan, tidak tembus pandang, nyaman dibaca berjam-jam",
+                  "feature_name": "Kertas Bookpaper Impor Khusus Buku",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
+                  "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Bisa pesan mulai 1 eksemplar untuk dummy proofing atau koleksi pribadi",
+                  "feature_name": "Cetak Satuan Bebas Tanpa Minimal Order",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Diinspeksi teknisi profesional sebelum produksi agar tidak ada teks terpotong",
+                  "feature_name": "Free Review Margin & Ketebalan Punggung (Spine)",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Garansi fisik ganti baru jika terdapat cacat potong, salah halaman, atau cacat jilid",
+                  "feature_name": "Garansi 100% Retur Cetak Ulang Gratis",
+                  "competitor_value": "no"
+                }
+              ],
+              "_type": "marketing_comparison_table",
+              "cta_url": "#cta",
+              "eyebrow": "KOMPARASI KUALITAS",
+              "headline": "Mengapa Memilih Layanan Cetak Kami?",
+              "us_title": "Kotabook / Percetakan Kami",
+              "anchor_id": "why-us",
+              "cta_label": "Buktikan Kualitasnya Sekarang",
+              "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
+              "competitor_title": "Percetakan Biasa / Fotokopi"
+            },
+            {
+              "_key": "logos-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_logos",
+              "logos": [
+                {
+                  "name": "DIGITAL PRESS 1200 DPI"
+                },
+                {
+                  "name": "PERFECT BINDING ISO 9001"
+                },
+                {
+                  "name": "FSC CERTIFIED ECO PAPER"
+                },
+                {
+                  "name": "PERPUSNAS RI ISBN READY"
+                },
+                {
+                  "name": "WORKSHOP KOTACOM NETWORK"
+                },
+                {
+                  "name": "SHRINK WRAP PROTECTED"
+                }
+              ],
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+            },
+            {
+              "_key": "pricing-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_pricing",
+              "plans": [
+                {
+                  "name": "Paket Trial (10\u201325 Eks)",
+                  "price": "Rp 19.500",
+                  "period": "/modul (B5 ~80 hal)",
+                  "cta_url": "#cta",
+                  "features": "Ukuran ideal modul B5 (18x25 cm)\nIsi kertas HVS 70 gsm bersih\nCover Art Carton 260 gsm laminasi\nPengerjaan cepat 2 hari kerja",
+                  "cta_label": "Order Modul Trial",
+                  "description": "Cocok untuk kelas private bimbel, workshop perdana, atau materi diktat khusus.",
+                  "highlighted": false
+                },
+                {
+                  "name": "Paket Kelas Reguler (50\u2013100 Eks)",
+                  "badge": "Pilihan Dosen & Bimbel",
+                  "price": "Rp 14.500",
+                  "period": "/modul (B5 ~80 hal)",
+                  "cta_url": "#cta",
+                  "features": "Hemat biaya per eksemplar\nGratis wrapping plastik per modul\nFree delivery wilayah sekitar workshop\nFaktur / nota resmi untuk LPJ instansi",
+                  "cta_label": "Pesan Paket Kelas",
+                  "description": "Pilihan utama bimbel dan mata kuliah untuk satu semester pembelajaran.",
+                  "highlighted": true
+                },
+                {
+                  "name": "Paket Lembaga (>300 Eks)",
+                  "price": "Rp 10.500",
+                  "period": "/modul (B5 ~80 hal)",
+                  "cta_url": "#cta",
+                  "features": "Tarif produksi termurah\nJadwal drip cetak berkala per semester\nDukungan desain layout & penataan tabel\nBisa dibantu penerbitan ber-ISBN",
+                  "cta_label": "Kerjasama Institusi",
+                  "description": "Untuk yayasan sekolah, universitas, atau jaringan cabang kursus nasional.",
+                  "highlighted": false
+                }
+              ],
+              "headline": "Paket Cetak Modul Pendidikan",
+              "anchor_id": "pricing"
+            },
+            {
+              "_key": "steps-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_steps",
+              "steps": [
+                {
+                  "title": "Konsultasi Naskah & Format",
+                  "description": "Diskusikan jumlah halaman modul, pilihan kertas, dan tanggal deadline pemakaian kelas.",
+                  "step_number": "01"
+                },
+                {
+                  "title": "Proofing Sampel Fisik",
+                  "description": "Kami buatkan 1 sampel modul fisik untuk ditinjau sebelum cetak jumlah banyak.",
+                  "step_number": "02"
+                },
+                {
+                  "title": "Produksi Massal Berkala",
+                  "description": "Pencetakan berkecepatan tinggi dengan quality control presisi pada setiap eksemplar.",
+                  "step_number": "03"
+                },
+                {
+                  "title": "Distribusi & Faktur Resmi",
+                  "description": "Modul dikemas rapi dan dikirim tepat waktu disertai bukti invoice resmi instansi.",
+                  "step_number": "04"
+                }
+              ],
+              "eyebrow": "ALUR PEMESANAN EDUKASI",
+              "headline": "Mudahnya Cetak Modul untuk Kelas Anda",
+              "anchor_id": "steps",
+              "subheadline": "Proses tertib dan siap dengan laporan pertanggungjawaban resmi."
+            },
+            {
+              "_key": "faq-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_faq",
+              "items": [
+                {
+                  "answer": "Ya, kami menyediakan opsi jilid lem panas (perfect binding), jilid steples tengah, maupun spiral kawat besi.",
+                  "question": "Apakah melayani jilid spiral kawat untuk modul?"
+                },
+                {
+                  "answer": "Bisa, kami menyediakan faktur penjualan, kuitansi bermeterai, dan nota resmi untuk kebutuhan laporan dana instansi/kampus.",
+                  "question": "Bisakah meminta nota resmi atau kuitansi bertanda tangan?"
+                },
+                {
+                  "answer": "Rata-rata 2 hingga 3 hari kerja setelah dummy disetujui, siap dikirimkan via ekspedisi kargo cepat.",
+                  "question": "Berapa lama pengerjaan 100 eksemplar modul?"
+                }
+              ],
+              "headline": "FAQ Cetak Modul Belajar",
+              "anchor_id": "faq",
+              "subheadline": "Informasi seputar cetak buku materi kursus dan kampus."
+            },
+            {
+              "_key": "wa-jasa-cetak-modul-dan-buku-ajar",
+              "body": "Tingkatkan pengalaman belajar siswa dan mahasiswa Anda dengan modul fisik yang tertata rapi dan tahan lama.",
+              "_type": "marketing_whatsapp_cta",
+              "label": "Konsultasi Cetak Modul via WA",
+              "variant": "card",
+              "headline": "Cetak Modul Pembelajaran Anda Sekarang",
+              "anchor_id": "cta",
+              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak modul pembelajaran."
+            },
+            {
+              "_key": "moneysite-jasa-cetak-modul-dan-buku-ajar",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "secondary_cta_url": "https://devk.my.id",
+              "secondary_cta_label": "Software & Jasa IT Devk"
+            }
+          ],
+          "publishedAt": "2026-10-25T13:12:17Z",
+          "createdAt": "2026-10-25T13:12:17Z",
+          "updatedAt": "2026-10-25T14:10:14Z"
+        },
+        {
+          "id": "01M5SK1H13XA92A9BVHAN3V71N",
+          "slug": "jasa-cetak-novel",
+          "title": "Jasa Cetak Novel Murah & Berkualitas Penerbit",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-novel",
+              "_type": "marketing_hero",
+              "image": "mockup",
+              "eyebrow": "CETAK NOVEL INDIE & KOMUNITAS",
+              "headline": "Jasa Cetak Novel Standar Toko Buku",
+              "subheadline": "Bawa kisah karya Anda dari layar digital ke genggaman pembaca dengan jilid lem panas kuat, cover laminasi elegan, dan kertas Bookpaper premium.",
+              "image_caption": "Standar Produksi & Hasil Cetak Buku Fisik",
+              "primary_cta_url": "#cta",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "secondary_cta_url": "#pricing",
+              "secondary_cta_label": "Cek Pilihan Paket"
+            },
+            {
+              "_key": "stats-jasa-cetak-novel",
+              "_type": "marketing_stats",
+              "stats": [
+                {
+                  "label": "Buku Dicetak",
+                  "value": "50.000+",
+                  "description": "Eksemplar terdistribusi ke seluruh Indonesia"
+                },
+                {
+                  "label": "Kepuasan Penulis",
+                  "value": "99.4%",
+                  "description": "Ulasan bintang 5 dari 1.200+ penulis & komunitas"
+                },
+                {
+                  "label": "Minimal Order",
+                  "value": "1 Eks",
+                  "description": "Bebas cetak satuan tanpa beban biaya master plat"
+                },
+                {
+                  "label": "Garansi Mutu",
+                  "value": "100%",
+                  "description": "Ganti baru gratis jika ditemukan cacat potong / jilid"
+                }
+              ],
+              "headline": "Kredibilitas Produksi & Jaminan Kualitas",
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+            },
+            {
+              "_key": "deliverables-jasa-cetak-novel",
+              "body": "Setiap eksemplar naskah diproduksi dengan kelengkapan standar toko buku nasional siap pajang dan siap edar tanpa kekurangan satu komponen pun.",
+              "_type": "marketing_split",
+              "image": "/og/square/pages/jasa-cetak-novel.png",
+              "points": "Buku fisik cetak beresolusi tinggi 1200 DPI tajam & anti-luntur\nPilihan kertas isi impor Bookpaper krem elegan atau HVS putih premium\nCover tebal Art Carton 260 gsm berlapis laminasi doff / glossy tahan gores & air\nJilid lem panas (Perfect Binding) kokoh pabrikan tidak mudah copot\nGratis pembatas buku (bookmark) custom eksklusif senada cover\nFree kemasan shrink wrap plastik pelindung satuan tiap eksemplar\nPengecekan teknis layout margin, bleed, & ketebalan punggung (spine) gratis\nKemasan pengiriman box karton tebal berlapis bubble wrap aman antar pulau",
+              "cta_url": "#cta",
+              "eyebrow": "PAKET LENGKAP PENERBITAN",
+              "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
+              "anchor_id": "deliverables",
+              "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+            },
+            {
+              "_key": "features-jasa-cetak-novel",
+              "_type": "marketing_features",
+              "columns": "3",
+              "eyebrow": "KUALITAS TERBAIK",
+              "features": [
+                {
+                  "icon": "star",
+                  "title": "Kertas Bookpaper Nyaman Dibaca",
+                  "description": "Menggunakan Bookpaper impor ringan warna krem natural yang tidak menyilaukan mata saat membaca lama."
+                },
+                {
+                  "icon": "shield",
+                  "title": "Cover Elegan Finishing Doff/Glossy",
+                  "description": "Kertas cover Art Carton 260 gsm tebal dengan pilihan laminasi Doff mewah atau Glossy mengkilap."
+                },
+                {
+                  "icon": "file",
+                  "title": "Jilid Lem Panas Anti Lepas",
+                  "description": "Teknologi Perfect Binding dengan lem panas fleksibel menjaga halaman tetap kokoh dibuka 180 derajat."
+                }
+              ],
+              "headline": "Spesifikasi Khusus Buku Fiksi & Novel",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+            },
+            {
+              "_key": "why-us-jasa-cetak-novel",
+              "rows": [
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Teks tajam ultra-presisi, hitam pekat, raster halus tanpa garis putus",
+                  "feature_name": "Mesin Cetak Digital Press 1200 DPI",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Krem natural, ringan, tidak tembus pandang, nyaman dibaca berjam-jam",
+                  "feature_name": "Kertas Bookpaper Impor Khusus Buku",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
+                  "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Bisa pesan mulai 1 eksemplar untuk dummy proofing atau koleksi pribadi",
+                  "feature_name": "Cetak Satuan Bebas Tanpa Minimal Order",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Diinspeksi teknisi profesional sebelum produksi agar tidak ada teks terpotong",
+                  "feature_name": "Free Review Margin & Ketebalan Punggung (Spine)",
+                  "competitor_value": "no"
+                },
+                {
+                  "us_value": "yes",
+                  "feature_desc": "Garansi fisik ganti baru jika terdapat cacat potong, salah halaman, atau cacat jilid",
+                  "feature_name": "Garansi 100% Retur Cetak Ulang Gratis",
+                  "competitor_value": "no"
+                }
+              ],
+              "_type": "marketing_comparison_table",
+              "cta_url": "#cta",
+              "eyebrow": "KOMPARASI KUALITAS",
+              "headline": "Mengapa Memilih Layanan Cetak Kami?",
+              "us_title": "Kotabook / Percetakan Kami",
+              "anchor_id": "why-us",
+              "cta_label": "Buktikan Kualitasnya Sekarang",
+              "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
+              "competitor_title": "Percetakan Biasa / Fotokopi"
+            },
+            {
+              "_key": "logos-jasa-cetak-novel",
+              "_type": "marketing_logos",
+              "logos": [
+                {
+                  "name": "DIGITAL PRESS 1200 DPI"
+                },
+                {
+                  "name": "PERFECT BINDING ISO 9001"
+                },
+                {
+                  "name": "FSC CERTIFIED ECO PAPER"
+                },
+                {
+                  "name": "PERPUSNAS RI ISBN READY"
+                },
+                {
+                  "name": "WORKSHOP KOTACOM NETWORK"
+                },
+                {
+                  "name": "SHRINK WRAP PROTECTED"
+                }
+              ],
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+            },
+            {
+              "_key": "pricing-jasa-cetak-novel",
+              "_type": "marketing_pricing",
+              "plans": [
+                {
+                  "name": "Paket Debut (1\u20135 Eks)",
+                  "price": "Rp 27.500",
+                  "period": "/eksemplar (~150 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Ukuran standar novel A5 (14x20 cm)\nIsi Bookpaper 57 gsm nyaman di mata\nCover Full Color + Laminasi Doff\nJilid lem panas standar penerbit",
+                  "cta_label": "Pesan Paket Debut",
+                  "description": "Cocok untuk proofing penulis, kiriman beta reader, atau arsip pribadi.",
+                  "highlighted": false
+                },
+                {
+                  "name": "Paket Pre-Order (20\u201350 Eks)",
+                  "badge": "Pilihan Penulis",
+                  "price": "Rp 21.000",
+                  "period": "/eksemplar (~150 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Diskon harga khusus per buku\nGratis pembatas buku sesuai cover\nGratis plastik shrink wrapping per buku\nPengerjaan cepat 3 hari kerja",
+                  "cta_label": "Order Paket Pre-Order",
+                  "description": "Pilihan favorit penulis self-publishing untuk memenuhi pesanan pre-order.",
+                  "highlighted": true
+                },
+                {
+                  "name": "Paket Rilis Toko (>100 Eks)",
+                  "price": "Rp 16.500",
+                  "period": "/eksemplar (~150 hal A5)",
+                  "cta_url": "#cta",
+                  "features": "Harga produksi paling efisien\nBisa custom emboss / spot UV cover\nDukungan pendaftaran ISBN resmi\nPengiriman kargo aman se-Indonesia",
+                  "cta_label": "Konsultasi Rilis Toko",
+                  "description": "Untuk penjualan massal bazar buku, marketplace, dan jaringan toko buku.",
+                  "highlighted": false
+                }
+              ],
+              "headline": "Paket Cetak Novel Penulis Indie",
+              "anchor_id": "pricing"
+            },
+            {
+              "_key": "steps-jasa-cetak-novel",
+              "_type": "marketing_steps",
+              "steps": [
+                {
+                  "title": "Konsultasi & Kirim File PDF",
+                  "description": "Kirim naskah novel format PDF beserta desain cover depan, punggung, dan belakang.",
+                  "step_number": "01"
+                },
+                {
+                  "title": "Review Layout & Proof Digital",
+                  "description": "Kami cek kesesuaian margin, penomoran halaman romawi/angka, serta layout bab naskah.",
+                  "step_number": "02"
+                },
+                {
+                  "title": "Cetak Naskah & Binding",
+                  "description": "Pencetakan lembar isi, laminasi cover, dan penjilidan lem panas presisi tinggi.",
+                  "step_number": "03"
+                },
+                {
+                  "title": "Finishing & Siap Kirim",
+                  "description": "Novel disisipkan pembatas buku, di-shrink wrap rapi, dan dipacking kardus tebal.",
+                  "step_number": "04"
+                }
+              ],
+              "eyebrow": "PROSES PENERBITAN MANDIRI",
+              "headline": "Langkah Cetak Novel Anda",
+              "anchor_id": "steps",
+              "subheadline": "Alur mudah dan terpandu khusus bagi penulis naskah fiksi mandiri."
+            },
+            {
+              "_key": "faq-jasa-cetak-novel",
+              "_type": "marketing_faq",
+              "items": [
+                {
+                  "answer": "Ukuran novel paling umum adalah A5 (14 x 20 cm) dan UNESCO (13 x 19 cm) dengan isi kertas Bookpaper krem.",
+                  "question": "Berapa ukuran standar buku novel di Indonesia?"
+                },
+                {
+                  "answer": "Ketebalan punggung dihitung dari jumlah halaman dibagi dua dikalikan ketebalan jenis kertas. Tim kami akan mengukurkan otomatis untuk Anda.",
+                  "question": "Bagaimana cara menghitung ketebalan punggung buku (spine)?"
+                },
+                {
+                  "answer": "Bisa, cukup rapikan teks naskah ke dokumen Word/PDF dan tim kami siap membantu format layout siap cetak.",
+                  "question": "Apakah naskah Wattpad atau Storial bisa langsung dicetak?"
+                }
+              ],
+              "headline": "Tanya Jawab Seputar Cetak Novel",
+              "anchor_id": "faq",
+              "subheadline": "Hal-hal yang sering ditanyakan sebelum mencetak novel indie."
+            },
+            {
+              "_key": "wa-jasa-cetak-novel",
+              "body": "Jangan biarkan cerita Anda hanya tersimpan di laptop. Cetak novel fisik profesional sekarang dengan harga terjangkau.",
+              "_type": "marketing_whatsapp_cta",
+              "label": "Konsultasi Cetak Novel",
+              "variant": "card",
+              "headline": "Siap Merilis Novel Karya Anda?",
+              "anchor_id": "cta",
+              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak novel naskah saya."
+            },
+            {
+              "_key": "moneysite-jasa-cetak-novel",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "secondary_cta_url": "https://devk.my.id",
+              "secondary_cta_label": "Software & Jasa IT Devk"
+            }
+          ],
+          "publishedAt": "2026-10-25T13:12:17Z",
+          "createdAt": "2026-10-25T13:12:17Z",
+          "updatedAt": "2026-10-25T14:10:14Z"
+        },
+        {
+          "id": "01M5QDQ9JFPHJ121WHED2NZ6T3",
+          "slug": "pricing",
+          "title": "Pricing",
+          "status": "published",
+          "authorId": null,
+          "content": [],
+          "blocks": [
+            {
+              "_key": "pricing-hero",
+              "_type": "marketing_hero",
+              "_version": 1,
+              "centered": true,
+              "headline": "Pricing that pays for itself.",
+              "subheadline": "Start with one building for free. Every plan includes onboarding, live metering and support from energy engineers."
+            },
+            {
+              "_key": "pricing-plans",
+              "_type": "marketing_pricing",
+              "plans": [
+                {
+                  "name": "Pilot",
+                  "price": "Free",
+                  "period": "for 30 days",
+                  "cta_url": "/contact",
+                  "features": "1 building\nLive metering and fault detection\nSavings report at day 30\nEmail support",
+                  "cta_label": "Start a pilot",
+                  "description": "Prove the savings on one building before you commit."
+                },
+                {
+                  "name": "Portfolio",
+                  "badge": "Most popular",
+                  "price": "$149",
+                  "period": "/building/month",
+                  "cta_url": "/contact",
+                  "features": "Unlimited buildings and users\nAutomated BMS control\nCSRD, GRESB and ENERGY STAR reporting\nPortfolio benchmarking\nA dedicated energy engineer",
+                  "cta_label": "Book a demo",
+                  "description": "For owners and operators running 5 to 500 buildings.",
+                  "highlighted": true
+                },
+                {
+                  "name": "Enterprise",
+                  "price": "Custom",
+                  "cta_url": "mailto:sales@halden.example",
+                  "features": "Everything in Portfolio\nSSO, SCIM and audit logs\nEU or US data residency\nCustom integrations and API access\n99.9% uptime SLA",
+                  "cta_label": "Talk to sales",
+                  "description": "For global portfolios with custom integration and security needs."
+                }
+              ],
+              "_version": 1
+            },
+            {
+              "_key": "pricing-faq",
+              "_type": "marketing_faq",
+              "items": [
+                {
+                  "answer": "Any site with its own utility meter or building management system, from a 40-storey office tower to a single retail unit. Several buildings on one shared meter count as one until you add sub-meters to measure them separately.",
+                  "question": "What counts as a building?"
+                },
+                {
+                  "answer": "No. Every plan, including the pilot, covers onboarding, connecting your meters and building systems, and training for your team. Clip-on sensors for unmetered sites are supplied at cost.",
+                  "question": "Are there setup fees?"
+                },
+                {
+                  "answer": "Yes. Annual billing takes 15% off the Portfolio price and is invoiced on NET 30 terms. You can move from monthly to annual billing at any time.",
+                  "question": "Is there a discount for annual billing?"
+                },
+                {
+                  "answer": "On day 30 you receive a savings report for the pilot building. Move to the Portfolio plan to keep its data, alerts and automations running, or stop there and we delete the data within 30 days.",
+                  "question": "What happens after the pilot?"
+                }
+              ],
+              "_version": 1,
+              "headline": "Pricing questions.",
+              "subheadline": "Still deciding? Talk to an energy engineer before you start a pilot."
+            },
+            {
+              "_key": "pricing-cta",
+              "body": "Connect a site in an afternoon and see your first savings report in 30 days.",
+              "_type": "marketing_cta",
+              "_version": 1,
+              "headline": "Start with one building.",
+              "primary_cta_url": "/contact",
+              "primary_cta_label": "Start a pilot",
+              "secondary_cta_url": "mailto:sales@halden.example",
+              "secondary_cta_label": "Talk to sales"
+            }
+          ],
+          "publishedAt": "2026-10-24T17:00:51.151Z",
+          "createdAt": "2026-10-24T17:00:51.151Z",
+          "updatedAt": "2026-10-24T17:00:51.153Z"
+        },
+        {
+          "id": "01M5SJ16XM33D1T23C40WDDHZX",
+          "slug": "privacy-policy",
+          "title": "Kebijakan Privasi",
+          "status": "published",
+          "authorId": null,
+          "content": [
+            {
+              "_key": "pr1",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr1s",
+                  "text": "Di portal media kami, privasi pengunjung adalah salah satu prioritas utama kami. Dokumen Kebijakan Privasi ini menguraikan jenis informasi pribadi yang dikumpulkan dan dicatat oleh situs web kami serta bagaimana kami menggunakannya.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr2",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "pr2s",
+                  "text": "Informasi yang Kami Kumpulkan",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr3",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr3s",
+                  "text": "Situs kami mengikuti prosedur standar dalam menggunakan file log (log files). File-file ini mencatat pengunjung saat mereka mengunjungi situs web. Informasi yang dikumpulkan oleh file log meliputi alamat protokol internet (IP address), jenis peramban (browser), Penyedia Layanan Internet (ISP), stempel tanggal dan waktu, halaman perujuk/keluar, dan kemungkinan jumlah klik. Informasi ini tidak ditautkan ke informasi apa pun yang dapat diidentifikasi secara pribadi dan digunakan semata-mata untuk menganalisis tren, mengelola situs, dan mengumpulkan informasi demografis.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr4",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "pr4s",
+                  "text": "Cookies dan Web Beacons",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr5",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr5s",
+                  "text": "Situs kami menggunakan 'cookie' untuk menyimpan informasi termasuk preferensi pengunjung dan halaman di situs web yang diakses atau dikunjungi pengguna. Informasi tersebut digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung atau informasi lainnya.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr6",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "pr6s",
+                  "text": "Google DoubleClick DART Cookie & Periklanan Pihak Ketiga",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr7",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr7s",
+                  "text": "Google adalah salah satu vendor pihak ketiga di situs kami. Google juga menggunakan cookie, yang dikenal sebagai cookie DART, untuk menayangkan iklan kepada pengunjung situs kami berdasarkan kunjungan mereka ke situs ini dan situs web lain di internet.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr8",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr8s",
+                  "text": "Pengunjung dapat memilih untuk menolak penggunaan cookie DART dengan mengunjungi Kebijakan Privasi jaringan iklan dan konten Google di URL berikut: https://policies.google.com/technologies/ads.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr9",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr9s",
+                  "text": "Beberapa mitra periklanan kami mungkin menggunakan cookie dan suar web di situs kami. Mitra iklan pihak ketiga ini dapat secara otomatis menerima alamat IP Anda saat teknologi tersebut digunakan untuk mengukur efektivitas kampanye iklan mereka dan/atau mempersonalisasi konten iklan yang Anda lihat.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr10",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "pr10s",
+                  "text": "Hak Privasi Pengguna (GDPR & CCPA)",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr11",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr11s",
+                  "text": "Kami memastikan Anda sepenuhnya menyadari semua hak perlindungan data Anda. Setiap pengguna berhak atas hak-hak berikut: hak untuk mengakses data, hak untuk memperbaiki informasi yang keliru, hak untuk meminta penghapusan data pribadi Anda, dan hak untuk menolak pemrosesan data pribadi Anda.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr12",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "pr12s",
+                  "text": "Perlindungan Privasi Anak (COPPA)",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr13",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr13s",
+                  "text": "Bagian lain dari prioritas kami adalah menambahkan perlindungan bagi anak-anak saat menggunakan internet. Kami mendorong orang tua dan wali untuk mengamati, berpartisipasi, dan/atau memantau serta membimbing aktivitas online mereka. Situs kami tidak dengan sengaja mengumpulkan Informasi Identifikasi Pribadi apa pun dari anak-anak di bawah usia 13 tahun.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr14",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "pr14s",
+                  "text": "Persetujuan",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "pr15",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "pr15s",
+                  "text": "Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui syarat serta ketentuannya.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": [],
+          "publishedAt": "2026-10-25T12:54:39Z",
+          "createdAt": "2026-10-25T12:54:39Z",
+          "updatedAt": "2026-10-25T12:54:39Z"
+        },
+        {
+          "id": "01M5SJ1732NXTQ3PA6BSEMJ4PC",
+          "slug": "terms",
+          "title": "Syarat dan Ketentuan",
+          "status": "published",
+          "authorId": null,
+          "content": [
+            {
+              "_key": "tm1",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "tm1s",
+                  "text": "Selamat datang di portal informasi kami. Dengan mengakses dan menggunakan situs web ini, Anda menyatakan setuju untuk terikat oleh Syarat dan Ketentuan Layanan berikut ini secara penuh.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm2",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "tm2s",
+                  "text": "Hak Kekayaan Intelektual",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm3",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "tm3s",
+                  "text": "Kecuali dinyatakan lain, seluruh konten, artikel, ulasan, desain grafis, logo, dan susunan editorial yang diterbitkan di situs web ini adalah milik eksklusif pemilik situs dan dilindungi oleh undang-undang hak cipta dan kekayaan intelektual yang berlaku di Republik Indonesia serta konvensi internasional.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm4",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "tm4s",
+                  "text": "Lisensi Penggunaan Wajar (Fair Use)",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm5",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "tm5s",
+                  "text": "Anda diizinkan untuk melihat, membaca, dan mencetak halaman dari situs web ini untuk penggunaan pribadi non-komersial. Anda dilarang keras untuk: (a) Menerbitkan ulang materi ini di media lain tanpa menyertakan atribusi sumber dan tautan aktif (backlink) yang jelas; (b) Menjual, menyewakan, atau mensublisensikan materi dari situs web ini; (c) Menduplikasi materi untuk tujuan komersial massal tanpa izin tertulis dari redaksi.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm6",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "tm6s",
+                  "text": "Batasan Tanggung Jawab",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm7",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "tm7s",
+                  "text": "Seluruh materi dan artikel di situs web ini disediakan 'sebagaimana adanya' (as is) semata-mata untuk tujuan edukasi dan wawasan umum. Kami tidak memberikan jaminan eksplisit atau implisit mengenai kelengkapan, keakuratan, atau kesesuaian informasi untuk keperluan tertentu.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm8",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "tm8s",
+                  "text": "Tautan ke Situs Pihak Ketiga",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm9",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "tm9s",
+                  "text": "Situs web kami dapat memuat tautan ke situs web pihak ketiga yang tidak kami kelola atau kendalikan. Kami tidak bertanggung jawab atas isi, kebijakan privasi, atau praktik dari situs web pihak ketiga manapun.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm10",
+              "_type": "block",
+              "style": "h2",
+              "children": [
+                {
+                  "_key": "tm10s",
+                  "text": "Perubahan Ketentuan",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_key": "tm11",
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_key": "tm11s",
+                  "text": "Kami berhak untuk merevisi syarat dan ketentuan ini sewaktu-waktu. Perubahan akan berlaku seketika saat dipublikasikan di halaman ini.",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": [],
+          "publishedAt": "2026-10-25T12:54:39Z",
+          "createdAt": "2026-10-25T12:54:39Z",
+          "updatedAt": "2026-10-25T12:54:39Z"
+        },
+        {
+          "id": "test_dual_render_page_01",
+          "slug": "test-dual-render",
+          "title": "Test Dual Render Page",
+          "status": "published",
+          "authorId": null,
+          "content": [
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "text": "Ini adalah paragraf rich text standar seperti di postingan blog atau hasil import WordPress.",
+                  "_type": "span"
+                }
+              ]
+            }
+          ],
+          "blocks": [
+            {
+              "_key": "hero_test",
+              "_type": "marketing_hero",
+              "_version": 1,
+              "centered": true,
+              "headline": "Hero Block Section",
+              "subheadline": "Bagian Marketing Hero di atas rich text"
+            }
+          ],
+          "publishedAt": null,
+          "createdAt": "2026-10-24 21:25:35.729633+00",
+          "updatedAt": "2026-10-24 21:25:35.729633+00"
+        }
       ]
     },
     {
@@ -2042,12 +4730,12 @@
           "children": [
             {
               "type": "custom",
-              "label": "Kotacom — Percetakan Buku",
+              "label": "Kotacom \u2014 Percetakan Buku",
               "url": "https://kotacom.id"
             },
             {
               "type": "custom",
-              "label": "Devk — Software House & IT",
+              "label": "Devk \u2014 Software House & IT",
               "url": "https://devk.my.id"
             },
             {
@@ -2912,7 +5600,7 @@
                 {
                   "_type": "span",
                   "_key": "ct4s",
-                  "text": "• Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
+                  "text": "\u2022 Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
                   "marks": []
                 }
               ],
@@ -2926,7 +5614,7 @@
                 {
                   "_type": "span",
                   "_key": "ct5s",
-                  "text": "• WhatsApp Layanan: +62 857-9952-0350",
+                  "text": "\u2022 WhatsApp Layanan: +62 857-9952-0350",
                   "marks": []
                 }
               ],
@@ -2940,7 +5628,7 @@
                 {
                   "_type": "span",
                   "_key": "ct6s",
-                  "text": "• Jam Operasional Redaksi: Senin – Sabtu, pukul 08.00 – 17.00 WIB",
+                  "text": "\u2022 Jam Operasional Redaksi: Senin \u2013 Sabtu, pukul 08.00 \u2013 17.00 WIB",
                   "marks": []
                 }
               ],
@@ -3175,7 +5863,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Komunitas (10–50 Eks)",
+                  "name": "Paket Komunitas (10\u201350 Eks)",
                   "price": "Rp 18.500",
                   "period": "/buku (A5 ~100 hal)",
                   "description": "Paling hemat untuk penulis indie, edisi terbatas, dan promosi komunitas.",
@@ -3240,7 +5928,7 @@
                 },
                 {
                   "question": "Berapa lama waktu pengerjaan cetak buku satuan?",
-                  "answer": "Untuk pesanan 1–10 buku rata-rata selesai dalam 1–2 hari kerja setelah file naskah diverifikasi siap cetak."
+                  "answer": "Untuk pesanan 1\u201310 buku rata-rata selesai dalam 1\u20132 hari kerja setelah file naskah diverifikasi siap cetak."
                 },
                 {
                   "question": "Apa perbedaan kertas Bookpaper dan HVS?",
@@ -3325,7 +6013,7 @@
               "headline": "Paket Cetak Novel Penulis Indie",
               "plans": [
                 {
-                  "name": "Paket Debut (1–5 Eks)",
+                  "name": "Paket Debut (1\u20135 Eks)",
                   "price": "Rp 27.500",
                   "period": "/eksemplar (~150 hal A5)",
                   "description": "Cocok untuk proofing penulis, kiriman beta reader, atau arsip pribadi.",
@@ -3335,7 +6023,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Pre-Order (20–50 Eks)",
+                  "name": "Paket Pre-Order (20\u201350 Eks)",
                   "price": "Rp 21.000",
                   "period": "/eksemplar (~150 hal A5)",
                   "description": "Pilihan favorit penulis self-publishing untuk memenuhi pesanan pre-order.",
@@ -3481,7 +6169,7 @@
               "headline": "Tabel Simulasi Biaya Cetak (Ukuran A5, 100 Halaman)",
               "plans": [
                 {
-                  "name": "Oplah 1–9 Eks",
+                  "name": "Oplah 1\u20139 Eks",
                   "price": "Rp 24.000",
                   "period": "/buku (Cover Doff + Lem Panas)",
                   "description": "Biaya satuan untuk proofing naskah atau kebutuhan pribadi terbatas.",
@@ -3647,7 +6335,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Bundling Koleksi (3–5 Buku)",
+                  "name": "Bundling Koleksi (3\u20135 Buku)",
                   "price": "Rp 23.500",
                   "period": "/buku (~120 hal A5)",
                   "description": "Cetak seri ebook, modul belajar bertahap, atau rangkuman materi lengkap.",
@@ -3793,7 +6481,7 @@
               "headline": "Paket Cetak Modul Pendidikan",
               "plans": [
                 {
-                  "name": "Paket Trial (10–25 Eks)",
+                  "name": "Paket Trial (10\u201325 Eks)",
                   "price": "Rp 19.500",
                   "period": "/modul (B5 ~80 hal)",
                   "description": "Cocok untuk kelas private bimbel, workshop perdana, atau materi diktat khusus.",
@@ -3803,7 +6491,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Kelas Reguler (50–100 Eks)",
+                  "name": "Paket Kelas Reguler (50\u2013100 Eks)",
                   "price": "Rp 14.500",
                   "period": "/modul (B5 ~80 hal)",
                   "description": "Pilihan utama bimbel dan mata kuliah untuk satu semester pembelajaran.",
@@ -3949,7 +6637,7 @@
               "headline": "Paket Cetak Buku Hardcover",
               "plans": [
                 {
-                  "name": "Hardcover Satuan (1–5 Eks)",
+                  "name": "Hardcover Satuan (1\u20135 Eks)",
                   "price": "Rp 65.000",
                   "period": "/buku (~150 hal A5)",
                   "description": "Ideal untuk buku skripsi/tesis mewah, buku portofolio, atau kenang-kenangan pribadi.",
@@ -3959,7 +6647,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Buku Kenangan (20–50 Eks)",
+                  "name": "Paket Buku Kenangan (20\u201350 Eks)",
                   "price": "Rp 48.000",
                   "period": "/buku (~150 hal A5)",
                   "description": "Paling disukai untuk buku biografi keluarga, reuni akbar, dan peringatan instansi.",
@@ -4028,7 +6716,7 @@
                 },
                 {
                   "question": "Berapa lama pengerjaan buku hardcover?",
-                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3–4 hari kerja."
+                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3\u20134 hari kerja."
                 }
               ]
             },
@@ -4959,7 +7647,7 @@
           "children": [
             {
               "_key": "ct4s",
-              "text": "• Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
+              "text": "\u2022 Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
               "_type": "span",
               "marks": []
             }
@@ -4973,7 +7661,7 @@
           "children": [
             {
               "_key": "ct5s",
-              "text": "• WhatsApp Layanan: +62 857-9952-0350",
+              "text": "\u2022 WhatsApp Layanan: +62 857-9952-0350",
               "_type": "span",
               "marks": []
             }
@@ -4987,7 +7675,7 @@
           "children": [
             {
               "_key": "ct6s",
-              "text": "• Jam Operasional Redaksi: Senin – Sabtu, pukul 08.00 – 17.00 WIB",
+              "text": "\u2022 Jam Operasional Redaksi: Senin \u2013 Sabtu, pukul 08.00 \u2013 17.00 WIB",
               "_type": "span",
               "marks": []
             }
@@ -5818,7 +8506,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -5891,7 +8579,7 @@
               "highlighted": false
             },
             {
-              "name": "Bundling Koleksi (3–5 Buku)",
+              "name": "Bundling Koleksi (3\u20135 Buku)",
               "badge": "Pilihan Pembaca",
               "price": "Rp 23.500",
               "period": "/buku (~120 hal A5)",
@@ -6093,7 +8781,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -6156,7 +8844,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Paket Trial (10–25 Eks)",
+              "name": "Paket Trial (10\u201325 Eks)",
               "price": "Rp 19.500",
               "period": "/modul (B5 ~80 hal)",
               "cta_url": "#cta",
@@ -6166,7 +8854,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Kelas Reguler (50–100 Eks)",
+              "name": "Paket Kelas Reguler (50\u2013100 Eks)",
               "badge": "Pilihan Dosen & Bimbel",
               "price": "Rp 14.500",
               "period": "/modul (B5 ~80 hal)",
@@ -6368,7 +9056,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -6431,7 +9119,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Hardcover Satuan (1–5 Eks)",
+              "name": "Hardcover Satuan (1\u20135 Eks)",
               "price": "Rp 65.000",
               "period": "/buku (~150 hal A5)",
               "cta_url": "#cta",
@@ -6441,7 +9129,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Buku Kenangan (20–50 Eks)",
+              "name": "Paket Buku Kenangan (20\u201350 Eks)",
               "badge": "Paling Diminati",
               "price": "Rp 48.000",
               "period": "/buku (~150 hal A5)",
@@ -6508,7 +9196,7 @@
               "question": "Apa saja pilihan kertas isi untuk buku hardcover?"
             },
             {
-              "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3–4 hari kerja.",
+              "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3\u20134 hari kerja.",
               "question": "Berapa lama pengerjaan buku hardcover?"
             }
           ],
@@ -6643,7 +9331,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -6716,7 +9404,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Komunitas (10–50 Eks)",
+              "name": "Paket Komunitas (10\u201350 Eks)",
               "badge": "Paling Populer",
               "price": "Rp 18.500",
               "period": "/buku (A5 ~100 hal)",
@@ -6779,7 +9467,7 @@
               "question": "Apakah benar-benar bisa cetak buku hanya 1 eksemplar?"
             },
             {
-              "answer": "Untuk pesanan 1–10 buku rata-rata selesai dalam 1–2 hari kerja setelah file naskah diverifikasi siap cetak.",
+              "answer": "Untuk pesanan 1\u201310 buku rata-rata selesai dalam 1\u20132 hari kerja setelah file naskah diverifikasi siap cetak.",
               "question": "Berapa lama waktu pengerjaan cetak buku satuan?"
             },
             {
@@ -6922,7 +9610,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -6985,7 +9673,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Paket Debut (1–5 Eks)",
+              "name": "Paket Debut (1\u20135 Eks)",
               "price": "Rp 27.500",
               "period": "/eksemplar (~150 hal A5)",
               "cta_url": "#cta",
@@ -6995,7 +9683,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Pre-Order (20–50 Eks)",
+              "name": "Paket Pre-Order (20\u201350 Eks)",
               "badge": "Pilihan Penulis",
               "price": "Rp 21.000",
               "period": "/eksemplar (~150 hal A5)",
@@ -7197,7 +9885,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -7260,7 +9948,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Oplah 1–9 Eks",
+              "name": "Oplah 1\u20139 Eks",
               "price": "Rp 24.000",
               "period": "/buku (Cover Doff + Lem Panas)",
               "cta_url": "#cta",

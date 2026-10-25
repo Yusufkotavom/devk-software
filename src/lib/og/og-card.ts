@@ -51,7 +51,7 @@ function fontPath(file: string): string {
 	return join(process.cwd(), "assets", "fonts", file);
 }
 
-function loadFonts(): LoadedFont[] {
+export function loadFonts(): LoadedFont[] {
 	if (cachedFonts) return cachedFonts;
 	const read = (f: string) => readFileSync(fontPath(f));
 	cachedFonts = [
