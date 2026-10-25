@@ -73,11 +73,15 @@ const secondaryCta =
 			<div class="frame hero__media-wrap">
 				<figure class="media hero__media settle">
 					<div class="media__img">
-						<Image
-							image={image}
-							priority
-							sizes="(min-width: 1264px) 1136px, 92vw"
-						/>
+						{typeof image === "string" ? (
+							<img src={image} alt={headline || "Hero"} class="w-full h-full object-cover rounded-xl" />
+						) : (
+							<Image
+								image={image}
+								priority
+								sizes="(min-width: 1264px) 1136px, 92vw"
+							/>
+						)}
 					</div>
 					{image_caption && (
 						<figcaption class="media-chip">

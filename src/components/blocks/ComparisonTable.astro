@@ -86,8 +86,10 @@ const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.
 					<tbody>
 						{
 							rows.map((row) => {
-								const usIsCheck = row.us_value.toLowerCase() === "yes" || row.us_value.toLowerCase() === "true";
-								const compIsCross = row.competitor_value.toLowerCase() === "no" || row.competitor_value.toLowerCase() === "false";
+								const usVal = ((row as any).us_value ?? (row as any).our_value ?? "").toString().toLowerCase();
+								const compVal = (row.competitor_value ?? "").toString().toLowerCase();
+								const usIsCheck = usVal === "yes" || usVal === "true";
+								const compIsCross = compVal === "no" || compVal === "false";
 
 								return (
 									<tr>
