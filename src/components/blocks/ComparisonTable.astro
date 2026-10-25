@@ -146,11 +146,11 @@ const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.
 		max-width: 65ch;
 	}
 	.comparison-card {
-		background: var(--surface-2, #18181b);
-		border: 1px solid var(--border-color, #27272a);
+		background: var(--color-surface, #ffffff);
+		border: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
 		border-radius: var(--radius-lg, 1rem);
 		overflow: hidden;
-		box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+		box-shadow: var(--shadow-card, 0 4px 20px -4px rgba(0, 0, 0, 0.06));
 	}
 	.table-wrap {
 		overflow-x: auto;
@@ -164,24 +164,24 @@ const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.
 	}
 	th, td {
 		padding: 1.25rem 1.5rem;
-		border-bottom: 1px solid var(--border-color, #27272a);
+		border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
 	}
 	thead tr {
-		background: rgba(255, 255, 255, 0.02);
+		background: var(--color-fill, rgba(0, 0, 0, 0.03));
 	}
 	.th-feature {
 		width: 44%;
-		color: var(--text-muted, #a1a1aa);
+		color: var(--color-text-secondary, #666666);
 		font-weight: 600;
 	}
 	.th-us {
 		width: 32%;
-		background: rgba(37, 211, 102, 0.05);
-		border-inline: 1px solid rgba(37, 211, 102, 0.15);
+		background: color-mix(in srgb, var(--color-brand, #10b981) 8%, transparent);
+		border-inline: 1px solid color-mix(in srgb, var(--color-brand, #10b981) 20%, transparent);
 	}
 	.th-competitor {
 		width: 24%;
-		color: var(--text-muted, #a1a1aa);
+		color: var(--color-text-secondary, #666666);
 		font-weight: 600;
 	}
 	.header-us {
@@ -196,35 +196,36 @@ const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		background: #25d366;
-		color: #000;
+		color: #000000;
 		padding: 0.15rem 0.5rem;
 		border-radius: 9999px;
 	}
 	.title-us {
 		font-size: 1.1rem;
 		font-weight: 700;
-		color: var(--text-color, #fafafa);
+		color: var(--color-text, #171717);
 	}
 	.td-feature {
-		color: var(--text-color, #fafafa);
+		color: var(--color-text, #171717);
 	}
 	.feature-title {
 		font-weight: 600;
+		color: var(--color-text, #171717);
 	}
 	.feature-desc {
 		font-size: 0.85rem;
-		color: var(--text-muted, #a1a1aa);
+		color: var(--color-text-secondary, #525252);
 		margin-top: 0.25rem;
 	}
 	.td-us {
-		background: rgba(255, 255, 255, 0.02);
-		border-inline: 1px solid var(--color-border);
+		background: color-mix(in srgb, var(--color-brand, #10b981) 4%, transparent);
+		border-inline: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
 	}
 	.check-pill {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		color: var(--color-text);
+		color: var(--color-text, #171717);
 		font-weight: 600;
 		font-size: 0.9rem;
 	}
@@ -232,20 +233,20 @@ const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		color: var(--text-muted, #71717a);
+		color: var(--color-muted, #888888);
 		font-size: 0.9rem;
 	}
 	.val-text {
 		font-weight: 500;
-		color: var(--text-muted, #a1a1aa);
+		color: var(--color-text-secondary, #525252);
 	}
 	.val-text--highlight {
-		color: var(--color-text);
+		color: var(--color-text, #171717);
 		font-weight: 600;
 	}
 	.comparison-cta {
 		padding: 1.5rem;
-		background: rgba(255, 255, 255, 0.02);
+		background: var(--color-fill, rgba(0, 0, 0, 0.02));
 		display: flex;
 		justify-content: center;
 	}
@@ -254,15 +255,15 @@ const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.
 		align-items: center;
 		gap: 0.625rem;
 		padding: 0.75rem 1.75rem;
-		background: var(--color-brand);
-		color: var(--color-on-brand) !important;
+		background: var(--color-brand, #121212);
+		color: var(--color-on-brand, #ffffff) !important;
 		font-weight: 600;
 		border-radius: var(--radius-md, 0.75rem);
 		text-decoration: none;
 		transition: all 0.2s ease;
 	}
 	.comparison-cta__btn:hover {
-		background: var(--color-brand-hover);
+		background: var(--color-brand-hover, #27272a);
 		transform: translateY(-2px);
 	}
 </style>
