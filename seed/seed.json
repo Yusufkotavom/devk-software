@@ -10,7 +10,7 @@
     "title": "Devk Software Development",
     "tagline": "POS kasir, CRM, CMS & aplikasi custom untuk bisnis Anda",
     "seo": {
-      "titleSeparator": "\u2014"
+      "titleSeparator": "—"
     }
   },
   "blockTypes": [
@@ -1984,23 +1984,115 @@
       "items": [
         {
           "type": "custom",
-          "label": "Home",
+          "label": "Beranda",
           "url": "/"
         },
         {
           "type": "custom",
-          "label": "Posts",
+          "label": "Artikel & Wawasan",
           "url": "/posts"
         },
         {
           "type": "custom",
-          "label": "Pricing",
-          "url": "/pricing"
+          "label": "Tentang Kami",
+          "url": "/about"
         },
         {
           "type": "custom",
-          "label": "Contact",
+          "label": "Kontak",
           "url": "/contact"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "label": "Footer Navigation",
+      "items": [
+        {
+          "type": "custom",
+          "label": "Publikasi & Artikel",
+          "url": "/posts",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Beranda",
+              "url": "/"
+            },
+            {
+              "type": "custom",
+              "label": "Semua Artikel",
+              "url": "/posts"
+            },
+            {
+              "type": "custom",
+              "label": "Panduan & Edukasi",
+              "url": "/posts"
+            },
+            {
+              "type": "custom",
+              "label": "Arsip Tulisan",
+              "url": "/posts"
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "label": "Jaringan & Rekomendasi",
+          "url": "https://kotacom.id",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Kotacom — Percetakan Buku",
+              "url": "https://kotacom.id"
+            },
+            {
+              "type": "custom",
+              "label": "Devk — Software House & IT",
+              "url": "https://devk.my.id"
+            },
+            {
+              "type": "custom",
+              "label": "Jasa Install Software & PC",
+              "url": "https://devk.my.id/services"
+            },
+            {
+              "type": "custom",
+              "label": "Sistem POS Kasir & CRM",
+              "url": "https://devk.my.id/jasa-pembuatan-aplikasi-pos-kasir"
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "label": "Legalitas & Redaksi",
+          "url": "/about",
+          "children": [
+            {
+              "type": "custom",
+              "label": "Tentang Kami",
+              "url": "/about"
+            },
+            {
+              "type": "custom",
+              "label": "Kebijakan Privasi",
+              "url": "/privacy-policy"
+            },
+            {
+              "type": "custom",
+              "label": "Syarat & Ketentuan",
+              "url": "/terms"
+            },
+            {
+              "type": "custom",
+              "label": "Disclaimer",
+              "url": "/disclaimer"
+            },
+            {
+              "type": "custom",
+              "label": "Hubungi Redaksi",
+              "url": "/contact"
+            }
+          ]
         }
       ]
     }
@@ -2145,284 +2237,622 @@
         "status": "published",
         "data": {
           "title": "Home",
-          "content": [
+          "content": [],
+          "blocks": [
             {
               "_type": "marketing_hero",
               "_version": 1,
-              "_key": "home-hero",
+              "_key": "univ-hero",
               "centered": true,
-              "eyebrow": "Software House",
-              "headline": "Software custom untuk bisnis yang serius.",
-              "subheadline": "Kami bangun POS kasir, CRM, CMS, dan aplikasi custom yang pas dengan alur kerja Anda \u2014 cepat, rapi, dan siap dipakai.",
-              "primary_cta_label": "Konsultasi gratis",
-              "primary_cta_url": "/contact",
-              "secondary_cta_label": "Lihat layanan",
-              "secondary_cta_url": "/#layanan"
-            },
-            {
-              "_type": "marketing_logos",
-              "_version": 1,
-              "_key": "home-logos",
-              "headline": "Dipercaya oleh",
-              "logos": [
-                {
-                  "name": "Kotacom"
-                },
-                {
-                  "name": "VitPOS"
-                },
-                {
-                  "name": "ServisPro"
-                },
-                {
-                  "name": "Koperasi"
-                },
-                {
-                  "name": "UMKM Retail"
-                },
-                {
-                  "name": "Diskominfo"
-                }
-              ]
+              "eyebrow": "PORTAL INFORMASI & PUBLIKASI INDEPENDEN",
+              "headline": "Wawasan Mendalam, Panduan Praktis & Referensi Terpercaya",
+              "subheadline": "Menyajikan kurasi artikel pilihan seputar literasi, ulasan buku, transformasi teknologi, dan panduan digital praktis untuk pembaca cerdas.",
+              "primary_cta_label": "Jelajahi Artikel Terbaru",
+              "primary_cta_url": "/posts",
+              "secondary_cta_label": "Tentang Kami",
+              "secondary_cta_url": "/about"
             },
             {
               "_type": "marketing_features",
               "_version": 1,
-              "_key": "layanan",
-              "eyebrow": "Layanan",
-              "headline": "Produk & jasa pengembangan software",
-              "anchor_id": "layanan",
+              "_key": "univ-topics",
+              "eyebrow": "KATEGORI & FOKUS BAHASAN",
+              "headline": "Eksplorasi Topik Utama Kami",
               "features": [
                 {
-                  "icon": "gauge",
-                  "title": "POS Kasir",
-                  "description": "Mesin kasir modern untuk toko, kafe, dan retail: transaksi, stok, dan laporan penjualan real-time."
-                },
-                {
-                  "icon": "users",
-                  "title": "CRM",
-                  "description": "Kelola pelanggan, pipeline, dan follow-up. Pantau prospek sampai jadi deal."
-                },
-                {
-                  "icon": "file",
-                  "title": "CMS & Website",
-                  "description": "Website company profile dan sistem konten yang mudah dikelola tim Anda sendiri."
+                  "icon": "book",
+                  "title": "Literasi & Buku",
+                  "description": "Rangkuman buku terbaik, tips self-publishing, panduan kepenulisan, dan industri perbukuan nasional."
                 },
                 {
                   "icon": "code",
-                  "title": "Aplikasi Custom",
-                  "description": "Dashboard, ERP, dan integrasi API yang dibangun sesuai proses bisnis Anda."
+                  "title": "Teknologi & Software",
+                  "description": "Tutorial komputasi praktis, optimasi software kreatif, sistem operasi, dan direktori tools produktivitas."
                 },
                 {
-                  "icon": "plug",
-                  "title": "Jasa Install Software",
-                  "description": "Pasang, konfigurasi, dan migrasi software POS/CRM/VPS \u2014 online maupun on-site."
-                },
-                {
-                  "icon": "shield",
-                  "title": "Maintenance & Support",
-                  "description": "Garansi, update, dan dukungan teknis berkelanjutan setelah rilis."
+                  "icon": "globe",
+                  "title": "Bisnis & Transformasi Digital",
+                  "description": "Wawasan otomatisasi usaha, POS kasir ritel, sistem operasional, dan pengembangan UMKM modern."
                 }
               ]
             },
             {
-              "_type": "marketing_split",
+              "_type": "marketing_feed",
               "_version": 1,
-              "_key": "home-install",
-              "eyebrow": "Jasa Install Software",
-              "headline": "Software siap pakai, kami yang pasang.",
-              "body": "Beli lisensi tapi bingung setup? Butuh instalasi di server atau VPS Anda? Kami bantu pasang, konfigurasi, migrasi data, dan training tim \u2014 online lewat remote maupun on-site.",
-              "points": "Instalasi POS kasir & CRM\nSetup server / VPS, domain & SSL\nMigrasi data dari sistem lama\nTraining & pendampingan tim",
-              "cta_label": "Chat via WhatsApp",
-              "cta_url": "https://wa.me/6285799520350",
-              "image_first": false
-            },
-            {
-              "_type": "marketing_stats",
-              "_version": 1,
-              "_key": "home-stats",
-              "headline": "Angka yang berbicara",
-              "subheadline": "Dipercaya bisnis dari berbagai skala.",
-              "stats": [
-                {
-                  "value": "50+",
-                  "label": "Proyek dirilis"
-                },
-                {
-                  "value": "30+",
-                  "label": "Klien aktif"
-                },
-                {
-                  "value": "99%",
-                  "label": "Uptime layanan"
-                },
-                {
-                  "value": "24/7",
-                  "label": "Support"
-                }
-              ]
-            },
-            {
-              "_type": "marketing_pricing",
-              "_version": 1,
-              "_key": "home-pricing",
-              "plans": [
-                {
-                  "name": "Starter",
-                  "price": "Mulai 5jt",
-                  "period": "/proyek",
-                  "description": "Website & CMS company profile",
-                  "features": "Desain custom\nCMS mudah dipakai\nSEO dasar\nSetup domain + hosting",
-                  "cta_label": "Konsultasi",
-                  "cta_url": "/contact"
-                },
-                {
-                  "name": "Business",
-                  "price": "Mulai 15jt",
-                  "period": "/proyek",
-                  "description": "POS kasir / CRM untuk operasional",
-                  "features": "POS kasir / CRM\nMulti-user & role\nLaporan & dashboard\nIntegrasi WhatsApp\nGaransi 3 bulan",
-                  "cta_label": "Minta penawaran",
-                  "cta_url": "/contact",
-                  "highlighted": true,
-                  "badge": "Paling populer"
-                },
-                {
-                  "name": "Enterprise",
-                  "price": "Custom",
-                  "description": "Aplikasi & integrasi skala besar",
-                  "features": "Aplikasi custom / ERP\nIntegrasi API & payment\nDeploy on-premise / cloud\nSLA & maintenance",
-                  "cta_label": "Hubungi sales",
-                  "cta_url": "/contact"
-                }
-              ]
-            },
-            {
-              "_type": "marketing_faq",
-              "_version": 1,
-              "_key": "home-faq",
-              "headline": "Pertanyaan yang sering ditanya",
-              "subheadline": "Belum menemukan jawabannya? Chat kami.",
-              "items": [
-                {
-                  "question": "Berapa lama pengerjaan proyek?",
-                  "answer": "Website/CMS 2\u20134 minggu. POS kasir atau CRM 4\u20138 minggu, tergantung kompleksitas fitur dan integrasi."
-                },
-                {
-                  "question": "Apakah source code jadi milik kami?",
-                  "answer": "Ya. Untuk proyek custom, source code dan akses server sepenuhnya milik Anda setelah pelunasan."
-                },
-                {
-                  "question": "Bisa install di server/VPS kami sendiri?",
-                  "answer": "Bisa. Kami dukung deployment on-premise maupun cloud, termasuk konfigurasi domain, SSL, dan backup."
-                },
-                {
-                  "question": "Ada garansi dan maintenance?",
-                  "answer": "Ada. Setiap proyek bergaransi bug-fix, dan tersedia paket maintenance bulanan."
-                }
-              ]
+              "_key": "univ-feed",
+              "eyebrow": "TERBARU & PILIHAN REDAKSI",
+              "headline": "Artikel Pilihan Hari Ini",
+              "subheadline": "Baca ulasan mendalam dan perspektif terbaru dari para penulis redaksi.",
+              "source": "posts",
+              "mode": "latest",
+              "limit": 6,
+              "layout": "grid",
+              "cta_label": "Lihat Semua Artikel",
+              "cta_url": "/posts"
             },
             {
               "_type": "marketing_cta",
               "_version": 1,
-              "_key": "home-cta",
-              "headline": "Siap digitalisasi bisnis Anda?",
-              "body": "Ceritakan kebutuhan Anda \u2014 kami bantu pilih solusi yang paling pas, tanpa biaya konsultasi awal.",
-              "primary_cta_label": "Mulai konsultasi",
+              "_key": "univ-cta",
+              "headline": "Terhubung dengan Ekosistem Digital Kami",
+              "body": "Kami terbuka untuk kerjasama publikasi, penerbitan naskah, dan konsultasi kebutuhan digital bisnis Anda.",
+              "primary_cta_label": "Hubungi Tim Redaksi",
               "primary_cta_url": "/contact",
-              "secondary_cta_label": "Chat WhatsApp",
-              "secondary_cta_url": "https://wa.me/6285799520350"
+              "secondary_cta_label": "Kunjungi Kotacom",
+              "secondary_cta_url": "https://kotacom.id"
             }
           ]
         }
       },
       {
-        "id": "pricing",
-        "slug": "pricing",
+        "id": "privacy-policy",
+        "slug": "privacy-policy",
         "status": "published",
         "data": {
-          "title": "Pricing",
+          "title": "Kebijakan Privasi",
           "content": [
             {
-              "_type": "marketing_hero",
-              "_version": 1,
-              "_key": "pricing-hero",
-              "headline": "Pricing that pays for itself.",
-              "subheadline": "Start with one building for free. Every plan includes onboarding, live metering and support from energy engineers.",
-              "centered": true
-            },
-            {
-              "_type": "marketing_pricing",
-              "_version": 1,
-              "_key": "pricing-plans",
-              "plans": [
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr1",
+              "children": [
                 {
-                  "name": "Pilot",
-                  "price": "Free",
-                  "period": "for 30 days",
-                  "description": "Prove the savings on one building before you commit.",
-                  "features": "1 building\nLive metering and fault detection\nSavings report at day 30\nEmail support",
-                  "cta_label": "Start a pilot",
-                  "cta_url": "/contact"
-                },
-                {
-                  "name": "Portfolio",
-                  "price": "$149",
-                  "period": "/building/month",
-                  "description": "For owners and operators running 5 to 500 buildings.",
-                  "features": "Unlimited buildings and users\nAutomated BMS control\nCSRD, GRESB and ENERGY STAR reporting\nPortfolio benchmarking\nA dedicated energy engineer",
-                  "cta_label": "Book a demo",
-                  "cta_url": "/contact",
-                  "highlighted": true,
-                  "badge": "Most popular"
-                },
-                {
-                  "name": "Enterprise",
-                  "price": "Custom",
-                  "description": "For global portfolios with custom integration and security needs.",
-                  "features": "Everything in Portfolio\nSSO, SCIM and audit logs\nEU or US data residency\nCustom integrations and API access\n99.9% uptime SLA",
-                  "cta_label": "Talk to sales",
-                  "cta_url": "mailto:sales@halden.example"
+                  "_type": "span",
+                  "_key": "pr1s",
+                  "text": "Di portal media kami, privasi pengunjung adalah salah satu prioritas utama kami. Dokumen Kebijakan Privasi ini menguraikan jenis informasi pribadi yang dikumpulkan dan dicatat oleh situs web kami serta bagaimana kami menggunakannya.",
+                  "marks": []
                 }
-              ]
+              ],
+              "markDefs": []
             },
             {
-              "_type": "marketing_faq",
-              "_version": 1,
-              "_key": "pricing-faq",
-              "headline": "Pricing questions.",
-              "subheadline": "Still deciding? Talk to an energy engineer before you start a pilot.",
-              "items": [
+              "_type": "block",
+              "style": "h2",
+              "_key": "pr2",
+              "children": [
                 {
-                  "question": "What counts as a building?",
-                  "answer": "Any site with its own utility meter or building management system, from a 40-storey office tower to a single retail unit. Several buildings on one shared meter count as one until you add sub-meters to measure them separately."
-                },
-                {
-                  "question": "Are there setup fees?",
-                  "answer": "No. Every plan, including the pilot, covers onboarding, connecting your meters and building systems, and training for your team. Clip-on sensors for unmetered sites are supplied at cost."
-                },
-                {
-                  "question": "Is there a discount for annual billing?",
-                  "answer": "Yes. Annual billing takes 15% off the Portfolio price and is invoiced on NET 30 terms. You can move from monthly to annual billing at any time."
-                },
-                {
-                  "question": "What happens after the pilot?",
-                  "answer": "On day 30 you receive a savings report for the pilot building. Move to the Portfolio plan to keep its data, alerts and automations running, or stop there and we delete the data within 30 days."
+                  "_type": "span",
+                  "_key": "pr2s",
+                  "text": "Informasi yang Kami Kumpulkan",
+                  "marks": []
                 }
-              ]
+              ],
+              "markDefs": []
             },
             {
-              "_type": "marketing_cta",
-              "_version": 1,
-              "_key": "pricing-cta",
-              "headline": "Start with one building.",
-              "body": "Connect a site in an afternoon and see your first savings report in 30 days.",
-              "primary_cta_label": "Start a pilot",
-              "primary_cta_url": "/contact",
-              "secondary_cta_label": "Talk to sales",
-              "secondary_cta_url": "mailto:sales@halden.example"
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr3",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr3s",
+                  "text": "Situs kami mengikuti prosedur standar dalam menggunakan file log (log files). File-file ini mencatat pengunjung saat mereka mengunjungi situs web. Informasi yang dikumpulkan oleh file log meliputi alamat protokol internet (IP address), jenis peramban (browser), Penyedia Layanan Internet (ISP), stempel tanggal dan waktu, halaman perujuk/keluar, dan kemungkinan jumlah klik. Informasi ini tidak ditautkan ke informasi apa pun yang dapat diidentifikasi secara pribadi dan digunakan semata-mata untuk menganalisis tren, mengelola situs, dan mengumpulkan informasi demografis.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "pr4",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr4s",
+                  "text": "Cookies dan Web Beacons",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr5",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr5s",
+                  "text": "Situs kami menggunakan 'cookie' untuk menyimpan informasi termasuk preferensi pengunjung dan halaman di situs web yang diakses atau dikunjungi pengguna. Informasi tersebut digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung atau informasi lainnya.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "pr6",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr6s",
+                  "text": "Google DoubleClick DART Cookie & Periklanan Pihak Ketiga",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr7",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr7s",
+                  "text": "Google adalah salah satu vendor pihak ketiga di situs kami. Google juga menggunakan cookie, yang dikenal sebagai cookie DART, untuk menayangkan iklan kepada pengunjung situs kami berdasarkan kunjungan mereka ke situs ini dan situs web lain di internet.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr8",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr8s",
+                  "text": "Pengunjung dapat memilih untuk menolak penggunaan cookie DART dengan mengunjungi Kebijakan Privasi jaringan iklan dan konten Google di URL berikut: https://policies.google.com/technologies/ads.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr9",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr9s",
+                  "text": "Beberapa mitra periklanan kami mungkin menggunakan cookie dan suar web di situs kami. Mitra iklan pihak ketiga ini dapat secara otomatis menerima alamat IP Anda saat teknologi tersebut digunakan untuk mengukur efektivitas kampanye iklan mereka dan/atau mempersonalisasi konten iklan yang Anda lihat.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "pr10",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr10s",
+                  "text": "Hak Privasi Pengguna (GDPR & CCPA)",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr11",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr11s",
+                  "text": "Kami memastikan Anda sepenuhnya menyadari semua hak perlindungan data Anda. Setiap pengguna berhak atas hak-hak berikut: hak untuk mengakses data, hak untuk memperbaiki informasi yang keliru, hak untuk meminta penghapusan data pribadi Anda, dan hak untuk menolak pemrosesan data pribadi Anda.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "pr12",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr12s",
+                  "text": "Perlindungan Privasi Anak (COPPA)",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr13",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr13s",
+                  "text": "Bagian lain dari prioritas kami adalah menambahkan perlindungan bagi anak-anak saat menggunakan internet. Kami mendorong orang tua dan wali untuk mengamati, berpartisipasi, dan/atau memantau serta membimbing aktivitas online mereka. Situs kami tidak dengan sengaja mengumpulkan Informasi Identifikasi Pribadi apa pun dari anak-anak di bawah usia 13 tahun.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "pr14",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr14s",
+                  "text": "Persetujuan",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "pr15",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "pr15s",
+                  "text": "Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui syarat serta ketentuannya.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
             }
-          ]
+          ],
+          "blocks": []
+        }
+      },
+      {
+        "id": "terms",
+        "slug": "terms",
+        "status": "published",
+        "data": {
+          "title": "Syarat dan Ketentuan",
+          "content": [
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "tm1",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm1s",
+                  "text": "Selamat datang di portal informasi kami. Dengan mengakses dan menggunakan situs web ini, Anda menyatakan setuju untuk terikat oleh Syarat dan Ketentuan Layanan berikut ini secara penuh.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "tm2",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm2s",
+                  "text": "Hak Kekayaan Intelektual",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "tm3",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm3s",
+                  "text": "Kecuali dinyatakan lain, seluruh konten, artikel, ulasan, desain grafis, logo, dan susunan editorial yang diterbitkan di situs web ini adalah milik eksklusif pemilik situs dan dilindungi oleh undang-undang hak cipta dan kekayaan intelektual yang berlaku di Republik Indonesia serta konvensi internasional.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "tm4",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm4s",
+                  "text": "Lisensi Penggunaan Wajar (Fair Use)",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "tm5",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm5s",
+                  "text": "Anda diizinkan untuk melihat, membaca, dan mencetak halaman dari situs web ini untuk penggunaan pribadi non-komersial. Anda dilarang keras untuk: (a) Menerbitkan ulang materi ini di media lain tanpa menyertakan atribusi sumber dan tautan aktif (backlink) yang jelas; (b) Menjual, menyewakan, atau mensublisensikan materi dari situs web ini; (c) Menduplikasi materi untuk tujuan komersial massal tanpa izin tertulis dari redaksi.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "tm6",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm6s",
+                  "text": "Batasan Tanggung Jawab",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "tm7",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm7s",
+                  "text": "Seluruh materi dan artikel di situs web ini disediakan 'sebagaimana adanya' (as is) semata-mata untuk tujuan edukasi dan wawasan umum. Kami tidak memberikan jaminan eksplisit atau implisit mengenai kelengkapan, keakuratan, atau kesesuaian informasi untuk keperluan tertentu.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "tm8",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm8s",
+                  "text": "Tautan ke Situs Pihak Ketiga",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "tm9",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm9s",
+                  "text": "Situs web kami dapat memuat tautan ke situs web pihak ketiga yang tidak kami kelola atau kendalikan. Kami tidak bertanggung jawab atas isi, kebijakan privasi, atau praktik dari situs web pihak ketiga manapun.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "tm10",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm10s",
+                  "text": "Perubahan Ketentuan",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "tm11",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "tm11s",
+                  "text": "Kami berhak untuk merevisi syarat dan ketentuan ini sewaktu-waktu. Perubahan akan berlaku seketika saat dipublikasikan di halaman ini.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": []
+        }
+      },
+      {
+        "id": "about",
+        "slug": "about",
+        "status": "published",
+        "data": {
+          "title": "Tentang Kami",
+          "content": [
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ab1",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab1s",
+                  "text": "Kami adalah portal publikasi digital independen yang berfokus pada penyebaran wawasan literasi, referensi buku bermutu, ulasan industri kreatif, dan transformasi teknologi informasi untuk masyarakat modern.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "ab2",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab2s",
+                  "text": "Visi & Misi Redaksi",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ab3",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab3s",
+                  "text": "Misi kami adalah menghadirkan bacaan berkualitas tinggi yang menggabungkan kedalaman analisis, kejernihan penjelasan, dan kegunaan praktis. Kami meyakini bahwa akses terhadap informasi yang terverifikasi dan edukatif adalah fondasi penting bagi kemajuan literasi bangsa.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "ab4",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab4s",
+                  "text": "Pilar Bahasan Utama",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ab5",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab5s",
+                  "text": "1. Industri Buku & Literasi: Mengulas dunia perbukuan, panduan teknis penerbitan naskah, self-publishing, tata letak buku, hingga review karya sastra dan buku edukatif.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ab6",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab6s",
+                  "text": "2. Teknologi & Komputasi Praktis: Membahas optimasi perangkat lunak, arsitektur sistem, efisiensi kerja digital, dan pemecahan masalah perangkat keras sehari-hari.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ab7",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab7s",
+                  "text": "3. Ekosistem Bisnis & Digitalisasi: Panduan adopsi teknologi bagi UMKM, pengelolaan POS kasir ritel, CRM penjualan, dan integrasi operasional modern.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "ab8",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab8s",
+                  "text": "Bagian dari Ekosistem Sinergi",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ab9",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab9s",
+                  "text": "Situs ini beroperasi dalam sinergi erat dengan ekosistem digital dan jasa percetakan terkemuka, termasuk Kotacom (spesialis cetak buku dan solusi cetak digital) serta Devk Software House (pengembangan software kustom dan servis IT terpadu). Kolaborasi ini memastikan setiap topik yang kami angkat berpijak pada praktik nyata di industri.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "ab10",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab10s",
+                  "text": "Integritas dan Koreksi",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ab11",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ab11s",
+                  "text": "Kami menjunjung tinggi akurasi dan etika editorial. Jika Anda menemukan ketidaktepatan data dalam artikel kami atau ingin menyampaikan tanggapan redaksi, silakan hubungi tim kami melalui halaman Kontak.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": []
         }
       },
       {
@@ -2430,45 +2860,259 @@
         "slug": "contact",
         "status": "published",
         "data": {
-          "title": "Contact",
+          "title": "Kontak Kami",
           "content": [
             {
-              "_type": "marketing_hero",
-              "_version": 1,
-              "_key": "contact-hero",
-              "headline": "Talk to the Halden team",
-              "subheadline": "Questions, a demo, or a building you want us to look at? Email the team that can help and include any useful context. We reply within one working day.",
-              "centered": true
+              "_type": "block",
+              "style": "normal",
+              "_key": "ct1",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct1s",
+                  "text": "Kami selalu senang mendengar masukan, pertanyaan, tanggapan editorial, maupun peluang kerjasama dari para pembaca dan mitra bisnis.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
             },
             {
-              "_type": "marketing_contact",
-              "_version": 1,
-              "_key": "contact-options",
-              "options": [
+              "_type": "block",
+              "style": "h2",
+              "_key": "ct2",
+              "children": [
                 {
-                  "icon": "email",
-                  "title": "General questions",
-                  "description": "Ask about Halden, partnerships, press, or a building you\u2019d like us to look at.",
-                  "link_label": "hello@halden.example",
-                  "link_url": "mailto:hello@halden.example"
-                },
-                {
-                  "icon": "support",
-                  "title": "Customer support",
-                  "description": "Get help with your account, a meter integration, or a building that\u2019s already connected.",
-                  "link_label": "support@halden.example",
-                  "link_url": "mailto:support@halden.example"
-                },
-                {
-                  "icon": "sales",
-                  "title": "Sales",
-                  "description": "Talk through pricing, a pilot, procurement or a security review for your portfolio.",
-                  "link_label": "sales@halden.example",
-                  "link_url": "mailto:sales@halden.example"
+                  "_type": "span",
+                  "_key": "ct2s",
+                  "text": "Saluran Komunikasi Resmi",
+                  "marks": []
                 }
-              ]
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ct3",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct3s",
+                  "text": "Untuk pertanyaan umum, tanggapan artikel, atau hak jawab redaksi, silakan hubungi kami melalui:",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ct4",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct4s",
+                  "text": "• Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ct5",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct5s",
+                  "text": "• WhatsApp Layanan: +62 857-9952-0350",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ct6",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct6s",
+                  "text": "• Jam Operasional Redaksi: Senin – Sabtu, pukul 08.00 – 17.00 WIB",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "ct7",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct7s",
+                  "text": "Kerjasama & Publikasi Tamu",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ct8",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct8s",
+                  "text": "Bagi Anda penulis, penerbit, akademisi, atau pemilik bisnis yang ingin mengirimkan press release, resensi buku, atau artikel ulasan teknologi, silakan lampirkan draf lengkap beserta identitas diri melalui email resmi kami dengan subjek [KERJASAMA PUBLIKASI].",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "ct9",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct9s",
+                  "text": "Hak Jawab & Koreksi Fakta",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "ct10",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ct10s",
+                  "text": "Jika terdapat informasi yang keliru atau memerlukan pembaruan dalam salah satu artikel kami, mohon sertakan URL artikel bersangkutan dan dokumen referensi pendukung agar redaksi dapat memproses verifikasi secepatnya.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
             }
-          ]
+          ],
+          "blocks": []
+        }
+      },
+      {
+        "id": "disclaimer",
+        "slug": "disclaimer",
+        "status": "published",
+        "data": {
+          "title": "Penafian (Disclaimer)",
+          "content": [
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "dc1",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "dc1s",
+                  "text": "Semua informasi yang dipublikasikan di situs web ini diterbitkan dengan itikad baik dan bertujuan untuk memberikan informasi serta wawasan umum semata.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "dc2",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "dc2s",
+                  "text": "Bukan Nasihat Hukum atau Profesional",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "dc3",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "dc3s",
+                  "text": "Konten dalam situs ini, termasuk namun tidak terbatas pada ulasan perangkat lunak, tutorial instalasi, panduan penerbitan buku, dan tips bisnis, tidak boleh ditafsirkan sebagai nasihat hukum, keuangan, atau profesional yang mengikat. Setiap tindakan yang Anda ambil atas informasi yang Anda temukan di situs web ini merupakan risiko Anda sendiri sepenuhnya.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "dc4",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "dc4s",
+                  "text": "Tautan Eksternal & Afiliasi",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "dc5",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "dc5s",
+                  "text": "Melalui situs web kami, Anda dapat mengunjungi situs-situs web lain dengan mengikuti hyperlink ke situs eksternal tersebut. Meskipun kami berupaya hanya menyediakan tautan berkualitas ke situs web yang bermanfaat dan beretika, kami tidak memiliki kendali atas konten dan sifat situs web tersebut. Tautan ke situs web lain tidak menyiratkan rekomendasi untuk semua konten yang ditemukan di situs-situs tersebut.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "h2",
+              "_key": "dc6",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "dc6s",
+                  "text": "Batasan Tanggung Jawab",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "dc7",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "dc7s",
+                  "text": "Pengelola situs web ini tidak bertanggung jawab atas kerugian dan/atau kerusakan dalam bentuk apa pun yang timbul sehubungan dengan penggunaan situs web kami atau ketergantungan pada informasi yang disajikan di sini.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ],
+          "blocks": []
         }
       }
     ],
