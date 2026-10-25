@@ -2,7 +2,12 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-const ROBOTS_TXT = `User-agent: *
+export const GET: APIRoute = async ({ request, url }) => {
+	const proto = request.headers.get("x-forwarded-proto") || (url.protocol ? url.protocol.replace(":", "") : "https");
+	const host = request.headers.get("x-forwarded-host") || request.headers.get("host") || url.host;
+	const siteOrigin = `${proto}://${host}`;
+
+	const robotsTxt = `User-agent: *
 Allow: /
 Disallow: /_emdash/
 
@@ -35,15 +40,14 @@ User-agent: Omgilibot
 Allow: /
 
 # Canonical Sitemaps & Machine-Readable Knowledge
-Sitemap: https://devk.my.id/sitemap.xml
+Sitemap: ${siteOrigin}/sitemap.xml
 `;
 
-export const GET: APIRoute = async () => {
-	return new Response(ROBOTS_TXT, {
+	return new Response(robotsTxt, {
 		status: 200,
 		headers: {
 			"Content-Type": "text/plain; charset=utf-8",
-			"Cache-Control": "public, max-age=86400",
+			"Cache-Control": "public, max-age=300",
 		},
 	});
 };
