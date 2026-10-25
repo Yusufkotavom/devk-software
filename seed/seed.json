@@ -3114,6 +3114,946 @@
           ],
           "blocks": []
         }
+      },
+      {
+        "id": "01M5MPJASACETAKBUKUSATUAN",
+        "slug": "jasa-cetak-buku-satuan",
+        "data": {
+          "title": "Jasa Cetak Buku Satuan Murah & Cepat",
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-buku-satuan",
+              "_type": "marketing_hero",
+              "eyebrow": "PRINT ON DEMAND INDONESIA",
+              "headline": "Jasa Cetak Buku Satuan Tanpa Minimal Order",
+              "subheadline": "Cetak novel, buku ajar, komik, atau dummy skripsi mulai 1 buku saja. Kualitas mesin digital press dengan jilid lem panas presisi.",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "primary_cta_url": "#cta",
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "secondary_cta_url": "#pricing"
+            },
+            {
+              "_key": "features-jasa-cetak-buku-satuan",
+              "_type": "marketing_features",
+              "eyebrow": "KEUNGGULAN LAYANAN",
+              "headline": "Standar Cetak Penerbit Profesional",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "columns": "3",
+              "features": [
+                {
+                  "title": "Bebas Tanpa Minimal Order",
+                  "description": "Bisa cetak 1 eksemplar saja untuk proofing naskah, koleksi pribadi, portofolio, atau hadiah istimewa.",
+                  "icon": "file"
+                },
+                {
+                  "title": "Kertas Bookpaper & HVS Lengkap",
+                  "description": "Tersedia Bookpaper krem 57/72 gsm standar novel internasional, HVS putih 70/80 gsm, hingga Art Paper.",
+                  "icon": "star"
+                },
+                {
+                  "title": "Finishing Jilid Lem Panas",
+                  "description": "Cover Art Carton 260 gsm laminasi doff/glossy dan jilid lem panas (perfect binding) anti-rontok.",
+                  "icon": "shield"
+                }
+              ]
+            },
+            {
+              "_key": "pricing-jasa-cetak-buku-satuan",
+              "_type": "marketing_pricing",
+              "anchor_id": "pricing",
+              "headline": "Pilihan Paket & Estimasi Biaya Cetak",
+              "plans": [
+                {
+                  "name": "Paket Satuan (POD)",
+                  "price": "Rp 25.000",
+                  "period": "/buku (A5 ~100 hal)",
+                  "description": "Solusi tepat untuk cetak dummy naskah, skripsi, atau terbitan perdana.",
+                  "features": "Minimal order 1 eksemplar\nUkuran standar A5 (14x20 cm)\nIsi Bookpaper 57 gsm hitam putih\nCover Art Carton 260 gsm laminasi\nJilid lem panas rapi & presisi",
+                  "highlighted": false,
+                  "cta_label": "Pesan Satuan",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Komunitas (10–50 Eks)",
+                  "price": "Rp 18.500",
+                  "period": "/buku (A5 ~100 hal)",
+                  "description": "Paling hemat untuk penulis indie, edisi terbatas, dan promosi komunitas.",
+                  "features": "Minimal order 10 eksemplar\nDiskon biaya per eksemplar\nGratis pembatas buku (bookmark)\nFree wrapping plastik per buku\nPrioritas pengerjaan 2-3 hari",
+                  "highlighted": true,
+                  "badge": "Paling Populer",
+                  "cta_label": "Order Paket Komunitas",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Grosir (>100 Eks)",
+                  "price": "Rp 14.000",
+                  "period": "/buku (A5 ~100 hal)",
+                  "description": "Untuk yayasan, penerbit indie, sekolah, dan distribusi toko buku.",
+                  "features": "Minimal order 100 eksemplar\nHarga grosir kompetitif\nPilihan kertas khusus / isi warna\nFree sample dummy sebelum massal\nDukungan legalitas ISBN Kotacom",
+                  "highlighted": false,
+                  "cta_label": "Konsultasi Grosir",
+                  "cta_url": "#cta"
+                }
+              ]
+            },
+            {
+              "_key": "steps-jasa-cetak-buku-satuan",
+              "_type": "marketing_steps",
+              "anchor_id": "steps",
+              "eyebrow": "PROSES MUDAH & CEPAT",
+              "headline": "4 Langkah Praktis Cetak Naskah Anda",
+              "subheadline": "Dari file naskah di komputer Anda hingga menjadi buku cetak fisik di tangan.",
+              "steps": [
+                {
+                  "step_number": "01",
+                  "title": "Kirimkan File Naskah (PDF)",
+                  "description": "Kirim file isi dan cover siap cetak melalui WhatsApp atau link Google Drive."
+                },
+                {
+                  "step_number": "02",
+                  "title": "Pengecekan Layout & Dummy Proof",
+                  "description": "Tim kami memeriksa margin, bleed, serta punggung buku (spine) agar tidak ada teks terpotong."
+                },
+                {
+                  "step_number": "03",
+                  "title": "Produksi Cetak Digital Press",
+                  "description": "Naskah dicetak dengan mesin digital press resolusi tinggi, dilanjutkan jilid lem panas dan laminasi."
+                },
+                {
+                  "step_number": "04",
+                  "title": "Quality Control & Pengiriman",
+                  "description": "Buku dicek fisik satu per satu, di-wrapping plastik pelindung, dan dikirim aman ke alamat Anda."
+                }
+              ]
+            },
+            {
+              "_key": "faq-jasa-cetak-buku-satuan",
+              "_type": "marketing_faq",
+              "anchor_id": "faq",
+              "headline": "Pertanyaan Umum Cetak Satuan",
+              "subheadline": "Jawaban lengkap seputar spesifikasi teknis, waktu pengerjaan, dan pengiriman.",
+              "items": [
+                {
+                  "question": "Apakah benar-benar bisa cetak buku hanya 1 eksemplar?",
+                  "answer": "Ya, kami melayani cetak buku mulai dari 1 eksemplar tanpa plat film menggunakan teknologi digital press on demand."
+                },
+                {
+                  "question": "Berapa lama waktu pengerjaan cetak buku satuan?",
+                  "answer": "Untuk pesanan 1–10 buku rata-rata selesai dalam 1–2 hari kerja setelah file naskah diverifikasi siap cetak."
+                },
+                {
+                  "question": "Apa perbedaan kertas Bookpaper dan HVS?",
+                  "answer": "Bookpaper berwarna krem kekuningan yang nyaman di mata untuk membaca novel teks panjang. HVS berwarna putih bersih yang umum dipakai dokumen atau modul."
+                },
+                {
+                  "question": "Apakah ada bantuan pengurusan ISBN?",
+                  "answer": "Ya, kami dapat membantu pengurusan legalitas ISBN dan barcode buku melalui jaringan penerbitan resmi Kotacom."
+                }
+              ]
+            },
+            {
+              "_key": "wa-jasa-cetak-buku-satuan",
+              "_type": "marketing_whatsapp_cta",
+              "anchor_id": "cta",
+              "headline": "Cetak Buku Satuan Anda Sekarang",
+              "body": "Konsultasikan naskah Anda hari ini bersama tim spesialis kami. Dapatkan review layout gratis dan penawaran harga terbaik.",
+              "label": "Chat WhatsApp Cetak Satuan",
+              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak buku satuan.",
+              "variant": "card"
+            },
+            {
+              "_key": "moneysite-jasa-cetak-buku-satuan",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "secondary_cta_url": "https://devk.my.id"
+            }
+          ]
+        }
+      },
+      {
+        "id": "01M5MPJASACETAKNOVEL",
+        "slug": "jasa-cetak-novel",
+        "data": {
+          "title": "Jasa Cetak Novel Murah & Berkualitas Penerbit",
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-novel",
+              "_type": "marketing_hero",
+              "eyebrow": "CETAK NOVEL INDIE & KOMUNITAS",
+              "headline": "Jasa Cetak Novel Standar Toko Buku",
+              "subheadline": "Bawa kisah karya Anda dari layar digital ke genggaman pembaca dengan jilid lem panas kuat, cover laminasi elegan, dan kertas Bookpaper premium.",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "primary_cta_url": "#cta",
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "secondary_cta_url": "#pricing"
+            },
+            {
+              "_key": "features-jasa-cetak-novel",
+              "_type": "marketing_features",
+              "eyebrow": "KUALITAS TERBAIK",
+              "headline": "Spesifikasi Khusus Buku Fiksi & Novel",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "columns": "3",
+              "features": [
+                {
+                  "title": "Kertas Bookpaper Nyaman Dibaca",
+                  "description": "Menggunakan Bookpaper impor ringan warna krem natural yang tidak menyilaukan mata saat membaca lama.",
+                  "icon": "star"
+                },
+                {
+                  "title": "Cover Elegan Finishing Doff/Glossy",
+                  "description": "Kertas cover Art Carton 260 gsm tebal dengan pilihan laminasi Doff mewah atau Glossy mengkilap.",
+                  "icon": "shield"
+                },
+                {
+                  "title": "Jilid Lem Panas Anti Lepas",
+                  "description": "Teknologi Perfect Binding dengan lem panas fleksibel menjaga halaman tetap kokoh dibuka 180 derajat.",
+                  "icon": "file"
+                }
+              ]
+            },
+            {
+              "_key": "pricing-jasa-cetak-novel",
+              "_type": "marketing_pricing",
+              "anchor_id": "pricing",
+              "headline": "Paket Cetak Novel Penulis Indie",
+              "plans": [
+                {
+                  "name": "Paket Debut (1–5 Eks)",
+                  "price": "Rp 27.500",
+                  "period": "/eksemplar (~150 hal A5)",
+                  "description": "Cocok untuk proofing penulis, kiriman beta reader, atau arsip pribadi.",
+                  "features": "Ukuran standar novel A5 (14x20 cm)\nIsi Bookpaper 57 gsm nyaman di mata\nCover Full Color + Laminasi Doff\nJilid lem panas standar penerbit",
+                  "highlighted": false,
+                  "cta_label": "Pesan Paket Debut",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Pre-Order (20–50 Eks)",
+                  "price": "Rp 21.000",
+                  "period": "/eksemplar (~150 hal A5)",
+                  "description": "Pilihan favorit penulis self-publishing untuk memenuhi pesanan pre-order.",
+                  "features": "Diskon harga khusus per buku\nGratis pembatas buku sesuai cover\nGratis plastik shrink wrapping per buku\nPengerjaan cepat 3 hari kerja",
+                  "highlighted": true,
+                  "badge": "Pilihan Penulis",
+                  "cta_label": "Order Paket Pre-Order",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Rilis Toko (>100 Eks)",
+                  "price": "Rp 16.500",
+                  "period": "/eksemplar (~150 hal A5)",
+                  "description": "Untuk penjualan massal bazar buku, marketplace, dan jaringan toko buku.",
+                  "features": "Harga produksi paling efisien\nBisa custom emboss / spot UV cover\nDukungan pendaftaran ISBN resmi\nPengiriman kargo aman se-Indonesia",
+                  "highlighted": false,
+                  "cta_label": "Konsultasi Rilis Toko",
+                  "cta_url": "#cta"
+                }
+              ]
+            },
+            {
+              "_key": "steps-jasa-cetak-novel",
+              "_type": "marketing_steps",
+              "anchor_id": "steps",
+              "eyebrow": "PROSES PENERBITAN MANDIRI",
+              "headline": "Langkah Cetak Novel Anda",
+              "subheadline": "Alur mudah dan terpandu khusus bagi penulis naskah fiksi mandiri.",
+              "steps": [
+                {
+                  "step_number": "01",
+                  "title": "Konsultasi & Kirim File PDF",
+                  "description": "Kirim naskah novel format PDF beserta desain cover depan, punggung, dan belakang."
+                },
+                {
+                  "step_number": "02",
+                  "title": "Review Layout & Proof Digital",
+                  "description": "Kami cek kesesuaian margin, penomoran halaman romawi/angka, serta layout bab naskah."
+                },
+                {
+                  "step_number": "03",
+                  "title": "Cetak Naskah & Binding",
+                  "description": "Pencetakan lembar isi, laminasi cover, dan penjilidan lem panas presisi tinggi."
+                },
+                {
+                  "step_number": "04",
+                  "title": "Finishing & Siap Kirim",
+                  "description": "Novel disisipkan pembatas buku, di-shrink wrap rapi, dan dipacking kardus tebal."
+                }
+              ]
+            },
+            {
+              "_key": "faq-jasa-cetak-novel",
+              "_type": "marketing_faq",
+              "anchor_id": "faq",
+              "headline": "Tanya Jawab Seputar Cetak Novel",
+              "subheadline": "Hal-hal yang sering ditanyakan sebelum mencetak novel indie.",
+              "items": [
+                {
+                  "question": "Berapa ukuran standar buku novel di Indonesia?",
+                  "answer": "Ukuran novel paling umum adalah A5 (14 x 20 cm) dan UNESCO (13 x 19 cm) dengan isi kertas Bookpaper krem."
+                },
+                {
+                  "question": "Bagaimana cara menghitung ketebalan punggung buku (spine)?",
+                  "answer": "Ketebalan punggung dihitung dari jumlah halaman dibagi dua dikalikan ketebalan jenis kertas. Tim kami akan mengukurkan otomatis untuk Anda."
+                },
+                {
+                  "question": "Apakah naskah Wattpad atau Storial bisa langsung dicetak?",
+                  "answer": "Bisa, cukup rapikan teks naskah ke dokumen Word/PDF dan tim kami siap membantu format layout siap cetak."
+                }
+              ]
+            },
+            {
+              "_key": "wa-jasa-cetak-novel",
+              "_type": "marketing_whatsapp_cta",
+              "anchor_id": "cta",
+              "headline": "Siap Merilis Novel Karya Anda?",
+              "body": "Jangan biarkan cerita Anda hanya tersimpan di laptop. Cetak novel fisik profesional sekarang dengan harga terjangkau.",
+              "label": "Konsultasi Cetak Novel",
+              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak novel naskah saya.",
+              "variant": "card"
+            },
+            {
+              "_key": "moneysite-jasa-cetak-novel",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "secondary_cta_url": "https://devk.my.id"
+            }
+          ]
+        }
+      },
+      {
+        "id": "01M5MPBIAYACETAKBUKU",
+        "slug": "biaya-cetak-buku",
+        "data": {
+          "title": "Biaya Cetak Buku & Simulasi Harga Transparan",
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-biaya-cetak-buku",
+              "_type": "marketing_hero",
+              "eyebrow": "TRANSPARANSI BIAYA",
+              "headline": "Kalkulator & Estimasi Biaya Cetak Buku",
+              "subheadline": "Daftar estimasi biaya cetak buku terlengkap berdasarkan jumlah halaman, pilihan kertas, dan oplah pesanan. Tanpa biaya tersembunyi.",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "primary_cta_url": "#cta",
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "secondary_cta_url": "#pricing"
+            },
+            {
+              "_key": "features-biaya-cetak-buku",
+              "_type": "marketing_features",
+              "eyebrow": "FAKTOR BIAYA",
+              "headline": "Elemen yang Menentukan Ongkos Cetak",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "columns": "3",
+              "features": [
+                {
+                  "title": "Jumlah Halaman & Ukuran",
+                  "description": "Ukuran populer A5, B5, atau A4 dengan perhitungan biaya per lembar yang fleksibel.",
+                  "icon": "file"
+                },
+                {
+                  "title": "Pilihan Bahan Kertas",
+                  "description": "Bookpaper ringan hemat ongkir, HVS tajam untuk tabel teknis, atau Art Paper untuk foto warna.",
+                  "icon": "star"
+                },
+                {
+                  "title": "Volume Oplah Pesanan",
+                  "description": "Semakin banyak eksemplar yang dicetak dalam satu kloter, semakin murah biaya per buku.",
+                  "icon": "shield"
+                }
+              ]
+            },
+            {
+              "_key": "pricing-biaya-cetak-buku",
+              "_type": "marketing_pricing",
+              "anchor_id": "pricing",
+              "headline": "Tabel Simulasi Biaya Cetak (Ukuran A5, 100 Halaman)",
+              "plans": [
+                {
+                  "name": "Oplah 1–9 Eks",
+                  "price": "Rp 24.000",
+                  "period": "/buku (Cover Doff + Lem Panas)",
+                  "description": "Biaya satuan untuk proofing naskah atau kebutuhan pribadi terbatas.",
+                  "features": "Bebas minimal order\nIsi Bookpaper 57 gsm\nCover full color laminasi\nTanpa biaya master plat\nWaktu kerja 1-2 hari",
+                  "highlighted": false,
+                  "cta_label": "Cek Biaya Satuan",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Oplah 50 Eks",
+                  "price": "Rp 16.500",
+                  "period": "/buku (Cover Doff + Lem Panas)",
+                  "description": "Solusi paling ideal untuk kelas pelatihan, seminar, dan komunitas.",
+                  "features": "Hemat 30% per eksemplar\nGratis penanda buku (bookmark)\nFree wrapping plastik rapi\nPrioritas jalur produksi cepat",
+                  "highlighted": true,
+                  "badge": "Paling Hemat",
+                  "cta_label": "Simulasi 50 Buku",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Oplah 200+ Eks",
+                  "price": "Rp 12.500",
+                  "period": "/buku (Cover Doff + Lem Panas)",
+                  "description": "Biaya skala komersial untuk distribusi toko dan instansi pendidikan.",
+                  "features": "Harga skala grosir termurah\nBisa upgrade jilid hardcover\nFree dummy sample fisik sebelum cetak massal\nBisa dibantu ISBN Kotacom",
+                  "highlighted": false,
+                  "cta_label": "Hitung Biaya Grosir",
+                  "cta_url": "#cta"
+                }
+              ]
+            },
+            {
+              "_key": "steps-biaya-cetak-buku",
+              "_type": "marketing_steps",
+              "anchor_id": "steps",
+              "eyebrow": "HITUNG CEPAT",
+              "headline": "Cara Mendapatkan Estimasi Biaya Akurat",
+              "subheadline": "Hanya 3 menit untuk mendapatkan rincian penawaran harga naskah Anda.",
+              "steps": [
+                {
+                  "step_number": "01",
+                  "title": "Kirimkan Data Spesifikasi Naskah",
+                  "description": "Informasikan jumlah halaman, ukuran buku (A5/B5/A4), dan jenis kertas yang diinginkan."
+                },
+                {
+                  "step_number": "02",
+                  "title": "Tentukan Jumlah Oplah",
+                  "description": "Beri tahu jumlah eksemplar yang ingin dicetak (misal: 1 eks, 25 eks, atau 100 eks)."
+                },
+                {
+                  "step_number": "03",
+                  "title": "Terima Surat Penawaran Resmi",
+                  "description": "Admin kami menghitungkan rincian ongkos cetak + estimasi ongkos kirim ke kota Anda."
+                },
+                {
+                  "step_number": "04",
+                  "title": "Konfirmasi & Mulai Produksi",
+                  "description": "Setelah biaya disetujui, produksi langsung berjalan dan nomor resi dikirimkan saat buku jalan."
+                }
+              ]
+            },
+            {
+              "_key": "faq-biaya-cetak-buku",
+              "_type": "marketing_faq",
+              "anchor_id": "faq",
+              "headline": "FAQ Biaya & Pembayaran",
+              "subheadline": "Informasi tentang transparansi harga dan ketentuan pesanan.",
+              "items": [
+                {
+                  "question": "Apakah ada biaya tambahan untuk cover warna?",
+                  "answer": "Tidak ada, harga sudah termasuk cetak cover depan-belakang full color dengan laminasi doff atau glossy."
+                },
+                {
+                  "question": "Apakah ada diskon untuk cetak dalam jumlah ratusan?",
+                  "answer": "Tentu saja, kami menyediakan potongan harga progresif mulai dari pemesanan 50, 100, hingga 1.000 eksemplar."
+                },
+                {
+                  "question": "Bagaimana skema pembayaran cetak buku?",
+                  "answer": "Untuk pesanan reguler, DP minimal 50% saat konfirmasi cetak dan pelunasan saat buku siap dikirimkan."
+                }
+              ]
+            },
+            {
+              "_key": "wa-biaya-cetak-buku",
+              "_type": "marketing_whatsapp_cta",
+              "anchor_id": "cta",
+              "headline": "Dapatkan Rincian Biaya Naskah Anda Gratis",
+              "body": "Chat tim admin percetakan kami sekarang untuk simulasi kalkulasi ongkos cetak buku sesuai spesifikasi naskah Anda.",
+              "label": "Hitung Biaya via WhatsApp",
+              "custom_message": "Halo Kotabook, saya ingin simulasi biaya cetak buku.",
+              "variant": "card"
+            },
+            {
+              "_key": "moneysite-biaya-cetak-buku",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "secondary_cta_url": "https://devk.my.id"
+            }
+          ]
+        }
+      },
+      {
+        "id": "01M5MPCETAKEBOOKKEBUKUFISI",
+        "slug": "cetak-ebook-ke-buku-fisik",
+        "data": {
+          "title": "Jasa Cetak Ebook Jadi Buku Fisik Jilid Rapi",
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_hero",
+              "eyebrow": "DIGITAL TO PRINT",
+              "headline": "Ubah Ebook & File PDF Menjadi Buku Bacaan Nyata",
+              "subheadline": "Lelah membaca di layar monitor atau tablet? Cetak dokumen PDF, modul kursus, dan ebook Anda menjadi buku fisik jilid lem panas yang nyaman dibaca.",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "primary_cta_url": "#cta",
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "secondary_cta_url": "#pricing"
+            },
+            {
+              "_key": "features-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_features",
+              "eyebrow": "KEUNGGULAN KONVERSI",
+              "headline": "Lebih Nyaman Dibaca & Tidak Melelahkan Mata",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "columns": "3",
+              "features": [
+                {
+                  "title": "Kertas Bookpaper Adem di Mata",
+                  "description": "Bebas dari paparan radiasi layar ponsel. Kertas Bookpaper membuat mata tetap segar membaca berjam-jam.",
+                  "icon": "star"
+                },
+                {
+                  "title": "Bisa Tambah Catatan & Highlight",
+                  "description": "Lebih mudah membuat anotasi, stabilo poin penting, dan membuka halaman referensi secara cepat.",
+                  "icon": "file"
+                },
+                {
+                  "title": "Jilid Lem Panas Seperti Buku Toko",
+                  "description": "Bukan sekadar fotokopi spiral, tapi buku rapi berpunggung lem panas dengan cover laminasi elegan.",
+                  "icon": "shield"
+                }
+              ]
+            },
+            {
+              "_key": "pricing-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_pricing",
+              "anchor_id": "pricing",
+              "headline": "Paket Cetak File Ebook PDF",
+              "plans": [
+                {
+                  "name": "Single Ebook Print",
+                  "price": "Rp 29.000",
+                  "period": "/buku (~120 hal A5)",
+                  "description": "Cetak 1 buku saja dari koleksi ebook favorit atau paper riset Anda.",
+                  "features": "Cukup kirimkan link/file PDF\nPilihan Bookpaper atau HVS\nCover custom dari halaman pertama PDF\nJilid lem panas presisi",
+                  "highlighted": false,
+                  "cta_label": "Cetak Ebook Satuan",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Bundling Koleksi (3–5 Buku)",
+                  "price": "Rp 23.500",
+                  "period": "/buku (~120 hal A5)",
+                  "description": "Cetak seri ebook, modul belajar bertahap, atau rangkuman materi lengkap.",
+                  "features": "Diskon biaya per buku\nGratis desain punggung buku (spine)\nFree wrapping plastik pelindung\nPengerjaan cepat 2-3 hari",
+                  "highlighted": true,
+                  "badge": "Pilihan Pembaca",
+                  "cta_label": "Cetak Seri Ebook",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Modul Belajar (>20 Buku)",
+                  "price": "Rp 17.500",
+                  "period": "/buku (~120 hal A5)",
+                  "description": "Untuk mentor kursus, pelatihan kerja, dan materi kelas bimbingan belajar.",
+                  "features": "Harga hemat skala kelompok\nPilihan cover laminasi doff/glossy\nBisa campur halaman warna & hitam putih\nPengiriman kargo hemat ke seluruh Indonesia",
+                  "highlighted": false,
+                  "cta_label": "Order Modul Belajar",
+                  "cta_url": "#cta"
+                }
+              ]
+            },
+            {
+              "_key": "steps-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_steps",
+              "anchor_id": "steps",
+              "eyebrow": "PROSES MUDAH",
+              "headline": "Cara Praktis Cetak File Ebook",
+              "subheadline": "Tanpa ribet keluar rumah, file ebook Anda langsung diproses cetak.",
+              "steps": [
+                {
+                  "step_number": "01",
+                  "title": "Kirimkan File Ebook (PDF)",
+                  "description": "Unggah file ebook melalui WhatsApp atau share folder Google Drive Anda."
+                },
+                {
+                  "step_number": "02",
+                  "title": "Pilih Jenis Kertas & Ukuran",
+                  "description": "Pilih ukuran bacaan yang nyaman (A5 untuk buku santai, B5 untuk jurnal teknis)."
+                },
+                {
+                  "step_number": "03",
+                  "title": "Proses Digital Printing",
+                  "description": "Kami cetak isi dokumen, membuatkan cover menarik, dan menjilidnya dengan lem panas."
+                },
+                {
+                  "step_number": "04",
+                  "title": "Buku Fisik Dikirim",
+                  "description": "Buku siap dinikmati di meja baca Anda tanpa perlu menatap layar elektronik lagi."
+                }
+              ]
+            },
+            {
+              "_key": "faq-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_faq",
+              "anchor_id": "faq",
+              "headline": "Pertanyaan Cetak Ebook",
+              "subheadline": "Semua yang perlu Anda ketahui tentang cetak file digital.",
+              "items": [
+                {
+                  "question": "Bagaimana jika file ebook saya tidak memiliki desain cover?",
+                  "answer": "Tim kami dapat menggunakan halaman judul pertama file PDF sebagai cover, atau membantu membuatkan cover minimalis gratis."
+                },
+                {
+                  "question": "Apakah bisa mencetak ebook berbahasa asing / dokumen teknis?",
+                  "answer": "Bisa, mesin kami mencetak teks font asing, karakter alfabet, dan rumus teknis dengan presisi 1200 DPI tanpa buram."
+                },
+                {
+                  "question": "Apakah file ebook saya terjamin keamanannya?",
+                  "answer": "Kerahasiaan dokumen Anda terjamin 100%. File hanya digunakan untuk keperluan cetak Anda dan tidak dibagikan ke pihak ketiga."
+                }
+              ]
+            },
+            {
+              "_key": "wa-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_whatsapp_cta",
+              "anchor_id": "cta",
+              "headline": "Ingin Baca Ebook Lebih Nyaman Tanpa Layar?",
+              "body": "Kirimkan file PDF Anda sekarang dan rasakan nikmatnya membaca buku fisik asli di tangan Anda.",
+              "label": "Kirim File Ebook via WA",
+              "custom_message": "Halo Ebookku, saya ingin cetak file ebook PDF menjadi buku fisik.",
+              "variant": "card"
+            },
+            {
+              "_key": "moneysite-cetak-ebook-ke-buku-fisik",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "secondary_cta_url": "https://devk.my.id"
+            }
+          ]
+        }
+      },
+      {
+        "id": "01M5MPJASACETAKMODULDANBUK",
+        "slug": "jasa-cetak-modul-dan-buku-ajar",
+        "data": {
+          "title": "Jasa Cetak Modul Pembelajaran & Buku Ajar Kampus",
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_hero",
+              "eyebrow": "SOLUSI EDUKASI & PELATIHAN",
+              "headline": "Cetak Modul Bimbel & Buku Ajar Murah",
+              "subheadline": "Spesialisasi percetakan modul pelatihan, buku diktat kuliah, lembar kerja siswa, dan modul bimbel dengan harga grosir dan jilid awet tahan lama.",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "primary_cta_url": "#cta",
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "secondary_cta_url": "#pricing"
+            },
+            {
+              "_key": "features-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_features",
+              "eyebrow": "KEUNGGULAN EDUKASI",
+              "headline": "Dirancang Khusus Pemakaian Rutin Mahasiswa & Siswa",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "columns": "3",
+              "features": [
+                {
+                  "title": "Jilid Kokoh untuk Buka-Tutup Sering",
+                  "description": "Pilihan jilid lem panas fleksibel atau jilid spiral kawat yang mudah dibuka mendatar saat belajar.",
+                  "icon": "shield"
+                },
+                {
+                  "title": "Harga Grosir Edukasi Terjangkau",
+                  "description": "Potongan harga khusus untuk dosen, guru, pemilik lembaga kursus, dan pengelola bimbel.",
+                  "icon": "star"
+                },
+                {
+                  "title": "Pilihan Cetak Full Color & Monokrom",
+                  "description": "Cetak lembar diagram/grafik berwarna tajam, dipadu isi teks monokrom efisien.",
+                  "icon": "desktop"
+                }
+              ]
+            },
+            {
+              "_key": "pricing-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_pricing",
+              "anchor_id": "pricing",
+              "headline": "Paket Cetak Modul Pendidikan",
+              "plans": [
+                {
+                  "name": "Paket Trial (10–25 Eks)",
+                  "price": "Rp 19.500",
+                  "period": "/modul (B5 ~80 hal)",
+                  "description": "Cocok untuk kelas private bimbel, workshop perdana, atau materi diktat khusus.",
+                  "features": "Ukuran ideal modul B5 (18x25 cm)\nIsi kertas HVS 70 gsm bersih\nCover Art Carton 260 gsm laminasi\nPengerjaan cepat 2 hari kerja",
+                  "highlighted": false,
+                  "cta_label": "Order Modul Trial",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Kelas Reguler (50–100 Eks)",
+                  "price": "Rp 14.500",
+                  "period": "/modul (B5 ~80 hal)",
+                  "description": "Pilihan utama bimbel dan mata kuliah untuk satu semester pembelajaran.",
+                  "features": "Hemat biaya per eksemplar\nGratis wrapping plastik per modul\nFree delivery wilayah sekitar workshop\nFaktur / nota resmi untuk LPJ instansi",
+                  "highlighted": true,
+                  "badge": "Pilihan Dosen & Bimbel",
+                  "cta_label": "Pesan Paket Kelas",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Lembaga (>300 Eks)",
+                  "price": "Rp 10.500",
+                  "period": "/modul (B5 ~80 hal)",
+                  "description": "Untuk yayasan sekolah, universitas, atau jaringan cabang kursus nasional.",
+                  "features": "Tarif produksi termurah\nJadwal drip cetak berkala per semester\nDukungan desain layout & penataan tabel\nBisa dibantu penerbitan ber-ISBN",
+                  "highlighted": false,
+                  "cta_label": "Kerjasama Institusi",
+                  "cta_url": "#cta"
+                }
+              ]
+            },
+            {
+              "_key": "steps-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_steps",
+              "anchor_id": "steps",
+              "eyebrow": "ALUR PEMESANAN EDUKASI",
+              "headline": "Mudahnya Cetak Modul untuk Kelas Anda",
+              "subheadline": "Proses tertib dan siap dengan laporan pertanggungjawaban resmi.",
+              "steps": [
+                {
+                  "step_number": "01",
+                  "title": "Konsultasi Naskah & Format",
+                  "description": "Diskusikan jumlah halaman modul, pilihan kertas, dan tanggal deadline pemakaian kelas."
+                },
+                {
+                  "step_number": "02",
+                  "title": "Proofing Sampel Fisik",
+                  "description": "Kami buatkan 1 sampel modul fisik untuk ditinjau sebelum cetak jumlah banyak."
+                },
+                {
+                  "step_number": "03",
+                  "title": "Produksi Massal Berkala",
+                  "description": "Pencetakan berkecepatan tinggi dengan quality control presisi pada setiap eksemplar."
+                },
+                {
+                  "step_number": "04",
+                  "title": "Distribusi & Faktur Resmi",
+                  "description": "Modul dikemas rapi dan dikirim tepat waktu disertai bukti invoice resmi instansi."
+                }
+              ]
+            },
+            {
+              "_key": "faq-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_faq",
+              "anchor_id": "faq",
+              "headline": "FAQ Cetak Modul Belajar",
+              "subheadline": "Informasi seputar cetak buku materi kursus dan kampus.",
+              "items": [
+                {
+                  "question": "Apakah melayani jilid spiral kawat untuk modul?",
+                  "answer": "Ya, kami menyediakan opsi jilid lem panas (perfect binding), jilid steples tengah, maupun spiral kawat besi."
+                },
+                {
+                  "question": "Bisakah meminta nota resmi atau kuitansi bertanda tangan?",
+                  "answer": "Bisa, kami menyediakan faktur penjualan, kuitansi bermeterai, dan nota resmi untuk kebutuhan laporan dana instansi/kampus."
+                },
+                {
+                  "question": "Berapa lama pengerjaan 100 eksemplar modul?",
+                  "answer": "Rata-rata 2 hingga 3 hari kerja setelah dummy disetujui, siap dikirimkan via ekspedisi kargo cepat."
+                }
+              ]
+            },
+            {
+              "_key": "wa-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_whatsapp_cta",
+              "anchor_id": "cta",
+              "headline": "Cetak Modul Pembelajaran Anda Sekarang",
+              "body": "Tingkatkan pengalaman belajar siswa dan mahasiswa Anda dengan modul fisik yang tertata rapi dan tahan lama.",
+              "label": "Konsultasi Cetak Modul via WA",
+              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak modul pembelajaran.",
+              "variant": "card"
+            },
+            {
+              "_key": "moneysite-jasa-cetak-modul-dan-buku-ajar",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "secondary_cta_url": "https://devk.my.id"
+            }
+          ]
+        }
+      },
+      {
+        "id": "01M5MPJASACETAKBUKUHARDCOV",
+        "slug": "jasa-cetak-buku-hardcover",
+        "data": {
+          "title": "Jasa Cetak Buku Hardcover Mewah & Satuan",
+          "content": [],
+          "blocks": [
+            {
+              "_key": "hero-jasa-cetak-buku-hardcover",
+              "_type": "marketing_hero",
+              "eyebrow": "PREMIUM BOOK BINDING",
+              "headline": "Cetak Buku Hardcover Elegan & Tahan Puluhan Tahun",
+              "subheadline": "Pilihan eksklusif untuk buku tahunan, biografi, buku kenangan keluarga, portofolio arsitektur, dan laporan institusi dengan board tebal dan pita pembatas.",
+              "primary_cta_label": "Konsultasi Cetak via WA",
+              "primary_cta_url": "#cta",
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "secondary_cta_url": "#pricing"
+            },
+            {
+              "_key": "features-jasa-cetak-buku-hardcover",
+              "_type": "marketing_features",
+              "eyebrow": "KUALITAS PREMIUM",
+              "headline": "Detail Finishing Spesifikasi Mewah",
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "columns": "3",
+              "features": [
+                {
+                  "title": "Board Kokoh Tebal No. 30/40",
+                  "description": "Menggunakan bahan karton board import tebal yang kaku, lurus, dan tidak mudah melengkung.",
+                  "icon": "shield"
+                },
+                {
+                  "title": "Aksen Foil Emas & Spot UV",
+                  "description": "Pilihan finishing tulisan cover emboss timbul, hot print emas/perak, dan laminasi doff velvet beludru.",
+                  "icon": "star"
+                },
+                {
+                  "title": "Aksesoris Buku Eksklusif",
+                  "description": "Dilengkapi pita pembatas rajut satin elegan, kapital band rapi di ujung punggung, dan wrapping khusus.",
+                  "icon": "file"
+                }
+              ]
+            },
+            {
+              "_key": "pricing-jasa-cetak-buku-hardcover",
+              "_type": "marketing_pricing",
+              "anchor_id": "pricing",
+              "headline": "Paket Cetak Buku Hardcover",
+              "plans": [
+                {
+                  "name": "Hardcover Satuan (1–5 Eks)",
+                  "price": "Rp 65.000",
+                  "period": "/buku (~150 hal A5)",
+                  "description": "Ideal untuk buku skripsi/tesis mewah, buku portofolio, atau kenang-kenangan pribadi.",
+                  "features": "Bisa pesan 1 eksemplar saja\nHardcover board tebal kokoh\nLaminasi cover Doff / Glossy\nPita pembatas buku satin\nWaktu pengerjaan 3 hari",
+                  "highlighted": false,
+                  "cta_label": "Pesan Hardcover Satuan",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Buku Kenangan (20–50 Eks)",
+                  "price": "Rp 48.000",
+                  "period": "/buku (~150 hal A5)",
+                  "description": "Paling disukai untuk buku biografi keluarga, reuni akbar, dan peringatan instansi.",
+                  "features": "Diskon harga volume pesanan\nPilihan kertas isi Art Paper warna\nFinishing laminasi cover mewah\nFree wrapping kardus satuan per buku",
+                  "highlighted": true,
+                  "badge": "Paling Diminati",
+                  "cta_label": "Order Buku Kenangan",
+                  "cta_url": "#cta"
+                },
+                {
+                  "name": "Paket Korporat (>100 Eks)",
+                  "price": "Rp 36.000",
+                  "period": "/buku (~150 hal A5)",
+                  "description": "Untuk annual report BUMN/swasta, buku sejarah lembaga, dan souvenir VIP.",
+                  "features": "Harga paling kompetitif\nBisa upgrade foil emas / spot UV\nOpsi box kemasan eksklusif\nPengecekan dummy fisik gratis",
+                  "highlighted": false,
+                  "cta_label": "Konsultasi Korporat",
+                  "cta_url": "#cta"
+                }
+              ]
+            },
+            {
+              "_key": "steps-jasa-cetak-buku-hardcover",
+              "_type": "marketing_steps",
+              "anchor_id": "steps",
+              "eyebrow": "PROSES PRESISI TINGGI",
+              "headline": "Pembuatan Buku Hardcover Berkualitas",
+              "subheadline": "Kombinasi teknologi mesin modern dan ketelitian tangan ahli penjilidan.",
+              "steps": [
+                {
+                  "step_number": "01",
+                  "title": "Konsultasi Konsep & Finishing",
+                  "description": "Tentukan ukuran buku, ketebalan board, dan aksen cover (emas/perak/spot UV)."
+                },
+                {
+                  "step_number": "02",
+                  "title": "Pembuatan Dummy & Layout Isi",
+                  "description": "Kami pastikan margin dan lekukan engsel cover (hinge) terukur presisi."
+                },
+                {
+                  "step_number": "03",
+                  "title": "Penjilidan Lem & Perakitan Board",
+                  "description": "Penjilidan blok isi, pemasangan endpaper tebal, pita pembatas, dan pengeleman case board."
+                },
+                {
+                  "step_number": "04",
+                  "title": "Finishing Press & Pengeringan",
+                  "description": "Buku dipress selama beberapa jam agar board menempel rata sempurna sebelum dipacking."
+                }
+              ]
+            },
+            {
+              "_key": "faq-jasa-cetak-buku-hardcover",
+              "_type": "marketing_faq",
+              "anchor_id": "faq",
+              "headline": "FAQ Cetak Hardcover",
+              "subheadline": "Informasi teknis pembuatan buku hardcover.",
+              "items": [
+                {
+                  "question": "Apakah buku hardcover bisa dicetak hanya 1 buku?",
+                  "answer": "Bisa! Kami melayani pembuatan buku hardcover custom mulai dari 1 eksemplar."
+                },
+                {
+                  "question": "Apa saja pilihan kertas isi untuk buku hardcover?",
+                  "answer": "Paling populer adalah Bookpaper 72 gsm untuk novel/biografi, serta Matte Paper atau Art Paper 120/150 gsm untuk buku foto penuh warna."
+                },
+                {
+                  "question": "Berapa lama pengerjaan buku hardcover?",
+                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3–4 hari kerja."
+                }
+              ]
+            },
+            {
+              "_key": "wa-jasa-cetak-buku-hardcover",
+              "_type": "marketing_whatsapp_cta",
+              "anchor_id": "cta",
+              "headline": "Abadikan Karya Anda Dalam Buku Hardcover Mewah",
+              "body": "Beri sentuhan kemewahan dan keabadian pada naskah berharga Anda dengan jilid hardcover standar penerbit internasional.",
+              "label": "Chat Spesialis Hardcover",
+              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak buku hardcover.",
+              "variant": "card"
+            },
+            {
+              "_key": "moneysite-jasa-cetak-buku-hardcover",
+              "_type": "marketing_cta",
+              "headline": "Didukung Workshop Resmi Kotacom",
+              "body": "Seluruh proses cetak, jilid lem panas, dan penjilidan hardcover didukung fasilitas mesin industri dari percetakan profesional Kotacom.",
+              "primary_cta_label": "Kunjungi Kotacom",
+              "primary_cta_url": "https://kotacom.id",
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "secondary_cta_url": "https://devk.my.id"
+            }
+          ]
+        }
       }
     ],
     "posts": [
