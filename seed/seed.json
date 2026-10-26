@@ -3915,7 +3915,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-biaya-cetak-buku",
@@ -3943,7 +3944,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-biaya-cetak-buku",
@@ -3956,7 +3958,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-biaya-cetak-buku",
@@ -3981,7 +3984,8 @@
                 }
               ],
               "headline": "Elemen yang Menentukan Ongkos Cetak",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-biaya-cetak-buku",
@@ -4031,7 +4035,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-biaya-cetak-buku",
@@ -4056,7 +4061,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "pricing-biaya-cetak-buku",
@@ -4095,7 +4101,8 @@
                 }
               ],
               "headline": "Tabel Simulasi Biaya Cetak (Ukuran A5, 100 Halaman)",
-              "anchor_id": "pricing"
+              "anchor_id": "pricing",
+              "_version": 1
             },
             {
               "_key": "steps-biaya-cetak-buku",
@@ -4125,7 +4132,8 @@
               "eyebrow": "HITUNG CEPAT",
               "headline": "Cara Mendapatkan Estimasi Biaya Akurat",
               "anchor_id": "steps",
-              "subheadline": "Hanya 3 menit untuk mendapatkan rincian penawaran harga naskah Anda."
+              "subheadline": "Hanya 3 menit untuk mendapatkan rincian penawaran harga naskah Anda.",
+              "_version": 1
             },
             {
               "_key": "faq-biaya-cetak-buku",
@@ -4146,7 +4154,8 @@
               ],
               "headline": "FAQ Biaya & Pembayaran",
               "anchor_id": "faq",
-              "subheadline": "Informasi tentang transparansi harga dan ketentuan pesanan."
+              "subheadline": "Informasi tentang transparansi harga dan ketentuan pesanan.",
+              "_version": 1
             },
             {
               "_key": "wa-biaya-cetak-buku",
@@ -4156,7 +4165,8 @@
               "variant": "card",
               "headline": "Dapatkan Rincian Biaya Naskah Anda Gratis",
               "anchor_id": "cta",
-              "custom_message": "Halo Kotabook, saya ingin simulasi biaya cetak buku."
+              "custom_message": "Halo Kotabook, saya ingin simulasi biaya cetak buku.",
+              "_version": 1
             },
             {
               "_key": "moneysite-biaya-cetak-buku",
@@ -4166,7 +4176,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T13:12:17Z",
@@ -4192,7 +4203,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-cetak-ebook-ke-buku-fisik",
@@ -4220,7 +4232,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-cetak-ebook-ke-buku-fisik",
@@ -4233,7 +4246,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-cetak-ebook-ke-buku-fisik",
@@ -4258,7 +4272,8 @@
                 }
               ],
               "headline": "Lebih Nyaman Dibaca & Tidak Melelahkan Mata",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-cetak-ebook-ke-buku-fisik",
@@ -4308,7 +4323,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-cetak-ebook-ke-buku-fisik",
@@ -4333,7 +4349,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "pricing-cetak-ebook-ke-buku-fisik",
@@ -4372,7 +4389,8 @@
                 }
               ],
               "headline": "Paket Cetak File Ebook PDF",
-              "anchor_id": "pricing"
+              "anchor_id": "pricing",
+              "_version": 1
             },
             {
               "_key": "steps-cetak-ebook-ke-buku-fisik",
@@ -4402,7 +4420,8 @@
               "eyebrow": "PROSES MUDAH",
               "headline": "Cara Praktis Cetak File Ebook",
               "anchor_id": "steps",
-              "subheadline": "Tanpa ribet keluar rumah, file ebook Anda langsung diproses cetak."
+              "subheadline": "Tanpa ribet keluar rumah, file ebook Anda langsung diproses cetak.",
+              "_version": 1
             },
             {
               "_key": "faq-cetak-ebook-ke-buku-fisik",
@@ -4423,7 +4442,8 @@
               ],
               "headline": "Pertanyaan Cetak Ebook",
               "anchor_id": "faq",
-              "subheadline": "Semua yang perlu Anda ketahui tentang cetak file digital."
+              "subheadline": "Semua yang perlu Anda ketahui tentang cetak file digital.",
+              "_version": 1
             },
             {
               "_key": "wa-cetak-ebook-ke-buku-fisik",
@@ -4433,7 +4453,8 @@
               "variant": "card",
               "headline": "Ingin Baca Ebook Lebih Nyaman Tanpa Layar?",
               "anchor_id": "cta",
-              "custom_message": "Halo Ebookku, saya ingin cetak file ebook PDF menjadi buku fisik."
+              "custom_message": "Halo Ebookku, saya ingin cetak file ebook PDF menjadi buku fisik.",
+              "_version": 1
             },
             {
               "_key": "moneysite-cetak-ebook-ke-buku-fisik",
@@ -4443,7 +4464,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T13:12:17Z",
@@ -4469,7 +4491,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-cetak-manual-book-dan-katalog",
@@ -4497,7 +4520,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-cetak-manual-book-dan-katalog",
@@ -4510,7 +4534,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-cetak-manual-book-dan-katalog",
@@ -4536,7 +4561,8 @@
                 }
               ],
               "headline": "Spesifikasi & Standar Mutu",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-cetak-manual-book-dan-katalog",
@@ -4586,7 +4612,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-cetak-manual-book-dan-katalog",
@@ -4611,7 +4638,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "faq-cetak-manual-book-dan-katalog",
@@ -4628,7 +4656,8 @@
               ],
               "headline": "Pertanyaan yang Sering Diajukan",
               "anchor_id": "faq",
-              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman."
+              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman.",
+              "_version": 1
             },
             {
               "_key": "wa-cetak-manual-book-dan-katalog",
@@ -4638,7 +4667,8 @@
               "variant": "card",
               "headline": "Konsultasikan Kebutuhan Cetak Anda",
               "anchor_id": "cta",
-              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Jasa Cetak Buku Panduan Manual & Katalog Produk Perusahaan."
+              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Jasa Cetak Buku Panduan Manual & Katalog Produk Perusahaan.",
+              "_version": 1
             },
             {
               "_key": "moneysite-cetak-manual-book-dan-katalog",
@@ -4648,7 +4678,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T14:43:22Z",
@@ -5013,7 +5044,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-jasa-cetak-buku-hardcover",
@@ -5041,7 +5073,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-jasa-cetak-buku-hardcover",
@@ -5054,7 +5087,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-jasa-cetak-buku-hardcover",
@@ -5079,7 +5113,8 @@
                 }
               ],
               "headline": "Detail Finishing Spesifikasi Mewah",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-jasa-cetak-buku-hardcover",
@@ -5129,7 +5164,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-jasa-cetak-buku-hardcover",
@@ -5154,7 +5190,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "pricing-jasa-cetak-buku-hardcover",
@@ -5193,7 +5230,8 @@
                 }
               ],
               "headline": "Paket Cetak Buku Hardcover",
-              "anchor_id": "pricing"
+              "anchor_id": "pricing",
+              "_version": 1
             },
             {
               "_key": "steps-jasa-cetak-buku-hardcover",
@@ -5223,7 +5261,8 @@
               "eyebrow": "PROSES PRESISI TINGGI",
               "headline": "Pembuatan Buku Hardcover Berkualitas",
               "anchor_id": "steps",
-              "subheadline": "Kombinasi teknologi mesin modern dan ketelitian tangan ahli penjilidan."
+              "subheadline": "Kombinasi teknologi mesin modern dan ketelitian tangan ahli penjilidan.",
+              "_version": 1
             },
             {
               "_key": "faq-jasa-cetak-buku-hardcover",
@@ -5244,7 +5283,8 @@
               ],
               "headline": "FAQ Cetak Hardcover",
               "anchor_id": "faq",
-              "subheadline": "Informasi teknis pembuatan buku hardcover."
+              "subheadline": "Informasi teknis pembuatan buku hardcover.",
+              "_version": 1
             },
             {
               "_key": "wa-jasa-cetak-buku-hardcover",
@@ -5254,7 +5294,8 @@
               "variant": "card",
               "headline": "Abadikan Karya Anda Dalam Buku Hardcover Mewah",
               "anchor_id": "cta",
-              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak buku hardcover."
+              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak buku hardcover.",
+              "_version": 1
             },
             {
               "_key": "moneysite-jasa-cetak-buku-hardcover",
@@ -5264,7 +5305,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T13:12:17Z",
@@ -5290,7 +5332,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-jasa-cetak-buku-satuan",
@@ -5318,7 +5361,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-jasa-cetak-buku-satuan",
@@ -5331,7 +5375,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-jasa-cetak-buku-satuan",
@@ -5356,7 +5401,8 @@
                 }
               ],
               "headline": "Standar Cetak Penerbit Profesional",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-jasa-cetak-buku-satuan",
@@ -5406,7 +5452,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-jasa-cetak-buku-satuan",
@@ -5431,7 +5478,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "pricing-jasa-cetak-buku-satuan",
@@ -5470,7 +5518,8 @@
                 }
               ],
               "headline": "Pilihan Paket & Estimasi Biaya Cetak",
-              "anchor_id": "pricing"
+              "anchor_id": "pricing",
+              "_version": 1
             },
             {
               "_key": "steps-jasa-cetak-buku-satuan",
@@ -5500,7 +5549,8 @@
               "eyebrow": "PROSES MUDAH & CEPAT",
               "headline": "4 Langkah Praktis Cetak Naskah Anda",
               "anchor_id": "steps",
-              "subheadline": "Dari file naskah di komputer Anda hingga menjadi buku cetak fisik di tangan."
+              "subheadline": "Dari file naskah di komputer Anda hingga menjadi buku cetak fisik di tangan.",
+              "_version": 1
             },
             {
               "_key": "faq-jasa-cetak-buku-satuan",
@@ -5525,7 +5575,8 @@
               ],
               "headline": "Pertanyaan Umum Cetak Satuan",
               "anchor_id": "faq",
-              "subheadline": "Jawaban lengkap seputar spesifikasi teknis, waktu pengerjaan, dan pengiriman."
+              "subheadline": "Jawaban lengkap seputar spesifikasi teknis, waktu pengerjaan, dan pengiriman.",
+              "_version": 1
             },
             {
               "_key": "wa-jasa-cetak-buku-satuan",
@@ -5535,7 +5586,8 @@
               "variant": "card",
               "headline": "Cetak Buku Satuan Anda Sekarang",
               "anchor_id": "cta",
-              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak buku satuan."
+              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak buku satuan.",
+              "_version": 1
             },
             {
               "_key": "moneysite-jasa-cetak-buku-satuan",
@@ -5545,7 +5597,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T13:12:17Z",
@@ -5571,7 +5624,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-jasa-cetak-komik",
@@ -5599,7 +5653,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-jasa-cetak-komik",
@@ -5612,7 +5667,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-jasa-cetak-komik",
@@ -5638,7 +5694,8 @@
                 }
               ],
               "headline": "Spesifikasi & Standar Mutu",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-jasa-cetak-komik",
@@ -5688,7 +5745,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-jasa-cetak-komik",
@@ -5713,7 +5771,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "faq-jasa-cetak-komik",
@@ -5730,7 +5789,8 @@
               ],
               "headline": "Pertanyaan yang Sering Diajukan",
               "anchor_id": "faq",
-              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman."
+              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman.",
+              "_version": 1
             },
             {
               "_key": "wa-jasa-cetak-komik",
@@ -5740,7 +5800,8 @@
               "variant": "card",
               "headline": "Konsultasikan Kebutuhan Cetak Anda",
               "anchor_id": "cta",
-              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Jasa Cetak Komik & Artbook Full Color Satuan."
+              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Jasa Cetak Komik & Artbook Full Color Satuan.",
+              "_version": 1
             },
             {
               "_key": "moneysite-jasa-cetak-komik",
@@ -5750,7 +5811,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T14:43:22Z",
@@ -5776,7 +5838,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-jasa-cetak-modul-dan-buku-ajar",
@@ -5804,7 +5867,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-jasa-cetak-modul-dan-buku-ajar",
@@ -5817,7 +5881,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-jasa-cetak-modul-dan-buku-ajar",
@@ -5842,7 +5907,8 @@
                 }
               ],
               "headline": "Dirancang Khusus Pemakaian Rutin Mahasiswa & Siswa",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-jasa-cetak-modul-dan-buku-ajar",
@@ -5892,7 +5958,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-jasa-cetak-modul-dan-buku-ajar",
@@ -5917,7 +5984,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "pricing-jasa-cetak-modul-dan-buku-ajar",
@@ -5956,7 +6024,8 @@
                 }
               ],
               "headline": "Paket Cetak Modul Pendidikan",
-              "anchor_id": "pricing"
+              "anchor_id": "pricing",
+              "_version": 1
             },
             {
               "_key": "steps-jasa-cetak-modul-dan-buku-ajar",
@@ -5986,7 +6055,8 @@
               "eyebrow": "ALUR PEMESANAN EDUKASI",
               "headline": "Mudahnya Cetak Modul untuk Kelas Anda",
               "anchor_id": "steps",
-              "subheadline": "Proses tertib dan siap dengan laporan pertanggungjawaban resmi."
+              "subheadline": "Proses tertib dan siap dengan laporan pertanggungjawaban resmi.",
+              "_version": 1
             },
             {
               "_key": "faq-jasa-cetak-modul-dan-buku-ajar",
@@ -6007,7 +6077,8 @@
               ],
               "headline": "FAQ Cetak Modul Belajar",
               "anchor_id": "faq",
-              "subheadline": "Informasi seputar cetak buku materi kursus dan kampus."
+              "subheadline": "Informasi seputar cetak buku materi kursus dan kampus.",
+              "_version": 1
             },
             {
               "_key": "wa-jasa-cetak-modul-dan-buku-ajar",
@@ -6017,7 +6088,8 @@
               "variant": "card",
               "headline": "Cetak Modul Pembelajaran Anda Sekarang",
               "anchor_id": "cta",
-              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak modul pembelajaran."
+              "custom_message": "Halo Ebookku, saya ingin konsultasi cetak modul pembelajaran.",
+              "_version": 1
             },
             {
               "_key": "moneysite-jasa-cetak-modul-dan-buku-ajar",
@@ -6027,7 +6099,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T13:12:17Z",
@@ -6053,7 +6126,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-jasa-cetak-novel",
@@ -6081,7 +6155,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-jasa-cetak-novel",
@@ -6094,7 +6169,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-jasa-cetak-novel",
@@ -6119,7 +6195,8 @@
                 }
               ],
               "headline": "Spesifikasi Khusus Buku Fiksi & Novel",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-jasa-cetak-novel",
@@ -6169,7 +6246,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-jasa-cetak-novel",
@@ -6194,7 +6272,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "pricing-jasa-cetak-novel",
@@ -6233,7 +6312,8 @@
                 }
               ],
               "headline": "Paket Cetak Novel Penulis Indie",
-              "anchor_id": "pricing"
+              "anchor_id": "pricing",
+              "_version": 1
             },
             {
               "_key": "steps-jasa-cetak-novel",
@@ -6263,7 +6343,8 @@
               "eyebrow": "PROSES PENERBITAN MANDIRI",
               "headline": "Langkah Cetak Novel Anda",
               "anchor_id": "steps",
-              "subheadline": "Alur mudah dan terpandu khusus bagi penulis naskah fiksi mandiri."
+              "subheadline": "Alur mudah dan terpandu khusus bagi penulis naskah fiksi mandiri.",
+              "_version": 1
             },
             {
               "_key": "faq-jasa-cetak-novel",
@@ -6284,7 +6365,8 @@
               ],
               "headline": "Tanya Jawab Seputar Cetak Novel",
               "anchor_id": "faq",
-              "subheadline": "Hal-hal yang sering ditanyakan sebelum mencetak novel indie."
+              "subheadline": "Hal-hal yang sering ditanyakan sebelum mencetak novel indie.",
+              "_version": 1
             },
             {
               "_key": "wa-jasa-cetak-novel",
@@ -6294,7 +6376,8 @@
               "variant": "card",
               "headline": "Siap Merilis Novel Karya Anda?",
               "anchor_id": "cta",
-              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak novel naskah saya."
+              "custom_message": "Halo Kotabook, saya ingin konsultasi cetak novel naskah saya.",
+              "_version": 1
             },
             {
               "_key": "moneysite-jasa-cetak-novel",
@@ -6304,7 +6387,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T13:12:17Z",
@@ -6330,7 +6414,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-jasa-jilid-buku-dan-finishing",
@@ -6358,7 +6443,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-jasa-jilid-buku-dan-finishing",
@@ -6371,7 +6457,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-jasa-jilid-buku-dan-finishing",
@@ -6397,7 +6484,8 @@
                 }
               ],
               "headline": "Spesifikasi & Standar Mutu",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-jasa-jilid-buku-dan-finishing",
@@ -6447,7 +6535,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-jasa-jilid-buku-dan-finishing",
@@ -6472,7 +6561,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "faq-jasa-jilid-buku-dan-finishing",
@@ -6489,7 +6579,8 @@
               ],
               "headline": "Pertanyaan yang Sering Diajukan",
               "anchor_id": "faq",
-              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman."
+              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman.",
+              "_version": 1
             },
             {
               "_key": "wa-jasa-jilid-buku-dan-finishing",
@@ -6499,7 +6590,8 @@
               "variant": "card",
               "headline": "Konsultasikan Kebutuhan Cetak Anda",
               "anchor_id": "cta",
-              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Jasa Jilid Buku Satuan Lem Panas, Hardcover, & Spiral Kawat."
+              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Jasa Jilid Buku Satuan Lem Panas, Hardcover, & Spiral Kawat.",
+              "_version": 1
             },
             {
               "_key": "moneysite-jasa-jilid-buku-dan-finishing",
@@ -6509,7 +6601,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T14:43:22Z",
@@ -6535,7 +6628,8 @@
               "primary_cta_url": "#cta",
               "primary_cta_label": "Konsultasi Cetak via WA",
               "secondary_cta_url": "#pricing",
-              "secondary_cta_label": "Cek Pilihan Paket"
+              "secondary_cta_label": "Cek Pilihan Paket",
+              "_version": 1
             },
             {
               "_key": "stats-jasa-self-publishing",
@@ -6563,7 +6657,8 @@
                 }
               ],
               "headline": "Kredibilitas Produksi & Jaminan Kualitas",
-              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional."
+              "subheadline": "Ribuan judul naskah telah dicetak dengan presisi standar penerbit nasional.",
+              "_version": 1
             },
             {
               "_key": "deliverables-jasa-self-publishing",
@@ -6576,7 +6671,8 @@
               "headline": "Apa yang Anda Dapatkan di Setiap Pesanan?",
               "anchor_id": "deliverables",
               "cta_label": "Konsultasikan Kebutuhan Cetak Anda",
-              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar"
+              "image_caption": "Paket Cetak Buku Fisik Lengkap & Siap Edar",
+              "_version": 1
             },
             {
               "_key": "features-jasa-self-publishing",
@@ -6602,7 +6698,8 @@
                 }
               ],
               "headline": "Spesifikasi & Standar Mutu",
-              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern."
+              "subheadline": "Dikerjakan oleh teknisi ahli percetakan dengan mesin modern.",
+              "_version": 1
             },
             {
               "_key": "why-us-jasa-self-publishing",
@@ -6652,7 +6749,8 @@
               "anchor_id": "why-us",
               "cta_label": "Buktikan Kualitasnya Sekarang",
               "subheadline": "Bandingkan langsung spesifikasi teknis dan komitmen jaminan kami dengan percetakan biasa atau fotokopi konvensional.",
-              "competitor_title": "Percetakan Biasa / Fotokopi"
+              "competitor_title": "Percetakan Biasa / Fotokopi",
+              "_version": 1
             },
             {
               "_key": "logos-jasa-self-publishing",
@@ -6677,7 +6775,8 @@
                   "name": "SHRINK WRAP PROTECTED"
                 }
               ],
-              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN"
+              "headline": "STANDAR INDUSTRI & INTEGRASI PERCETAKAN",
+              "_version": 1
             },
             {
               "_key": "faq-jasa-self-publishing",
@@ -6694,7 +6793,8 @@
               ],
               "headline": "Pertanyaan yang Sering Diajukan",
               "anchor_id": "faq",
-              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman."
+              "subheadline": "Informasi seputar bahan, waktu produksi, dan pengiriman.",
+              "_version": 1
             },
             {
               "_key": "wa-jasa-self-publishing",
@@ -6704,7 +6804,8 @@
               "variant": "card",
               "headline": "Konsultasikan Kebutuhan Cetak Anda",
               "anchor_id": "cta",
-              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Paket Self Publishing Buku Mandiri ISBN & Cetak Lengkap."
+              "custom_message": "Halo, saya ingin konsultasi layanan di halaman Paket Self Publishing Buku Mandiri ISBN & Cetak Lengkap.",
+              "_version": 1
             },
             {
               "_key": "moneysite-jasa-self-publishing",
@@ -6714,7 +6815,8 @@
               "primary_cta_url": "https://kotacom.id",
               "primary_cta_label": "Kunjungi Kotacom",
               "secondary_cta_url": "https://devk.my.id",
-              "secondary_cta_label": "Software & Jasa IT Devk"
+              "secondary_cta_label": "Software & Jasa IT Devk",
+              "_version": 1
             }
           ],
           "publishedAt": "2026-10-25T14:43:22Z",
