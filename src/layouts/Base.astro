@@ -11,6 +11,7 @@ import LiveSearch from "emdash/ui/search";
 import { Font } from "astro:assets";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import StructuredData from "../components/StructuredData.astro";
+import AnalyticsAndAds from "../components/AnalyticsAndAds.astro";
 import { getSiteLocale } from "../utils/locale";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
 import { getSiteOrigin } from "../utils/origin";
@@ -169,6 +170,7 @@ const year = new Date().getFullYear();
 			modifiedTime={modifiedTime}
 			author={author}
 		/>
+		<AnalyticsAndAds />
 		<link
 			rel="alternate"
 			type="application/rss+xml"

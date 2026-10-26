@@ -1,0 +1,61 @@
+---
+import { getEmDashCollection } from "emdash";
+
+interface SeoSettingRow {
+	adsense_enabled?: boolean | number | string;
+	adsense_client_id?: string;
+	ga_enabled?: boolean | number | string;
+	ga_measurement_id?: string;
+}
+
+let seoRow: SeoSettingRow | null = null;
+try {
+	const res = await getEmDashCollection("seo_settings", { limit: 1 });
+	if (res && res.entries && res.entries.length > 0) {
+		seoRow = res.entries[0].data as SeoSettingRow;
+	}
+} catch {
+	seoRow = null;
+}
+
+const isAdsenseEnabled = seoRow
+	? seoRow.adsense_enabled === true || seoRow.adsense_enabled === 1 || seoRow.adsense_enabled === "1"
+	: false;
+const adsenseClientId = seoRow?.adsense_client_id?.trim();
+
+const isGaEnabled = seoRow
+	? seoRow.ga_enabled === true || seoRow.ga_enabled === 1 || seoRow.ga_enabled === "1"
+	: false;
+const gaMeasurementId = seoRow?.ga_measurement_id?.trim();
+---
+
+{
+	isAdsenseEnabled && adsenseClientId && (
+		<script
+			is:inline
+			async
+			src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+			crossorigin="anonymous"
+		/>
+	)
+}
+
+{
+	isGaEnabled && gaMeasurementId && (
+		<>
+			<script
+				is:inline
+				async
+				src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+			/>
+			<script is:inline define:vars={{ gaMeasurementId }}>
+				window.dataLayer = window.dataLayer || [];
+				function gtag() {
+					dataLayer.push(arguments);
+				}
+				gtag("js", new Date());
+				gtag("config", gaMeasurementId);
+			</script>
+		</>
+	)
+}
