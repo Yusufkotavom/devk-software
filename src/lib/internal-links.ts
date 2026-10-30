@@ -221,7 +221,8 @@ function tailAfter(slug: string, family: string | null): string {
 	return slug;
 }
 
-const MAX_CITY_TOKENS = 3;
+// Longest kabupaten name in the dataset: "kepulauan-siau-tagulandang-biaro".
+const MAX_CITY_TOKENS = 5;
 
 /**
  * Province of a page, resolved by matching the longest known kabupaten/kota key
@@ -673,8 +674,12 @@ export async function getRelatedLinks(slug: string): Promise<RelatedLinks> {
 		...parents.map((p) => p.slug),
 	]);
 
+	const isPillarPage = graph.hubsOf.has(clean);
 	const push = (page: LinkTarget | undefined) => {
 		if (!page || seen.has(page.slug) || cross.length >= CROSS_COUNT) return;
+		// Province hubs are structural, not topical: never offer "Jawa Timur" as a
+		// "related service" for a city page just because both end in "timur".
+		if (!isPillarPage && provinceHubOfSlug(page.slug)) return;
 		seen.add(page.slug);
 		cross.push(page);
 	};
