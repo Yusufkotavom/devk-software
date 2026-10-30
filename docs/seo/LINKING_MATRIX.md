@@ -82,3 +82,53 @@ flowchart TD
 * **Variasi Wajib**: Gunakan kombinasi 50% keyword exact/LSI (contoh: *"jasa install autocad online"*), 30% nama brand/topik (contoh: *"layanan software teknik Devk"*), dan 20% conversational (contoh: *"cek daftar harga selengkapnya di sini"*).
 * **Hindari Over-Optimization**: Jangan gunakan anchor text yang sama 100% secara berulang-ulang di satu halaman.
 * **Konteks Alami**: Tempatkan tautan di dalam kalimat deskriptif yang memberi nilai tambah bagi pembaca.
+
+---
+
+## 5. Implementasi Otomatis di Template (Auto Internal Linking)
+
+Aturan 4-Point di atas **tidak lagi dikerjakan manual per halaman**. Semua halaman yang dirender lewat `src/pages/[...slug].astro` (termasuk halaman hasil Bulk Generator) otomatis mendapat blok tautan internal:
+
+| Komponen | File | Peran |
+| :--- | :--- | :--- |
+| Link graph | `src/lib/internal-links.ts` | Membaca seluruh slug + title halaman `published` (2 kolom saja, cache 5 menit) lalu menurunkan relasi antarhalaman. |
+| Band UI | `src/components/RelatedLinks.astro` | Merender "Halaman terkait": Layanan utama (upward), Layanan serupa (lateral), Layanan lain yang relevan (cross-pillar), CTA WhatsApp. |
+| Pemasangan | `src/pages/[...slug].astro` | Blok dipasang tepat setelah `PageView`, jadi berlaku untuk semua halaman pSEO. |
+
+**Cara relasi ditentukan**
+
+1. **Family** = prefix slug terpanjang yang dipakai minimal 3 halaman (`jasa-cetak-buku`, `pembuatan-website`, `no-1-jual-game-pc`, dst).
+2. **Hub (upward)** = hub provinsi bila ada (`/percetakan/cetak-buku/aceh`), lalu pilar nasional (`/percetakan/cetak-buku`), lalu peta `FAMILY_HUBS`, atau naik ke prefix di atasnya (`jasa-cetak-buku-aceh` → `jasa-cetak-buku` → `/percetakan/cetak-buku`).
+3. **Lateral** = 6 halaman satu **provinsi** lebih dulu (urutan *ring*, jadi halaman ke-i menaut i+1..i+6 dan setiap halaman **wajib menerima** tautan masuk dari tetangganya), lalu dilengkapi dari ring family bila provinsinya belum punya 6 halaman.
+4. **Cross-pillar** = halaman dengan *tail* topik/kota yang sama di family berbeda (`jasa-cetak-buku-bandung` ↔ `pembuatan-website/bandung`), lalu fallback ke kemiripan token slug (mis. semua halaman `software`).
+5. **Directory** = pilar nasional menampilkan 34 chip provinsi, hub provinsi menampilkan seluruh kabupaten/kota di provinsinya, pilar lain menampilkan 48 chip family sebagai tautan masuk bagi halaman klaster.
+
+**Halaman yang dikecualikan** (`home`, `about`, `contact`, `blog`, `privacy`, `blocks`, dll) ada di `SKIP_SLUGS`.
+
+**Verifikasi**: `node scripts/check-internal-links.mjs` (dijalankan di jaringan `dokploy-network`) mencetak relasi per halaman dan menghitung jumlah halaman yang masih *orphan*. Kondisi terakhir: **736 dari 751** halaman punya tautan masuk (sisanya halaman standalone yang memang dikecualikan).
+
+---
+
+## 6. Arsitektur Tiga Lapis: Nasional → Provinsi → Kota
+
+Sebelum lapisan provinsi ada, 399 halaman kota semuanya menaut ke satu URL pilar nasional dan bertetangga menurut urutan abjad slug — sehingga `jasa-cetak-buku-sanggau` (Kalimantan Barat) bertetangga dengan Sarmi (Papua). Sekarang grafnya bertingkat:
+
+```
+/percetakan/cetak-buku                     (pilar nasional, 34 chip provinsi)
+  └─ /percetakan/cetak-buku/jawa-timur     (hub provinsi, 38 kabupaten/kota)
+       └─ /jasa-cetak-buku-surabaya        (halaman kota)
+            ├─ induk : hub provinsi  -> pilar nasional
+            ├─ serupa: 6 kota di Jawa Timur
+            └─ cross : layanan lain untuk topik/kota yang sama
+```
+
+**Sumber data** — `src/data/wilayah.ts` (auto-generate, 34 provinsi / 514 kabupaten & kota) dibuat oleh `scripts/gen_wilayah_data.py`. Peta ini yang menentukan provinsi setiap halaman dari slug-nya (`provinceOfSlug`), termasuk ejaan lama (`makassar`, `kutai-kartanegara`, `pasangkayu`, `poleang-mongondow`) lewat tabel alias.
+
+**Halaman hub provinsi** (34 halaman, slug `percetakan/cetak-buku/<provinsi>`, status `published`) berisi hero, alur kerja, layanan, FAQ, dan CTA WhatsApp — sama seperti pilar nasional. Blok "Halaman terkait" di halaman ini otomatis menjadi direktori seluruh kabupaten/kota provinsi tersebut.
+
+**Efek ke crawl & relevansi**
+- Kedalaman crawl halaman kota: 2 klik dari home (nasional → provinsi → kota), bukan lagi 1 lompatan datar yang menumpuk 399 tautan di satu URL.
+- Setiap hub provinsi menerima tautan masuk dari pilar nasional **dan** dari seluruh kota di provinsinya.
+- Anchor jadi lebih kontekstual: tetangga `Surabaya`, `Sidoarjo`, `Malang`, bukan kota di pulau lain.
+
+**Verifikasi**: `node scripts/check-internal-links.mjs` (jalankan di jaringan `dokploy-network` karena host tidak bisa akses Postgres langsung) mencetak `province`, `hub`, `parents`, dan label direktori per halaman, lalu menghitung halaman yang masih orphan.

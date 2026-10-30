@@ -1,0 +1,221 @@
+---
+/**
+ * "Halaman terkait" band — renders the 4-Point Linking Rule for generated pages
+ * (see docs/seo/LINKING_MATRIX.md):
+ *   1. upward link  -> family hub / pillar page
+ *   2. lateral      -> sibling pages in the same family
+ *   3. cross-pillar -> the same topic in a different service family
+ *   4. conversion   -> WhatsApp CTA carrying the page in the prefilled message
+ */
+import { anchorFor, getRelatedLinks, pageLabel, tailAnchor } from "../lib/internal-links";
+import { buildWhatsAppHref } from "../utils/whatsapp";
+
+interface Props {
+	slug: string;
+	pageTitle?: string;
+	pageUrl?: string;
+}
+
+const { slug, pageTitle = "", pageUrl = "" } = Astro.props;
+const related = await getRelatedLinks(slug);
+const { anchorFamily, hub, parents, lateral, cross, directory, directoryLabel, lateralLabel } = related;
+
+const upward = [hub, ...parents].filter((page): page is NonNullable<typeof hub> => Boolean(page));
+const hasContent =
+	upward.length > 0 || lateral.length > 0 || cross.length > 0 || directory.length > 0;
+const waHref = buildWhatsAppHref(null, { context: "page", pageTitle, pageUrl });
+
+function shortTitle(value: string, max = 64): string {
+	const clean = String(value ?? "").replace(/\s+/g, " ").trim();
+	if (clean.length <= max) return clean;
+	const cut = clean.slice(0, max);
+	const lastSpace = cut.lastIndexOf(" ");
+	return `${(lastSpace > 30 ? cut.slice(0, lastSpace) : cut).trim()}…`;
+}
+---
+
+{
+	hasContent && (
+		<section class="band section related-links" aria-labelledby="related-links-title">
+			<div class="frame">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Jelajahi</p>
+						<h2 class="section-head__title" id="related-links-title">
+							Halaman terkait
+						</h2>
+					</div>
+					<a href="/products" class="arrow-link">
+						Semua produk
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.75"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M5 12h14" />
+							<path d="m12 5 7 7-7 7" />
+						</svg>
+					</a>
+				</div>
+
+				<div class="related-links__grid">
+					{
+						upward.length > 0 && (
+							<div class="related-links__col related-links__col--hub">
+								<h3 class="related-links__title">Halaman induk</h3>
+								<ul class="related-links__list">
+									{upward.map((page, index) => (
+										<li class={index === 0 ? "related-links__up" : "related-links__up related-links__up--top"}>
+											<a href={`/${page.slug}`} class="related-links__link">
+												{pageLabel(page, 60)}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						)
+					}
+
+					{
+						lateral.length > 0 && (
+							<div class="related-links__col">
+								<h3 class="related-links__title">{lateralLabel}</h3>
+								<ul class="chips">
+									{lateral.map((page, index) => (
+										<li>
+											<a href={`/${page.slug}`} class="chip" title={shortTitle(page.title, 90)}>
+												{anchorFor(page, anchorFamily, index)}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						)
+					}
+
+					{
+						cross.length > 0 && (
+							<div class="related-links__col">
+								<h3 class="related-links__title">Layanan lain yang relevan</h3>
+								<ul class="chips">
+									{cross.map((page, index) => (
+										<li>
+											<a href={`/${page.slug}`} class="chip" title={shortTitle(page.title, 90)}>
+												{pageLabel(page, 46)}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						)
+					}
+				</div>
+
+				{
+					directory.length > 0 && (
+						<div class="related-links__directory">
+							<h3 class="related-links__title">
+								{directoryLabel || "Pilih kota atau wilayah Anda"}
+							</h3>
+							<ul class="chips">
+								{directory.map((page) => (
+									<li>
+										<a href={`/${page.slug}`} class="chip" title={shortTitle(page.title, 90)}>
+											{tailAnchor(page)}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					)
+				}
+
+				<p class="related-links__cta">
+					<span>Butuh rekomendasi yang paling sesuai kebutuhan Anda?</span>
+					<a href={waHref} class="btn" rel="noopener" target="_blank">Tanya via WhatsApp</a>
+				</p>
+			</div>
+		</section>
+	)
+}
+
+<style>
+	.related-links {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.related-links__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+		gap: var(--spacing-6);
+		margin-top: var(--spacing-6);
+	}
+
+	.related-links__title {
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-3);
+	}
+
+	.related-links__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-2);
+	}
+
+	.related-links__link {
+		display: inline-block;
+		font-size: var(--font-size-base);
+		font-weight: 550;
+		color: var(--color-text);
+		text-decoration: none;
+		text-underline-offset: 3px;
+	}
+
+	.related-links__link:hover {
+		text-decoration: underline;
+	}
+
+	.related-links__up--top .related-links__link {
+		font-weight: 450;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.related-links__directory {
+		margin-top: var(--spacing-8);
+		padding-top: var(--spacing-6);
+		border-top: 1px solid var(--color-border-subtle);
+	}
+
+	.related-links__cta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-4);
+		margin-top: var(--spacing-8);
+		padding: var(--spacing-4) var(--spacing-5);
+		border-radius: var(--radius-lg);
+		background: var(--color-fill);
+		color: var(--color-text-secondary);
+		font-size: var(--font-size-sm);
+	}
+
+	@media (max-width: 640px) {
+		.related-links__cta {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>
