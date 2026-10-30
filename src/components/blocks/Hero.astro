@@ -3,6 +3,7 @@ import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
 import BookMockup from "../ui/BookMockup.astro";
+import BrandOrbit from "../ui/BrandOrbit.astro";
 import FadeInText from "@astroanimate/core/FadeInText";
 import type { PageContentBlock } from "../../../emdash-env";
 import { formatAccentWords } from "../../utils/text";
@@ -15,6 +16,7 @@ const { anchor_id, eyebrow, headline, subheadline, centered } = raw;
 const image = raw.image ?? raw.imageUrl;
 const image_caption = raw.image_caption ?? raw.imageCaption;
 const rawFit = String(raw.image_fit ?? raw.imageFit ?? "").trim().toLowerCase();
+const isOrbit = String(image ?? "").trim().toLowerCase() === "orbit" || raw.brand_orbit === true;
 const isSquareImageObj = typeof image === "object" && image !== null && image.width && image.height && image.width === image.height;
 const isFullMedia =
 	rawFit === "full" ||
@@ -40,7 +42,7 @@ const secondaryCta =
 
 <section
 	id={anchor_id || undefined}
-	class:list={["hero", "bg-grid-dots", { "hero--centered": centered }]}
+	class:list={["hero", "bg-grid-dots", { "hero--centered": centered, "hero--orbit": isOrbit && !centered }]}
 >
 	<div class="frame">
 		{
@@ -79,9 +81,13 @@ const secondaryCta =
 		}
 	</div>
 	{
-		(image || raw.show_mockup) && (
+		(isOrbit || image || raw.show_mockup) && (
 			<div class="frame hero__media-wrap">
-				{image === "mockup" || raw.show_mockup ? (
+				{isOrbit ? (
+					<div class="hero__orbit">
+						<BrandOrbit centerLabel={raw.brand_name || "Kotacom"} />
+					</div>
+				) : image === "mockup" || raw.show_mockup ? (
 					<BookMockup title={headline} eyebrow={eyebrow} />
 				) : (
 					<figure class:list={["media", "hero__media", "settle", { "hero__media--full": isFullMedia }]}>
@@ -189,6 +195,65 @@ const secondaryCta =
 
 	.hero__media-wrap {
 		margin-block-start: clamp(36px, 4.5vw, 64px);
+	}
+
+	/* Hero dengan orbit brand: teks di kiri, visual ekosistem di kanan.
+	   Grid-nya sendiri memakai lebar frame supaya sejajar dengan header. */
+	.hero--orbit {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+		align-items: center;
+		gap: clamp(24px, 3.2vw, 52px);
+		width: var(--frame-width);
+		margin-inline: auto;
+		padding-inline: var(--frame-padding);
+	}
+
+	.hero--orbit > .frame {
+		width: auto;
+		margin-inline: 0;
+		padding-inline: 0;
+	}
+
+	.hero--orbit > .hero__media-wrap {
+		margin-block-start: 0;
+	}
+
+	.hero--orbit .hero__headline {
+		max-width: 17ch;
+	}
+
+	.hero__orbit {
+		position: relative;
+		width: 100%;
+		max-width: 505px;
+		margin-inline-start: auto;
+	}
+
+	@media (max-width: 1000px) {
+		.hero--orbit {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 0;
+			padding-inline: 0;
+		}
+
+		.hero--orbit > .frame {
+			width: var(--frame-width);
+			margin-inline: auto;
+			padding-inline: var(--frame-padding);
+		}
+
+		.hero--orbit > .hero__media-wrap {
+			margin-block-start: clamp(28px, 5vw, 40px);
+		}
+
+		.hero--orbit .hero__headline {
+			max-width: 100%;
+		}
+
+		.hero__orbit {
+			margin-inline: auto;
+		}
 	}
 
 	.hero__media {

@@ -1,0 +1,452 @@
+---
+import { Icon } from "astro-iconset/components";
+
+/**
+ * BrandOrbit — visual "ekosistem layanan" Kotacom.
+ *
+ * Logo Kotacom di pusat, dikelilingi 4 lini bisnis (percetakan, cetak buku,
+ * software, IT service) dalam orbit konsentris + satelit kecil untuk layanan
+ * pendukung. Semua link asli (bukan hiasan), jadi visual ini juga bekerja
+ * sebagai navigasi cepat dari hero.
+ */
+interface OrbitNode {
+	label: string;
+	hint: string;
+	href: string;
+	icon: string;
+}
+
+interface Props {
+	centerLabel?: string;
+	nodes?: OrbitNode[];
+	class?: string;
+}
+
+const DEFAULT_NODES: OrbitNode[] = [
+	{ label: "Percetakan", hint: "Offset & digital", href: "/percetakan", icon: "ph:printer" },
+	{ label: "Cetak Buku", hint: "ISBN & penerbit", href: "/percetakan/cetak-buku", icon: "ph:book-open" },
+	{ label: "Software", hint: "Web, app & POS", href: "/software", icon: "ph:code" },
+	{ label: "IT Service", hint: "Hardware & support", href: "/services", icon: "ph:wrench" },
+];
+
+const SATELLITES = [
+	{ icon: "ph:whatsapp-logo", label: "Konsultasi WhatsApp" },
+	{ icon: "ph:magnifying-glass", label: "Audit & riset kata kunci" },
+	{ icon: "ph:truck", label: "Pengiriman nasional" },
+	{ icon: "ph:pen-nib", label: "Desain & layout" },
+];
+
+const {
+	centerLabel = "Kotacom",
+	nodes = DEFAULT_NODES,
+	class: className,
+} = Astro.props;
+
+const monogram = [...centerLabel.trim()][0]?.toUpperCase() ?? "K";
+const items = nodes.slice(0, 4);
+const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orbit__node--br"];
+---
+
+<div class:list={["orbit", className]} data-brand-orbit>
+	<div class="orbit__canvas">
+		<svg class="orbit__rings" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+			<defs>
+				<radialGradient id="orbit-core-glow" cx="50%" cy="50%" r="50%">
+					<stop offset="0%" stop-color="#ef4444" stop-opacity="0.22" />
+					<stop offset="55%" stop-color="#ef4444" stop-opacity="0.06" />
+					<stop offset="100%" stop-color="#ef4444" stop-opacity="0" />
+				</radialGradient>
+			</defs>
+			<circle cx="300" cy="300" r="278" fill="url(#orbit-core-glow)" opacity="0.5" />
+			<g class="orbit__spin">
+				<circle cx="300" cy="300" r="278" class="orbit__ring orbit__ring--dashed" />
+				<circle cx="300" cy="300" r="214" class="orbit__ring" />
+			</g>
+			<circle cx="300" cy="300" r="154" class="orbit__ring orbit__ring--dashed" />
+			<circle cx="300" cy="300" r="96" class="orbit__ring orbit__ring--core" />
+			<g class="orbit__spokes">
+				{
+					Array.from({ length: 16 }).map((_, i) => {
+						const a = (i * Math.PI * 2) / 16;
+						const inner = 96;
+						const outer = 278;
+						return (
+							<line
+								x1={300 + Math.cos(a) * inner}
+								y1={300 + Math.sin(a) * inner}
+								x2={300 + Math.cos(a) * outer}
+								y2={300 + Math.sin(a) * outer}
+							/>
+						);
+					})
+				}
+			</g>
+			<circle cx="300" cy="300" r="278" class="orbit__ring orbit__ring--edge" />
+		</svg>
+
+		<span class="orbit__pulse" aria-hidden="true"></span>
+
+		<div class="orbit__core">
+			<span class="orbit__mark" aria-hidden="true">{monogram}</span>
+			<span class="orbit__wordmark">{centerLabel}</span>
+			<span class="orbit__tagline">Satu mitra, empat lini</span>
+		</div>
+
+		<ul class="orbit__nodes" aria-label="Lini layanan Kotacom">
+			{
+				items.map((node, i) => (
+					<li class:list={["orbit__node", positions[i]]} style={`--node-delay:${i * 0.65}s`}>
+						<a class="orbit__card" href={node.href}>
+							<span class="orbit__icon" aria-hidden="true">
+								<Icon name={node.icon} />
+							</span>
+							<span class="orbit__text">
+								<strong>{node.label}</strong>
+								<small>{node.hint}</small>
+							</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<div class="orbit__sats" aria-hidden="true">
+			{
+				SATELLITES.map((sat, i) => (
+					<span class:list={["orbit__sat", `orbit__sat--${i + 1}`]} title={sat.label}>
+						<Icon name={sat.icon} />
+					</span>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<style>
+	.orbit {
+		--orbit-line: rgba(255, 255, 255, 0.13);
+		--orbit-line-soft: rgba(255, 255, 255, 0.1);
+		--orbit-accent: #ef4444;
+		position: relative;
+		container-type: inline-size;
+		border-radius: clamp(20px, 3vw, 30px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		background:
+			radial-gradient(120% 90% at 50% 0%, #1b1b20 0%, #101014 48%, #08080a 100%);
+		box-shadow:
+			0 40px 80px -48px rgba(8, 8, 12, 0.8),
+			inset 0 1px 0 rgba(255, 255, 255, 0.07);
+		padding: clamp(10px, 2.4vw, 20px);
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	/* grain halus supaya panel tidak terlihat seperti gradient datar */
+	.orbit::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.045;
+		mix-blend-mode: overlay;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+
+	.orbit__canvas {
+		position: relative;
+		aspect-ratio: 1 / 1;
+		width: 100%;
+	}
+
+	.orbit__rings {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		overflow: visible;
+	}
+
+	.orbit__ring {
+		fill: none;
+		stroke: var(--orbit-line-soft);
+		stroke-width: 1;
+	}
+
+	.orbit__ring--dashed {
+		stroke: rgba(255, 255, 255, 0.15);
+		stroke-dasharray: 2 10;
+		stroke-linecap: round;
+	}
+
+	.orbit__ring--core {
+		stroke: rgba(255, 255, 255, 0.22);
+	}
+
+	.orbit__ring--edge {
+		stroke: rgba(255, 255, 255, 0.06);
+	}
+
+	.orbit__spokes line {
+		stroke: rgba(255, 255, 255, 0.085);
+		stroke-width: 1;
+	}
+
+	.orbit__spin {
+		transform-origin: 300px 300px;
+		animation: orbit-spin 120s linear infinite;
+	}
+
+	@keyframes orbit-spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.orbit__pulse {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 32%;
+		aspect-ratio: 1;
+		translate: -50% -50%;
+		border-radius: 50%;
+		border: 1px solid rgba(239, 68, 68, 0.35);
+		animation: orbit-pulse 5.5s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+		pointer-events: none;
+	}
+
+	@keyframes orbit-pulse {
+		0% {
+			transform: scale(0.72);
+			opacity: 0.55;
+		}
+		70% {
+			transform: scale(1.35);
+			opacity: 0;
+		}
+		100% {
+			transform: scale(1.35);
+			opacity: 0;
+		}
+	}
+
+	/* ---------- pusat: logo ---------- */
+	.orbit__core {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		translate: -50% -50%;
+		display: grid;
+		justify-items: center;
+		gap: 6px;
+		text-align: center;
+		z-index: 2;
+	}
+
+	.orbit__mark {
+		display: grid;
+		place-items: center;
+		width: clamp(48px, 13cqw, 66px);
+		aspect-ratio: 1;
+		border-radius: clamp(13px, 3.4cqw, 18px);
+		background: #fff;
+		color: #0b0b0d;
+		font-size: clamp(22px, 6cqw, 31px);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		line-height: 1;
+		box-shadow:
+			0 0 0 6px rgba(255, 255, 255, 0.04),
+			0 14px 30px -12px rgba(0, 0, 0, 0.9);
+	}
+
+	.orbit__wordmark {
+		font-size: clamp(12px, 2.9cqw, 15px);
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: #fff;
+	}
+
+	.orbit__tagline {
+		font-size: clamp(9px, 2.1cqw, 11px);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	/* ---------- node lini bisnis ---------- */
+	.orbit__nodes {
+		position: absolute;
+		inset: 0;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		z-index: 3;
+	}
+
+	.orbit__node {
+		position: absolute;
+		translate: -50% -50%;
+		animation: orbit-bob 7s ease-in-out infinite;
+		animation-delay: var(--node-delay, 0s);
+	}
+
+	.orbit__node--tl {
+		left: 20%;
+		top: 19%;
+	}
+
+	.orbit__node--tr {
+		left: 80%;
+		top: 19%;
+	}
+
+	.orbit__node--bl {
+		left: 20%;
+		top: 81%;
+	}
+
+	.orbit__node--br {
+		left: 80%;
+		top: 81%;
+	}
+
+	@keyframes orbit-bob {
+		0%,
+		100% {
+			translate: -50% -50%;
+		}
+		50% {
+			translate: -50% calc(-50% - 4px);
+		}
+	}
+
+	.orbit__card {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 7px 12px 7px 7px;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.085);
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		backdrop-filter: blur(8px);
+		text-decoration: none;
+		white-space: nowrap;
+		transition:
+			background 0.25s ease,
+			border-color 0.25s ease,
+			box-shadow 0.25s ease,
+			transform 0.25s ease;
+	}
+
+	.orbit__card:hover,
+	.orbit__card:focus-visible {
+		background: rgba(255, 255, 255, 0.11);
+		border-color: rgba(255, 255, 255, 0.28);
+		box-shadow: 0 12px 26px -14px rgba(0, 0, 0, 0.9);
+		transform: translateY(-1px);
+	}
+
+	.orbit__icon {
+		display: grid;
+		place-items: center;
+		width: clamp(26px, 6cqw, 32px);
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.15);
+		color: #fff;
+		font-size: clamp(14px, 3.4cqw, 17px);
+		flex: none;
+	}
+
+	.orbit__text {
+		display: grid;
+		gap: 1px;
+		text-align: left;
+		line-height: 1.15;
+	}
+
+	.orbit__text strong {
+		font-size: clamp(11px, 2.6cqw, 13px);
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		color: #fff;
+	}
+
+	.orbit__text small {
+		font-size: clamp(9px, 2cqw, 11px);
+		color: rgba(255, 255, 255, 0.7);
+		letter-spacing: 0.01em;
+	}
+
+	/* ---------- satelit layanan pendukung ---------- */
+	.orbit__sats {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	.orbit__sat {
+		position: absolute;
+		display: grid;
+		place-items: center;
+		width: clamp(22px, 5cqw, 28px);
+		aspect-ratio: 1;
+		translate: -50% -50%;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.09);
+		border: 1px solid rgba(255, 255, 255, 0.17);
+		color: rgba(255, 255, 255, 0.75);
+		font-size: clamp(10px, 2.4cqw, 12px);
+	}
+
+	.orbit__sat--1 {
+		left: 50%;
+		top: 4.5%;
+	}
+
+	.orbit__sat--2 {
+		left: 95.5%;
+		top: 50%;
+	}
+
+	.orbit__sat--3 {
+		left: 50%;
+		top: 95.5%;
+	}
+
+	.orbit__sat--4 {
+		left: 4.5%;
+		top: 50%;
+	}
+
+	@media (max-width: 480px) {
+		.orbit__card {
+			padding: 6px 10px 6px 6px;
+			gap: 6px;
+		}
+
+		.orbit__text small {
+			display: none;
+		}
+
+		.orbit__node--tl,
+		.orbit__node--bl {
+			left: 21%;
+		}
+
+		.orbit__node--tr,
+		.orbit__node--br {
+			left: 79%;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.orbit__spin,
+		.orbit__pulse,
+		.orbit__node {
+			animation: none;
+		}
+	}
+</style>
