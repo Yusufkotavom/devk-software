@@ -144,6 +144,16 @@ const definition: PluginDefinition = {
 						],
 						initial_value: "cover",
 					},
+					{
+						type: "select",
+						action_id: "imageSide",
+						label: "Posisi Visual",
+						options: [
+							{ label: "Kanan (teks kiri)", value: "right" },
+							{ label: "Kiri (teks kanan)", value: "left" },
+						],
+						initial_value: "right",
+					},
 				],
 			},
 

@@ -17,6 +17,16 @@ const image = raw.image ?? raw.imageUrl;
 const image_caption = raw.image_caption ?? raw.imageCaption;
 const rawFit = String(raw.image_fit ?? raw.imageFit ?? "").trim().toLowerCase();
 const isOrbit = String(image ?? "").trim().toLowerCase() === "orbit" || raw.brand_orbit === true;
+const hasMockupFlag = raw.show_mockup === true || raw.showMockup === true;
+const wantsMockup = !isOrbit && (image === "mockup" || hasMockupFlag);
+const wantsOrbit = isOrbit || (!image && !hasMockupFlag);
+const hasMedia = wantsOrbit || Boolean(image) || hasMockupFlag;
+// Mockup buku tetap tampil full-width di bawah teks seperti sebelumnya;
+// hanya orbit dan gambar sungguhan yang memakai layout dua kolom.
+const useSplit = hasMedia && !centered && !wantsMockup;
+const rawSide = String(raw.image_side ?? raw.imageSide ?? "").trim().toLowerCase();
+const imageSide = rawSide === "left" || rawSide === "right" ? rawSide : "right";
+const brandName = raw.brand_name ?? raw.brandName ?? "Kotacom";
 const isSquareImageObj = typeof image === "object" && image !== null && image.width && image.height && image.width === image.height;
 const isFullMedia =
 	rawFit === "full" ||
@@ -42,7 +52,7 @@ const secondaryCta =
 
 <section
 	id={anchor_id || undefined}
-	class:list={["hero", "bg-grid-dots", { "hero--centered": centered, "hero--orbit": isOrbit && !centered }]}
+	class:list={["hero", "bg-grid-dots", { "hero--centered": centered, "hero--split": useSplit, "hero--media-left": useSplit && imageSide === "left" }]}
 >
 	<div class="frame">
 		{
@@ -81,13 +91,13 @@ const secondaryCta =
 		}
 	</div>
 	{
-		(isOrbit || image || raw.show_mockup) && (
+		hasMedia && (
 			<div class="frame hero__media-wrap">
-				{isOrbit ? (
+				{wantsOrbit ? (
 					<div class="hero__orbit">
-						<BrandOrbit centerLabel={raw.brand_name || "Kotacom"} />
+						<BrandOrbit centerLabel={brandName} />
 					</div>
-				) : image === "mockup" || raw.show_mockup ? (
+				) : wantsMockup ? (
 					<BookMockup title={headline} eyebrow={eyebrow} />
 				) : (
 					<figure class:list={["media", "hero__media", "settle", { "hero__media--full": isFullMedia }]}>
@@ -197,9 +207,9 @@ const secondaryCta =
 		margin-block-start: clamp(36px, 4.5vw, 64px);
 	}
 
-	/* Hero dengan orbit brand: teks di kiri, visual ekosistem di kanan.
+	/* Hero dua kolom (teks + visual). Default: teks kiri, visual kanan.
 	   Grid-nya sendiri memakai lebar frame supaya sejajar dengan header. */
-	.hero--orbit {
+	.hero--split {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
 		align-items: center;
@@ -209,18 +219,30 @@ const secondaryCta =
 		padding-inline: var(--frame-padding);
 	}
 
-	.hero--orbit > .frame {
+	.hero--split > .frame {
 		width: auto;
 		margin-inline: 0;
 		padding-inline: 0;
 	}
 
-	.hero--orbit > .hero__media-wrap {
+	.hero--split > .hero__media-wrap {
 		margin-block-start: 0;
 	}
 
-	.hero--orbit .hero__headline {
-		max-width: 17ch;
+	.hero--split .hero__headline {
+		max-width: 20ch;
+		font-size: clamp(2rem, 1.4rem + 2.4vw, 3.35rem);
+	}
+
+	/* Model kedua: visual di kiri, teks di kanan. DOM tetap teks-dulu
+	   supaya urutan baca di mobile tidak berubah. */
+	.hero--media-left > .hero__media-wrap {
+		order: -1;
+	}
+
+	.hero--media-left .hero__orbit {
+		margin-inline-start: 0;
+		margin-inline-end: auto;
 	}
 
 	.hero__orbit {
@@ -231,23 +253,27 @@ const secondaryCta =
 	}
 
 	@media (max-width: 1000px) {
-		.hero--orbit {
+		.hero--split {
 			grid-template-columns: minmax(0, 1fr);
 			gap: 0;
 			padding-inline: 0;
 		}
 
-		.hero--orbit > .frame {
+		.hero--split > .frame {
 			width: var(--frame-width);
 			margin-inline: auto;
 			padding-inline: var(--frame-padding);
 		}
 
-		.hero--orbit > .hero__media-wrap {
+		.hero--media-left > .hero__media-wrap {
+			order: 0;
+		}
+
+		.hero--split > .hero__media-wrap {
 			margin-block-start: clamp(28px, 5vw, 40px);
 		}
 
-		.hero--orbit .hero__headline {
+		.hero--split .hero__headline {
 			max-width: 100%;
 		}
 
@@ -304,6 +330,10 @@ const secondaryCta =
 
 	.hero--centered .actions {
 		justify-content: center;
+	}
+
+	.hero--centered .hero__orbit {
+		margin-inline: auto;
 	}
 
 	@media (max-width: 960px) {
