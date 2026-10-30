@@ -43,9 +43,9 @@ const uniqueId = `tabs-${Math.random().toString(36).slice(2, 8)}`;
 							enhance={true}
 						>
 							{headline}
-							{subheadline && <span class="section-headline__muted"> {subheadline}</span>}
 						</FadeInText>
 					)}
+					{subheadline && <p class="section-subheadline">{subheadline}</p>}
 				</header>
 			)
 		}
@@ -54,54 +54,69 @@ const uniqueId = `tabs-${Math.random().toString(36).slice(2, 8)}`;
 			Array.isArray(tabs) && tabs.length > 0 && (
 				<div class="tabs-container">
 					<div class="tabs-nav" role="tablist" aria-label="Content Tabs">
-						{tabs.map((tab: TabItem, idx: number) => (
-							<button
-								type="button"
-								role="tab"
-								id={`${uniqueId}-tab-${idx}`}
-								aria-controls={`${uniqueId}-panel-${idx}`}
-								aria-selected={idx === 0 ? "true" : "false"}
-								tabindex={idx === 0 ? 0 : -1}
-								class:list={["tab-btn", { "tab-btn--active": idx === 0 }]}
-								data-tab-target={`${uniqueId}-panel-${idx}`}
-							>
-								{tab.label}
-							</button>
-						))}
+						{tabs.map((tab: any, idx: number) => {
+							const label = tab.label ?? tab.tab_label ?? `Tab ${idx + 1}`;
+							return (
+								<button
+									type="button"
+									role="tab"
+									id={`${uniqueId}-tab-${idx}`}
+									aria-controls={`${uniqueId}-panel-${idx}`}
+									aria-selected={idx === 0 ? "true" : "false"}
+									tabindex={idx === 0 ? 0 : -1}
+									class:list={["tab-btn", { "tab-btn--active": idx === 0 }]}
+									data-tab-target={`${uniqueId}-panel-${idx}`}
+								>
+									{label}
+								</button>
+							);
+						})}
 					</div>
 
 					<div class="tabs-panels">
-						{tabs.map((tab: TabItem, idx: number) => (
-							<div
-								id={`${uniqueId}-panel-${idx}`}
-								role="tabpanel"
-								aria-labelledby={`${uniqueId}-tab-${idx}`}
-								hidden={idx !== 0}
-								class:list={["tab-panel", { "tab-panel--active": idx === 0 }]}
-							>
-								<div class="tab-panel__content">
-									{tab.title && <h3 class="tab-panel__title">{tab.title}</h3>}
-									{tab.description && <p class="tab-panel__desc">{tab.description}</p>}
-									{tab.cta_label && tab.cta_url && (
-										<div class="tab-panel__action">
-											<a href={tab.cta_url} class="btn btn-primary">
-												{tab.cta_label}
-											</a>
+						{tabs.map((tab: any, idx: number) => {
+							const img = tab.image ?? tab.image_url ?? tab.imageUrl;
+							return (
+								<div
+									id={`${uniqueId}-panel-${idx}`}
+									role="tabpanel"
+									aria-labelledby={`${uniqueId}-tab-${idx}`}
+									hidden={idx !== 0}
+									class:list={["tab-panel", { "tab-panel--active": idx === 0 }]}
+								>
+									<div class="tab-panel__content">
+										{tab.title && <h3 class="tab-panel__title">{tab.title}</h3>}
+										{tab.description && <p class="tab-panel__desc">{tab.description}</p>}
+										{tab.cta_label && tab.cta_url && (
+											<div class="tab-panel__action">
+												<a href={tab.cta_url} class="btn btn-primary">
+													{tab.cta_label}
+												</a>
+											</div>
+										)}
+									</div>
+
+									{img && (
+										<div class="tab-panel__media">
+											{typeof img === "string" ? (
+												<img
+													src={img}
+													alt={tab.title ?? ""}
+													loading="lazy"
+													class="tab-panel__img rounded-xl object-cover w-full h-full"
+												/>
+											) : (
+												<Image
+													image={img}
+													sizes="(min-width: 1024px) 560px, 92vw"
+													class="tab-panel__img"
+												/>
+											)}
 										</div>
 									)}
 								</div>
-
-								{tab.image && (
-									<div class="tab-panel__media">
-										<Image
-											image={tab.image}
-											sizes="(min-width: 1024px) 560px, 92vw"
-											class="tab-panel__img"
-										/>
-									</div>
-								)}
-							</div>
-						))}
+							);
+						})}
 					</div>
 				</div>
 			)

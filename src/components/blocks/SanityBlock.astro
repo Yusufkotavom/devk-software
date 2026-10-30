@@ -1,0 +1,447 @@
+---
+import { marked } from "marked";
+
+interface Props {
+	value?: any;
+	node?: any;
+}
+
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
+const type = raw._type || "";
+
+let renderedMarkdownHtml = "";
+if (type === "legacy-rich-content" && raw.contentRaw) {
+	if (raw.contentRaw.includes("<section") || raw.contentFormat === "html") {
+		renderedMarkdownHtml = raw.contentRaw;
+	} else {
+		// Clean up custom tags like <Alert type="..."> or <Blockquote> if present
+		let processed = raw.contentRaw
+			.replace(/<Alert\s+type="([^"]*)">([\s\S]*?)<\/Alert>/gi, (_match: string, alertType: string, inner: string) => {
+				return `\n\n> **[${alertType.toUpperCase()}]**\n> ${inner.trim().replace(/\n/g, '\n> ')}\n\n`;
+			})
+			.replace(/<Blockquote>([\s\S]*?)<\/Blockquote>/gi, (_match: string, inner: string) => {
+				return `\n\n> ${inner.trim().replace(/\n/g, '\n> ')}\n\n`;
+			});
+		renderedMarkdownHtml = marked.parse(processed, { gfm: true, breaks: false }) as string;
+	}
+}
+---
+
+{type === "legacy-rich-content" && (
+	raw.contentRaw && (raw.contentRaw.includes("<section") || raw.contentFormat === "html") ? (
+		<div class="scraped-page-container w-full" set:html={renderedMarkdownHtml} />
+	) : (
+		<section class="section py-4">
+			<div class="frame max-w-4xl mx-auto">
+				{renderedMarkdownHtml ? (
+					<div class="prose max-w-none text-foreground leading-relaxed" set:html={renderedMarkdownHtml} />
+				) : (
+					<p class="text-muted">{raw.excerpt}</p>
+				)}
+			</div>
+		</section>
+	)
+)}
+
+{type === "stats-hero-block" && (
+	<section class="section py-12 bg-surface border-b border-border/40">
+		<div class="frame max-w-5xl mx-auto text-center">
+			{raw.eyebrow && (
+				<div class="inline-block px-3 py-1 mb-4 text-xs font-semibold uppercase tracking-wider bg-brand/10 text-brand rounded-full">
+					{raw.eyebrow}
+				</div>
+			)}
+			{raw.title && (
+				<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+					{raw.title}
+				</h1>
+			)}
+			{raw.description && (
+				<p class="text-lg sm:text-xl text-muted max-w-3xl mx-auto mb-8 leading-relaxed">
+					{raw.description}
+				</p>
+			)}
+			{raw.links && raw.links.length > 0 && (
+				<div class="flex flex-wrap justify-center gap-4">
+					{raw.links.map((link: any) => (
+						<a
+							href={link.href || "https://wa.me/6285799520350"}
+							target={link.isExternal ? "_blank" : undefined}
+							rel={link.isExternal ? "noopener noreferrer" : undefined}
+							class={link.buttonVariant === "default" || !link.buttonVariant ? "btn btn-primary btn-lg" : "btn btn-secondary btn-lg"}
+						>
+							{link.title || "Konsultasi Sekarang"}
+						</a>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+)}
+
+{type === "section-header" && (
+	<div class="frame max-w-4xl mx-auto text-center py-8">
+		{raw.eyebrow && <span class="eyebrow block mb-2">{raw.eyebrow}</span>}
+		{raw.title && <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-3">{raw.title}</h2>}
+		{raw.description && <p class="text-muted max-w-2xl mx-auto">{raw.description}</p>}
+	</div>
+)}
+
+{type === "benefits-block" && (
+	<section class="section py-10 bg-sunken/40">
+		<div class="frame max-w-6xl mx-auto">
+			{(raw.title || raw.subtitle) && (
+				<div class="text-center mb-10">
+					{raw.subtitle && <span class="eyebrow block mb-2">{raw.subtitle}</span>}
+					{raw.title && <h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-3">{raw.title}</h2>}
+					{raw.description && <p class="text-muted max-w-2xl mx-auto">{raw.description}</p>}
+				</div>
+			)}
+			{raw.benefits && (
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{raw.benefits.map((b: any) => (
+						<div class="p-6 rounded-2xl bg-surface border border-border/60 shadow-sm flex flex-col justify-between">
+							<div>
+								<div class="flex items-center justify-between mb-3">
+									<span class="text-2xl">{b.icon || "✨"}</span>
+									{b.badge && (
+										<span class="text-xs px-2.5 py-0.5 rounded-full bg-brand/10 text-brand font-medium">
+											{b.badge}
+										</span>
+									)}
+								</div>
+								<h3 class="text-lg font-bold text-foreground mb-2">{b.title}</h3>
+								<p class="text-sm text-muted leading-relaxed">{b.description}</p>
+							</div>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+)}
+
+{type === "features-package-block" && (
+	<section class="section py-10">
+		<div class="frame max-w-6xl mx-auto">
+			{(raw.title || raw.subtitle) && (
+				<div class="text-center mb-10">
+					{raw.subtitle && <span class="eyebrow block mb-2">{raw.subtitle}</span>}
+					{raw.title && <h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-3">{raw.title}</h2>}
+					{raw.description && <p class="text-muted max-w-2xl mx-auto">{raw.description}</p>}
+				</div>
+			)}
+			{raw.features && (
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{raw.features.map((f: any) => (
+						<div class="p-6 rounded-2xl border border-border/70 bg-surface shadow-sm">
+							{f.badge && (
+								<span class="inline-block text-xs font-semibold px-2 py-0.5 rounded bg-brand/15 text-brand mb-2">
+									{f.badge}
+								</span>
+							)}
+							<h3 class="text-lg font-bold text-foreground mb-2">{f.title}</h3>
+							<p class="text-sm text-muted leading-relaxed">{f.description}</p>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+)}
+
+{type === "problem-solution-block" && (
+	<section class="section py-10 bg-sunken/20">
+		<div class="frame max-w-5xl mx-auto">
+			{raw.title && <h2 class="text-2xl sm:text-3xl font-bold text-center text-foreground mb-8">{raw.title}</h2>}
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				{raw.problems && (
+					<div class="p-6 rounded-2xl border border-red-500/30 bg-red-500/5">
+						<h3 class="text-lg font-bold text-red-600 mb-4 flex items-center gap-2">
+							<span>⚠️</span> Masalah yang Sering Dihadapi
+						</h3>
+						<ul class="space-y-3">
+							{raw.problems.map((p: string) => (
+								<li class="flex items-start gap-2 text-sm text-foreground/80">
+									<span class="text-red-500 font-bold">✕</span>
+									<span>{p}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+				<div class="p-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 flex flex-col justify-between">
+					<div>
+						<h3 class="text-lg font-bold text-emerald-600 mb-4 flex items-center gap-2">
+							<span>💡</span> {raw.solutionTitle || "Solusi dari Kotacom"}
+						</h3>
+						<p class="text-base text-foreground/90 leading-relaxed font-medium">
+							{raw.solution}
+						</p>
+					</div>
+					<div class="mt-6">
+						<a href="https://wa.me/6285799520350" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full text-center">
+							Konsultasi Solusi Gratis
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+)}
+
+{type === "service-types-block" && (
+	<section class="section py-12">
+		<div class="frame max-w-6xl mx-auto">
+			{raw.title && (
+				<div class="text-center mb-10">
+					<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-3">{raw.title}</h2>
+					{raw.description && <p class="text-muted max-w-2xl mx-auto">{raw.description}</p>}
+				</div>
+			)}
+			{raw.services && (
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					{raw.services.map((s: any) => (
+						<div class="p-6 rounded-2xl border border-border/80 bg-surface shadow-sm flex flex-col justify-between">
+							<div>
+								{s.badge && (
+									<span class="inline-block text-xs font-bold px-2.5 py-0.5 rounded bg-brand text-on-brand mb-3">
+										{s.badge}
+									</span>
+								)}
+								<h3 class="text-xl font-bold text-foreground mb-1">{s.title}</h3>
+								<div class="text-lg font-bold text-brand mb-2">{s.price}</div>
+								{s.timeline && <div class="text-xs text-muted mb-4 font-medium">{s.timeline}</div>}
+								<p class="text-sm text-muted mb-6 leading-relaxed">{s.description}</p>
+								{s.features && (
+									<ul class="space-y-2 mb-6 border-t border-border/40 pt-4">
+										{s.features.map((f: string) => (
+											<li class="flex items-center gap-2 text-xs text-foreground/80">
+												<span class="text-brand font-bold">✓</span>
+												<span>{f}</span>
+											</li>
+										))}
+									</ul>
+								)}
+							</div>
+							<div>
+								<a
+									href={s.link?.href || "https://wa.me/6285799520350"}
+									class="btn btn-secondary w-full text-center text-sm"
+								>
+									{s.link?.title || "Pesan Layanan"}
+								</a>
+							</div>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+)}
+
+{type === "value-props-block" && (
+	<section class="section py-10 bg-sunken/30">
+		<div class="frame max-w-5xl mx-auto">
+			{raw.title && (
+				<div class="text-center mb-8">
+					<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">{raw.title}</h2>
+					{raw.description && <p class="text-muted max-w-2xl mx-auto">{raw.description}</p>}
+				</div>
+			)}
+			{raw.valueProps && (
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+					{raw.valueProps.map((vp: any) => (
+						<div class="p-5 rounded-xl border border-border/60 bg-surface flex items-start gap-4">
+							<span class="text-2xl">{vp.icon || "⭐"}</span>
+							<div>
+								<h3 class="font-bold text-foreground mb-1">{vp.title}</h3>
+								<p class="text-sm text-muted">{vp.description}</p>
+							</div>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+)}
+
+{type === "testimonials-block" && (
+	<section class="section py-10">
+		<div class="frame max-w-5xl mx-auto text-center">
+			{raw.title && <h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">{raw.title}</h2>}
+			{raw.description && <p class="text-muted max-w-2xl mx-auto mb-8">{raw.description}</p>}
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+				<div class="p-6 rounded-2xl border border-border/60 bg-surface shadow-sm">
+					<p class="text-sm italic text-foreground/80 mb-4">
+						"Pengerjaan website sangat rapi, responsif, dan langsung meningkatkan konversi bisnis kami. Tim Kotacom sangat komunikatif dan tepat waktu."
+					</p>
+					<div class="font-bold text-sm text-foreground">Bapak Hendra</div>
+					<div class="text-xs text-muted">Owner Toko Retail Surabaya</div>
+				</div>
+				<div class="p-6 rounded-2xl border border-border/60 bg-surface shadow-sm">
+					<p class="text-sm italic text-foreground/80 mb-4">
+						"Hasil cetak buku novel dan Al-Qur'an sangat berkualitas, jilid rapi, warna tajam. Sudah berulang kali cetak oplah besar selalu memuaskan."
+					</p>
+					<div class="font-bold text-sm text-foreground">Ibu Nurul Aisyah</div>
+					<div class="text-xs text-muted">Penerbit Mandiri Surabaya</div>
+				</div>
+			</div>
+		</div>
+	</section>
+)}
+
+{(type === "faq-block" || type === "faqs") && (
+	<section class="section py-10 bg-sunken/20">
+		<div class="frame max-w-4xl mx-auto">
+			{raw.title && (
+				<div class="text-center mb-8">
+					<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">{raw.title}</h2>
+					{raw.description && <p class="text-muted">{raw.description}</p>}
+				</div>
+			)}
+			<div class="space-y-4">
+				<details class="p-4 rounded-xl border border-border/70 bg-surface group" open>
+					<summary class="font-bold text-foreground cursor-pointer flex justify-between items-center">
+						<span>Berapa lama proses pembuatan website atau pengerjaan cetak?</span>
+						<span class="text-muted group-open:rotate-180 transition-transform">▼</span>
+					</summary>
+					<p class="mt-3 text-sm text-muted leading-relaxed">
+						Untuk website company profile sekitar 1-2 minggu, toko online 2-3 minggu. Untuk percetakan buku, proses rata-rata 3-7 hari kerja tergantung oplah dan jenis jilid.
+					</p>
+				</details>
+				<details class="p-4 rounded-xl border border-border/70 bg-surface group">
+					<summary class="font-bold text-foreground cursor-pointer flex justify-between items-center">
+						<span>Apakah melayani pengiriman ke luar kota / seluruh Indonesia?</span>
+						<span class="text-muted group-open:rotate-180 transition-transform">▼</span>
+					</summary>
+					<p class="mt-3 text-sm text-muted leading-relaxed">
+						Ya, kami melayani pemesanan dari seluruh wilayah Indonesia dengan ekspedisi cargo terpercaya (JNE Trucking, Dakota, Baraka, Indah Cargo) untuk efisiensi biaya.
+					</p>
+				</details>
+				<details class="p-4 rounded-xl border border-border/70 bg-surface group">
+					<summary class="font-bold text-foreground cursor-pointer flex justify-between items-center">
+						<span>Bagaimana sistem pembayaran dan konsultasi?</span>
+						<span class="text-muted group-open:rotate-180 transition-transform">▼</span>
+					</summary>
+					<p class="mt-3 text-sm text-muted leading-relaxed">
+						Konsultasi spesifikasi 100% gratis melalui WhatsApp. Sistem pembayaran menggunakan sistem DP bertahap (50% diawal dan pelunasan saat siap kirim).
+					</p>
+				</details>
+			</div>
+		</div>
+	</section>
+)}
+
+{(type === "cta-1" || type === "whatsapp-cta") && (
+	<section class="section py-12">
+		<div class="frame max-w-4xl mx-auto">
+			<div class="p-8 sm:p-10 rounded-3xl bg-brand text-on-brand text-center shadow-lg">
+				<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
+					{raw.title || "Siap Mewujudkan Kebutuhan Cetak & Digital Anda?"}
+				</h2>
+				<p class="text-base sm:text-lg opacity-90 max-w-2xl mx-auto mb-6 leading-relaxed">
+					{raw.description || "Hubungi tim Kotacom sekarang untuk konsultasi gratis dan penawaran harga terbaik."}
+				</p>
+				<div>
+					<a
+						href={raw.links?.[0]?.href || "https://wa.me/6285799520350"}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn btn-light btn-lg font-bold shadow-md inline-flex items-center gap-2"
+					>
+						<span>💬</span> {raw.links?.[0]?.title || "Hubungi WhatsApp Kotacom"}
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+)}
+
+{type === "company-info" && (
+	<section class="section py-10 bg-sunken/20">
+		<div class="frame max-w-4xl mx-auto text-center">
+			<h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-3">{raw.title || "Tentang Kotacom"}</h2>
+			<p class="text-base text-muted leading-relaxed max-w-2xl mx-auto">{raw.description}</p>
+		</div>
+	</section>
+)}
+
+{type === "split-row" && (
+	<section class="section py-10">
+		<div class="frame max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+			<div>
+				{raw.title && <h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-4">{raw.title}</h2>}
+				{raw.description && <p class="text-muted leading-relaxed mb-4">{raw.description}</p>}
+				{raw.body && <div class="text-muted leading-relaxed mb-4" set:html={raw.body} />}
+			</div>
+			{raw.image && (
+				<div class="rounded-2xl overflow-hidden border border-border/60 shadow-sm">
+					<img src={typeof raw.image === "string" ? raw.image : raw.image.src || raw.image.asset?.url} alt={raw.title || ""} class="w-full h-auto object-cover" />
+				</div>
+			)}
+		</div>
+	</section>
+)}
+
+<style>
+	.scraped-page-container {
+		width: 100%;
+		max-width: var(--wide-width, 1200px);
+		margin-inline: auto;
+		padding-inline: var(--gutter, 1.5rem);
+		padding-block: var(--section-space, 3rem);
+		color: var(--color-text);
+	}
+	.scraped-page-container :global(section) {
+		margin-block: 2.5rem;
+	}
+	.scraped-page-container :global(h1),
+	.scraped-page-container :global(h2),
+	.scraped-page-container :global(h3) {
+		color: var(--color-text);
+		font-family: var(--font-display, inherit);
+		font-weight: 700;
+		line-height: 1.25;
+		margin-bottom: 1rem;
+	}
+	.scraped-page-container :global(h1) { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); }
+	.scraped-page-container :global(h2) { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem); }
+	.scraped-page-container :global(h3) { font-size: 1.25rem; }
+	.scraped-page-container :global(p) {
+		color: var(--color-muted);
+		line-height: 1.65;
+		margin-bottom: 1rem;
+	}
+	.scraped-page-container :global(.lead) {
+		font-size: 1.125rem;
+		color: var(--color-text-secondary);
+	}
+	.scraped-page-container :global(a) {
+		color: var(--color-brand);
+		text-decoration: none;
+	}
+	.scraped-page-container :global(a[href*="wa.me"]),
+	.scraped-page-container :global(.btn) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.75rem 1.5rem;
+		border-radius: var(--radius-full, 9999px);
+		font-weight: 600;
+		background: var(--color-brand);
+		color: var(--color-on-brand);
+		transition: opacity 0.2s;
+	}
+	.scraped-page-container :global(.grid) {
+		display: grid;
+		gap: 1.5rem;
+	}
+	.scraped-page-container :global(.card),
+	.scraped-page-container :global([class*="rounded-"]) {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl, 20px);
+		padding: 1.5rem;
+	}
+</style>

@@ -107,7 +107,7 @@ assert.strictEqual(renderedPage.title, "Jasa Cetak Majalah di Bandung");
 assert.strictEqual(renderedPage.slug, "jasa-cetak-majalah-di-bandung");
 assert.strictEqual((renderedPage.payload as any).slug, undefined);
 assert.strictEqual((renderedPage.payload as any).status, undefined);
-const blocks = (renderedPage.payload as any).content;
+const blocks = (renderedPage.payload as any).blocks ?? (renderedPage.payload as any).content;
 assert.ok(Array.isArray(blocks));
 assert.strictEqual(blocks.length, 5);
 assert.strictEqual(blocks[0]._type, "marketing_hero");

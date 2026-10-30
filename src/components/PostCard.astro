@@ -7,7 +7,7 @@ import { formatReadingTime, getReadingTime } from "../utils/reading-time";
 import { buildOgImageUrl } from "../lib/og/url";
 
 interface Props {
-	post: ContentEntry<InferCollectionData<"posts">>;
+	post: any;
 	tags?: Array<{ slug: string; label: string }>;
 	/** card: grid tile. feature: large split card. row: archive list item. */
 	variant?: "card" | "feature" | "row";
@@ -18,6 +18,8 @@ interface Props {
 	site?: URL | null;
 	/** Source collection — drives the link path and OG fallback (default: posts). */
 	collection?: string;
+	/** Thumbnail aspect ratio: "1:1" | "16:9" | "auto" */
+	aspectRatio?: "1:1" | "16:9" | "1*1" | "16*9" | "auto";
 }
 
 const {
@@ -28,21 +30,30 @@ const {
 	priority = false,
 	site,
 	collection = "posts",
+	aspectRatio = "auto",
 } = Astro.props;
 
 const Heading = `h${headingLevel}` as const;
-const href = `/${collection}/${post.id}`;
+const href = collection === "pages" ? `/${post.id}` : `/${collection}/${post.id}`;
 const titleId = `post-${variant}-${post.id}`;
-const title = post.data.title || "Untitled";
+const title = post.data?.title || "Untitled";
+
+const isSquare = aspectRatio === "1:1" || aspectRatio === "1*1";
+const is169 = aspectRatio === "16:9" || aspectRatio === "16*9";
+const aspectStyle = isSquare ? "1 / 1" : is169 ? "16 / 9" : undefined;
+
 // Feature image fallback: when an entry has no featured image, use its
 // auto-generated OG card (Plan B) as the visual so lists never show an
 // empty placeholder — the OG card is the default feature image.
-const origin = site ?? Astro.site ?? Astro.url.origin;
-const hasFeatured = Boolean(post.data.featured_image);
-const fallbackImage = buildOgImageUrl(origin.origin ?? String(origin), collection, post.id);
-const publishedAt = post.data.publishedAt ?? null;
-const readingTime = formatReadingTime(getReadingTime(post.data.content));
-const bylines = post.data.bylines ?? [];
+// Use root-relative URL for img src to stay host-agnostic and avoid broken external domains.
+const hasFeatured = Boolean(post.data?.featured_image);
+const fallbackImage = isSquare
+	? `/og/square/${collection}/${encodeURIComponent(post.id)}.png`
+	: `/og/${collection}/${encodeURIComponent(post.id)}.png`;
+
+const publishedAt = post.data?.publishedAt ?? (post.data?.published_at ? new Date(post.data.published_at) : null);
+const readingTime = formatReadingTime(getReadingTime(post.data?.content));
+const bylines = post.data?.bylines ?? [];
 const visibleTags = tags.slice(0, variant === "card" ? 2 : 3);
 
 const sizes = {
@@ -52,16 +63,26 @@ const sizes = {
 }[variant];
 ---
 
-<article class:list={["post", `post--${variant}`]}>
-	<a href={href} class="post__media" tabindex="-1" aria-hidden="true">
+<article class:list={["post", `post--${variant}`, { "post--square": isSquare, "post--16-9": is169 }]}>
+	<a
+		href={href}
+		class="post__media"
+		tabindex="-1"
+		aria-hidden="true"
+		style={aspectStyle ? `aspect-ratio: ${aspectStyle} !important;` : undefined}
+	>
 		{
 			post.data.featured_image ? (
 				<div class="post__image" {...post.edit.featured_image}>
-					<Image
-						image={post.data.featured_image}
-						sizes={sizes}
-						priority={priority}
-					/>
+					{typeof post.data.featured_image === "string" ? (
+						<img src={post.data.featured_image} alt={title} loading={priority ? "eager" : "lazy"} />
+					) : (
+						<Image
+							image={post.data.featured_image}
+							sizes={sizes}
+							priority={priority}
+						/>
+					)}
 				</div>
 			) : (
 				<img
@@ -79,14 +100,30 @@ const sizes = {
 	<div class="post__body">
 		<a href={href} class="post__link" aria-labelledby={titleId}>
 			<span class="post__meta">
-				{
-					publishedAt && (
-						<time datetime={publishedAt.toISOString()}>
-							{formatDate(publishedAt, "short")}
-						</time>
-					)
-				}
-				<span>{readingTime}</span>
+				{collection === "products" ? (
+					<>
+						<span class="chip-badge">Produk</span>
+						{post.data?.price && <span class="post__price">{post.data.price}</span>}
+					</>
+				) : collection === "projects" ? (
+					<>
+						<span class="chip-badge">{post.data?.project_type || post.data?.client || "Portfolio"}</span>
+						{publishedAt && (
+							<time datetime={publishedAt.toISOString()}>
+								{formatDate(publishedAt, "short")}
+							</time>
+						)}
+					</>
+				) : (
+					<>
+						{publishedAt && (
+							<time datetime={publishedAt.toISOString()}>
+								{formatDate(publishedAt, "short")}
+							</time>
+						)}
+						<span>{readingTime}</span>
+					</>
+				)}
 			</span>
 			<Heading class="post__title" id={titleId} {...post.edit.title}>
 				{title}
@@ -257,6 +294,34 @@ const sizes = {
 		font-size: var(--font-size-xs);
 		color: var(--color-muted);
 		font-variant-numeric: tabular-nums;
+	}
+
+	.chip-badge {
+		display: inline-flex;
+		align-items: center;
+		padding: 2px 7px;
+		font-size: 11px;
+		font-weight: 600;
+		line-height: 1.2;
+		border-radius: var(--radius-sm, 4px);
+		background: var(--color-fill, #f4f4f5);
+		color: var(--color-text-secondary, #71717a);
+		border: 1px solid var(--color-border, #e4e4e7);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.post__price {
+		font-weight: 700;
+		color: var(--color-brand, #2563eb);
+	}
+
+	.post--square .post__media {
+		aspect-ratio: 1 / 1 !important;
+	}
+
+	.post--16-9 .post__media {
+		aspect-ratio: 16 / 9 !important;
 	}
 
 	/* Trailing separators, so a wrapped line never starts with a dot */

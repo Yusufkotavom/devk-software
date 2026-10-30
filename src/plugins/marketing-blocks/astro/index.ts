@@ -9,6 +9,7 @@ import Logos from "../../../components/blocks/Logos.astro";
 import Split from "../../../components/blocks/Split.astro";
 import Stats from "../../../components/blocks/Stats.astro";
 import Contact from "../../../components/blocks/Contact.astro";
+import SanityBlock from "../../../components/blocks/SanityBlock.astro";
 import Text from "../../../components/blocks/Text.astro";
 import FeatureSection from "../../../components/blocks/FeatureSection.astro";
 import Slider from "../../../components/blocks/Slider.astro";
@@ -23,8 +24,8 @@ import MarqueeLogos from "../../../components/blocks/MarqueeLogos.astro";
 export const blockComponents = {
 	"marketing.hero": Hero,
 	"marketing_hero": Hero,
-	"marketing.capabilities": Capabilities,
-	"marketing_capabilities": Capabilities,
+	"marketing.capabilities": BentoGrid,
+	"marketing_capabilities": BentoGrid,
 	"marketing.features": Features,
 	"marketing_features": Features,
 	"marketing.testimonials": Testimonials,
@@ -67,6 +68,33 @@ export const blockComponents = {
 	"marketing.marquee_logos": MarqueeLogos,
 	"marketing_marquee_logos": MarqueeLogos,
 	"marquee_logos": MarqueeLogos,
+	"hero-2": Hero,
+	"hero": Hero,
+	"features-grid": Features,
+	"faq-accordion": FAQ,
+	"cta-simple": CTA,
+	"split-content": Split,
+	"testimonial-card": Testimonials,
+	"pricing-cards": Pricing,
+	"steps-guide": Steps,
+	"contact-box": Contact,
+	"legacy-rich-content": SanityBlock,
+	"stats-hero-block": SanityBlock,
+	"section-header": SanityBlock,
+	"benefits-block": SanityBlock,
+	"features-package-block": SanityBlock,
+	"problem-solution-block": SanityBlock,
+	"service-types-block": SanityBlock,
+	"testimonials-block": SanityBlock,
+	"value-props-block": SanityBlock,
+	"faq-block": SanityBlock,
+	"faqs": SanityBlock,
+	"cta-1": SanityBlock,
+	"split-row": SanityBlock,
+	"grid-row": SanityBlock,
+	"timeline-row": SanityBlock,
+	"company-info": SanityBlock,
+	"pricing-block": SanityBlock,
 };
 
 export default blockComponents;

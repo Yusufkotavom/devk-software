@@ -3,7 +3,7 @@ import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
 import type { PageContentBlock } from "../../../emdash-env";
-import { toParagraphs } from "../../utils/text";
+import { toParagraphs, formatAccentWords } from "../../utils/text";
 
 type FeatureSectionBlock = Extract<PageContentBlock, { _type: "marketing_feature_section" }>;
 type Props = BlockComponentProps<FeatureSectionBlock>;
@@ -52,7 +52,7 @@ const cls = ["fsplit", `fsplit--${position}`, panelMod, isBg ? "settle" : undefi
 			)}
 			<div class="fsplit__text">
 				{eyebrow && <p class="eyebrow">{eyebrow}</p>}
-				<h2 class="section-headline fsplit__headline">{headline}</h2>
+				<h2 class="section-headline fsplit__headline"><Fragment set:html={formatAccentWords(headline)} /></h2>
 				{paragraphs.map((paragraph: string) => (
 					<p class="fsplit__body">{paragraph}</p>
 				))}

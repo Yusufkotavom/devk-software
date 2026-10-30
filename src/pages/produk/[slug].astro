@@ -1,0 +1,11 @@
+---
+import { getEmDashEntry, getEmDashCollection, decodeSlug } from "emdash";
+
+const slug = decodeSlug(Astro.params.slug);
+if (!slug) {
+	return Astro.redirect("/products", 301);
+}
+
+// Redirect old /produk/:slug to /products/:slug
+return Astro.redirect(`/products/${slug}`, 301);
+---

@@ -5,7 +5,7 @@ import { resolveBlogSiteIdentity } from "../../../../utils/site-identity";
 
 export const prerender = false;
 
-const COLLECTIONS = new Set(["posts", "pages", "page_templates", "products"]);
+const COLLECTIONS = new Set(["posts", "pages", "page_templates", "products", "projects"]);
 
 function canonicalOrigin(url: URL): string {
 	const configured = import.meta.env.SITE || process.env.EMDASH_SITE_URL || process.env.SITE_URL;

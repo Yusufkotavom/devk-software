@@ -4,7 +4,7 @@ import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
 import ScaleIn from "@astroanimate/core/ScaleIn";
 import type { PageContentBlock } from "../../../emdash-env";
-import { toParagraphs } from "../../utils/text";
+import { toParagraphs, formatAccentWords } from "../../utils/text";
 
 type PricingBlock = Extract<PageContentBlock, { _type: "marketing_pricing" }>;
 type Props = BlockComponentProps<PricingBlock>;
@@ -38,7 +38,7 @@ const plans = rawPlans.map((plan: any) => ({
 	{
 		headline && (
 			<header class="section-header section-header--center">
-				<h2 class="section-headline">{headline}</h2>
+				<h2 class="section-headline"><Fragment set:html={formatAccentWords(headline)} /></h2>
 			</header>
 		)
 	}
@@ -51,8 +51,8 @@ const plans = rawPlans.map((plan: any) => ({
 				<ScaleIn
 					as="li"
 					class:list={["card", "plan", { "plan--highlighted": plan.highlighted }]}
-					duration={1.0}
-					delay={idx * 0.15}
+					duration={700}
+					delay={idx * 90}
 					initialScale={0.90}
 					enhance={true}
 					easing="cubic-bezier(0.16, 1, 0.3, 1)"

@@ -1,0 +1,460 @@
+---
+import Base from "../layouts/Base.astro";
+import comparisonData from "../data/url_comparison.json";
+
+const totalKotacom = comparisonData.filter(d => d.kotacom_url !== "-").length;
+const totalStaging = comparisonData.filter(d => d.category !== "missing").length;
+const countMatched = comparisonData.filter(d => d.category === "matched").length;
+const countRedirected = comparisonData.filter(d => d.category === "redirected").length;
+const countMissing = comparisonData.filter(d => d.category === "missing").length;
+const countStagingOnly = comparisonData.filter(d => d.category === "staging_only").length;
+
+const title = "Audit & Perbandingan URL: Kotacom.id vs Staging Devk";
+const description = "Daftar komparasi URL lengkap antara live kotacom.id dan staging devk (200 OK, 301 Redirect, 404 Missing, dan Staging Baru).";
+---
+
+<Base title={title} description={description}>
+	<div class="compare-container">
+		<header class="compare-header">
+			<div class="badge-tag">SEO & MIGRATION AUDIT</div>
+			<h1>Perbandingan URL: Kotacom.id vs Staging Devk</h1>
+			<p class="subtitle">
+				Komparasi menyeluruh struktur URL antara live <code>kotacom.id</code> (986 sitemap URLs) vs <code>staging.devk.my.id</code> (1,096 URLs).
+			</p>
+		</header>
+
+		<!-- Stat Cards -->
+		<div class="stat-grid">
+			<div class="stat-card">
+				<div class="stat-label">Total URL Kotacom Live</div>
+				<div class="stat-val">{totalKotacom}</div>
+				<div class="stat-desc">Sitemap kotacom.id</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-label">Total URL Staging Devk</div>
+				<div class="stat-val">{totalStaging}</div>
+				<div class="stat-desc">Konten aktif staging</div>
+			</div>
+			<div class="stat-card stat-card--success">
+				<div class="stat-label">Match 200 OK</div>
+				<div class="stat-val text-green">{countMatched}</div>
+				<div class="stat-desc">Tersedia di kedua sisi</div>
+			</div>
+			<div class="stat-card stat-card--info">
+				<div class="stat-label">301 Redirect</div>
+				<div class="stat-val text-blue">{countRedirected}</div>
+				<div class="stat-desc">Diarahkan otomatis</div>
+			</div>
+			<div class="stat-card stat-card--danger">
+				<div class="stat-label">Missing 404</div>
+				<div class="stat-val text-red">{countMissing}</div>
+				<div class="stat-desc">Perlu dipetakan</div>
+			</div>
+			<div class="stat-card stat-card--neutral">
+				<div class="stat-label">Staging Only</div>
+				<div class="stat-val text-purple">{countStagingOnly}</div>
+				<div class="stat-desc">Halaman baru staging</div>
+			</div>
+		</div>
+
+		<!-- Toolbar -->
+		<div class="toolbar">
+			<div class="search-box">
+				<input
+					type="search"
+					id="urlSearch"
+					placeholder="Cari URL / path... (contoh: jasa-cetak, /blog, /products)"
+					autocomplete="off"
+				/>
+			</div>
+
+			<div class="filter-tabs" id="filterTabs">
+				<button class="tab-btn active" data-filter="all">Semua ({comparisonData.length})</button>
+				<button class="tab-btn" data-filter="matched">Match 200 ({countMatched})</button>
+				<button class="tab-btn" data-filter="redirected">Redirect 301 ({countRedirected})</button>
+				<button class="tab-btn" data-filter="missing">Missing 404 ({countMissing})</button>
+				<button class="tab-btn" data-filter="staging_only">Staging Only ({countStagingOnly})</button>
+			</div>
+		</div>
+
+		<div class="results-meta">
+			<span>Menampilkan <strong id="visibleCount">{comparisonData.length}</strong> dari {comparisonData.length} URL</span>
+		</div>
+
+		<!-- URL Table -->
+		<div class="table-wrapper">
+			<table class="compare-table" id="compareTable">
+				<thead>
+					<tr>
+						<th style="width: 50px;">#</th>
+						<th style="width: 120px;">Status</th>
+						<th>URL Kotacom.id (Live)</th>
+						<th>URL Staging Devk</th>
+						<th>Keterangan</th>
+					</tr>
+				</thead>
+				<tbody id="tableBody">
+					{comparisonData.map((item, idx) => (
+						<tr
+							class="url-row"
+							data-category={item.category}
+							data-path={item.path.toLowerCase()}
+							data-kotacom={item.kotacom_url.toLowerCase()}
+							data-staging={item.staging_url.toLowerCase()}
+						>
+							<td class="row-idx">{idx + 1}</td>
+							<td>
+								{item.category === "matched" && <span class="badge badge-success">200 OK</span>}
+								{item.category === "redirected" && <span class="badge badge-info">301 Move</span>}
+								{item.category === "missing" && <span class="badge badge-danger">404 Gap</span>}
+								{item.category === "staging_only" && <span class="badge badge-purple">Staging</span>}
+							</td>
+							<td class="url-cell">
+								{item.kotacom_url !== "-" ? (
+									<a href={item.kotacom_url} target="_blank" rel="noopener noreferrer" class="link-url">
+										{item.kotacom_url}
+									</a>
+								) : (
+									<span class="text-muted">-</span>
+								)}
+							</td>
+							<td class="url-cell">
+								{item.category !== "missing" ? (
+									<a href={item.staging_url} target="_blank" rel="noopener noreferrer" class="link-url link-staging">
+										{item.staging_url}
+									</a>
+								) : (
+									<span class="text-danger-muted">{item.staging_url} (404)</span>
+								)}
+							</td>
+							<td class="note-cell">
+								<span>{item.note}</span>
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</Base>
+
+<style>
+	.compare-container {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 40px 20px 80px;
+		color: var(--color-text, #111);
+		font-family: inherit;
+	}
+
+	.compare-header {
+		margin-bottom: 32px;
+	}
+
+	.badge-tag {
+		display: inline-block;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		padding: 4px 10px;
+		border-radius: 999px;
+		background: #f0f0f0;
+		color: #555;
+		margin-bottom: 12px;
+	}
+
+	.compare-header h1 {
+		font-size: clamp(1.8rem, 3vw, 2.4rem);
+		font-weight: 800;
+		margin: 0 0 8px;
+		line-height: 1.2;
+	}
+
+	.subtitle {
+		font-size: 1.05rem;
+		color: var(--color-text-secondary, #666);
+		margin: 0;
+	}
+
+	.subtitle code {
+		background: #f4f4f4;
+		padding: 2px 6px;
+		border-radius: 4px;
+		font-size: 0.9em;
+	}
+
+	/* Stat Grid */
+	.stat-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 16px;
+		margin-bottom: 32px;
+	}
+
+	.stat-card {
+		background: #ffffff;
+		border: 1px solid #e5e5e5;
+		border-radius: 8px;
+		padding: 16px;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+	}
+
+	.stat-label {
+		font-size: 0.8rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: #777;
+		margin-bottom: 6px;
+	}
+
+	.stat-val {
+		font-size: 1.8rem;
+		font-weight: 800;
+		line-height: 1;
+		margin-bottom: 6px;
+	}
+
+	.stat-desc {
+		font-size: 0.8rem;
+		color: #888;
+	}
+
+	.text-green { color: #16a34a; }
+	.text-blue { color: #2563eb; }
+	.text-red { color: #dc2626; }
+	.text-purple { color: #7c3aed; }
+
+	/* Toolbar */
+	.toolbar {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		margin-bottom: 16px;
+		background: #fafafa;
+		padding: 16px;
+		border-radius: 8px;
+		border: 1px solid #eaeaea;
+	}
+
+	@media (min-width: 768px) {
+		.toolbar {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	.search-box {
+		flex: 1;
+		max-width: 450px;
+	}
+
+	.search-box input {
+		width: 100%;
+		padding: 10px 14px;
+		font-size: 0.95rem;
+		border: 1px solid #d1d5db;
+		border-radius: 6px;
+		background: #ffffff;
+		outline: none;
+		transition: border-color 0.15s ease;
+	}
+
+	.search-box input:focus {
+		border-color: #2563eb;
+		box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+	}
+
+	.filter-tabs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.tab-btn {
+		background: #ffffff;
+		border: 1px solid #d1d5db;
+		border-radius: 6px;
+		padding: 7px 12px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: pointer;
+		color: #4b5563;
+		transition: all 0.15s ease;
+	}
+
+	.tab-btn:hover {
+		background: #f3f4f6;
+		color: #111;
+	}
+
+	.tab-btn.active {
+		background: #111827;
+		color: #ffffff;
+		border-color: #111827;
+	}
+
+	.results-meta {
+		font-size: 0.85rem;
+		color: #6b7280;
+		margin-bottom: 12px;
+		padding: 0 4px;
+	}
+
+	/* Table */
+	.table-wrapper {
+		width: 100%;
+		overflow-x: auto;
+		background: #ffffff;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+	}
+
+	.compare-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.88rem;
+		text-align: left;
+	}
+
+	.compare-table th {
+		background: #f9fafb;
+		padding: 12px 14px;
+		font-weight: 600;
+		color: #374151;
+		border-bottom: 1px solid #e5e7eb;
+		white-space: nowrap;
+	}
+
+	.compare-table td {
+		padding: 10px 14px;
+		border-bottom: 1px solid #f3f4f6;
+		vertical-align: middle;
+	}
+
+	.compare-table tr:hover {
+		background: #fbfbfb;
+	}
+
+	.row-idx {
+		color: #9ca3af;
+		font-size: 0.8rem;
+	}
+
+	.badge {
+		display: inline-block;
+		font-size: 0.72rem;
+		font-weight: 700;
+		padding: 3px 8px;
+		border-radius: 4px;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.badge-success { background: #dcfce7; color: #15803d; }
+	.badge-info { background: #dbeafe; color: #1d4ed8; }
+	.badge-danger { background: #fee2e2; color: #b91c1c; }
+	.badge-purple { background: #f3e8ff; color: #6b21a8; }
+
+	.url-cell {
+		max-width: 380px;
+		word-break: break-all;
+	}
+
+	.link-url {
+		color: #2563eb;
+		text-decoration: none;
+		font-family: monospace;
+		font-size: 0.85rem;
+	}
+
+	.link-url:hover {
+		text-decoration: underline;
+	}
+
+	.link-staging {
+		color: #0f766e;
+	}
+
+	.text-muted {
+		color: #9ca3af;
+	}
+
+	.text-danger-muted {
+		color: #dc2626;
+		font-family: monospace;
+		font-size: 0.85rem;
+	}
+
+	.note-cell {
+		font-size: 0.82rem;
+		color: #6b7280;
+		min-width: 180px;
+	}
+</style>
+
+<script is:inline>
+	(function() {
+		const searchInput = document.getElementById("urlSearch");
+		const filterTabs = document.getElementById("filterTabs");
+		const tableBody = document.getElementById("tableBody");
+		const visibleCount = document.getElementById("visibleCount");
+		const rows = Array.from(tableBody.querySelectorAll(".url-row"));
+
+		let currentFilter = "all";
+		let currentSearch = "";
+
+		function updateRows() {
+			let shown = 0;
+			const query = currentSearch.trim().toLowerCase();
+
+			for (let i = 0; i < rows.length; i++) {
+				const row = rows[i];
+				const cat = row.getAttribute("data-category");
+				const path = row.getAttribute("data-path");
+				const kUrl = row.getAttribute("data-kotacom");
+				const sUrl = row.getAttribute("data-staging");
+
+				const matchesFilter = (currentFilter === "all") || (cat === currentFilter);
+				const matchesSearch = !query || 
+					path.includes(query) || 
+					kUrl.includes(query) || 
+					sUrl.includes(query);
+
+				if (matchesFilter && matchesSearch) {
+					row.style.display = "";
+					shown++;
+				} else {
+					row.style.display = "none";
+				}
+			}
+
+			if (visibleCount) {
+				visibleCount.textContent = shown;
+			}
+		}
+
+		if (searchInput) {
+			searchInput.addEventListener("input", function(e) {
+				currentSearch = e.target.value;
+				updateRows();
+			});
+		}
+
+		if (filterTabs) {
+			filterTabs.addEventListener("click", function(e) {
+				const btn = e.target.closest(".tab-btn");
+				if (!btn) return;
+				
+				const buttons = filterTabs.querySelectorAll(".tab-btn");
+				buttons.forEach(b => b.classList.remove("active"));
+				btn.classList.add("active");
+
+				currentFilter = btn.getAttribute("data-filter") || "all";
+				updateRows();
+			});
+		}
+	})();
+</script>

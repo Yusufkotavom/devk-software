@@ -10,6 +10,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+ENV CI=true
 RUN pnpm build
 
 FROM node:22-alpine AS runner

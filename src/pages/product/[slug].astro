@@ -1,0 +1,8 @@
+---
+// Permanent 301 Redirect old product URLs to canonical /products/[slug]
+const { slug } = Astro.params;
+if (!slug) {
+	return Astro.redirect("/products", 301);
+}
+return Astro.redirect(`/products/${slug}`, 301);
+---

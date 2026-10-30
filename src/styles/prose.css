@@ -164,6 +164,35 @@
 	/* Media */
 	.prose img {
 		border-radius: var(--radius-lg);
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin-inline: auto;
+		margin-block: 2rem;
+	}
+
+	.prose table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-block: 2rem;
+		font-size: var(--font-size-sm);
+	}
+
+	.prose th,
+	.prose td {
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--color-border);
+		text-align: left;
+	}
+
+	.prose th {
+		background: var(--color-fill);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+	}
+
+	.prose tr:nth-child(even) td {
+		background: var(--color-bg-subtle, var(--color-fill));
 	}
 
 	.prose :is(figure > img, figure > a > img, .emdash-gallery-item img) {

@@ -10,7 +10,7 @@
     "title": "Devk Software Development",
     "tagline": "POS kasir, CRM, CMS & aplikasi custom untuk bisnis Anda",
     "seo": {
-      "titleSeparator": "—"
+      "titleSeparator": "\u2014"
     }
   },
   "blockTypes": [
@@ -383,16 +383,59 @@
           "version": 1,
           "fields": [
             {
+              "slug": "eyebrow",
+              "label": "Eyebrow",
+              "type": "string",
+              "defaultValue": "KEMAMPUAN PLATFORM"
+            },
+            {
               "slug": "headline",
               "label": "Headline",
               "type": "string",
-              "defaultValue": "Build your next blog or microsite today"
+              "defaultValue": "Solusi Lengkap & Terintegrasi"
             },
             {
               "slug": "subheadline",
               "label": "Introduction",
               "type": "text",
-              "defaultValue": "EmDash combines with Astro to create one end-to-end TypeScript CMS and frontend."
+              "defaultValue": "Kombinasi performa cepat, integrasi fleksibel, dan kemudahan manajemen konten."
+            },
+            {
+              "slug": "items",
+              "label": "Cards",
+              "type": "repeater",
+              "fields": [
+                {
+                  "slug": "title",
+                  "label": "Judul Card",
+                  "type": "string"
+                },
+                {
+                  "slug": "description",
+                  "label": "Deskripsi",
+                  "type": "text"
+                },
+                {
+                  "slug": "tag",
+                  "label": "Category Tag",
+                  "type": "string"
+                },
+                {
+                  "slug": "icon",
+                  "label": "Icon",
+                  "type": "string"
+                },
+                {
+                  "slug": "col_span",
+                  "label": "Lebar Kolom",
+                  "type": "string"
+                },
+                {
+                  "slug": "link_url",
+                  "label": "Link URL",
+                  "type": "string"
+                }
+              ]
             },
             {
               "slug": "anchor_id",
@@ -1526,7 +1569,7 @@
                 {
                   "_type": "span",
                   "_key": "01M5SRC24YNYB6GFG3S4J167HD",
-                  "text": "Banyak orang memiliki koleksi file dokumen PDF penting—seperti ebook panduan, draft modul pengajaran, atau naskah tugas akhir—namun merasa lelah membacanya di layar monitor atau tablet. Mencetak file PDF menjadi buku fisik adalah solusi tepat agar materi mudah dibaca berulang kali.",
+                  "text": "Banyak orang memiliki koleksi file dokumen PDF penting\u2014seperti ebook panduan, draft modul pengajaran, atau naskah tugas akhir\u2014namun merasa lelah membacanya di layar monitor atau tablet. Mencetak file PDF menjadi buku fisik adalah solusi tepat agar materi mudah dibaca berulang kali.",
                   "marks": []
                 }
               ],
@@ -1704,7 +1747,7 @@
                 {
                   "_type": "span",
                   "_key": "01M5SRC24ZNYSMG6YZ3V41GHGZ",
-                  "text": "Margin Royalti Penulis: Keuntungan bersih yang ingin Anda terima per buku terjual (misal Rp 20.000 – Rp 35.000).",
+                  "text": "Margin Royalti Penulis: Keuntungan bersih yang ingin Anda terima per buku terjual (misal Rp 20.000 \u2013 Rp 35.000).",
                   "marks": []
                 }
               ],
@@ -1720,7 +1763,7 @@
                 {
                   "_type": "span",
                   "_key": "01M5SRC250A3H9T91HE5JSJ83K",
-                  "text": "Diskon Saluran Penjualan: Alokasi komisi bagi toko buku online, reseller, atau dropshipper (biasanya 20% – 30% dari harga jual).",
+                  "text": "Diskon Saluran Penjualan: Alokasi komisi bagi toko buku online, reseller, atau dropshipper (biasanya 20% \u2013 30% dari harga jual).",
                   "marks": []
                 }
               ],
@@ -2296,7 +2339,7 @@
                 {
                   "_type": "span",
                   "_key": "01M5SRC24ZEBXRP8D4D9EVBDQZ",
-                  "text": "Layouting menentukan ritme membaca. Atur jenis font yang nyaman (seperti Garamond, Minion Pro, atau Merriweather), jarak spasi baris (*leading* 1.25–1.35x), penomoran halaman yang konsisten, dan penempatan bab pembuka di halaman ganjil kanan.",
+                  "text": "Layouting menentukan ritme membaca. Atur jenis font yang nyaman (seperti Garamond, Minion Pro, atau Merriweather), jarak spasi baris (*leading* 1.25\u20131.35x), penomoran halaman yang konsisten, dan penempatan bab pembuka di halaman ganjil kanan.",
                   "marks": []
                 }
               ],
@@ -2662,7 +2705,7 @@
                 {
                   "_type": "span",
                   "_key": "01M5SRC24XR0QCYBTT4Q84WYKM",
-                  "text": "Teknik ini menggunakan lem panas sintetik (EVA / PUR Hotmelt) yang dicairkan pada suhu 160°C. Punggung kertas disayat halus (*milling*) agar lem meresap kuat ke serat kertas sebelum ditempelkan ke sampul karton lentur (softcover Art Carton 260 gsm). Cocok untuk novel, buku saku, dan buku bacaan umum dengan tebal minimal 50 halaman.",
+                  "text": "Teknik ini menggunakan lem panas sintetik (EVA / PUR Hotmelt) yang dicairkan pada suhu 160\u00b0C. Punggung kertas disayat halus (*milling*) agar lem meresap kuat ke serat kertas sebelum ditempelkan ke sampul karton lentur (softcover Art Carton 260 gsm). Cocok untuk novel, buku saku, dan buku bacaan umum dengan tebal minimal 50 halaman.",
                   "marks": []
                 }
               ],
@@ -2690,7 +2733,7 @@
                 {
                   "_type": "span",
                   "_key": "01M5SRC24XGKB04SXMMKEWZXS4",
-                  "text": "Hardcover menggunakan karton padat (*greyboard* No. 30 atau No. 40 tebal 2–3 mm) yang dibalut kertas cetak berlaminasi atau kain linen eksklusif. Di bagian dalam, ujung buku dilekatkan menggunakan kertas penjepit (*endpaper*). Memberikan kesan prestisius untuk skripsi, tesis doktoral, ensiklopedia, dan buku kenangan tahunan.",
+                  "text": "Hardcover menggunakan karton padat (*greyboard* No. 30 atau No. 40 tebal 2\u20133 mm) yang dibalut kertas cetak berlaminasi atau kain linen eksklusif. Di bagian dalam, ujung buku dilekatkan menggunakan kertas penjepit (*endpaper*). Memberikan kesan prestisius untuk skripsi, tesis doktoral, ensiklopedia, dan buku kenangan tahunan.",
                   "marks": []
                 }
               ],
@@ -3478,7 +3521,7 @@
                 {
                   "_type": "span",
                   "_key": "01M5SRC24W0NJZD016WC9MK9YD",
-                  "text": "Buku yang dijilid lem panas (Perfect Binding) akan memakan area lipatan tengah sekitar 5–8 mm. Jika margin dalam naskah Anda terlalu mepet, teks di dekat lipatan akan sulit dibaca tanpa harus merentangkan buku dengan paksa.",
+                  "text": "Buku yang dijilid lem panas (Perfect Binding) akan memakan area lipatan tengah sekitar 5\u20138 mm. Jika margin dalam naskah Anda terlalu mepet, teks di dekat lipatan akan sulit dibaca tanpa harus merentangkan buku dengan paksa.",
                   "marks": []
                 }
               ],
@@ -4004,7 +4047,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -4069,7 +4112,7 @@
               "_type": "marketing_pricing",
               "plans": [
                 {
-                  "name": "Oplah 1–9 Eks",
+                  "name": "Oplah 1\u20139 Eks",
                   "price": "Rp 24.000",
                   "period": "/buku (Cover Doff + Lem Panas)",
                   "cta_url": "#cta",
@@ -4292,7 +4335,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -4367,7 +4410,7 @@
                   "highlighted": false
                 },
                 {
-                  "name": "Bundling Koleksi (3–5 Buku)",
+                  "name": "Bundling Koleksi (3\u20135 Buku)",
                   "badge": "Pilihan Pembaca",
                   "price": "Rp 23.500",
                   "period": "/buku (~120 hal A5)",
@@ -4581,7 +4624,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -4742,7 +4785,7 @@
               "children": [
                 {
                   "_key": "ct4s",
-                  "text": "• Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
+                  "text": "\u2022 Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
                   "_type": "span",
                   "marks": []
                 }
@@ -4756,7 +4799,7 @@
               "children": [
                 {
                   "_key": "ct5s",
-                  "text": "• WhatsApp Layanan: +62 857-9952-0350",
+                  "text": "\u2022 WhatsApp Layanan: +62 857-9952-0350",
                   "_type": "span",
                   "marks": []
                 }
@@ -4770,7 +4813,7 @@
               "children": [
                 {
                   "_key": "ct6s",
-                  "text": "• Jam Operasional Redaksi: Senin – Sabtu, pukul 08.00 – 17.00 WIB",
+                  "text": "\u2022 Jam Operasional Redaksi: Senin \u2013 Sabtu, pukul 08.00 \u2013 17.00 WIB",
                   "_type": "span",
                   "marks": []
                 }
@@ -5133,7 +5176,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -5198,7 +5241,7 @@
               "_type": "marketing_pricing",
               "plans": [
                 {
-                  "name": "Hardcover Satuan (1–5 Eks)",
+                  "name": "Hardcover Satuan (1\u20135 Eks)",
                   "price": "Rp 65.000",
                   "period": "/buku (~150 hal A5)",
                   "cta_url": "#cta",
@@ -5208,7 +5251,7 @@
                   "highlighted": false
                 },
                 {
-                  "name": "Paket Buku Kenangan (20–50 Eks)",
+                  "name": "Paket Buku Kenangan (20\u201350 Eks)",
                   "badge": "Paling Diminati",
                   "price": "Rp 48.000",
                   "period": "/buku (~150 hal A5)",
@@ -5277,7 +5320,7 @@
                   "question": "Apa saja pilihan kertas isi untuk buku hardcover?"
                 },
                 {
-                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3–4 hari kerja.",
+                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3\u20134 hari kerja.",
                   "question": "Berapa lama pengerjaan buku hardcover?"
                 }
               ],
@@ -5421,7 +5464,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -5496,7 +5539,7 @@
                   "highlighted": false
                 },
                 {
-                  "name": "Paket Komunitas (10–50 Eks)",
+                  "name": "Paket Komunitas (10\u201350 Eks)",
                   "badge": "Paling Populer",
                   "price": "Rp 18.500",
                   "period": "/buku (A5 ~100 hal)",
@@ -5561,7 +5604,7 @@
                   "question": "Apakah benar-benar bisa cetak buku hanya 1 eksemplar?"
                 },
                 {
-                  "answer": "Untuk pesanan 1–10 buku rata-rata selesai dalam 1–2 hari kerja setelah file naskah diverifikasi siap cetak.",
+                  "answer": "Untuk pesanan 1\u201310 buku rata-rata selesai dalam 1\u20132 hari kerja setelah file naskah diverifikasi siap cetak.",
                   "question": "Berapa lama waktu pengerjaan cetak buku satuan?"
                 },
                 {
@@ -5681,7 +5724,7 @@
                   "title": "Warna Pekat & Akurat (High Gamut)"
                 },
                 {
-                  "desc": "Pilihan kertas licin (glossy) atau doff halus 120–150 gsm yang tidak tembus tinta bolak-balik.",
+                  "desc": "Pilihan kertas licin (glossy) atau doff halus 120\u2013150 gsm yang tidak tembus tinta bolak-balik.",
                   "title": "Kertas Art Paper & Matte Paper"
                 },
                 {
@@ -5714,7 +5757,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -5927,7 +5970,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -5992,7 +6035,7 @@
               "_type": "marketing_pricing",
               "plans": [
                 {
-                  "name": "Paket Trial (10–25 Eks)",
+                  "name": "Paket Trial (10\u201325 Eks)",
                   "price": "Rp 19.500",
                   "period": "/modul (B5 ~80 hal)",
                   "cta_url": "#cta",
@@ -6002,7 +6045,7 @@
                   "highlighted": false
                 },
                 {
-                  "name": "Paket Kelas Reguler (50–100 Eks)",
+                  "name": "Paket Kelas Reguler (50\u2013100 Eks)",
                   "badge": "Pilihan Dosen & Bimbel",
                   "price": "Rp 14.500",
                   "period": "/modul (B5 ~80 hal)",
@@ -6215,7 +6258,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -6280,7 +6323,7 @@
               "_type": "marketing_pricing",
               "plans": [
                 {
-                  "name": "Paket Debut (1–5 Eks)",
+                  "name": "Paket Debut (1\u20135 Eks)",
                   "price": "Rp 27.500",
                   "period": "/eksemplar (~150 hal A5)",
                   "cta_url": "#cta",
@@ -6290,7 +6333,7 @@
                   "highlighted": false
                 },
                 {
-                  "name": "Paket Pre-Order (20–50 Eks)",
+                  "name": "Paket Pre-Order (20\u201350 Eks)",
                   "badge": "Pilihan Penulis",
                   "price": "Rp 21.000",
                   "period": "/eksemplar (~150 hal A5)",
@@ -6504,7 +6547,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -6718,7 +6761,7 @@
                 },
                 {
                   "us_value": "yes",
-                  "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+                  "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
                   "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
                   "competitor_value": "no"
                 },
@@ -7662,81 +7705,82 @@
   ],
   "taxonomies": [
     {
-      "id": "01M5QDQ9EYVJHM1093GMDRVEXY",
+      "id": "tax:category",
       "name": "category",
-      "slug": "development",
-      "label": "Development",
-      "sortOrder": 0
+      "label": "Kategori",
+      "hierarchical": true,
+      "collections": [
+        "posts",
+        "products"
+      ],
+      "terms": [
+        {
+          "id": "term:category:development",
+          "slug": "development",
+          "label": "Development"
+        },
+        {
+          "id": "term:category:panduan-cetak",
+          "slug": "panduan-cetak",
+          "label": "Panduan Cetak Buku"
+        },
+        {
+          "id": "term:category:self-publishing",
+          "slug": "self-publishing",
+          "label": "Penerbitan & ISBN"
+        },
+        {
+          "id": "term:category:bahan-kertas",
+          "slug": "bahan-kertas",
+          "label": "Kertas & Jilid Buku"
+        },
+        {
+          "id": "term:category:format-layout",
+          "slug": "format-layout",
+          "label": "Layout & Desain Cover"
+        },
+        {
+          "id": "term:category:design",
+          "slug": "design",
+          "label": "Design"
+        },
+        {
+          "id": "term:category:notes",
+          "slug": "notes",
+          "label": "Notes"
+        }
+      ]
     },
     {
-      "id": "01M5QDQ9FFJ6NNMP744QN2NA27",
+      "id": "tax:tag",
       "name": "tag",
-      "slug": "webdev",
-      "label": "Web Development",
-      "sortOrder": 0
-    },
-    {
-      "id": "01M5SRC1H572B60S7YJ6ZFSAWB",
-      "name": "category",
-      "slug": "panduan-cetak",
-      "label": "Panduan Cetak Buku",
-      "sortOrder": 0
-    },
-    {
-      "id": "01M5SRC1PST5FDADV7RCP9R29J",
-      "name": "category",
-      "slug": "self-publishing",
-      "label": "Penerbitan & ISBN",
-      "sortOrder": 0
-    },
-    {
-      "id": "01M5SRC1WEEBQNXQV5CRN3JYXX",
-      "name": "category",
-      "slug": "bahan-kertas",
-      "label": "Kertas & Jilid Buku",
-      "sortOrder": 0
-    },
-    {
-      "id": "01M5SRC221PS8PBS221X4FZKSA",
-      "name": "category",
-      "slug": "format-layout",
-      "label": "Layout & Desain Cover",
-      "sortOrder": 0
-    },
-    {
-      "id": "01M5QDQ9F28PWRTW5JFVA0X750",
-      "name": "category",
-      "slug": "design",
-      "label": "Design",
-      "sortOrder": 1
-    },
-    {
-      "id": "01M5QDQ9FJ07TJR3A7Z4DGK2PC",
-      "name": "tag",
-      "slug": "opinion",
-      "label": "Opinion",
-      "sortOrder": 1
-    },
-    {
-      "id": "01M5QDQ9F65MSV49A1J7A92J6S",
-      "name": "category",
-      "slug": "notes",
-      "label": "Notes",
-      "sortOrder": 2
-    },
-    {
-      "id": "01M5QDQ9FNGP884E3H3K71V0G4",
-      "name": "tag",
-      "slug": "tools",
-      "label": "Tools",
-      "sortOrder": 2
-    },
-    {
-      "id": "01M5QDQ9FR9HJ8GR8S964V2HBJ",
-      "name": "tag",
-      "slug": "creativity",
-      "label": "Creativity",
-      "sortOrder": 3
+      "label": "Tag",
+      "hierarchical": false,
+      "collections": [
+        "posts"
+      ],
+      "terms": [
+        {
+          "id": "term:tag:webdev",
+          "slug": "webdev",
+          "label": "Web Development"
+        },
+        {
+          "id": "term:tag:opinion",
+          "slug": "opinion",
+          "label": "Opinion"
+        },
+        {
+          "id": "term:tag:tools",
+          "slug": "tools",
+          "label": "Tools"
+        },
+        {
+          "id": "term:tag:creativity",
+          "slug": "creativity",
+          "label": "Creativity"
+        }
+      ]
     }
   ],
   "bylines": [
@@ -7756,12 +7800,166 @@
     {
       "id": "01M5SJ18D86Z3783N54K8XGRRJ",
       "name": "footer",
-      "label": "Footer Navigation"
+      "label": "Footer Navigation",
+      "items": [
+        {
+          "id": "01M5SJ18G4EKH7K8J6FF4AFN53",
+          "type": "custom",
+          "label": "Publikasi & Artikel",
+          "url": "/posts",
+          "children": [
+            {
+              "id": "01M5SJ18K1M97M9TX58TNNKYW3",
+              "type": "custom",
+              "label": "Beranda",
+              "url": "/"
+            },
+            {
+              "id": "01M5SJ18NTR47CJ10H4P6CFGH4",
+              "type": "custom",
+              "label": "Semua Artikel",
+              "url": "/posts"
+            },
+            {
+              "id": "01M5SJ18RSQDEESYEB7E98VAG5",
+              "type": "custom",
+              "label": "Panduan & Edukasi",
+              "url": "/posts"
+            },
+            {
+              "id": "01M5SJ18VH2KFSJXYFQRZ27HHW",
+              "type": "custom",
+              "label": "Arsip Tulisan",
+              "url": "/posts"
+            }
+          ]
+        },
+        {
+          "id": "01M5SJ18YE223WZ9V7ZKT8RA94",
+          "type": "custom",
+          "label": "Jaringan & Rekomendasi",
+          "url": "https://kotacom.id",
+          "children": [
+            {
+              "id": "01M5SJ19166C6NFZX3C2K3Y1W2",
+              "type": "custom",
+              "label": "Kotacom \u2014 Percetakan Buku",
+              "url": "https://kotacom.id"
+            },
+            {
+              "id": "01M5SJ193YXNYQ5650SF2V1065",
+              "type": "custom",
+              "label": "Devk \u2014 Software House & IT",
+              "url": "https://devk.my.id"
+            },
+            {
+              "id": "01M5SJ196S4BN2TSFKEVXW0V4J",
+              "type": "custom",
+              "label": "Jasa Install Software & PC",
+              "url": "https://devk.my.id/services"
+            },
+            {
+              "id": "01M5SJ199RJCQAVW9M8N8TYE6B",
+              "type": "custom",
+              "label": "Sistem POS Kasir & CRM",
+              "url": "https://devk.my.id/jasa-pembuatan-aplikasi-pos-kasir"
+            }
+          ]
+        },
+        {
+          "id": "01M5SJ19CGQ1JT02NA5S8PXKG0",
+          "type": "custom",
+          "label": "Legalitas & Redaksi",
+          "url": "/about",
+          "children": [
+            {
+              "id": "01M5SJ19FAQV5G8E7P2PYR40EB",
+              "type": "custom",
+              "label": "Tentang Kami",
+              "url": "/about"
+            },
+            {
+              "id": "01M5SJ19J2FNXFHBXG360GQ3X5",
+              "type": "custom",
+              "label": "Kebijakan Privasi",
+              "url": "/privacy-policy"
+            },
+            {
+              "id": "01M5SJ19MY27HP79HHTEBJGZXG",
+              "type": "custom",
+              "label": "Syarat & Ketentuan",
+              "url": "/terms"
+            },
+            {
+              "id": "01M5SJ19QRG0SKJRS6M67M2MCT",
+              "type": "custom",
+              "label": "Disclaimer",
+              "url": "/disclaimer"
+            },
+            {
+              "id": "01M5SJ19TGMKQBYM1BDA1TFR7V",
+              "type": "custom",
+              "label": "Hubungi Redaksi",
+              "url": "/contact"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "01M5QDQ9QM0G5400QA2CQ4JNV3",
       "name": "primary",
-      "label": "Primary Navigation"
+      "label": "Primary Navigation",
+      "items": [
+        {
+          "id": "01M5SRC4GR2331E2N198ZKTDN8",
+          "type": "custom",
+          "label": "Beranda",
+          "url": "/"
+        },
+        {
+          "id": "01M5SRC4KJ04Y64DVJ6MGH1RX4",
+          "type": "custom",
+          "label": "Cetak Satuan",
+          "url": "/jasa-cetak-buku-satuan"
+        },
+        {
+          "id": "01M5SRC4PGGWVTWA5N251K5FSN",
+          "type": "custom",
+          "label": "Cetak Novel",
+          "url": "/jasa-cetak-novel"
+        },
+        {
+          "id": "01M5SRC4S91F23V39Q2PJHMCV1",
+          "type": "custom",
+          "label": "Cetak Ebook/PDF",
+          "url": "/cetak-ebook-ke-buku-fisik"
+        },
+        {
+          "id": "01M5SRC4W2YGGB39F8KN4CYZC5",
+          "type": "custom",
+          "label": "Modul & Hardcover",
+          "url": "/jasa-cetak-modul-dan-buku-ajar"
+        },
+        {
+          "id": "01M5SRC4YZK06YQ41SKEH4CXC7",
+          "type": "custom",
+          "label": "Biaya Cetak",
+          "url": "/biaya-cetak-buku"
+        },
+        {
+          "id": "01M5SRC51QVVEDVD8RA20QHVF5",
+          "type": "custom",
+          "label": "Panduan & Blog",
+          "url": "/posts"
+        },
+        {
+          "id": "01M5SRC54JCQWN9N1FH0VR4YK4",
+          "type": "custom",
+          "label": "Kontak",
+          "url": "/contact"
+        }
+      ]
     }
   ],
   "widgetAreas": [
@@ -8579,7 +8777,7 @@
                 {
                   "_type": "span",
                   "_key": "ct4s",
-                  "text": "• Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
+                  "text": "\u2022 Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
                   "marks": []
                 }
               ],
@@ -8593,7 +8791,7 @@
                 {
                   "_type": "span",
                   "_key": "ct5s",
-                  "text": "• WhatsApp Layanan: +62 857-9952-0350",
+                  "text": "\u2022 WhatsApp Layanan: +62 857-9952-0350",
                   "marks": []
                 }
               ],
@@ -8607,7 +8805,7 @@
                 {
                   "_type": "span",
                   "_key": "ct6s",
-                  "text": "• Jam Operasional Redaksi: Senin – Sabtu, pukul 08.00 – 17.00 WIB",
+                  "text": "\u2022 Jam Operasional Redaksi: Senin \u2013 Sabtu, pukul 08.00 \u2013 17.00 WIB",
                   "marks": []
                 }
               ],
@@ -8842,7 +9040,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Komunitas (10–50 Eks)",
+                  "name": "Paket Komunitas (10\u201350 Eks)",
                   "price": "Rp 18.500",
                   "period": "/buku (A5 ~100 hal)",
                   "description": "Paling hemat untuk penulis indie, edisi terbatas, dan promosi komunitas.",
@@ -8907,7 +9105,7 @@
                 },
                 {
                   "question": "Berapa lama waktu pengerjaan cetak buku satuan?",
-                  "answer": "Untuk pesanan 1–10 buku rata-rata selesai dalam 1–2 hari kerja setelah file naskah diverifikasi siap cetak."
+                  "answer": "Untuk pesanan 1\u201310 buku rata-rata selesai dalam 1\u20132 hari kerja setelah file naskah diverifikasi siap cetak."
                 },
                 {
                   "question": "Apa perbedaan kertas Bookpaper dan HVS?",
@@ -8992,7 +9190,7 @@
               "headline": "Paket Cetak Novel Penulis Indie",
               "plans": [
                 {
-                  "name": "Paket Debut (1–5 Eks)",
+                  "name": "Paket Debut (1\u20135 Eks)",
                   "price": "Rp 27.500",
                   "period": "/eksemplar (~150 hal A5)",
                   "description": "Cocok untuk proofing penulis, kiriman beta reader, atau arsip pribadi.",
@@ -9002,7 +9200,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Pre-Order (20–50 Eks)",
+                  "name": "Paket Pre-Order (20\u201350 Eks)",
                   "price": "Rp 21.000",
                   "period": "/eksemplar (~150 hal A5)",
                   "description": "Pilihan favorit penulis self-publishing untuk memenuhi pesanan pre-order.",
@@ -9148,7 +9346,7 @@
               "headline": "Tabel Simulasi Biaya Cetak (Ukuran A5, 100 Halaman)",
               "plans": [
                 {
-                  "name": "Oplah 1–9 Eks",
+                  "name": "Oplah 1\u20139 Eks",
                   "price": "Rp 24.000",
                   "period": "/buku (Cover Doff + Lem Panas)",
                   "description": "Biaya satuan untuk proofing naskah atau kebutuhan pribadi terbatas.",
@@ -9314,7 +9512,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Bundling Koleksi (3–5 Buku)",
+                  "name": "Bundling Koleksi (3\u20135 Buku)",
                   "price": "Rp 23.500",
                   "period": "/buku (~120 hal A5)",
                   "description": "Cetak seri ebook, modul belajar bertahap, atau rangkuman materi lengkap.",
@@ -9460,7 +9658,7 @@
               "headline": "Paket Cetak Modul Pendidikan",
               "plans": [
                 {
-                  "name": "Paket Trial (10–25 Eks)",
+                  "name": "Paket Trial (10\u201325 Eks)",
                   "price": "Rp 19.500",
                   "period": "/modul (B5 ~80 hal)",
                   "description": "Cocok untuk kelas private bimbel, workshop perdana, atau materi diktat khusus.",
@@ -9470,7 +9668,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Kelas Reguler (50–100 Eks)",
+                  "name": "Paket Kelas Reguler (50\u2013100 Eks)",
                   "price": "Rp 14.500",
                   "period": "/modul (B5 ~80 hal)",
                   "description": "Pilihan utama bimbel dan mata kuliah untuk satu semester pembelajaran.",
@@ -9616,7 +9814,7 @@
               "headline": "Paket Cetak Buku Hardcover",
               "plans": [
                 {
-                  "name": "Hardcover Satuan (1–5 Eks)",
+                  "name": "Hardcover Satuan (1\u20135 Eks)",
                   "price": "Rp 65.000",
                   "period": "/buku (~150 hal A5)",
                   "description": "Ideal untuk buku skripsi/tesis mewah, buku portofolio, atau kenang-kenangan pribadi.",
@@ -9626,7 +9824,7 @@
                   "cta_url": "#cta"
                 },
                 {
-                  "name": "Paket Buku Kenangan (20–50 Eks)",
+                  "name": "Paket Buku Kenangan (20\u201350 Eks)",
                   "price": "Rp 48.000",
                   "period": "/buku (~150 hal A5)",
                   "description": "Paling disukai untuk buku biografi keluarga, reuni akbar, dan peringatan instansi.",
@@ -9695,7 +9893,7 @@
                 },
                 {
                   "question": "Berapa lama pengerjaan buku hardcover?",
-                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3–4 hari kerja."
+                  "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3\u20134 hari kerja."
                 }
               ]
             },
@@ -10626,7 +10824,7 @@
           "children": [
             {
               "_key": "ct4s",
-              "text": "• Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
+              "text": "\u2022 Email Redaksi: redaksi@kotacom.id / contact@devk.my.id",
               "_type": "span",
               "marks": []
             }
@@ -10640,7 +10838,7 @@
           "children": [
             {
               "_key": "ct5s",
-              "text": "• WhatsApp Layanan: +62 857-9952-0350",
+              "text": "\u2022 WhatsApp Layanan: +62 857-9952-0350",
               "_type": "span",
               "marks": []
             }
@@ -10654,7 +10852,7 @@
           "children": [
             {
               "_key": "ct6s",
-              "text": "• Jam Operasional Redaksi: Senin – Sabtu, pukul 08.00 – 17.00 WIB",
+              "text": "\u2022 Jam Operasional Redaksi: Senin \u2013 Sabtu, pukul 08.00 \u2013 17.00 WIB",
               "_type": "span",
               "marks": []
             }
@@ -11485,7 +11683,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -11558,7 +11756,7 @@
               "highlighted": false
             },
             {
-              "name": "Bundling Koleksi (3–5 Buku)",
+              "name": "Bundling Koleksi (3\u20135 Buku)",
               "badge": "Pilihan Pembaca",
               "price": "Rp 23.500",
               "period": "/buku (~120 hal A5)",
@@ -11760,7 +11958,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -11823,7 +12021,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Paket Trial (10–25 Eks)",
+              "name": "Paket Trial (10\u201325 Eks)",
               "price": "Rp 19.500",
               "period": "/modul (B5 ~80 hal)",
               "cta_url": "#cta",
@@ -11833,7 +12031,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Kelas Reguler (50–100 Eks)",
+              "name": "Paket Kelas Reguler (50\u2013100 Eks)",
               "badge": "Pilihan Dosen & Bimbel",
               "price": "Rp 14.500",
               "period": "/modul (B5 ~80 hal)",
@@ -12035,7 +12233,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -12098,7 +12296,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Hardcover Satuan (1–5 Eks)",
+              "name": "Hardcover Satuan (1\u20135 Eks)",
               "price": "Rp 65.000",
               "period": "/buku (~150 hal A5)",
               "cta_url": "#cta",
@@ -12108,7 +12306,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Buku Kenangan (20–50 Eks)",
+              "name": "Paket Buku Kenangan (20\u201350 Eks)",
               "badge": "Paling Diminati",
               "price": "Rp 48.000",
               "period": "/buku (~150 hal A5)",
@@ -12175,7 +12373,7 @@
               "question": "Apa saja pilihan kertas isi untuk buku hardcover?"
             },
             {
-              "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3–4 hari kerja.",
+              "answer": "Karena membutuhkan proses pengeleman board dan pengepresan agar tidak melengkung, rata-rata pengerjaan berkisar 3\u20134 hari kerja.",
               "question": "Berapa lama pengerjaan buku hardcover?"
             }
           ],
@@ -12310,7 +12508,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -12383,7 +12581,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Komunitas (10–50 Eks)",
+              "name": "Paket Komunitas (10\u201350 Eks)",
               "badge": "Paling Populer",
               "price": "Rp 18.500",
               "period": "/buku (A5 ~100 hal)",
@@ -12446,7 +12644,7 @@
               "question": "Apakah benar-benar bisa cetak buku hanya 1 eksemplar?"
             },
             {
-              "answer": "Untuk pesanan 1–10 buku rata-rata selesai dalam 1–2 hari kerja setelah file naskah diverifikasi siap cetak.",
+              "answer": "Untuk pesanan 1\u201310 buku rata-rata selesai dalam 1\u20132 hari kerja setelah file naskah diverifikasi siap cetak.",
               "question": "Berapa lama waktu pengerjaan cetak buku satuan?"
             },
             {
@@ -12589,7 +12787,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -12652,7 +12850,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Paket Debut (1–5 Eks)",
+              "name": "Paket Debut (1\u20135 Eks)",
               "price": "Rp 27.500",
               "period": "/eksemplar (~150 hal A5)",
               "cta_url": "#cta",
@@ -12662,7 +12860,7 @@
               "highlighted": false
             },
             {
-              "name": "Paket Pre-Order (20–50 Eks)",
+              "name": "Paket Pre-Order (20\u201350 Eks)",
               "badge": "Pilihan Penulis",
               "price": "Rp 21.000",
               "period": "/eksemplar (~150 hal A5)",
@@ -12864,7 +13062,7 @@
             },
             {
               "us_value": "yes",
-              "feature_desc": "Buku bisa dibuka leluasa 180° tanpa risiko lembaran halaman copot",
+              "feature_desc": "Buku bisa dibuka leluasa 180\u00b0 tanpa risiko lembaran halaman copot",
               "feature_name": "Jilid Lem Panas (Perfect Binding) Pabrikan",
               "competitor_value": "no"
             },
@@ -12927,7 +13125,7 @@
           "_type": "marketing_pricing",
           "plans": [
             {
-              "name": "Oplah 1–9 Eks",
+              "name": "Oplah 1\u20139 Eks",
               "price": "Rp 24.000",
               "period": "/buku (Cover Doff + Lem Panas)",
               "cta_url": "#cta",
@@ -13036,224 +13234,6 @@
       "status": "published",
       "locale": "en",
       "version": 1
-    }
-  ],
-  "menuItems": [
-    {
-      "id": "01M5SJ19FAQV5G8E7P2PYR40EB",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ19CGQ1JT02NA5S8PXKG0",
-      "sortOrder": 0,
-      "type": "custom",
-      "customUrl": "/about",
-      "label": "Tentang Kami"
-    },
-    {
-      "id": "01M5SJ19166C6NFZX3C2K3Y1W2",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18YE223WZ9V7ZKT8RA94",
-      "sortOrder": 0,
-      "type": "custom",
-      "customUrl": "https://kotacom.id",
-      "label": "Kotacom — Percetakan Buku"
-    },
-    {
-      "id": "01M5SJ18K1M97M9TX58TNNKYW3",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18G4EKH7K8J6FF4AFN53",
-      "sortOrder": 0,
-      "type": "custom",
-      "customUrl": "/",
-      "label": "Beranda"
-    },
-    {
-      "id": "01M5SRC4GR2331E2N198ZKTDN8",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 0,
-      "type": "custom",
-      "customUrl": "/",
-      "label": "Beranda"
-    },
-    {
-      "id": "01M5SJ18G4EKH7K8J6FF4AFN53",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": null,
-      "sortOrder": 0,
-      "type": "custom",
-      "customUrl": "/posts",
-      "label": "Publikasi & Artikel"
-    },
-    {
-      "id": "01M5SJ19J2FNXFHBXG360GQ3X5",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ19CGQ1JT02NA5S8PXKG0",
-      "sortOrder": 1,
-      "type": "custom",
-      "customUrl": "/privacy-policy",
-      "label": "Kebijakan Privasi"
-    },
-    {
-      "id": "01M5SJ18NTR47CJ10H4P6CFGH4",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18G4EKH7K8J6FF4AFN53",
-      "sortOrder": 1,
-      "type": "custom",
-      "customUrl": "/posts",
-      "label": "Semua Artikel"
-    },
-    {
-      "id": "01M5SJ193YXNYQ5650SF2V1065",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18YE223WZ9V7ZKT8RA94",
-      "sortOrder": 1,
-      "type": "custom",
-      "customUrl": "https://devk.my.id",
-      "label": "Devk — Software House & IT"
-    },
-    {
-      "id": "01M5SRC4KJ04Y64DVJ6MGH1RX4",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 1,
-      "type": "custom",
-      "customUrl": "/jasa-cetak-buku-satuan",
-      "label": "Cetak Satuan"
-    },
-    {
-      "id": "01M5SJ196S4BN2TSFKEVXW0V4J",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18YE223WZ9V7ZKT8RA94",
-      "sortOrder": 2,
-      "type": "custom",
-      "customUrl": "https://devk.my.id/services",
-      "label": "Jasa Install Software & PC"
-    },
-    {
-      "id": "01M5SJ19MY27HP79HHTEBJGZXG",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ19CGQ1JT02NA5S8PXKG0",
-      "sortOrder": 2,
-      "type": "custom",
-      "customUrl": "/terms",
-      "label": "Syarat & Ketentuan"
-    },
-    {
-      "id": "01M5SJ18RSQDEESYEB7E98VAG5",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18G4EKH7K8J6FF4AFN53",
-      "sortOrder": 2,
-      "type": "custom",
-      "customUrl": "/posts",
-      "label": "Panduan & Edukasi"
-    },
-    {
-      "id": "01M5SRC4PGGWVTWA5N251K5FSN",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 2,
-      "type": "custom",
-      "customUrl": "/jasa-cetak-novel",
-      "label": "Cetak Novel"
-    },
-    {
-      "id": "01M5SJ18VH2KFSJXYFQRZ27HHW",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18G4EKH7K8J6FF4AFN53",
-      "sortOrder": 3,
-      "type": "custom",
-      "customUrl": "/posts",
-      "label": "Arsip Tulisan"
-    },
-    {
-      "id": "01M5SJ19QRG0SKJRS6M67M2MCT",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ19CGQ1JT02NA5S8PXKG0",
-      "sortOrder": 3,
-      "type": "custom",
-      "customUrl": "/disclaimer",
-      "label": "Disclaimer"
-    },
-    {
-      "id": "01M5SJ199RJCQAVW9M8N8TYE6B",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ18YE223WZ9V7ZKT8RA94",
-      "sortOrder": 3,
-      "type": "custom",
-      "customUrl": "https://devk.my.id/jasa-pembuatan-aplikasi-pos-kasir",
-      "label": "Sistem POS Kasir & CRM"
-    },
-    {
-      "id": "01M5SRC4S91F23V39Q2PJHMCV1",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 3,
-      "type": "custom",
-      "customUrl": "/cetak-ebook-ke-buku-fisik",
-      "label": "Cetak Ebook/PDF"
-    },
-    {
-      "id": "01M5SRC4W2YGGB39F8KN4CYZC5",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 4,
-      "type": "custom",
-      "customUrl": "/jasa-cetak-modul-dan-buku-ajar",
-      "label": "Modul & Hardcover"
-    },
-    {
-      "id": "01M5SJ19TGMKQBYM1BDA1TFR7V",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": "01M5SJ19CGQ1JT02NA5S8PXKG0",
-      "sortOrder": 4,
-      "type": "custom",
-      "customUrl": "/contact",
-      "label": "Hubungi Redaksi"
-    },
-    {
-      "id": "01M5SRC4YZK06YQ41SKEH4CXC7",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 5,
-      "type": "custom",
-      "customUrl": "/biaya-cetak-buku",
-      "label": "Biaya Cetak"
-    },
-    {
-      "id": "01M5SJ18YE223WZ9V7ZKT8RA94",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": null,
-      "sortOrder": 5,
-      "type": "custom",
-      "customUrl": "https://kotacom.id",
-      "label": "Jaringan & Rekomendasi"
-    },
-    {
-      "id": "01M5SRC51QVVEDVD8RA20QHVF5",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 6,
-      "type": "custom",
-      "customUrl": "/posts",
-      "label": "Panduan & Blog"
-    },
-    {
-      "id": "01M5SRC54JCQWN9N1FH0VR4YK4",
-      "menuId": "01M5QDQ9QM0G5400QA2CQ4JNV3",
-      "parentId": null,
-      "sortOrder": 7,
-      "type": "custom",
-      "customUrl": "/contact",
-      "label": "Kontak"
-    },
-    {
-      "id": "01M5SJ19CGQ1JT02NA5S8PXKG0",
-      "menuId": "01M5SJ18D86Z3783N54K8XGRRJ",
-      "parentId": null,
-      "sortOrder": 10,
-      "type": "custom",
-      "customUrl": "/about",
-      "label": "Legalitas & Redaksi"
     }
   ]
 }

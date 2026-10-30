@@ -5,6 +5,7 @@ import { Image, type BlockComponentProps } from "emdash/ui";
 import BookMockup from "../ui/BookMockup.astro";
 import FadeInText from "@astroanimate/core/FadeInText";
 import type { PageContentBlock } from "../../../emdash-env";
+import { formatAccentWords } from "../../utils/text";
 
 type HeroBlock = Extract<PageContentBlock, { _type: "marketing_hero" }>;
 type Props = BlockComponentProps<HeroBlock>;
@@ -13,6 +14,14 @@ const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.pro
 const { anchor_id, eyebrow, headline, subheadline, centered } = raw;
 const image = raw.image ?? raw.imageUrl;
 const image_caption = raw.image_caption ?? raw.imageCaption;
+const rawFit = String(raw.image_fit ?? raw.imageFit ?? "").trim().toLowerCase();
+const isSquareImageObj = typeof image === "object" && image !== null && image.width && image.height && image.width === image.height;
+const isFullMedia =
+	rawFit === "full" ||
+	rawFit === "square" ||
+	rawFit === "contain" ||
+	rawFit === "1:1" ||
+	(!rawFit && isSquareImageObj);
 
 const eyebrowUrl = (raw.eyebrow_url ?? raw.eyebrowUrl) ? sanitizeHref(raw.eyebrow_url ?? raw.eyebrowUrl) : undefined;
 const primaryCtaLabel = raw.primary_cta_label ?? raw.primaryCtaLabel;
@@ -31,7 +40,7 @@ const secondaryCta =
 
 <section
 	id={anchor_id || undefined}
-	class:list={["hero", { "hero--centered": centered }]}
+	class:list={["hero", "bg-grid-dots", { "hero--centered": centered }]}
 >
 	<div class="frame">
 		{
@@ -44,7 +53,7 @@ const secondaryCta =
 		}
 		{eyebrow && !eyebrowUrl && <p class="hero__announce rise">{eyebrow}</p>}
 		<FadeInText as="h1" class="hero__headline rise" duration={1.2} distance={24} enhance={true} easing="cubic-bezier(0.16, 1, 0.3, 1)">
-			{headline}
+			<Fragment set:html={formatAccentWords(headline)} />
 		</FadeInText>
 		{
 			(subheadline || primaryCta || secondaryCta) && (
@@ -75,15 +84,15 @@ const secondaryCta =
 				{image === "mockup" || raw.show_mockup ? (
 					<BookMockup title={headline} eyebrow={eyebrow} />
 				) : (
-					<figure class="media hero__media settle">
+					<figure class:list={["media", "hero__media", "settle", { "hero__media--full": isFullMedia }]}>
 						<div class="media__img">
 							{typeof image === "string" ? (
-								<img src={image} alt={headline || "Hero"} class="w-full h-full object-cover rounded-xl" />
+								<img src={image} alt={headline || "Hero"} class:list={["w-full rounded-xl", isFullMedia ? "h-auto object-contain" : "h-full object-cover"]} />
 							) : (
 								<Image
 									image={image}
 									priority
-									sizes="(min-width: 1264px) 1136px, 92vw"
+									sizes={isFullMedia ? "(min-width: 768px) 640px, 92vw" : "(min-width: 1264px) 1136px, 92vw"}
 								/>
 							)}
 						</div>
@@ -160,11 +169,15 @@ const secondaryCta =
 
 	.hero__row {
 		--rise-index: 2;
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		align-items: end;
-		gap: 32px;
-		margin-block-start: 32px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 24px;
+		margin-block-start: 28px;
+	}
+
+	.hero--centered .hero__row {
+		align-items: center;
 	}
 
 	.hero__lead {
@@ -184,6 +197,20 @@ const secondaryCta =
 		aspect-ratio: 16 / 9;
 		border-radius: var(--radius-xl);
 		background: var(--color-fill);
+	}
+
+	.hero__media--full {
+		aspect-ratio: auto !important;
+		max-width: min(100%, 640px);
+		margin-inline: auto;
+		background: transparent;
+	}
+
+	.hero__media--full .media__img,
+	.hero__media--full :global(img),
+	.hero__media--full :global(picture) {
+		height: auto !important;
+		object-fit: contain !important;
 	}
 
 	.hero__media::after {
@@ -219,13 +246,13 @@ const secondaryCta =
 			grid-template-columns: minmax(0, 1fr);
 		}
 
-		.hero__media {
+		.hero__media:not(.hero__media--full) {
 			aspect-ratio: 16 / 9;
 		}
 	}
 
 	@media (max-width: 640px) {
-		.hero__media {
+		.hero__media:not(.hero__media--full) {
 			aspect-ratio: 16 / 9;
 		}
 	}

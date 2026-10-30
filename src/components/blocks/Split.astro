@@ -4,7 +4,7 @@ import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
 import BookMockup from "../ui/BookMockup.astro";
 import type { PageContentBlock } from "../../../emdash-env";
-import { toParagraphs } from "../../utils/text";
+import { toParagraphs, formatAccentWords } from "../../utils/text";
 
 type SplitBlock = Extract<PageContentBlock, { _type: "marketing_split" }>;
 type Props = BlockComponentProps<SplitBlock>;
@@ -14,6 +14,14 @@ const { anchor_id, eyebrow, headline } = raw;
 const image = raw.image ?? raw.imageUrl;
 const image_caption = raw.image_caption ?? raw.imageCaption;
 const image_first = raw.image_first ?? raw.imageFirst;
+const rawFit = String(raw.image_fit ?? raw.imageFit ?? "").trim().toLowerCase();
+const isSquareImageObj = typeof image === "object" && image !== null && image.width && image.height && image.width === image.height;
+const isFullMedia =
+	rawFit === "full" ||
+	rawFit === "square" ||
+	rawFit === "contain" ||
+	rawFit === "1:1" ||
+	(!rawFit && isSquareImageObj);
 
 const paragraphs = toParagraphs(raw.body ?? "");
 const points = (raw.points ?? "")
@@ -40,7 +48,7 @@ const cta =
 	<div class="frame split__grid">
 		<div>
 			{eyebrow && <p class="eyebrow">{eyebrow}</p>}
-			<h2 class="section-headline split__headline">{headline}</h2>
+			<h2 class="section-headline split__headline"><Fragment set:html={formatAccentWords(headline)} /></h2>
 			{paragraphs.map((paragraph) => <p class="split__body">{paragraph}</p>)}
 			{points.length > 0 && (
 				<ul class="split__points" role="list">
@@ -67,10 +75,10 @@ const cta =
 					<BookMockup title={headline} eyebrow={eyebrow} />
 				</div>
 			) : (
-				<figure class="media settle split__media">
+				<figure class:list={["media", "settle", "split__media", { "split__media--full": isFullMedia }]}>
 					<div class="media__img">
 						{typeof image === "string" ? (
-							<img src={image} alt={headline || "Deliverables"} loading="lazy" class="w-full h-full object-cover rounded-xl" />
+							<img src={image} alt={headline || "Deliverables"} loading="lazy" class:list={["w-full rounded-xl", isFullMedia ? "h-auto object-contain" : "h-full object-cover"]} />
 						) : (
 							<Image image={image} sizes="(max-width: 960px) 100vw, 600px" />
 						)}
@@ -126,7 +134,10 @@ const cta =
 	}
 
 	.split__link {
-		margin-block-start: 32px;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		margin-block-start: 28px;
 	}
 
 	.split__media {
@@ -135,8 +146,18 @@ const cta =
 		overflow: hidden;
 		background: var(--color-fill);
 	}
+	.split__media--full {
+		aspect-ratio: auto !important;
+		background: transparent;
+	}
+	.split__media--full .media__img,
+	.split__media--full :global(img),
+	.split__media--full :global(picture) {
+		height: auto !important;
+		object-fit: contain !important;
+	}
 	@media (max-width: 640px) {
-		.split__media {
+		.split__media:not(.split__media--full) {
 			aspect-ratio: 16 / 9;
 		}
 	}

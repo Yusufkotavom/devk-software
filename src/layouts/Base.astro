@@ -66,13 +66,14 @@ const { siteTitle, siteTagline, siteLogo } = resolveBlogSiteIdentity(
 
 // Normalize title & strip repetitive brand suffixes
 let cleanTitle = (title || "").trim();
-// Remove duplicate brand suffixes if already present
+// Remove duplicate trailing brand suffixes if already present
 cleanTitle = cleanTitle
-	.replace(/\s*[|—]\s*Devk(\s*[|—]\s*Devk)+/gi, "")
-	.replace(/\s*[|—]\s*Devk$/i, "")
+	.replace(/\s*[|—]\s*(Kotacom|Devk|My Blog)\s*$/gi, "")
 	.trim();
 
-const fullTitle = cleanTitle ? `${cleanTitle} | ${siteTitle}` : siteTitle;
+const fullTitle = cleanTitle
+	? (cleanTitle.toLowerCase().endsWith(siteTitle.toLowerCase()) ? cleanTitle : `${cleanTitle} | ${siteTitle.toLowerCase()}`)
+	: siteTitle;
 
 const menu = menuResult.data;
 const menuItems = menu?.items ?? [];
@@ -102,12 +103,16 @@ try {
 	headerCta = null;
 }
 
+const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const resolvedPageKind = isHomePage || type === "website" ? "custom" : (content ? "content" : "custom");
+const resolvedPageType = isHomePage ? "website" : type;
+
 // Build public page context for plugin contributions
 // SEO data is passed here and rendered securely by EmDashHead
 const pageCtx = createPublicPageContext({
 	Astro,
-	kind: content ? "content" : "custom",
-	pageType: type,
+	kind: resolvedPageKind,
+	pageType: resolvedPageType,
 	title: fullTitle,
 	pageTitle: cleanTitle || pageTitle || title,
 	description,
@@ -151,6 +156,10 @@ const year = new Date().getFullYear();
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="/fav.png" />
+		<link rel="shortcut icon" href="/fav.png" />
+		<link rel="apple-touch-icon" href="/fav.png" />
+		<link rel="alternate" hreflang="id-ID" href={canonical || Astro.url.href} />
 		<link rel="author" href="/llms.txt" />
 		<link rel="describedby" href="/llms.txt" />
 		<link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM context" />
@@ -1995,6 +2004,45 @@ const year = new Date().getFullYear();
 				e.preventDefault();
 				searchInput.focus();
 			});
+		</script>
+		<script is:inline>
+			(function () {
+				if (typeof window === "undefined") return;
+				if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+				function initScrollReveal() {
+					var targets = document.querySelectorAll(
+						"section.band:not(.hero), .split__grid, .fsplit, .cta, .testimonial-single, .tab-pane, .contact-card, .faq__item, .feed-grid"
+					);
+					if (!targets.length) return;
+
+					var observer = new IntersectionObserver(
+						function (entries) {
+							entries.forEach(function (entry) {
+								if (entry.isIntersecting) {
+									entry.target.classList.add("is-revealed");
+									observer.unobserve(entry.target);
+								}
+							});
+						},
+						{
+							rootMargin: "0px 0px -6% 0px",
+							threshold: 0.05,
+						}
+					);
+
+					targets.forEach(function (el) {
+						el.classList.add("scroll-reveal");
+						observer.observe(el);
+					});
+				}
+
+				if (document.readyState === "loading") {
+					document.addEventListener("DOMContentLoaded", initScrollReveal);
+				} else {
+					initScrollReveal();
+				}
+			})();
 		</script>
 		<FloatingWhatsApp pageTitle={title} />
 		<EmDashBodyEnd page={pageCtx} />

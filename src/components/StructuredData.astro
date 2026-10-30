@@ -62,11 +62,11 @@ try {
 	seoRow = null;
 }
 
-const orgName = seoRow?.organization_name?.trim() || "Devk Software & IT Ecosystem";
+const orgName = seoRow?.organization_name?.trim() || "Kotacom Indonesia";
 const orgDesc =
 	seoRow?.description?.trim() ||
 	description ||
-	"Penyedia jasa pembuatan software custom, POS kasir offline-first, jasa install software online remote se-Indonesia, dan servis komputer panggilan Surabaya-Sidoarjo.";
+	"Percetakan buku terpercaya, cetak novel satuan, buku tahunan, majalah, dan solusi digital web IT profesional.";
 const orgPhone = seoRow?.phone?.trim() || "+6285799520350";
 const orgEmail = seoRow?.email?.trim();
 const locality = seoRow?.address_locality?.trim() || "Surabaya & Sidoarjo";
@@ -153,7 +153,7 @@ if (sameAsList.length > 0) organizationSchema["sameAs"] = sameAsList;
 if (servicesList.length > 0) {
 	organizationSchema["hasOfferCatalog"] = {
 		"@type": "OfferCatalog",
-		"name": "Devk Software & Computer Services Catalog",
+		"name": "Kotacom Printing & IT Solutions Catalog",
 		"itemListElement": servicesList.map((service, idx) => ({
 			"@type": "Offer",
 			"itemOffered": {
@@ -169,10 +169,10 @@ if (servicesList.length > 0) {
 const workshopSurabayaSchema: Record<string, any> = {
 	"@type": ["LocalBusiness", "ProfessionalService"],
 	"@id": `${origin}/#workshop-surabaya`,
-	"name": "Devk Workshop Surabaya - Servis Komputer, Laptop & Software",
+	"name": "Kotacom Surabaya - Percetakan Buku & Solusi IT",
 	"url": origin,
 	"telephone": orgPhone,
-	"priceRange": "Rp 50.000 - Rp 35.000.000+",
+	"priceRange": "Rp 10.000 - Rp 35.000.000+",
 	"parentOrganization": { "@id": `${origin}/#organization` },
 	"address": {
 		"@type": "PostalAddress",
@@ -208,7 +208,7 @@ const workshopSurabayaSchema: Record<string, any> = {
 const workshopSidoarjoSchema: Record<string, any> = {
 	"@type": ["LocalBusiness", "ProfessionalService"],
 	"@id": `${origin}/#workshop-sidoarjo`,
-	"name": "Devk Workshop Sidoarjo - Servis Laptop, Komputer & Software",
+	"name": "Kotacom Sidoarjo - Percetakan Buku & Solusi IT",
 	"url": origin,
 	"telephone": orgPhone,
 	"priceRange": "Rp 50.000 - Rp 35.000.000+",

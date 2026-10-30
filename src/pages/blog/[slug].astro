@@ -1,0 +1,8 @@
+---
+// Permanent 301 Redirect old blog URLs to canonical /posts/[slug]
+const { slug } = Astro.params;
+if (!slug) {
+	return Astro.redirect("/posts", 301);
+}
+return Astro.redirect(`/posts/${slug}`, 301);
+---

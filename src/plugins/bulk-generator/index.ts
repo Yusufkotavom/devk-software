@@ -53,6 +53,7 @@ export function createPlugin() {
           let selectedTemplateId: string | undefined = (await kv.get("sel_template_id")) || undefined;
           let selectedDatasetId: string | undefined = (await kv.get("sel_dataset_id")) || undefined;
           let selectedTarget: "pages" | "posts" | undefined = (await kv.get("sel_target")) || undefined;
+          let previewRowIdx: number = (await kv.get("preview_row_idx")) || 1;
           let previewResult: RenderedContent | undefined = (await kv.get("preview_result")) || undefined;
           let aiEndpoint: string | undefined = (await kv.get("ai_endpoint")) || "http://172.18.0.1:20128/v1/chat/completions";
           let aiApiKey: string | undefined = (await kv.get("ai_api_key")) || "sk-e1c...b74e";
@@ -88,6 +89,7 @@ export function createPlugin() {
 
                 result.push({
                   id: item.id,
+                  slug: String(item.slug || data.slug || ""),
                   name: String(item.title || data.title || item.slug),
                   targetCollection: ((data.target_collection || "pages") as "pages" | "posts"),
                   titlePattern: String(data.title || item.title || ""),
@@ -262,6 +264,8 @@ export function createPlugin() {
               const aiConfig = { endpoint: aiEndpoint, apiKey: aiApiKey, model: aiModel };
               previewResult = await renderRowAsync(effective, ds.rows[rowIdx], aiConfig);
               dryRunResult = undefined;
+              previewRowIdx = rowIdx + 1;
+              await kv.set("preview_row_idx", previewRowIdx);
               await kv.set("preview_result", previewResult);
               await kv.set("dryrun_result", null);
               toast = { type: "info", message: `Preview rendered for row #${rowIdx + 1}!` };
@@ -397,6 +401,7 @@ export function createPlugin() {
           const viewState: ViewState = {
             activeTab,
             editingDatasetId,
+            previewRowIdx,
             previewResult,
             dryRunResult,
             lastRunResult,

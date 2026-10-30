@@ -37,21 +37,26 @@ function getDatabaseAdapter() {
 const database = getDatabaseAdapter();
 
 export default defineConfig({
-	site: process.env.EMDASH_SITE_URL || undefined,
+	site: process.env.EMDASH_SITE_URL || process.env.SITE_URL || "https://kotacom.id",
 	output: "server",
+	i18n: {
+		defaultLocale: "id",
+		locales: ["id"],
+	},
 	redirects: {
 		"/sitemap-index.xml": "/sitemap.xml",
-		"/remote-install-os-software": "/jasa-install-software-online",
-		"/remote-install-autocad": "/jasa-install-autocad-online",
-		"/remote-install-adobe-cc": "/jasa-install-adobe-creative-cloud-online",
-		"/remote-install-spss-skripsi": "/jasa-install-spss-online",
-		"/software-development-surabaya": "/jasa-pembuatan-software",
-		"/aplikasi-pos-kasir-surabaya": "/jasa-pembuatan-aplikasi-pos-kasir",
-		"/aplikasi-crm-penjualan-b2b": "/jasa-pembuatan-crm",
-		"/upgrade-ssd-ram-laptop-surabaya": "/jasa-install-komputer-surabaya-sidoarjo",
+		"/produk": "/products",
+		"/produk/[...slug]": "/products/[...slug]",
+		"/contact-us": "/contact",
+		"/portfolio": "/projects",
+		"/testimonials": "/about",
 	},
 	security: {
 		allowedDomains: [
+			{ protocol: "https", hostname: "kotacom.id" },
+			{ protocol: "https", hostname: "www.kotacom.id" },
+			{ protocol: "https", hostname: "**.kotacom.id" },
+			{ protocol: "https", hostname: "staging.devk.my.id" },
 			{ protocol: "https", hostname: "kc.devk.my.id" },
 			{ protocol: "https", hostname: "devk.my.id" },
 			{ protocol: "https", hostname: "**.devk.my.id" },
@@ -78,7 +83,7 @@ export default defineConfig({
 	image: {
 		layout: "constrained",
 		responsiveStyles: true,
-		domains: ["devk.my.id", "software.devk.my.id", "kc.devk.my.id", "localhost"],
+		domains: ["kotacom.id", "www.kotacom.id", "staging.kotacom.id", "devk.my.id", "software.devk.my.id", "kc.devk.my.id", "localhost"],
 		remotePatterns: [
 			{ protocol: "https" },
 			{ protocol: "http" },

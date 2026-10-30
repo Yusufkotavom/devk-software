@@ -8,6 +8,7 @@ import {
 	getSiteSettings,
 } from "emdash";
 import { Image, PortableText, WidgetArea } from "emdash/ui";
+import { blockComponents } from "../../plugins/marketing-blocks/astro";
 import { Comments, CommentForm } from "emdash/ui/comments";
 import Base from "../../layouts/Base.astro";
 import Byline from "../../components/Byline.astro";
@@ -34,16 +35,24 @@ if (!post) {
 
 if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+
 // Get featured image URL for OG fallback
 // The image may have src (external) or meta.storageKey (local)
 function getImageUrl(img: unknown): string | undefined {
-	if (!img || typeof img !== "object") return undefined;
+	if (!img) return undefined;
+	if (typeof img === "string") {
+		if (img.startsWith("http")) return img;
+		if (img.startsWith("/")) return `${siteOrigin}${img}`;
+		return undefined;
+	}
+	if (typeof img !== "object") return undefined;
 	const image = img as Record<string, unknown>;
 	// Check for direct src
 	if (typeof image.src === "string" && image.src) {
 		return image.src.startsWith("http")
 			? image.src
-			: `${siteOrigin}${image.src}`;
+			: `${siteOrigin}${image.src.startsWith("/") ? "" : "/"}${image.src}`;
 	}
 	// Build from storageKey for local images
 	const meta = image.meta as Record<string, unknown> | undefined;
@@ -55,7 +64,6 @@ function getImageUrl(img: unknown): string | undefined {
 	}
 	return undefined;
 }
-const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
 const featuredImageUrl = getImageUrl(post.data.featured_image);
 // Plan B fallback: the auto-generated OG card doubles as the feature image
 // (hero + lists) when a post has no featured image of its own.
@@ -142,9 +150,15 @@ const publishDate = publishedAt ? formatDate(publishedAt, "long") : null;
 // guess keeps the sidebar from shifting when the page loads.
 const hasHeadings = (post.data.content ?? []).some(
 	(block) =>
-		block._type === "block" &&
-		"style" in block &&
-		(block.style === "h2" || block.style === "h3"),
+		(block._type === "block" &&
+			"style" in block &&
+			(block.style === "h2" || block.style === "h3")) ||
+		(block._type === "legacy-rich-content" &&
+			typeof block.contentRaw === "string" &&
+			(block.contentRaw.includes("<h2") ||
+				block.contentRaw.includes("<h3") ||
+				block.contentRaw.includes("## ") ||
+				block.contentRaw.includes("### "))),
 );
 import { getWhatsAppSettings, buildWhatsAppHref } from "../../utils/whatsapp";
 
@@ -159,8 +173,8 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 ---
 
 <Base
-	title={seo.title}
-	pageTitle={seo.ogTitle}
+	title={post.data.title}
+	pageTitle={post.data.title}
 	description={seo.description}
 	image={seo.ogImage}
 	canonical={seo.canonical}
@@ -225,11 +239,15 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 				<div class="band post-hero">
 					<div class="frame">
 						<div class="post-hero__media" {...post.edit.featured_image}>
-							<Image
-								image={post.data.featured_image}
-								sizes="(min-width: 1264px) 1136px, 92vw"
-								priority
-							/>
+							{typeof post.data.featured_image === "string" ? (
+								<img src={post.data.featured_image} alt={post.data.title} class="post-hero__image" />
+							) : (
+								<Image
+									image={post.data.featured_image}
+									sizes="(min-width: 1200px) 1120px, 92vw"
+									priority
+								/>
+							)}
 						</div>
 					</div>
 				</div>
@@ -238,7 +256,7 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 					<div class="frame">
 						<div class="post-hero__media">
 							<img
-								src={postOgFallback}
+								src={`/og/posts/${encodeURIComponent(slug)}.png`}
 								alt=""
 								width="1200"
 								height="630"
@@ -305,27 +323,41 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 						</a>
 					</div>
 
+					<nav
+						class="toc toc--inline"
+						aria-labelledby="toc-inline-title"
+						hidden={!hasHeadings}
+						data-toc-inline
+					>
+						<details class="toc__details" open>
+							<summary class="toc__summary">
+								<span id="toc-inline-title" class="eyebrow">Daftar Isi (Table of Contents)</span>
+								<svg class="toc__chevron" viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
+									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+								</svg>
+							</summary>
+							<ol class="toc__list" data-toc-inline-list></ol>
+						</details>
+					</nav>
+
 					<div class="prose" data-post-content>
-						<PortableText value={post.data.content} />
+						<PortableText value={post.data.content} components={{ type: blockComponents }} />
 					</div>
 
 					<div class="post-wa-box">
 						<div class="post-wa-box__content">
-							<span class="post-wa-box__badge">LAYANAN TERPADU • ALL-IN-ONE</span>
-							<h3 class="post-wa-box__title">Eksplor Seluruh Layanan IT &amp; Rekayasa Software Devk</h3>
-							<p class="post-wa-box__desc">Dari software POS kasir custom hak milik, instalasi online 50+ aplikasi arsitektur &amp; desain remote se-Indonesia, hingga teknisi servis laptop panggilan Surabaya–Sidoarjo. Solusi terpusat untuk bisnis Anda.</p>
+							<span class="post-wa-box__badge">LAYANAN PERCETAKAN &amp; IT • KOTACOM</span>
+							<h3 class="post-wa-box__title">Konsultasi Cetak Buku &amp; Solusi IT Kotacom</h3>
+							<p class="post-wa-box__desc">Cetak buku novel, Al-Qur'an, majalah, profil perusahaan, hingga sistem software &amp; website terintegrasi. Konsultasikan kebutuhan proyek Anda dengan tim ahli Kotacom.</p>
 							<div class="post-service-links" style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px;">
-								<a href="/services" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; text-decoration: none; color: var(--color-text);">
-									<span>Semua Layanan Devk (All-in-One) →</span>
+								<a href="/products" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; text-decoration: none; color: var(--color-text);">
+									<span>Katalog Produk Cetak →</span>
 								</a>
-								<a href="/jasa-pembuatan-software" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; color: var(--color-text-secondary);">
-									<span>Software House &amp; POS</span>
+								<a href="/posts" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; color: var(--color-text-secondary);">
+									<span>Artikel &amp; Panduan</span>
 								</a>
-								<a href="/jasa-install-software-online" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; color: var(--color-text-secondary);">
-									<span>Install Online Remote</span>
-								</a>
-								<a href="/jasa-install-komputer-surabaya-sidoarjo" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; color: var(--color-text-secondary);">
-									<span>Servis Komputer SBY</span>
+								<a href="/about" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; color: var(--color-text-secondary);">
+									<span>Tentang Kotacom</span>
 								</a>
 							</div>
 						</div>
@@ -419,42 +451,67 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 			const content = document.querySelector("[data-post-content]");
 			const toc = document.querySelector<HTMLElement>("[data-toc]");
 			const list = document.querySelector("[data-toc-list]");
-			if (!content || !toc || !list) return;
+			const tocInline = document.querySelector<HTMLElement>("[data-toc-inline]");
+			const listInline = document.querySelector("[data-toc-inline-list]");
+			if (!content) return;
 
 			const headings = [
 				...content.querySelectorAll<HTMLHeadingElement>("h2, h3"),
 			];
-			toc.hidden = headings.length === 0;
+			if (toc) toc.hidden = headings.length === 0;
+			if (tocInline) tocInline.hidden = headings.length === 0;
 			if (headings.length === 0) return;
 
-			const links = new Map<Element, HTMLAnchorElement>();
+			const links = new Map<Element, HTMLAnchorElement[]>();
 			headings.forEach((heading, index) => {
 				if (!heading.id) {
 					heading.id = `heading-${index}`;
 				}
 
-				const item = document.createElement("li");
-				item.className =
-					heading.tagName === "H3"
-						? "toc__item toc__item--nested"
-						: "toc__item";
+				const isNested = heading.tagName === "H3";
+				const headingText = heading.textContent || "";
 
-				const link = document.createElement("a");
-				link.href = `#${heading.id}`;
-				link.className = "toc__link";
-				link.textContent = heading.textContent;
+				// Populate desktop rail TOC
+				if (list) {
+					const item = document.createElement("li");
+					item.className = isNested ? "toc__item toc__item--nested" : "toc__item";
+					const link = document.createElement("a");
+					link.href = `#${heading.id}`;
+					link.className = "toc__link";
+					link.textContent = headingText;
+					item.appendChild(link);
+					list.appendChild(item);
 
-				item.appendChild(link);
-				list.appendChild(item);
-				links.set(heading, link);
+					if (!links.has(heading)) links.set(heading, []);
+					links.get(heading)!.push(link);
+				}
+
+				// Populate mobile/tablet inline TOC
+				if (listInline) {
+					const itemInline = document.createElement("li");
+					itemInline.className = isNested ? "toc__item toc__item--nested" : "toc__item";
+					const linkInline = document.createElement("a");
+					linkInline.href = `#${heading.id}`;
+					linkInline.className = "toc__link";
+					linkInline.textContent = headingText;
+					itemInline.appendChild(linkInline);
+					listInline.appendChild(itemInline);
+
+					if (!links.has(heading)) links.set(heading, []);
+					links.get(heading)!.push(linkInline);
+				}
 			});
 
 			// Mark the section currently in view
-			const setCurrent = (link: HTMLAnchorElement) => {
-				for (const other of links.values()) {
-					other.removeAttribute("aria-current");
+			const setCurrent = (activeLinks: HTMLAnchorElement[]) => {
+				for (const allActive of links.values()) {
+					for (const l of allActive) {
+						l.removeAttribute("aria-current");
+					}
 				}
-				link.setAttribute("aria-current", "true");
+				for (const l of activeLinks) {
+					l.setAttribute("aria-current", "true");
+				}
 			};
 			const first = links.values().next().value;
 			if (first) setCurrent(first);
@@ -462,8 +519,8 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 			const observer = new IntersectionObserver(
 				(entries) => {
 					for (const entry of entries) {
-						const link = links.get(entry.target);
-						if (link && entry.isIntersecting) setCurrent(link);
+						const targetLinks = links.get(entry.target);
+						if (targetLinks && entry.isIntersecting) setCurrent(targetLinks);
 					}
 				},
 				{ rootMargin: "-80px 0px -80% 0px" },
@@ -752,6 +809,51 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 		margin-block-end: var(--spacing-4);
 	}
 
+	.toc--inline {
+		display: block;
+		margin-block: 0 var(--spacing-8);
+		padding: var(--spacing-4) var(--spacing-5);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+	}
+
+	.toc--inline[hidden] {
+		display: none;
+	}
+
+	.toc__details summary {
+		cursor: pointer;
+		user-select: none;
+		list-style: none;
+	}
+
+	.toc__details summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.toc__summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-weight: 600;
+	}
+
+	.toc__chevron {
+		color: var(--color-muted);
+		transition: transform var(--transition-fast);
+	}
+
+	.toc__details[open] .toc__chevron {
+		transform: rotate(180deg);
+	}
+
+	.toc--inline .toc__list {
+		margin-block-start: var(--spacing-3);
+		padding-block-start: var(--spacing-2);
+		border-inline-start: 1px solid var(--color-border);
+	}
+
 	.toc__list {
 		list-style: none;
 		border-inline-start: 1px solid var(--color-border);
@@ -834,6 +936,10 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 
 		.toc {
 			display: block;
+		}
+
+		.toc--inline {
+			display: none;
 		}
 
 		.toc[hidden] {

@@ -3,7 +3,7 @@ import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
 import FadeInText from "@astroanimate/core/FadeInText";
 import type { PageContentBlock } from "../../../emdash-env";
-import { toParagraphs } from "../../utils/text";
+import { toParagraphs, formatAccentWords } from "../../utils/text";
 
 type CTABlock = Extract<PageContentBlock, { _type: "marketing_cta" }>;
 type Props = BlockComponentProps<CTABlock>;
@@ -37,7 +37,11 @@ const secondaryCta =
 		>
 			{image && (
 				<div class="cta__bg">
-					<Image image={image} alt="" sizes="(min-width: 1264px) 1136px, 92vw" />
+					{typeof image === "string" ? (
+						<img src={image} alt="" class="w-full h-full object-cover" />
+					) : (
+						<Image image={image} alt="" sizes="(min-width: 1264px) 1136px, 92vw" />
+					)}
 				</div>
 			)}
 			<div class="cta__content">
@@ -49,7 +53,7 @@ const secondaryCta =
 					enhance={true}
 					easing="cubic-bezier(0.16, 1, 0.3, 1)"
 				>
-					{headline}
+					<Fragment set:html={formatAccentWords(headline)} />
 				</FadeInText>
 				{paragraphs.map((paragraph) => <p class="cta__body">{paragraph}</p>)}
 				{(primaryCta || secondaryCta) && (
@@ -176,8 +180,17 @@ const secondaryCta =
 	}
 
 	.cta__actions {
-		max-width: 560px;
-		margin-block-start: 36px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+		margin-block-start: 28px;
+	}
+
+	.cta--clean .cta__actions {
+		align-items: center;
+		justify-content: center;
+		margin-inline: auto;
 	}
 
 	:is(.cta--themed, .cta--night) {

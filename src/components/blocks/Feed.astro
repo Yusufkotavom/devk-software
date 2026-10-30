@@ -12,7 +12,31 @@ type Props = BlockComponentProps<FeedBlock>;
 const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
 const { anchor_id, eyebrow, headline, subheadline } = raw;
 
-const collection = String(raw.source ?? raw.collection ?? "posts").trim() || "posts";
+// 1. Support posts, products, projects, and pages
+const rawSource = String(
+	raw.collection ?? raw.source ?? raw.content_type ?? raw.contentType ?? raw.type ?? "posts"
+).trim().toLowerCase();
+
+const collection = (rawSource === "products" || rawSource === "product" || rawSource === "produk")
+	? "products"
+	: (rawSource === "projects" || rawSource === "project" || rawSource === "proyek" || rawSource === "portfolio" || rawSource === "case-studies" || rawSource === "case_studies")
+	? "projects"
+	: (rawSource === "pages" || rawSource === "page")
+	? "pages"
+	: "posts";
+
+// 2. Aspect ratio: "1:1" | "16:9" | "auto"
+const rawAspect = String(
+	raw.aspect_ratio ?? raw.aspectRatio ?? raw.thumb_ratio ?? raw.thumb_aspect ?? raw.thumbRatio ?? raw.ratio ?? ""
+).trim().toLowerCase();
+
+const thumbAspectRatio: "1:1" | "16:9" | "auto" =
+	(rawAspect === "1:1" || rawAspect === "1*1" || rawAspect === "square" || rawAspect === "1/1" || rawAspect === "1-1")
+		? "1:1"
+		: (rawAspect === "16:9" || rawAspect === "16*9" || rawAspect === "video" || rawAspect === "16/9" || rawAspect === "16-9" || rawAspect === "wide")
+		? "16:9"
+		: "auto";
+
 const mode = String(raw.mode ?? "latest"); // latest | tag | category | random | manual
 const layout = String(raw.layout ?? "grid"); // grid | list | slide
 const limit = Math.max(1, Math.min(24, Number(raw.limit ?? 6) || 6));
@@ -23,7 +47,9 @@ const manualIds = String(raw.manual_ids ?? raw.manualIds ?? "")
 	.filter(Boolean);
 
 const ctaLabel = raw.cta_label ?? raw.ctaLabel;
-const ctaUrl = raw.cta_url ?? raw.ctaUrl;
+const ctaUrl = raw.cta_url ?? raw.ctaUrl ?? (
+	collection === "products" ? "/products" : collection === "projects" ? "/projects" : collection === "posts" ? "/posts" : undefined
+);
 
 const isPosts = collection === "posts";
 const origin = (Astro.site ?? Astro.url.origin).toString().replace(/\/$/, "");
@@ -31,16 +57,20 @@ const origin = (Astro.site ?? Astro.url.origin).toString().replace(/\/$/, "");
 const where =
 	mode === "tag" ? { tag: term } : mode === "category" ? { category: term } : undefined;
 
-// Random pulls a wider window then shuffles in JS; manual fetches a broad set
-// and re-orders by the supplied id list. Everything else is a normal ordered read.
+const orderBy = isPosts
+	? { published_at: "desc" }
+	: { created_at: "desc" };
+
+// Random pulls a wider window then shuffles deterministically per current pathname
+// so every generated location page links to a stable, distinct ring of sibling pages.
 const fetchLimit =
-	mode === "manual" ? 100 : mode === "random" ? Math.max(limit * 4, 24) : limit;
+	mode === "manual" ? 100 : mode === "random" ? (collection === "pages" ? 450 : Math.max(limit * 4, 30)) : limit;
 
 let entries: any[] = [];
 try {
 	const res = await getEmDashCollection(collection as any, {
 		where,
-		orderBy: isPosts ? { published_at: "desc" } : undefined,
+		orderBy: orderBy as any,
 		limit: fetchLimit,
 	});
 	entries = res.entries ?? [];
@@ -49,9 +79,36 @@ try {
 	entries = [];
 }
 
+const currentSlug = Astro.url.pathname.replace(/^\/+|\/+$/g, "");
+entries = entries.filter((entry) => String(entry.id) !== currentSlug && `posts/${entry.id}` !== currentSlug);
+
+if (term && mode !== "tag" && mode !== "category" && mode !== "by_tag" && mode !== "by_category") {
+	const needle = term.toLowerCase();
+	const filtered = entries.filter(
+		(entry) =>
+			String(entry.id || "").toLowerCase().includes(needle) ||
+			String(entry.data?.title || "").toLowerCase().includes(needle),
+	);
+	if (filtered.length > 0) entries = filtered;
+} else if (collection === "pages" && !term) {
+	// Default for pages feed in pSEO: prioritize service/city pages over utility pages
+	const cetakPages = entries.filter((entry) => String(entry.id || "").startsWith("jasa-cetak-buku-") || String(entry.id || "").startsWith("percetakan/"));
+	if (cetakPages.length >= limit) entries = cetakPages;
+}
+
 if (mode === "random") {
+	// Deterministic hash of current URL path + query so links are stable for SEO crawlers
+	const seedStr = `${Astro.url.pathname}${Astro.url.search}`;
+	let seed = 2166136261;
+	for (let k = 0; k < seedStr.length; k++) {
+		seed ^= seedStr.charCodeAt(k);
+		seed = Math.imul(seed, 16777619);
+	}
 	for (let i = entries.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
+		seed ^= seed << 13;
+		seed ^= seed >>> 17;
+		seed ^= seed << 5;
+		const j = Math.abs(seed) % (i + 1);
 		[entries[i], entries[j]] = [entries[j], entries[i]];
 	}
 } else if (mode === "manual") {
@@ -74,14 +131,9 @@ if (isPosts && entries.length > 0) {
 		tagsByEntry = new Map();
 	}
 }
-
-const hrefFor = (entry: any) =>
-	isPosts ? `/posts/${entry.id}` : collection === "pages" ? `/${entry.id}` : `/${collection}/${entry.id}`;
-const imgFor = (entry: any) =>
-	entry.data?.featured_image ?? buildOgImageUrl(origin, collection, entry.id);
 ---
 
-<section id={anchor_id || undefined} class:list={["band", "section", "feed-section", `feed-section--${layout}`]}>
+<section id={anchor_id || undefined} class:list={["band", "section", "feed-section", `feed-section--${layout}`, { "feed-section--square": thumbAspectRatio === "1:1", "feed-section--16-9": thumbAspectRatio === "16:9" }]}>
 	<div class="frame">
 		{
 			(eyebrow || headline || subheadline || (ctaLabel && ctaUrl)) && (
@@ -103,26 +155,19 @@ const imgFor = (entry: any) =>
 
 		{
 			entries.length === 0 ? (
-				<p class="feed__empty">No entries to show.</p>
+				<p class="feed__empty">Belum ada konten untuk ditampilkan.</p>
 			) : layout === "list" ? (
 				<ol class="feed__list" role="list">
 					{entries.map((entry) => (
 						<li>
-							{isPosts ? (
-								<PostCard
-									post={entry}
-									tags={tagsByEntry.get(entry.data.id) ?? []}
-									variant="row"
-									site={Astro.site ?? null}
-								/>
-							) : (
-								<a href={hrefFor(entry)} class="feed-row">
-									<span class="feed-row__media">
-										<img src={imgFor(entry)} alt="" width="240" height="126" loading="lazy" />
-									</span>
-									<span class="feed-row__title">{entry.data.title}</span>
-								</a>
-							)}
+							<PostCard
+								post={entry}
+								collection={collection}
+								tags={tagsByEntry.get(entry.data?.id) ?? []}
+								variant="row"
+								site={Astro.site ?? null}
+								aspectRatio={thumbAspectRatio}
+							/>
 						</li>
 					))}
 				</ol>
@@ -131,21 +176,14 @@ const imgFor = (entry: any) =>
 					<ul class="feed__track slider__track" data-track role="list">
 						{entries.map((entry) => (
 							<li class="feed__slide">
-								{isPosts ? (
-									<PostCard
-										post={entry}
-										tags={tagsByEntry.get(entry.data.id) ?? []}
-										variant="card"
-										site={Astro.site ?? null}
-									/>
-								) : (
-									<a href={hrefFor(entry)} class="card feed-card">
-										<span class="feed-card__media">
-											<img src={imgFor(entry)} alt="" width="1200" height="630" loading="lazy" />
-										</span>
-										<span class="feed-card__title">{entry.data.title}</span>
-									</a>
-								)}
+								<PostCard
+									post={entry}
+									collection={collection}
+									tags={tagsByEntry.get(entry.data?.id) ?? []}
+									variant="card"
+									site={Astro.site ?? null}
+									aspectRatio={thumbAspectRatio}
+								/>
 							</li>
 						))}
 					</ul>
@@ -157,23 +195,16 @@ const imgFor = (entry: any) =>
 				</div>
 			) : (
 				<div class="post-grid">
-					{entries.map((entry) =>
-						isPosts ? (
-							<PostCard
-								post={entry}
-								tags={tagsByEntry.get(entry.data.id) ?? []}
-								variant="card"
-								site={Astro.site ?? null}
-							/>
-						) : (
-							<a href={hrefFor(entry)} class="card feed-card">
-								<span class="feed-card__media">
-									<img src={imgFor(entry)} alt="" width="1200" height="630" loading="lazy" />
-								</span>
-								<span class="feed-card__title">{entry.data.title}</span>
-							</a>
-						),
-					)}
+					{entries.map((entry) => (
+						<PostCard
+							post={entry}
+							collection={collection}
+							tags={tagsByEntry.get(entry.data?.id) ?? []}
+							variant="card"
+							site={Astro.site ?? null}
+							aspectRatio={thumbAspectRatio}
+						/>
+					))}
 				</div>
 			)
 		}
@@ -251,70 +282,9 @@ const imgFor = (entry: any) =>
 		margin-block-start: 20px;
 	}
 
-	.feed-card {
-		display: flex;
-		flex-direction: column;
-		overflow: hidden;
-		padding: var(--card-padding);
-		height: 100%;
-	}
-
-	.feed-card__media {
-		display: block;
-		overflow: hidden;
-		aspect-ratio: 16 / 10;
-		border-radius: var(--radius-lg);
-		background: var(--color-fill);
-	}
-
-	.feed-card__media img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.feed-card__title {
-		margin-block-start: var(--spacing-4);
-		font-size: var(--font-size-lg);
-		font-weight: 600;
-		line-height: 1.3;
-	}
-
-	.feed-row {
-		display: flex;
-		align-items: center;
-		gap: 20px;
-		padding-block: 20px;
-	}
-
-	.feed-row__media {
-		flex: none;
-		width: 160px;
-		overflow: hidden;
-		aspect-ratio: 16 / 10;
-		border-radius: var(--radius-lg);
-		background: var(--color-fill);
-	}
-
-	.feed-row__media img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.feed-row__title {
-		font-size: var(--font-size-lg);
-		font-weight: 600;
-		line-height: 1.3;
-	}
-
 	@media (max-width: 640px) {
 		.feed__slide {
 			width: 82%;
-		}
-
-		.feed-row__media {
-			width: 110px;
 		}
 	}
 </style>

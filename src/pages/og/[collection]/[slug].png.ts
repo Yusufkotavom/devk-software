@@ -19,7 +19,7 @@ import { resolveBlogSiteIdentity } from "../../../utils/site-identity";
 
 export const prerender = false;
 
-const COLLECTIONS = new Set(["posts", "pages", "page_templates", "products"]);
+const COLLECTIONS = new Set(["posts", "pages", "page_templates", "products", "projects"]);
 
 /** Uppercase micro-label for the card's top-right corner. */
 const LABELS: Record<string, string> = {
@@ -27,6 +27,7 @@ const LABELS: Record<string, string> = {
 	pages: "Halaman",
 	page_templates: "Template",
 	products: "Produk",
+	projects: "Portofolio",
 };
 
 /** Canonical origin: prefer the configured site URL over the request host. */

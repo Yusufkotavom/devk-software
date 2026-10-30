@@ -30,13 +30,23 @@ if (!product) {
 
 if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+
 // Resolve the featured image URL for the hero + OG fallback. The image may
 // have a direct `src` (external) or a `meta.storageKey` (local uploads).
 function getImageUrl(img: unknown): string | undefined {
-	if (!img || typeof img !== "object") return undefined;
+	if (!img) return undefined;
+	if (typeof img === "string") {
+		if (img.startsWith("http")) return img;
+		if (img.startsWith("/")) return `${siteOrigin}${img}`;
+		return undefined;
+	}
+	if (typeof img !== "object") return undefined;
 	const image = img as Record<string, unknown>;
 	if (typeof image.src === "string" && image.src) {
-		return image.src.startsWith("http") ? image.src : `${siteOrigin}${image.src}`;
+		return image.src.startsWith("http")
+			? image.src
+			: `${siteOrigin}${image.src.startsWith("/") ? "" : "/"}${image.src}`;
 	}
 	const meta = image.meta as Record<string, unknown> | undefined;
 	const storageKey =
@@ -47,7 +57,6 @@ function getImageUrl(img: unknown): string | undefined {
 	}
 	return undefined;
 }
-const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
 const featuredImageUrl = getImageUrl(product.data.featured_image);
 // Plan B fallback: the auto-generated OG card doubles as the feature image.
 const productOgFallback = buildOgImageUrl(siteOrigin, "products", slug);
@@ -84,7 +93,7 @@ const buyLabel = setting?.product_cta_label || "Beli Sekarang / Tanya via WhatsA
 ---
 
 <Base
-	title={seo.title}
+	title={product.data.title}
 	pageTitle={product.data.title}
 	description={seo.description}
 	image={seo.ogImage}
@@ -150,14 +159,18 @@ const buyLabel = setting?.product_cta_label || "Beli Sekarang / Tanya via WhatsA
 				<div class="post-hero__media" {...product.edit.featured_image}>
 					{
 						product.data.featured_image ? (
-							<Image
-								image={product.data.featured_image}
-								sizes="(min-width: 1264px) 1136px, 92vw"
-								priority
-							/>
+							typeof product.data.featured_image === "string" ? (
+								<img src={product.data.featured_image} alt={product.data.title} class="post-hero__image" />
+							) : (
+								<Image
+									image={product.data.featured_image}
+									sizes="(min-width: 1200px) 1120px, 92vw"
+									priority
+								/>
+							)
 						) : (
 							<img
-								src={productOgFallback}
+								src={`/og/products/${encodeURIComponent(slug)}.png`}
 								alt=""
 								width="1200"
 								height="630"

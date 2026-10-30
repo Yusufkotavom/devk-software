@@ -18,6 +18,7 @@ Memenuhi standar SEO:
 """
 
 import json
+import os
 import urllib.request
 import socket
 import sys
@@ -30,7 +31,7 @@ def getaddrinfo_ipv4(*args, **kwargs):
     return [r for r in res if r[0] == socket.AF_INET]
 socket.getaddrinfo = getaddrinfo_ipv4
 
-PAT_TOKEN = "ec_pat_O3MrYsN2tLlxEUOnOEZiipYHOHXcv0T9j0L3QsjzcjM"
+PAT_TOKEN = os.environ.get("EMDASH_PAT", "")
 API_URL = "https://software.devk.my.id/_emdash/api/mcp"
 
 # Media IDs terverifikasi di Emdash Media Library

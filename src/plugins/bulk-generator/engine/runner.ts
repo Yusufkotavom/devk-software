@@ -101,6 +101,7 @@ export const PAGE_BLOCK_PRESETS: Record<string, string> = {
 
 export interface TemplateRecord {
   id: string;
+  slug?: string;
   name: string;
   targetCollection: "posts" | "pages";
   titlePattern: string;
@@ -251,7 +252,7 @@ export async function renderRowAsync(
 
     payload = {
       title,
-      content: markdownToPortableText(bodyText),
+      ...(template.bodyPattern?.trim() ? { content: markdownToPortableText(await substituteTokensAsync(template.bodyPattern, row, aiConfig)) } : {}),
       blocks: blocksContent,
     };
   }
@@ -358,7 +359,7 @@ export function renderRow(template: TemplateRecord, row: Record<string, string>)
 
     payload = {
       title,
-      content: markdownToPortableText(bodyText),
+      ...(template.bodyPattern?.trim() ? { content: markdownToPortableText(substituteTokens(template.bodyPattern, row)) } : {}),
       blocks: blocksContent,
     };
   }

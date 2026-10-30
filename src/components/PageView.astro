@@ -49,7 +49,7 @@ if (rawContent) {
 
 const hasBlocks = blocks.length > 0;
 const hasRichContent = !!richContent && (Array.isArray(richContent) ? richContent.length > 0 : true);
-const hasHero = hasBlocks && blocks.some((b: any) => b._type === "marketing_hero" || b._type === "marketing.hero");
+const hasHero = hasBlocks && blocks.some((b: any) => b._type === "marketing_hero" || b._type === "marketing.hero" || b._type === "hero" || b._type === "hero-2");
 const blocksEdit = (page as any).edit?.blocks ?? (page as any).edit?.content ?? {};
 const contentEdit = (page as any).edit?.content ?? {};
 ---

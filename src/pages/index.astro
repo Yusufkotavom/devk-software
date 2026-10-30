@@ -4,7 +4,6 @@ import Base from "../layouts/Base.astro";
 import PageView from "../components/PageView.astro";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
 import { heroSeoDefaults } from "../utils/page";
-import { buildOgImageUrl } from "../lib/og/url";
 import { getSiteOrigin } from "../utils/origin";
 
 const { entry: homePage, cacheHint } = await getEmDashEntry("pages", "home");
@@ -19,20 +18,40 @@ const hasHomePage = !!homePage && ((Array.isArray(blocks) && blocks.length > 0) 
 
 const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
 const heroDefaults = hasHomePage ? heroSeoDefaults(blocks as any, siteOrigin) : {};
+const defaultHomeOg = `${siteOrigin}/images/kotacom-split-production-ready/hero/hero-cetak-buku-shark-v2.png`;
+
+const defaultTitle = "Kotacom | Solusi IT, Website, Software & Percetakan Surabaya";
+const defaultDescription = "Jasa IT terpadu pembuatan website, software custom, IT support, dan cetak profesional di Surabaya. Dapatkan pendekatan terstruktur dari tim Kotacom sesuai kebutuhan bisnis Anda.";
+
 const seo = homePage
 	? getSeoMeta(homePage, {
-			siteTitle,
+			siteTitle: siteTitle.toLowerCase(),
 			siteUrl: siteOrigin,
 			path: "/",
-			...heroDefaults,
-			defaultOgImage: heroDefaults.defaultOgImage ?? buildOgImageUrl(siteOrigin, "pages", "home"),
+			defaultTitle,
+			defaultDescription,
+			defaultOgImage: defaultHomeOg,
+			titleSeparator: " | ",
 	  })
-	: { title: siteTitle, description: siteTagline };
+	: {
+			title: `${defaultTitle} | ${siteTitle.toLowerCase()}`,
+			description: defaultDescription,
+			ogImage: defaultHomeOg,
+			canonical: siteOrigin,
+	  };
+
+const pageTitle = seo.title || `${defaultTitle} | ${siteTitle.toLowerCase()}`;
+const pageDesc = seo.description || defaultDescription;
+const pageImage = seo.ogImage || defaultHomeOg;
+const pageCanonical = seo.canonical || siteOrigin;
 ---
 
 <Base
-	title={seo.title ?? siteTitle}
-	description={seo.description ?? siteTagline}
+	title={pageTitle}
+	description={pageDesc}
+	image={pageImage}
+	canonical={pageCanonical}
+	type="website"
 	content={hasHomePage ? { collection: "pages", id: homePage.data.id, slug: "home" } : undefined}
 >
 	{hasHomePage && <PageView page={homePage as any} heading={siteTitle} />}

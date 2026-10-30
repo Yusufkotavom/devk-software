@@ -48,8 +48,8 @@ const slides = (Array.isArray(raw.slides) ? raw.slides : []).map((s: any) => {
 				</div>
 				<ul class="slider__track" data-track role="list">
 					{slides.map((slide: any, i: number) => (
-						<li class="slider__slide" role="group" aria-label={`${i + 1} of ${slides.length}`}>
-							<article class="card slide">
+						<li class="slider__slide">
+							<article class="card slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
 								{slide.image ? (
 									<div class="slide__media">
 										<img
@@ -189,7 +189,7 @@ const slides = (Array.isArray(raw.slides) ? raw.slides : []).map((s: any) => {
 
 	.slide__media {
 		overflow: hidden;
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 1 / 1;
 		border-radius: var(--radius-lg);
 		background: var(--color-fill);
 		border: 1px solid var(--color-border);

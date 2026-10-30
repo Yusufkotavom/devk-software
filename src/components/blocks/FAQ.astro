@@ -20,10 +20,10 @@ const faqSchema =
 				"@type": "FAQPage",
 				mainEntity: items.map((item: any) => ({
 					"@type": "Question",
-					name: String(item.question ?? ""),
+					name: String(item.question ?? item.q ?? ""),
 					acceptedAnswer: {
 						"@type": "Answer",
-						text: String(item.answer ?? ""),
+						text: String(item.answer ?? item.a ?? ""),
 					},
 				})),
 		  })
@@ -48,13 +48,13 @@ const faqSchema =
 			items.map((item) => (
 				<details class="card faq__item" name={`faq-${blockKey}`}>
 					<summary class="faq__question">
-						<span>{item.question}</span>
+						<span>{item.question || item.q}</span>
 						<span class="faq__icon" aria-hidden="true">
 							<Icon name="ph:plus" />
 						</span>
 					</summary>
 					<div class="faq__answer">
-						{toParagraphs(item.answer ?? "").map((paragraph) => (
+						{toParagraphs(item.answer || item.a || "").map((paragraph) => (
 							<p>{paragraph}</p>
 						))}
 					</div>

@@ -3,6 +3,7 @@ import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import ScaleIn from "@astroanimate/core/ScaleIn";
 import FadeInText from "@astroanimate/core/FadeInText";
+import { formatAccentWords } from "../../utils/text";
 
 interface BentoItem {
 	title: string;
@@ -20,7 +21,8 @@ interface BentoItem {
 
 const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
 const { anchor_id, eyebrow, headline = "Arsitektur Modern untuk Skala Tanpa Batas", subheadline = "Semua yang Anda butuhkan untuk membangun, meluncurkan, dan menskalakan platform digital Anda." } = raw;
-const rawItems: BentoItem[] = Array.isArray(raw.items) && raw.items.length > 0 ? raw.items : [
+const bentoSource = (Array.isArray(raw.items) && raw.items.length > 0) ? raw.items : (Array.isArray(raw.cards) && raw.cards.length > 0) ? raw.cards : [];
+const rawItems: BentoItem[] = bentoSource.length > 0 ? bentoSource : [
 	{
 		title: "Performa Kelas Dunia",
 		description: "Waktu respon sub-100ms dengan rendering server native dan caching cerdas pada setiap endpoint.",
@@ -37,7 +39,7 @@ const rawItems: BentoItem[] = Array.isArray(raw.items) && raw.items.length > 0 ?
 		icon: "code",
 		col_span: "1",
 		row_span: "1",
-		code_snippet: "curl -X GET https://devk.my.id/api/products"
+		code_snippet: "curl -X GET https://staging.devk.my.id/api/products"
 	},
 	{
 		title: "Keamanan Enterprise",
@@ -75,16 +77,19 @@ const iconMap: Record<string, string> = {
 };
 ---
 
-<section id={anchor_id || undefined} class="band section bento-section">
+<section id={anchor_id || undefined} class="band section bento-section bg-grid-tech">
 	<div class="frame">
 		<header class="section-header">
 			{eyebrow && <p class="eyebrow">{eyebrow}</p>}
 			{headline && (
-				<h2 class="section-headline">
-					<FadeInText text={headline} duration={0.8} once={true} />
-					{subheadline && " "}
-					{subheadline && <span class="section-headline__muted">{subheadline}</span>}
-				</h2>
+				<Fragment>
+					<h2 class="section-headline">
+						<FadeInText as="span" duration={0.8} once={true} enhance={true}>
+							<Fragment set:html={formatAccentWords(headline)} />
+						</FadeInText>
+					</h2>
+					{subheadline && <p class="section-subheadline">{subheadline}</p>}
+				</Fragment>
 			)}
 		</header>
 
@@ -105,8 +110,8 @@ const iconMap: Record<string, string> = {
 								`bento-card--col-${colSpan}`,
 								`bento-card--row-${rowSpan}`,
 							]}
-							duration={0.8}
-							delay={idx * 0.08}
+							duration={650}
+							delay={idx * 70}
 							initialScale={0.94}
 							enhance={true}
 						>

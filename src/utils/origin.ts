@@ -8,17 +8,17 @@ export function getSiteOrigin(astroSite?: URL | string, astroUrlOrigin?: string)
 	if (envUrl && typeof envUrl === "string" && envUrl.trim()) {
 		return envUrl.trim().replace(/\/$/, "");
 	}
-	if (astroSite) {
-		const s = astroSite.toString().trim().replace(/\/$/, "");
-		if (s && !s.includes("localhost") && !s.includes("127.0.0.1")) {
-			return s;
-		}
-	}
 	if (astroUrlOrigin && typeof astroUrlOrigin === "string") {
 		const o = astroUrlOrigin.trim().replace(/\/$/, "");
 		if (o && !o.includes("localhost") && !o.includes("127.0.0.1")) {
 			return o;
 		}
 	}
-	return "https://kc.devk.my.id";
+	if (astroSite) {
+		const s = astroSite.toString().trim().replace(/\/$/, "");
+		if (s && !s.includes("localhost") && !s.includes("127.0.0.1")) {
+			return s;
+		}
+	}
+	return "https://kotacom.id";
 }

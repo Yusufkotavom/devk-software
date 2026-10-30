@@ -16,6 +16,7 @@ export interface ViewState {
   aiEndpoint?: string;
   aiApiKey?: string;
   aiModel?: string;
+  previewRowIdx?: number;
   previewResult?: RenderedContent;
   dryRunResult?: {
     total: number;
@@ -25,6 +26,92 @@ export interface ViewState {
     items: RunItemLog[];
   };
   lastRunResult?: RunRecord;
+}
+
+function formatPreviewBlocksAsReadable(payload: Record<string, unknown>, fallbackText: string): string {
+  const blocksList = (Array.isArray(payload?.blocks) ? payload.blocks : Array.isArray(payload?.content) ? payload.content : null) as any[] | null;
+  if (!blocksList || blocksList.length === 0) return fallbackText;
+
+  const out: string[] = [];
+  for (const b of blocksList) {
+    if (!b || typeof b !== "object") continue;
+    const type = String(b._type || "");
+    if (type === "block") {
+      const text = Array.isArray(b.children) ? b.children.map((c: any) => c.text || "").join("") : "";
+      if (!text) continue;
+      if (b.style === "h1") out.push(`# ${text}`);
+      else if (b.style === "h2") out.push(`## ${text}`);
+      else if (b.style === "h3") out.push(`### ${text}`);
+      else if (b.style === "h4") out.push(`#### ${text}`);
+      else if (b.listItem === "bullet") out.push(`• ${text}`);
+      else out.push(text);
+    } else if (type === "marketing_hero") {
+      out.push("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+      if (b.eyebrow) out.push(`[HERO EYEBROW] ${b.eyebrow}`);
+      if (b.headline) out.push(`H1: ${b.headline}`);
+      if (b.subheadline) out.push(`${b.subheadline}`);
+      if (b.primary_cta_label) out.push(`👉 [${b.primary_cta_label}] (${b.primary_cta_url || "#"})`);
+    } else if (type === "marketing_split") {
+      out.push("────────────────────────────────────────────────────────────");
+      if (b.eyebrow) out.push(`[${b.eyebrow}]`);
+      if (b.headline) out.push(`H2: ${b.headline}`);
+      if (b.body) out.push(`${b.body}`);
+      if (b.points) {
+        for (const pt of String(b.points).split("\n").filter(Boolean)) {
+          out.push(`  ✓ ${pt}`);
+        }
+      }
+    } else if (type === "marketing_features") {
+      out.push("────────────────────────────────────────────────────────────");
+      if (b.eyebrow) out.push(`[${b.eyebrow}]`);
+      if (b.headline) out.push(`H2: ${b.headline}`);
+      if (Array.isArray(b.features)) {
+        for (const f of b.features) {
+          out.push(`  ★ ${f.title}: ${f.description}`);
+        }
+      }
+    } else if (type === "marketing_pricing") {
+      out.push("────────────────────────────────────────────────────────────");
+      if (b.headline) out.push(`H2: ${b.headline}`);
+      if (Array.isArray(b.plans)) {
+        for (const p of b.plans) {
+          out.push(`  💳 ${p.name} — ${p.price} (${p.period || ""})${p.badge ? ` [${p.badge}]` : ""}`);
+          if (p.description) out.push(`     ${p.description}`);
+        }
+      }
+    } else if (type === "marketing_faq") {
+      out.push("────────────────────────────────────────────────────────────");
+      if (b.headline) out.push(`H2: ${b.headline}`);
+      if (Array.isArray(b.items)) {
+        for (const item of b.items) {
+          out.push(`  Q: ${item.question}`);
+          out.push(`  A: ${item.answer}`);
+        }
+      }
+    } else if (type === "marketing_whatsapp_cta" || type === "marketing_cta") {
+      out.push("────────────────────────────────────────────────────────────");
+      if (b.headline) out.push(`CTA: ${b.headline}`);
+      if (b.body || b.subheadline) out.push(`${b.body || b.subheadline}`);
+      if (b.label || b.button_label || b.primary_cta_label) {
+        out.push(`💬 [${b.label || b.button_label || b.primary_cta_label}]`);
+      }
+    } else if (type === "marketing_slider") {
+      out.push("────────────────────────────────────────────────────────────");
+      if (b.eyebrow) out.push(`[${b.eyebrow}]`);
+      if (b.headline) out.push(`H2: ${b.headline}`);
+      if (Array.isArray(b.slides)) {
+        for (const s of b.slides) {
+          out.push(`  🖼️ ${s.title} (${s.image_url || ""}) → [${s.link_label || "Link"}](${s.link_url || "#"})`);
+        }
+      }
+    } else if (type === "marketing_feed") {
+      out.push("────────────────────────────────────────────────────────────");
+      if (b.eyebrow) out.push(`[${b.eyebrow}]`);
+      if (b.headline) out.push(`H2: ${b.headline}`);
+      out.push(`  🔗 Dynamic Feed: source=${b.source || "posts"}, mode=${b.mode || "latest"}, limit=${b.limit || 6} → CTA: [${b.cta_label || "View All"}](${b.cta_url || "/"})`);
+    }
+  }
+  return out.length > 0 ? out.join("\n\n") : fallbackText;
 }
 
 const PAGE_TEMPLATES_URL = "/_emdash/admin/content/page_templates";
@@ -366,7 +453,7 @@ export function renderPluginUi(
             }),
             elements.textInput("preview_row_idx", "4. Preview Row Number (1-based)", {
               placeholder: "1",
-              initialValue: "1",
+              initialValue: String(state.previewRowIdx || 1),
             }),
           ],
           submit: {
@@ -376,10 +463,20 @@ export function renderPluginUi(
         })
       );
 
+      const activeDatasetId = state.selectedDatasetId || datasetOptions[0]?.value || "";
+      const activeTemplateSlug = selectedTemplate?.slug || "template-cetak-buku-nasional";
+      const activeRowNum = state.previewRowIdx || 1;
+      const liveRenderUrl = `/templates/${encodeURIComponent(activeTemplateSlug)}?dataset=${encodeURIComponent(activeDatasetId)}&target=${encodeURIComponent(defaultTarget)}&row=${activeRowNum}`;
+
       result.push(
         blocks.actions([
+          elements.link(
+            `👁️ Buka Halaman Terender (Row #${activeRowNum})`,
+            { kind: "external", url: liveRenderUrl },
+            { appearance: "primary" }
+          ),
           elements.button("trigger_dry_run", "Dry Run — Simulate Full Dataset", {
-            style: "primary",
+            style: "secondary",
           }),
         ])
       );
@@ -388,20 +485,27 @@ export function renderPluginUi(
         result.push(blocks.divider());
         result.push(blocks.section("### 🎯 Rendered Preview Output"));
         result.push(
+          blocks.banner({
+            title: `Halaman Siap Dilihat: ${state.previewResult.title}`,
+            description: `Target URL: /${defaultTarget === "posts" ? `posts/${state.previewResult.slug}` : state.previewResult.slug} — Klik tombol "👁️ Buka Halaman Terender" di atas untuk melihat tampilan visual penuh seperti halaman Page/Post asli.`,
+            variant: "default",
+          })
+        );
+        result.push(
           blocks.fields([
             { label: "Rendered Title", value: state.previewResult.title },
             { label: "Rendered Slug", value: state.previewResult.slug },
-            { label: "Rendered Excerpt", value: state.previewResult.excerpt },
+            { label: "Rendered Excerpt", value: state.previewResult.excerpt || "—" },
             { label: "SEO Title", value: state.previewResult.seoTitle || "(Same as Title)" },
             { label: "SEO Description", value: state.previewResult.seoDesc || "(Same as Excerpt)" },
           ])
         );
 
-        result.push(blocks.section("#### Content Structure (Blocks / Portable Text)"));
+        result.push(blocks.section("#### 📄 Ringkasan Konten Terender (Bukan Raw JSON)"));
         result.push(
           blocks.code({
-            code: state.previewResult.bodyText,
-            language: "bash",
+            code: formatPreviewBlocksAsReadable(state.previewResult.payload, state.previewResult.bodyText),
+            language: "markdown",
           })
         );
       }
@@ -418,20 +522,25 @@ export function renderPluginUi(
           ])
         );
 
-        const dryRows = state.dryRunResult.items.map((item) => ({
-          row: String(item.rowIdx),
-          slug: item.slug,
-          action: item.action.toUpperCase(),
-          message: item.message || "",
-        }));
+        const dryRows = state.dryRunResult.items.map((item) => {
+          const rowPreviewUrl = `/templates/${encodeURIComponent(activeTemplateSlug)}?dataset=${encodeURIComponent(activeDatasetId)}&target=${encodeURIComponent(defaultTarget)}&row=${item.rowIdx}`;
+          return {
+            row: String(item.rowIdx),
+            title: item.title,
+            slug: item.slug,
+            action: item.action.toUpperCase(),
+            preview: elements.link("👁️ Lihat Halaman", { kind: "external", url: rowPreviewUrl }, { appearance: "secondary" }),
+          };
+        });
 
         result.push(
           blocks.table({
             columns: [
               { key: "row", label: "Row #" },
+              { key: "title", label: "Rendered Title" },
               { key: "slug", label: "Slug" },
-              { key: "action", label: "Planned Action" },
-              { key: "message", label: "Details" },
+              { key: "action", label: "Action", format: "badge" },
+              { key: "preview", label: "Live Preview", format: "element" },
             ],
             rows: dryRows,
             pageActionId: "page_dryrun",

@@ -31,9 +31,9 @@ const waUrl = buildWhatsAppHref(setting, {
 	customMessage: custom_message,
 });
 
-const buttonLabel = label || setting?.product_cta_label || "Chat via WhatsApp";
+const buttonLabel = label || raw.button_text || raw.buttonText || setting?.product_cta_label || "Chat via WhatsApp";
 const displayHeadline = headline || "Punya Pertanyaan atau Kebutuhan Khusus?";
-const displayBody = body || "Tim kami siap membantu konsultasi spesifikasi, custom order, atau penawaran harga terbaik.";
+const displayBody = body || raw.subheadline || raw.subHeadline || "Tim kami siap membantu konsultasi spesifikasi, custom order, atau penawaran harga terbaik.";
 ---
 
 <section class="band section wa-block-section" id={anchor_id || undefined}>

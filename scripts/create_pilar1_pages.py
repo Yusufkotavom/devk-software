@@ -3,7 +3,7 @@ import os
 import urllib.request
 import time
 
-PAT_TOKEN = "ec_pat_O3MrYsN2tLlxEUOnOEZiipYHOHXcv0T9j0L3QsjzcjM"
+PAT_TOKEN = os.environ.get("EMDASH_PAT", "")
 API_URL = "https://software.devk.my.id/_emdash/api/mcp"
 
 def call_mcp(tool_name, arguments):

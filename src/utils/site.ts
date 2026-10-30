@@ -1,6 +1,6 @@
 import type { SiteSettings } from "emdash";
 
-const DEFAULT_SITE_TITLE = "My Site";
+const DEFAULT_SITE_TITLE = "Kotacom Indonesia";
 const DEFAULT_TITLE_SEPARATOR = "—";
 
 /**

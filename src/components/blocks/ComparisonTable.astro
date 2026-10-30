@@ -2,6 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import ScaleIn from "@astroanimate/core/ScaleIn";
 import FadeInText from "@astroanimate/core/FadeInText";
+import { formatAccentWords } from "../../utils/text";
 
 interface FeatureRow {
 	feature_name: string;
@@ -14,11 +15,11 @@ const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.pro
 const {
 	anchor_id,
 	eyebrow,
-	headline = "Mengapa Memilih Devk Software?",
-	subheadline = "Bandingkan langsung arsitektur platform modern kami dengan pendekatan website konvensional.",
-	our_label = "Devk Platform",
+	headline = "Mengapa Memilih Kotacom?",
+	subheadline = "Bandingkan langsung kualitas percetakan dan arsitektur platform modern kami.",
+	our_label = "Kotacom",
 	competitor_label = "Solusi Konvensional",
-	us_title = raw.our_label ?? raw.us_title ?? "Devk Platform",
+	us_title = raw.our_label ?? raw.us_title ?? "Kotacom",
 	competitor_title = raw.competitor_label ?? raw.competitor_title ?? "Solusi Konvensional",
 	cta_label = "Mulai Konsultasi",
 	cta_url = "#contact",
@@ -60,15 +61,18 @@ const rows: FeatureRow[] = Array.isArray(raw.rows) && raw.rows.length > 0 ? raw.
 		<header class="section-header">
 			{eyebrow && <p class="eyebrow">{eyebrow}</p>}
 			{headline && (
-				<h2 class="section-headline">
-					<FadeInText text={headline} duration={0.8} once={true} />
-					{subheadline && " "}
-					{subheadline && <span class="section-headline__muted">{subheadline}</span>}
-				</h2>
+				<Fragment>
+					<h2 class="section-headline">
+						<FadeInText as="span" duration={0.8} once={true} enhance={true}>
+							<Fragment set:html={formatAccentWords(headline)} />
+						</FadeInText>
+					</h2>
+					{subheadline && <p class="section-subheadline">{subheadline}</p>}
+				</Fragment>
 			)}
 		</header>
 
-		<ScaleIn class="comparison-card" duration={0.8} initialScale={0.96} enhance={true}>
+		<ScaleIn class="comparison-card with-crosshairs" duration={700} initialScale={0.96} enhance={true}>
 			<div class="table-wrap">
 				<table class="comparison-table">
 					<thead>

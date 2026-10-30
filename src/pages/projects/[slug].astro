@@ -1,0 +1,221 @@
+---
+import {
+	getEmDashEntry,
+	getEmDashCollection,
+	getSeoMeta,
+	decodeSlug,
+	getSiteSettings,
+} from "emdash";
+import { Image, PortableText } from "emdash/ui";
+import Base from "../../layouts/Base.astro";
+import PostCard from "../../components/PostCard.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { formatDate } from "../../utils/locale";
+import { resolveBlogSiteIdentity } from "../../utils/site-identity";
+import { buildOgImageUrl } from "../../lib/og/url";
+import { getSiteOrigin } from "../../utils/origin";
+import "../../styles/prose.css";
+
+const slug = decodeSlug(Astro.params.slug);
+
+if (!slug) {
+	return Astro.rewrite("/404");
+}
+
+const { entry: project, cacheHint } = await getEmDashEntry("projects", slug);
+
+if (!project) {
+	return Astro.rewrite("/404");
+}
+
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+
+function getImageUrl(img: unknown): string | undefined {
+	if (!img) return undefined;
+	if (typeof img === "string") {
+		if (img.startsWith("http")) return img;
+		if (img.startsWith("/")) return `${siteOrigin}${img}`;
+		return undefined;
+	}
+	if (typeof img !== "object") return undefined;
+	const image = img as Record<string, unknown>;
+	if (typeof image.src === "string" && image.src) {
+		return image.src.startsWith("http")
+			? image.src
+			: `${siteOrigin}${image.src.startsWith("/") ? "" : "/"}${image.src}`;
+	}
+	const meta = image.meta as Record<string, unknown> | undefined;
+	const storageKey =
+		(typeof meta?.storageKey === "string" ? meta.storageKey : undefined) ||
+		(typeof image.id === "string" ? image.id : undefined);
+	if (storageKey) {
+		return `${siteOrigin}/_emdash/api/media/file/${storageKey}`;
+	}
+	return undefined;
+}
+
+const featuredImageUrl = getImageUrl(project.data.featured_image);
+const projectOgFallback = buildOgImageUrl(siteOrigin, "projects", slug);
+const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
+
+const seo = getSeoMeta(project, {
+	siteTitle,
+	siteUrl: siteOrigin,
+	path: Astro.url.pathname.replace(/\/$/, ""),
+	defaultOgImage: featuredImageUrl ?? projectOgFallback,
+});
+
+const { entries: recentProjects, cacheHint: recentProjectsCacheHint } =
+	await getEmDashCollection("projects", {
+		orderBy: { created_at: "desc" },
+		limit: 4,
+	});
+if (Astro.cache?.enabled) Astro.cache.set(recentProjectsCacheHint);
+const otherProjects = recentProjects.filter((p) => p.id !== project.id).slice(0, 3);
+
+const createdAt = project.data.createdAt ?? null;
+const createdDate = createdAt ? formatDate(createdAt, "long") : null;
+const client = (project.data as any).client || (project.data as any).clientName;
+---
+
+<Base
+	title={project.data.title}
+	pageTitle={project.data.title}
+	description={seo.description}
+	image={seo.ogImage}
+	canonical={seo.canonical}
+	robots={seo.robots}
+	type="article"
+	modifiedTime={project.data.updatedAt?.toISOString ? project.data.updatedAt.toISOString() : undefined}
+	content={{ collection: "projects", id: project.data.id, slug }}
+>
+	<article class="post">
+		<header class="intro post-header">
+			<div class="frame">
+				<div class="post-header__inner">
+					<Breadcrumb
+						items={[
+							{ label: "Portfolio", href: "/projects" },
+							{ label: project.data.title },
+						]}
+					/>
+					<p class="eyebrow">Portfolio & Case Study</p>
+					<h1 class="intro__title post-header__title" {...project.edit.title}>
+						{project.data.title}
+					</h1>
+					{client && (
+						<p class="text-sm font-semibold text-brand mt-1 mb-2">
+							Klien: {client}
+						</p>
+					)}
+					{
+						project.data.excerpt && (
+							<p class="intro__lead post-header__lead" {...project.edit.excerpt}>
+								{project.data.excerpt}
+							</p>
+						)
+					}
+					{
+						createdDate && (
+							<p class="post-header__dateline">
+								<time datetime={createdAt.toISOString()}>{createdDate}</time>
+							</p>
+						)
+					}
+				</div>
+			</div>
+		</header>
+
+		<div class="band post-hero">
+			<div class="frame">
+				<div class="post-hero__media" {...project.edit.featured_image}>
+					{
+						project.data.featured_image ? (
+							typeof project.data.featured_image === "string" ? (
+								<img
+									src={project.data.featured_image}
+									alt={project.data.title}
+									class="post-hero__img"
+									loading="eager"
+								/>
+							) : (
+								<Image
+									image={project.data.featured_image}
+									sizes="(min-width: 1080px) 960px, 100vw"
+									priority
+									class="post-hero__img"
+								/>
+							)
+						) : (
+							<img
+								src={`/og/projects/${encodeURIComponent(slug)}.png`}
+								alt={project.data.title}
+								class="post-hero__img post-hero__img--og-fallback"
+								width="1200"
+								height="630"
+								loading="eager"
+								decoding="async"
+							/>
+						)
+					}
+				</div>
+			</div>
+		</div>
+
+		<div class="band section post-body">
+			<div class="frame">
+				<div class="post-layout">
+					<main class="post-layout__main">
+						<div class="prose" {...project.edit.content}>
+							{project.data.content && Array.isArray(project.data.content) && project.data.content.length > 0 ? (
+								<PortableText value={project.data.content} />
+							) : (
+								<p class="text-muted">{project.data.excerpt || "Informasi detail studi kasus proyek ini sedang dalam pembaruan."}</p>
+							)}
+						</div>
+
+						<div class="p-8 my-10 rounded-2xl bg-brand/10 border border-brand/30 text-center">
+							<h3 class="text-xl font-bold mb-2">Tertarik Membuat Sistem atau Website Serupa?</h3>
+							<p class="text-sm text-muted mb-6 max-w-xl mx-auto">
+								Kotacom siap membantu merancang dan membangun solusi digital yang sesuai dengan model bisnis Anda.
+							</p>
+							<a
+								href="https://wa.me/6285799520350?text=Halo%20Kotacom,%20saya%20tertarik%20konsultasi%20pembuatan%20proyek%20serupa%20dengan%20portofolio%20ini"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="btn btn-primary"
+							>
+								Konsultasi via WhatsApp
+							</a>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+
+		{
+			otherProjects.length > 0 && (
+				<aside class="band section post-related">
+					<div class="frame">
+						<div class="section-heading">
+							<p class="eyebrow">Portfolio Terkait</p>
+							<h2 class="section-heading__title">Proyek Lainnya</h2>
+						</div>
+						<div class="post-grid">
+							{otherProjects.map((p) => (
+								<PostCard
+									post={p as any}
+									collection="projects"
+									variant="card"
+									headingLevel={3}
+								/>
+							))}
+						</div>
+					</div>
+				</aside>
+			)
+		}
+	</article>
+</Base>

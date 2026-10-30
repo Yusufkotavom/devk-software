@@ -1,6 +1,7 @@
 ---
 import type { BlockComponentProps } from "emdash/ui";
 import ScaleIn from "@astroanimate/core/ScaleIn";
+import CountUp from "@astroanimate/core/CountUp";
 import type { PageContentBlock } from "../../../emdash-env";
 import { toParagraphs } from "../../utils/text";
 
@@ -12,6 +13,20 @@ const { anchor_id, headline, subheadline } = raw;
 const stats = Array.isArray(raw.stats) ? raw.stats : [];
 const panel = String(raw.panel ?? "none"); // none | sunken | ink
 const hasPanel = panel === "sunken" || panel === "ink";
+
+function parseStatValue(val: string) {
+	if (!val) return null;
+	const str = String(val).trim();
+	const match = str.match(/^([^\d]*)([\d,.]+)(.*)$/);
+	if (!match) return null;
+	const prefix = match[1] ?? "";
+	const numStr = match[2].replace(/,/g, "");
+	const num = parseFloat(numStr);
+	if (isNaN(num)) return null;
+	const suffix = match[3] ?? "";
+	const decimals = (numStr.split(".")[1] || "").length;
+	return { prefix, num, suffix, decimals };
+}
 ---
 
 <section id={anchor_id || undefined} class="band section stats-section">
@@ -20,11 +35,10 @@ const hasPanel = panel === "sunken" || panel === "ink";
 			<div class:list={hasPanel ? "sheet-body" : []}>
 				{
 					(headline || subheadline) && (
-						<h2 class="section-headline stats__headline">
-							{headline}
-							{headline && subheadline && " "}
-							{subheadline && <span class="section-headline__muted">{subheadline}</span>}
-						</h2>
+						<header class="section-header">
+							{headline && <h2 class="section-headline">{headline}</h2>}
+							{subheadline && <p class="section-subheadline">{subheadline}</p>}
+						</header>
 					)
 				}
 				<dl class="stats__list">
@@ -32,15 +46,35 @@ const hasPanel = panel === "sunken" || panel === "ink";
 						<ScaleIn
 							as="div"
 							class="stats__item"
-							duration={1.0}
-							delay={idx * 0.15}
+							duration={700}
+							delay={idx * 90}
 							initialScale={0.88}
 							enhance={true}
 							easing="cubic-bezier(0.16, 1, 0.3, 1)"
 						>
 							<dt class="stats__label">{stat.label}</dt>
 							<dd class="stats__body">
-								<span class="stats__value">{stat.value}</span>
+								<span class="stats__value">
+									{(() => {
+										const parsed = parseStatValue(stat.value);
+										if (parsed) {
+											return (
+												<CountUp
+													value={parsed.num}
+													prefix={parsed.prefix}
+													suffix={parsed.suffix}
+													decimals={parsed.decimals}
+													duration={1800}
+													enhance={true}
+													textColor="inherit"
+													fontSize="inherit"
+													fontFamily="inherit"
+												/>
+											);
+										}
+										return stat.value;
+									})()}
+								</span>
 								{toParagraphs(stat.description ?? "").map((p: string) => (
 									<span class="stats__note">{p}</span>
 								))}

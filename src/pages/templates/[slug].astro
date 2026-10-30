@@ -7,26 +7,109 @@ import { buildOgImageUrl } from "../../lib/og/url";
 import "../../styles/prose.css";
 
 // Preview route for Page Templates (CPT `page_templates`).
-//
-// Why it exists: the collection's url_pattern is `/templates/{slug}`, so the
-// sitemap advertises those URLs. Without a route they 404. This renders a
-// template's block content at its advertised URL so it is reachable for
-// sharing/preview, while being explicitly excluded from search engines.
-//
-// noindex is enforced two ways, both independent of the SEO panel so an editor
-// can never accidentally re-index a template:
-//   1. `robots="noindex, nofollow"` passed to <Base> -> <meta name="robots">.
-//   2. An `X-Robots-Tag` response header (belt-and-braces for non-HTML fetches).
+// Supports ?row=<1-based>&dataset=<id>&target=<pages|posts> for live rendered preview from Bulk Generator!
+import { parseCsv } from "../../plugins/bulk-generator/engine/csv";
+import { renderRowAsync, type TemplateRecord, type DatasetRecord, PAGE_BLOCK_PRESETS } from "../../plugins/bulk-generator/engine/runner";
+import { PortableText } from "emdash/ui";
+import { getDb } from "emdash/runtime";
+import { blockComponents } from "../../plugins/marketing-blocks/astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { getReadingTime } from "../../utils/reading-time";
+
 const slug = decodeSlug(Astro.params.slug);
 if (!slug) return Astro.rewrite("/404");
 
 const { entry: template, cacheHint } = await getEmDashEntry("page_templates", slug);
 if (!template) return Astro.rewrite("/404");
 
-if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+if (Astro.cache?.enabled && !Astro.url.search) Astro.cache.set(cacheHint);
 const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
 
-const content = template.data.content;
+const rowParam = Astro.url.searchParams.get("row");
+const dsParam = Astro.url.searchParams.get("dataset");
+const targetParam = Astro.url.searchParams.get("target") as "pages" | "posts" | null;
+
+let previewEntry: any = template;
+let effectiveTarget: "pages" | "posts" = targetParam || ((template.data.target_collection as "pages" | "posts") ?? "pages");
+let previewMetaInfo: { rowIdx: number; datasetName: string; slug: string; target: string; rowData: Record<string, string> } | null = null;
+
+const db = (Astro.locals as any).emdash?.db || (await getDb().catch(() => null));
+if (db && (rowParam || dsParam)) {
+	try {
+		const dsRows = await db
+			.selectFrom("_plugin_storage")
+			.select(["id", "data"])
+			.where("plugin_id", "=", "bulk-generator")
+			.where("collection", "=", "datasets")
+			.execute();
+		const datasets: DatasetRecord[] = dsRows.map((r: any) => (typeof r.data === "string" ? JSON.parse(r.data) : r.data));
+		const ds = (dsParam ? datasets.find((d) => d.id === dsParam) : datasets[0]) || datasets[0];
+		const rowIdx = Math.max(1, parseInt(rowParam || "1", 10)) - 1;
+		const rowData = ds?.rows?.[rowIdx] || ds?.rows?.[0];
+
+		if (ds && rowData) {
+			const kvRows = await db
+				.selectFrom("_plugin_storage")
+				.select(["id", "data"])
+				.where("plugin_id", "=", "bulk-generator")
+				.where("collection", "=", "__kv")
+				.execute();
+			const kvMap = new Map<string, any>(
+				kvRows.map((r: any) => {
+					const parsed = typeof r.data === "string" ? JSON.parse(r.data) : r.data;
+					return [r.id, parsed?.value ?? parsed];
+				}),
+			);
+
+			const rawContent = template.data.content;
+			const blocksJson = typeof rawContent === "string" ? rawContent : rawContent ? JSON.stringify(rawContent, null, 2) : PAGE_BLOCK_PRESETS.landing_page;
+
+			const tplRecord: TemplateRecord = {
+				id: template.data.id,
+				name: template.data.title,
+				targetCollection: effectiveTarget,
+				titlePattern: template.data.title || "",
+				slugPattern: template.data.slug_pattern || "jasa-{{layanan | slug}}-{{kabupaten | slug}}",
+				excerptPattern: template.data.excerpt_pattern || "",
+				bodyPattern: template.data.body_pattern || "",
+				seoTitlePattern: template.data.seo_title_pattern || "",
+				seoDescPattern: template.data.seo_desc_pattern || "",
+				blocksJson,
+				defaultStatus: (template.data.status as any) || "published",
+			};
+
+			const rendered = await renderRowAsync(tplRecord, rowData, {
+				endpoint: kvMap.get("ai_endpoint"),
+				apiKey: kvMap.get("ai_api_key"),
+				model: kvMap.get("ai_model"),
+			});
+
+			previewMetaInfo = {
+				rowIdx: rowIdx + 1,
+				datasetName: ds.name,
+				slug: rendered.slug,
+				target: effectiveTarget,
+				rowData,
+			};
+
+			previewEntry = {
+				...template,
+				id: rendered.slug,
+				data: {
+					...template.data,
+					title: rendered.title,
+					excerpt: rendered.excerpt,
+					content: rendered.payload.content,
+					blocks: rendered.payload.blocks ?? rendered.payload.content,
+				},
+			};
+		}
+	} catch (e) {
+		console.error("Template row preview error:", e);
+	}
+}
+
+const content = (previewEntry.data as any).blocks ?? previewEntry.data.content;
 const isBlocks =
 	Array.isArray(content) &&
 	content.length > 0 &&
@@ -38,33 +121,106 @@ const isBlocks =
 			(String(block._type).startsWith("marketing_") || String(block._type).startsWith("marketing.")),
 	);
 
-const seo = getSeoMeta(template, {
+const seo = getSeoMeta(previewEntry, {
 	siteTitle,
 	siteUrl: Astro.url.origin,
 	path: Astro.url.pathname.replace(/\/$/, ""),
 	defaultOgImage: buildOgImageUrl(Astro.url.origin, "page_templates", slug),
 });
 
+const readingTime = effectiveTarget === "posts" ? getReadingTime(previewEntry.data.content) : 1;
+
 // Belt-and-braces: header wins regardless of the rendered <meta>.
 Astro.response.headers.set("X-Robots-Tag", "noindex, nofollow");
 ---
 
 <Base
-	title={seo.title}
-	pageTitle={template.data.title}
-	description={seo.description}
+	title={previewEntry.data.title || seo.title}
+	pageTitle={previewEntry.data.title}
+	description={previewEntry.data.excerpt || seo.description}
 	image={seo.ogImage}
 	canonical={seo.canonical}
 	robots="noindex, nofollow"
 	content={{ collection: "page_templates", id: template.data.id, slug }}
 >
 	{
-		isBlocks ? (
-			<PageView page={template as any} />
+		previewMetaInfo && (
+			<div style="background: #111827; color: #f9fafb; border-bottom: 1px solid #374151; font-size: 13px; padding: 10px 16px;">
+				<div class="frame" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+						<span style="background: #2563eb; color: #fff; font-weight: 600; padding: 2px 8px; border-radius: 4px; font-size: 11px; text-transform: uppercase;">
+							Live Preview · {previewMetaInfo.target === "posts" ? "Post" : "Page"}
+						</span>
+						<span>
+							Dataset: <strong>{previewMetaInfo.datasetName}</strong> (Row #{previewMetaInfo.rowIdx})
+						</span>
+						<span style="color: #9ca3af;">|</span>
+						<span>
+							Target URL: <code style="color: #93c5fd;">/{previewMetaInfo.target === "posts" ? `posts/${previewMetaInfo.slug}` : previewMetaInfo.slug}</code>
+						</span>
+					</div>
+					<div style="display: flex; align-items: center; gap: 8px;">
+						{previewMetaInfo.rowIdx > 1 && (
+							<a
+								href={`?dataset=${encodeURIComponent(dsParam || "")}&target=${encodeURIComponent(effectiveTarget)}&row=${previewMetaInfo.rowIdx - 1}`}
+								style="color: #e5e7eb; text-decoration: none; padding: 4px 10px; background: #1f2937; border: 1px solid #374151; border-radius: 4px;"
+							>
+								← Prev Row
+							</a>
+						)}
+						<a
+							href={`?dataset=${encodeURIComponent(dsParam || "")}&target=${encodeURIComponent(effectiveTarget)}&row=${previewMetaInfo.rowIdx + 1}`}
+							style="color: #e5e7eb; text-decoration: none; padding: 4px 10px; background: #1f2937; border: 1px solid #374151; border-radius: 4px;"
+						>
+							Next Row →
+						</a>
+					</div>
+				</div>
+			</div>
+		)
+	}
+	{
+		effectiveTarget === "posts" && !isBlocks ? (
+			<article class="post">
+				<header class="intro post-header">
+					<div class="frame">
+						<div class="post-header__inner">
+							<Breadcrumb
+								items={[
+									{ label: "Blog", href: "/posts" },
+									{ label: previewEntry.data.title },
+								]}
+							/>
+							<h1 class="intro__title post-header__title">
+								{previewEntry.data.title}
+							</h1>
+							{previewEntry.data.excerpt && (
+								<p class="intro__lead post-header__lead">
+									{previewEntry.data.excerpt}
+								</p>
+							)}
+							<div class="post-header__meta">
+								<p class="post-header__dateline">
+									<span>{readingTime} min read</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div class="band section">
+					<div class="frame">
+						<div class="prose mx-auto" style="max-width: 740px;">
+							<PortableText value={previewEntry.data.content} components={{ type: blockComponents }} />
+						</div>
+					</div>
+				</div>
+			</article>
+		) : isBlocks || previewEntry.data.content ? (
+			<PageView page={previewEntry as any} />
 		) : (
 			<article class="band section template-empty">
 				<div class="frame empty-state">
-					<h1 class="intro__title empty-state__title">{template.data.title}</h1>
+					<h1 class="intro__title empty-state__title">{previewEntry.data.title}</h1>
 				</div>
 			</article>
 		)

@@ -39,9 +39,9 @@ const { headline, subheadline, eyebrow, steps = [], anchor_id } = raw;
 							enhance={true}
 						>
 							{headline}
-							{subheadline && <span class="section-headline__muted"> {subheadline}</span>}
 						</FadeInText>
 					)}
+					{subheadline && <p class="section-subheadline">{subheadline}</p>}
 				</header>
 			)
 		}
@@ -55,8 +55,8 @@ const { headline, subheadline, eyebrow, steps = [], anchor_id } = raw;
 							<ScaleIn
 								as="li"
 								class="steps__item"
-								duration={1.0}
-								delay={idx * 0.12}
+								duration={650}
+								delay={idx * 80}
 								easing="cubic-bezier(0.16, 1, 0.3, 1)"
 								enhance={true}
 							>
