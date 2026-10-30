@@ -42,7 +42,6 @@ const {
 	class: className,
 } = Astro.props;
 
-const monogram = [...centerLabel.trim()][0]?.toUpperCase() ?? "K";
 const items = nodes.slice(0, 4);
 const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orbit__node--br"];
 ---
@@ -50,14 +49,6 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 <div class:list={["orbit", className]} data-brand-orbit>
 	<div class="orbit__canvas">
 		<svg class="orbit__rings" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
-			<defs>
-				<radialGradient id="orbit-core-glow" cx="50%" cy="50%" r="50%">
-					<stop offset="0%" stop-color="#ef4444" stop-opacity="0.22" />
-					<stop offset="55%" stop-color="#ef4444" stop-opacity="0.06" />
-					<stop offset="100%" stop-color="#ef4444" stop-opacity="0" />
-				</radialGradient>
-			</defs>
-			<circle cx="300" cy="300" r="278" fill="url(#orbit-core-glow)" opacity="0.5" />
 			<g class="orbit__spin">
 				<circle cx="300" cy="300" r="278" class="orbit__ring orbit__ring--dashed" />
 				<circle cx="300" cy="300" r="214" class="orbit__ring" />
@@ -87,8 +78,8 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 		<span class="orbit__pulse" aria-hidden="true"></span>
 
 		<div class="orbit__core">
-			<span class="orbit__mark" aria-hidden="true">{monogram}</span>
-			<span class="orbit__wordmark">{centerLabel}</span>
+			<img class="orbit__mark" src="/brand/kotacom-mark.png" alt="" width="64" height="64" />
+			<img class="orbit__wordmark" src="/brand/kotacom-wordmark.png" alt={centerLabel} width="120" height="36" />
 			<span class="orbit__tagline">Satu mitra, empat lini</span>
 		</div>
 
@@ -123,33 +114,14 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 </div>
 
 <style>
+	/* Panel menyatu dengan kanvas halaman: tanpa border/kotak, hanya garis
+	   horizontal atas-bawah. Warna mengikuti token tema (light/dark). */
 	.orbit {
-		--orbit-line: rgba(255, 255, 255, 0.13);
-		--orbit-line-soft: rgba(255, 255, 255, 0.1);
-		--orbit-accent: #ef4444;
 		position: relative;
 		container-type: inline-size;
-		border-radius: clamp(20px, 3vw, 30px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		background:
-			radial-gradient(120% 90% at 50% 0%, #1b1b20 0%, #101014 48%, #08080a 100%);
-		box-shadow:
-			0 40px 80px -48px rgba(8, 8, 12, 0.8),
-			inset 0 1px 0 rgba(255, 255, 255, 0.07);
-		padding: clamp(10px, 2.4vw, 20px);
-		overflow: hidden;
-		isolation: isolate;
-	}
-
-	/* grain halus supaya panel tidak terlihat seperti gradient datar */
-	.orbit::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		opacity: 0.045;
-		mix-blend-mode: overlay;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+		border-block: 1px solid var(--color-border);
+		padding-block: clamp(10px, 2.4vw, 20px);
+		color: var(--color-text);
 	}
 
 	.orbit__canvas {
@@ -168,26 +140,21 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 
 	.orbit__ring {
 		fill: none;
-		stroke: var(--orbit-line-soft);
+		stroke: var(--color-border-strong);
 		stroke-width: 1;
 	}
 
 	.orbit__ring--dashed {
-		stroke: rgba(255, 255, 255, 0.15);
 		stroke-dasharray: 2 10;
 		stroke-linecap: round;
 	}
 
-	.orbit__ring--core {
-		stroke: rgba(255, 255, 255, 0.22);
-	}
-
 	.orbit__ring--edge {
-		stroke: rgba(255, 255, 255, 0.06);
+		stroke: var(--color-border);
 	}
 
 	.orbit__spokes line {
-		stroke: rgba(255, 255, 255, 0.085);
+		stroke: var(--color-border);
 		stroke-width: 1;
 	}
 
@@ -210,7 +177,7 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 		aspect-ratio: 1;
 		translate: -50% -50%;
 		border-radius: 50%;
-		border: 1px solid rgba(239, 68, 68, 0.35);
+		border: 1px solid var(--color-brand-accent-glow);
 		animation: orbit-pulse 5.5s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
 		pointer-events: none;
 	}
@@ -218,19 +185,16 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 	@keyframes orbit-pulse {
 		0% {
 			transform: scale(0.72);
-			opacity: 0.55;
+			opacity: 0.6;
 		}
-		70% {
-			transform: scale(1.35);
-			opacity: 0;
-		}
+		70%,
 		100% {
 			transform: scale(1.35);
 			opacity: 0;
 		}
 	}
 
-	/* ---------- pusat: logo ---------- */
+	/* ---------- pusat: logo resmi ---------- */
 	.orbit__core {
 		position: absolute;
 		left: 50%;
@@ -238,44 +202,38 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 		translate: -50% -50%;
 		display: grid;
 		justify-items: center;
-		gap: 6px;
+		gap: 8px;
 		text-align: center;
 		z-index: 2;
 	}
 
 	.orbit__mark {
-		display: grid;
-		place-items: center;
+		display: block;
 		width: clamp(48px, 13cqw, 66px);
-		aspect-ratio: 1;
-		border-radius: clamp(13px, 3.4cqw, 18px);
-		background: #fff;
-		color: #0b0b0d;
-		font-size: clamp(22px, 6cqw, 31px);
-		font-weight: 800;
-		letter-spacing: -0.02em;
-		line-height: 1;
-		box-shadow:
-			0 0 0 6px rgba(255, 255, 255, 0.04),
-			0 14px 30px -12px rgba(0, 0, 0, 0.9);
+		height: auto;
 	}
 
 	.orbit__wordmark {
-		font-size: clamp(12px, 2.9cqw, 15px);
-		font-weight: 700;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: #fff;
+		display: block;
+		width: clamp(80px, 22cqw, 120px);
+		height: auto;
 	}
 
 	.orbit__tagline {
 		font-size: clamp(9px, 2.1cqw, 11px);
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.65);
+		color: var(--color-muted);
 	}
 
-	/* ---------- node lini bisnis ---------- */
+	@media (prefers-color-scheme: dark) {
+		.orbit__mark,
+		.orbit__wordmark {
+			filter: invert(1);
+		}
+	}
+
+	/* ---------- node lini bisnis: tanpa border, tanpa latar ikon ---------- */
 	.orbit__nodes {
 		position: absolute;
 		inset: 0;
@@ -326,37 +284,30 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		padding: 7px 12px 7px 7px;
-		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.085);
-		border: 1px solid rgba(255, 255, 255, 0.16);
-		backdrop-filter: blur(8px);
+		padding: 6px 10px;
+		/* latar = kanvas, hanya agar garis orbit tidak menembus teks */
+		background: var(--color-bg);
+		color: inherit;
 		text-decoration: none;
 		white-space: nowrap;
-		transition:
-			background 0.25s ease,
-			border-color 0.25s ease,
-			box-shadow 0.25s ease,
-			transform 0.25s ease;
+		transition: color 0.2s ease;
 	}
 
-	.orbit__card:hover,
+	.orbit__card:hover strong,
+	.orbit__card:focus-visible strong {
+		color: var(--color-brand-accent);
+	}
+
 	.orbit__card:focus-visible {
-		background: rgba(255, 255, 255, 0.11);
-		border-color: rgba(255, 255, 255, 0.28);
-		box-shadow: 0 12px 26px -14px rgba(0, 0, 0, 0.9);
-		transform: translateY(-1px);
+		outline: 2px solid var(--color-brand);
+		outline-offset: 2px;
 	}
 
 	.orbit__icon {
 		display: grid;
 		place-items: center;
-		width: clamp(26px, 6cqw, 32px);
-		aspect-ratio: 1;
-		border-radius: 50%;
-		background: rgba(255, 255, 255, 0.15);
-		color: #fff;
-		font-size: clamp(14px, 3.4cqw, 17px);
+		color: var(--color-text);
+		font-size: clamp(16px, 3.8cqw, 20px);
 		flex: none;
 	}
 
@@ -370,17 +321,16 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 	.orbit__text strong {
 		font-size: clamp(11px, 2.6cqw, 13px);
 		font-weight: 700;
-		letter-spacing: 0.01em;
-		color: #fff;
+		color: var(--color-text);
+		transition: color 0.2s ease;
 	}
 
 	.orbit__text small {
 		font-size: clamp(9px, 2cqw, 11px);
-		color: rgba(255, 255, 255, 0.7);
-		letter-spacing: 0.01em;
+		color: var(--color-muted);
 	}
 
-	/* ---------- satelit layanan pendukung ---------- */
+	/* ---------- satelit: ikon polos ---------- */
 	.orbit__sats {
 		position: absolute;
 		inset: 0;
@@ -391,14 +341,11 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 		position: absolute;
 		display: grid;
 		place-items: center;
-		width: clamp(22px, 5cqw, 28px);
-		aspect-ratio: 1;
+		padding: 4px;
 		translate: -50% -50%;
-		border-radius: 50%;
-		background: rgba(255, 255, 255, 0.09);
-		border: 1px solid rgba(255, 255, 255, 0.17);
-		color: rgba(255, 255, 255, 0.75);
-		font-size: clamp(10px, 2.4cqw, 12px);
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: clamp(12px, 2.8cqw, 15px);
 	}
 
 	.orbit__sat--1 {
@@ -423,7 +370,7 @@ const positions = ["orbit__node--tl", "orbit__node--tr", "orbit__node--bl", "orb
 
 	@media (max-width: 480px) {
 		.orbit__card {
-			padding: 6px 10px 6px 6px;
+			padding: 4px 6px;
 			gap: 6px;
 		}
 

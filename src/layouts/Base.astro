@@ -147,7 +147,6 @@ function navCurrent(url: string): "page" | "true" | undefined {
 }
 
 const lang = getSiteLocale() ?? "en";
-const monogram = [...siteTitle.trim()][0]?.toUpperCase() ?? "";
 const year = new Date().getFullYear();
 ---
 
@@ -215,11 +214,16 @@ const year = new Date().getFullYear();
 							/>
 						) : (
 							<>
-								{monogram && (
-									<span class="brand__mark" aria-hidden="true">
-										{monogram}
-									</span>
-								)}
+								<span class="brand__mark" aria-hidden="true">
+									{/* Logo resmi Kotacom */}
+									<img
+										src="/brand/kotacom-mark.png"
+										alt=""
+										width="28"
+										height="28"
+										class="brand__mark-img"
+									/>
+								</span>
 								<span class="brand__name">{siteTitle}</span>
 							</>
 						)
@@ -459,11 +463,15 @@ const year = new Date().getFullYear();
 								/>
 							) : (
 								<>
-									{monogram && (
-										<span class="brand__mark" aria-hidden="true">
-											{monogram}
-										</span>
-									)}
+									<span class="brand__mark" aria-hidden="true">
+								<img
+									src="/brand/kotacom-mark.png"
+									alt=""
+									width="28"
+									height="28"
+									class="brand__mark-img"
+								/>
+							</span>
 									<span class="brand__name">{siteTitle}</span>
 								</>
 							)
@@ -1307,6 +1315,25 @@ const year = new Date().getFullYear();
 				font-size: var(--font-size-sm);
 				font-weight: 600;
 				letter-spacing: 0;
+			}
+
+			/* Saat memuat mark resmi, kotak latar dilepas — logonya sudah kotak */
+			.brand__mark:has(.brand__mark-img) {
+				background: transparent;
+				border-radius: 0;
+			}
+
+			.brand__mark-img {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				.brand__mark-img {
+					filter: invert(1);
+				}
 			}
 
 			.brand__name {
