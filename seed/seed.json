@@ -7701,6 +7701,61 @@
           "type": "boolean"
         }
       ]
+    },
+    {
+      "slug": "projects",
+      "label": "Projects",
+      "labelSingular": "Project",
+      "urlPattern": "/projects/{slug}",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "scheduling",
+        "search",
+        "seo"
+      ],
+      "commentsEnabled": false,
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Judul Proyek",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "featured_image",
+          "label": "Featured Image",
+          "type": "image"
+        },
+        {
+          "slug": "excerpt",
+          "label": "Ringkasan / Excerpt",
+          "type": "text"
+        },
+        {
+          "slug": "content",
+          "label": "Deskripsi / Studi Kasus",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "client",
+          "label": "Nama Klien",
+          "type": "string"
+        },
+        {
+          "slug": "project_type",
+          "label": "Tipe Proyek",
+          "type": "string"
+        },
+        {
+          "slug": "preview_url",
+          "label": "URL Demo / Preview",
+          "type": "string"
+        }
+      ]
     }
   ],
   "taxonomies": [
