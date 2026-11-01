@@ -1,11 +1,15 @@
 import type { APIRoute } from "astro";
+import { getSiteOrigin } from "../utils/origin";
 
 export const prerender = false;
 
-const LLMS_FULL_TEXT = `# Kotacom Indonesia — Comprehensive Knowledge Base
+export const GET: APIRoute = async ({ url, site }) => {
+	const origin = getSiteOrigin(site, url.origin);
+	const domain = origin.replace(/^https?:\/\//, "");
+	const content = `# Kotacom Indonesia — Comprehensive Knowledge Base
 > Master reference for Large Language Models (LLMs), AI answer engines, and autonomous search agents.
 
-- Primary Domain: [staging.devk.my.id](https://staging.devk.my.id)
+- Primary Domain: [${domain}](${origin})
 - Brand: Kotacom Indonesia
 - Operations Hub: Surabaya, Jawa Timur, Indonesia
 - Primary Contact: +62 857-9952-0350 ([WhatsApp Official](https://wa.me/6285799520350))
@@ -33,12 +37,11 @@ Kotacom Indonesia adalah perusahaan percetakan buku dan solusi IT profesional. K
 
 ## 3. Contact & Channels
 - [WhatsApp Konsultasi Cepat](https://wa.me/6285799520350): +62 857-9952-0350
-- [Katalog Produk](https://staging.devk.my.id/products)
-- [Artikel & Panduan](https://staging.devk.my.id/posts)
+- [Katalog Produk](${origin}/products)
+- [Artikel & Panduan](${origin}/posts)
 `;
 
-export const GET: APIRoute = async () => {
-	return new Response(LLMS_FULL_TEXT, {
+	return new Response(content, {
 		status: 200,
 		headers: {
 			"Content-Type": "text/markdown; charset=utf-8",
@@ -46,3 +49,4 @@ export const GET: APIRoute = async () => {
 		},
 	});
 };
+

@@ -1,53 +1,87 @@
-# Panduan Lengkap Mengarahkan Project ke Domain Baru
+# Panduan Lengkap & Otomasi Migrasi Domain Kotacom EmDash
 **Repository:** `kotacom-emdash` (Astro + EmDash CMS + PostgreSQL)  
-**Dokumentasi:** Prosedur Cutover / Migrasi Domain (Production / Staging)
+**Dokumentasi:** Prosedur Cutover / Migrasi Domain (Manual & Otomatis via AI/CLI)
+
+---
+
+## Ringkasan Cepat: Otomasi untuk AI & Developer (1 Perintah)
+
+Untuk mengubah seluruh konfigurasi domain secara menyeluruh (Astro Config, Environment Variables, PostgreSQL Canonical & Media URLs, serta Docker Swarm), cukup jalankan script otomatis:
+
+```bash
+# Jalankan migrasi menyeluruh (Code + DB + Swarm + Verifikasi)
+python3 scripts/migrate_domain.py <domain-baru.com> --all
+
+# Contoh: migrasi ke domain produksi kotacom.id
+python3 scripts/migrate_domain.py kotacom.id --all
+
+# Contoh: preview perubahan tanpa eksekusi (Dry Run)
+python3 scripts/migrate_domain.py kotacom.id --dry-run --all
+```
 
 ---
 
 ## Daftar Isi
-1. [Arsitektur Domain & Resolusi Origin](#1-arsitektur-domain--resolusi-origin)
-2. [Langkah 1: Konfigurasi Astro (`astro.config.mjs`)](#langkah-1-konfigurasi-astro-astroconfigmjs)
-3. [Langkah 2: Environment Variables (Runtime & Docker Swarm)](#langkah-2-environment-variables-runtime--docker-swarm)
-4. [Langkah 3: File Source Code dengan Hardcoded Domain](#langkah-3-file-source-code-dengan-hardcoded-domain)
-5. [Langkah 4: Pembaruan Database PostgreSQL (`kotacom_emdash`)](#langkah-4-pembaruan-database-postgresql-kotacom_emdash)
-6. [Langkah 5: Routing Reverse Proxy (Traefik / Dokploy) & DNS](#langkah-5-routing-reverse-proxy-traefik--dokploy--dns)
-7. [Langkah 6: Checklist Verifikasi Pasca-Migrasi](#langkah-6-checklist-verifikasi-pasca-migrasi)
+1. [Arsitektur Domain & Dynamic Origin](#1-arsitektur-domain--dynamic-origin)
+2. [Cara Kerja Script Otomasi `scripts/migrate_domain.py`](#2-cara-kerja-script-otomasi-scriptsmigrate_domainpy)
+3. [Langkah Manual 1: Konfigurasi Astro (`astro.config.mjs`)](#langkah-manual-1-konfigurasi-astro-astroconfigmjs)
+4. [Langkah Manual 2: Environment Variables (`.env` & Swarm)](#langkah-manual-2-environment-variables-env--swarm)
+5. [Langkah Manual 3: Pembaruan Database PostgreSQL (`kotacom_emdash`)](#langkah-manual-3-pembaruan-database-postgresql-kotacom_emdash)
+6. [Langkah Manual 4: Reverse Proxy (Dokploy / Traefik) & DNS](#langkah-manual-4-reverse-proxy-dokploy--traefik--dns)
+7. [Checklist Verifikasi Pasca-Migrasi](#checklist-verifikasi-pasca-migrasi)
 
 ---
 
-## 1. Arsitektur Domain & Resolusi Origin
+## 1. Arsitektur Domain & Dynamic Origin
 
-Project ini menggunakan fungsi utilitas terpusat di [`src/utils/origin.ts`](../src/utils/origin.ts) (`getSiteOrigin`) untuk membangun Canonical URLs, Open Graph (OG) Images, BreadcrumbList Schema, dan Robots Sitemap.
+Project ini dirancang untuk menyelesaikan URL origin secara dinamis melalui utilitas [`src/utils/origin.ts`](../src/utils/origin.ts) (`getSiteOrigin(site, requestOrigin)`).
 
-Prioritas penentuan domain:
-1. `process.env.EMDASH_SITE_URL` atau `process.env.SITE_URL` (paling diprioritaskan).
+Prioritas penentuan origin:
+1. `process.env.EMDASH_SITE_URL` atau `process.env.SITE_URL` (Prioritas tertinggi, ditentukan di runtime).
 2. Header request HTTP (`x-forwarded-host` / `host`).
-3. Fallback default di konfigurasi Astro (`https://kotacom.id`).
+3. Fallback konfigurasi Astro (`https://kotacom.id`).
 
-Karena itu, sebagian besar halaman otomatis mengikuti domain baru saat Environment Variable diubah. Namun, ada beberapa pengaturan keamanan dan database yang tetap harus diperbarui.
+File-file berikut **sudah dibuat dinamis** sehingga tidak lagi membutuhkan pengubahan manual:
+* `src/pages/robots.txt.ts` -> Mengambil sitemap URL dari dynamic origin.
+* `src/pages/sitemap.xml.ts` & seluruh sitemap sub-collection (`sitemap-posts.xml.ts`, `sitemap-pages.xml.ts`, `sitemap-products.xml.ts`, `sitemap-projects.xml.ts`).
+* `src/pages/llms.txt.ts` & `src/pages/llms-full.txt.ts` -> Menggunakan `getSiteOrigin(site, url.origin)`.
+* `src/pages/pricing.md.ts` -> Menggunakan `getSiteOrigin(site, url.origin)`.
+* `src/lib/og/og-card.ts` -> Open Graph image URL dinamis.
 
 ---
 
-## Langkah 1: Konfigurasi Astro (`astro.config.mjs`)
+## 2. Cara Kerja Script Otomasi `scripts/migrate_domain.py`
 
-Buka file [`astro.config.mjs`](../astro.config.mjs):
+Script [`scripts/migrate_domain.py`](../scripts/migrate_domain.py) dibuat khusus agar AI Agent maupun Sysadmin dapat melakukan migrasi tanpa risiko human error:
+
+| Opsi Flag | Kegunaan |
+| :--- | :--- |
+| `<domain>` | Domain tujuan (misal: `kotacom.id` atau `staging.kotacom.id`). Prefix `https://` otomatis dibersihkan. |
+| `--all` | Menjalankan seluruh tahapan (Astro config + .env + DB update + Swarm update + Test Verifikasi). |
+| `--update-code` | Hanya memperbarui `astro.config.mjs` (`security.allowedDomains` & `image.domains`) dan `.env`. |
+| `--update-db` | Hanya memperbarui query replace pada PostgreSQL (`_emdash_seo` dan `_emdash_menu_items`). |
+| `--update-swarm` | Hanya memperbarui service environment Docker Swarm. |
+| `--verify` | Menjalankan tes GET HTTP ke `/robots.txt`, `/sitemap.xml`, `/sitemap-projects.xml`, `/llms.txt`. |
+| `--dry-run` | Menampilkan simulasi perubahan tanpa mengubah file, DB, atau service apapun. |
+
+---
+
+## Langkah Manual 1: Konfigurasi Astro (`astro.config.mjs`)
+
+Jika Anda memilih melakukan perubahan manual tanpa script:
 
 ### A. Daftarkan Domain pada `security.allowedDomains`
-Astro memvalidasi keamanan *Origin* saat terjadi request form action, mutasi data, dan autentikasi login EmDash/Better-Auth. Jika domain baru tidak terdaftar, request POST akan ditolak (error 403 Forbidden).
+Astro memvalidasi keamanan *Origin* saat ada request form action, mutasi data, dan autentikasi login EmDash/Better-Auth. Jika domain baru tidak terdaftar, request POST ditolak (403 Forbidden).
 
-Tambahkan domain baru Anda ke dalam array:
+Buka [`astro.config.mjs`](../astro.config.mjs) dan tambahkan:
 ```javascript
 security: {
     allowedDomains: [
         { protocol: "https", hostname: "kotacom.id" },
         { protocol: "https", hostname: "www.kotacom.id" },
-        { protocol: "https", hostname: "**.kotacom.id" },
         { protocol: "https", hostname: "staging.devk.my.id" },
-        { protocol: "https", hostname: "devk.my.id" },
-        { protocol: "https", hostname: "**.devk.my.id" },
-        // TAMBAHKAN DOMAIN BARU DI SINI:
+        // Tambahkan domain baru:
         { protocol: "https", hostname: "domainbaru.com" },
-        { protocol: "https", hostname: "www.domainbaru.com" },
         { protocol: "https", hostname: "**.domainbaru.com" },
         { protocol: "https", hostname: "localhost" },
         { protocol: "http", hostname: "localhost" }
@@ -56,45 +90,38 @@ security: {
 ```
 
 ### B. Daftarkan Domain pada `image.domains`
-Jika aset media dimuat menggunakan nama domain baru tersebut:
+Jika aset media dioptimasi oleh Astro Image Service menggunakan domain baru:
 ```javascript
 image: {
-    layout: "constrained",
-    responsiveStyles: true,
     domains: [
         "kotacom.id",
-        "www.kotacom.id",
         "devk.my.id",
         "domainbaru.com", // Tambahkan domain baru
         "localhost"
-    ],
-    remotePatterns: [
-        { protocol: "https" },
-        { protocol: "http" },
     ],
 },
 ```
 
 ---
 
-## Langkah 2: Environment Variables (Runtime & Docker Swarm)
+## Langkah Manual 2: Environment Variables (`.env` & Swarm)
 
-### A. File `.env` (Lokal & Staging Server)
-Perbarui file `.env`:
+### A. File `.env` (Lokal & Server Host)
+Perbarui baris berikut di `.env`:
 ```env
 # Domain Publik Utama
 SITE_URL=https://domainbaru.com
 EMDASH_SITE_URL=https://domainbaru.com
 
-# Better-Auth (Wajib sama persis dengan URL login admin)
+# Better-Auth (Wajib persis dengan URL login admin)
 BETTER_AUTH_URL=https://domainbaru.com
 
 # EmDash API Client
 EMDASH_BASE_URL=https://domainbaru.com
 ```
 
-### B. Update Service di Docker Swarm (Dokploy)
-Jika berjalan di Swarm service `app-program-online-application-cfreew`, perbarui environment variables service:
+### B. Update Service Docker Swarm (Dokploy)
+Jalankan perintah ini di shell server:
 ```bash
 sudo docker service update \
   --env-add SITE_URL=https://domainbaru.com \
@@ -106,83 +133,88 @@ sudo docker service update \
 
 ---
 
-## Langkah 3: File Source Code dengan Hardcoded Domain
+## Langkah Manual 3: Pembaruan Database PostgreSQL (`kotacom_emdash`)
 
-Ada beberapa file endpoint informasi statis yang memuat teks domain lama secara hardcoded. Ganti `https://staging.devk.my.id` atau `https://devk.my.id` dengan domain baru Anda:
+Di database PostgreSQL, terdapat 3 tabel utama yang menyimpan referensi domain lama:
+1. `_emdash_seo.seo_canonical` (116 baris canonical URLs lama)
+2. `_emdash_seo.seo_image` (45 baris media image lama)
+3. `_emdash_menu_items.custom_url` (3 baris custom link navigasi)
 
-1. **`src/pages/llms.txt.ts`**
-   * Cari: `https://staging.devk.my.id`
-   * Ganti ke: `https://domainbaru.com`
-2. **`src/pages/llms-full.txt.ts`**
-   * Cari: `staging.devk.my.id` dan link terkait
-   * Ganti ke: `domainbaru.com`
-3. **`src/pages/pricing.md.ts`**
-   * Ganti tag baris 6: `> Canonical: https://domainbaru.com/pricing.md`
-4. **`src/components/blocks/BentoGrid.astro`**
-   * Ganti teks demo baris 42: `code_snippet: "curl -X GET https://domainbaru.com/api/products"`
-5. **`src/pages/compare.astro`**
-   * Halaman audit internal pembanding URL. Sesuaikan jika sudah tidak dibutuhkan.
+Eksekusi perintah SQL berikut ke container PostgreSQL:
 
----
+```bash
+# Temukan ID container database
+DB_CONTAINER=$(sudo docker ps --filter "name=devk-software-db" --format "{{.ID}}")
 
-## Langkah 4: Pembaruan Database PostgreSQL (`kotacom_emdash`)
-
-### A. Update Canonical URL di Tabel `_emdash_seo`
-Sebanyak 116 entri landing page menyimpan canonical URL statis dari hasil migrasi lama. Jalankan query berikut di container PostgreSQL:
-
-```sql
--- Cek jumlah baris yang terdampak
-SELECT count(*) FROM _emdash_seo WHERE seo_canonical LIKE '%devk.my.id%' OR seo_canonical LIKE '%staging.devk.my.id%';
-
--- Update ke domain baru
+# Jalankan query SQL penggantian domain
+sudo docker exec -i $DB_CONTAINER psql -U dokploy -d kotacom_emdash << 'EOF'
+-- 1. Update Canonical URLs
 UPDATE _emdash_seo 
-SET seo_canonical = REPLACE(seo_canonical, 'https://staging.devk.my.id', 'https://domainbaru.com')
+SET seo_canonical = REPLACE(seo_canonical, 'staging.devk.my.id', 'domainbaru.com')
 WHERE seo_canonical LIKE '%staging.devk.my.id%';
 
 UPDATE _emdash_seo 
-SET seo_canonical = REPLACE(seo_canonical, 'https://devk.my.id', 'https://domainbaru.com')
+SET seo_canonical = REPLACE(seo_canonical, 'devk.my.id', 'domainbaru.com')
 WHERE seo_canonical LIKE '%devk.my.id%';
-```
 
-### B. Update Konten Demo pada `ec_pages` (Opsional)
-Halaman demo `/all-blocks` dan `/blocks` yang berisi teks demo domain:
-```sql
-UPDATE ec_pages 
-SET content = REPLACE(content::text, 'staging.devk.my.id', 'domainbaru.com')::json
-WHERE slug IN ('all-blocks', 'blocks');
+-- 2. Update Media URLs di SEO
+UPDATE _emdash_seo 
+SET seo_image = REPLACE(seo_image, 'software.devk.my.id', 'domainbaru.com')
+WHERE seo_image LIKE '%software.devk.my.id%';
+
+UPDATE _emdash_seo 
+SET seo_image = REPLACE(seo_image, 'staging.devk.my.id', 'domainbaru.com')
+WHERE seo_image LIKE '%staging.devk.my.id%';
+
+-- 3. Update Menu Items Custom URLs
+UPDATE _emdash_menu_items 
+SET custom_url = REPLACE(custom_url, 'devk.my.id', 'domainbaru.com')
+WHERE custom_url LIKE '%devk.my.id%';
+EOF
 ```
 
 ---
 
-## Langkah 5: Routing Reverse Proxy (Traefik / Dokploy) & DNS
+## Langkah Manual 4: Reverse Proxy (Dokploy / Traefik) & DNS
 
-1. **DNS Record:**
-   Arahkan DNS Record (`A` / `CNAME`) domain baru ke IP server publik instance ini.
-2. **Dokploy / Traefik Labels:**
-   * Di dashboard Dokploy, masuk ke aplikasi `devk-software` / `kotacom-emdash`.
-   * Masuk ke tab **Domains**.
-   * Tambahkan domain baru (contoh: `domainbaru.com` atau `www.domainbaru.com`) dengan port target `3000`.
-   * Aktifkan HTTPS / Let's Encrypt Certificate.
+1. **DNS Server:**
+   Arahkan `A` Record atau `CNAME` dari `domainbaru.com` ke IP publik server Swarm / Traefik.
+2. **Dashboard Dokploy:**
+   * Buka Dashboard Dokploy -> Proyek `devk-software` / `kotacom-emdash`.
+   * Buka tab **Domains**.
+   * Tambahkan `domainbaru.com` (Target port: `3000`).
+   * Aktifkan sertifikat HTTPS / Let's Encrypt.
 
 ---
 
-## Langkah 6: Checklist Verifikasi Pasca-Migrasi
+## Checklist Verifikasi Pasca-Migrasi
 
-Lakukan uji coba berikut setelah domain diarahkan:
+Jalankan pengujian cepat untuk memastikan seluruh fungsi telah beralih dengan sempurna:
 
-- [ ] **Akses Beranda:** `curl -I https://domainbaru.com/` (Pastikan HTTP 200 OK).
-- [ ] **Robots.txt:** Buka `https://domainbaru.com/robots.txt` dan pastikan baris sitemap tertulis:
-  ```txt
-  Sitemap: https://domainbaru.com/sitemap.xml
+- [ ] **Home Page:**
+  ```bash
+  curl -I https://domainbaru.com/
+  # Pastikan respon HTTP/2 200
   ```
-- [ ] **Sitemap Index & Children:**
-  * Buka `https://domainbaru.com/sitemap.xml`
-  * Buka `https://domainbaru.com/sitemap-projects.xml`
-  * Pastikan seluruh `<loc>` sudah menggunakan prefix `https://domainbaru.com/...`.
-- [ ] **Login & Admin EmDash:**
-  * Akses `https://domainbaru.com/_emdash/admin`
-  * Coba login dan buka menu **Projects**, **Posts**, dan **Pages**.
-  * Coba lakukan edit dan save salah satu entri untuk memastikan tidak ada error CSRF / Origin mismatch.
-- [ ] **Open Graph Image:**
-  * Buka salah satu halaman project: `https://domainbaru.com/projects/starlight`
-  * Periksa tag `<meta property="og:image">` dan pastikan mengarah ke `https://domainbaru.com/og/projects/starlight.png`.
+- [ ] **Robots.txt:**
+  ```bash
+  curl -s https://domainbaru.com/robots.txt
+  # Pastikan tertulis: Sitemap: https://domainbaru.com/sitemap.xml
+  ```
+- [ ] **Sitemap Index & Projects:**
+  ```bash
+  curl -s https://domainbaru.com/sitemap.xml | grep "<loc>" | head -n 5
+  curl -s https://domainbaru.com/sitemap-projects.xml | grep "<loc>" | head -n 5
+  # Pastikan seluruh link sudah menggunakan prefix https://domainbaru.com/
+  ```
+- [ ] **LLMs & Pricing Endpoints:**
+  ```bash
+  curl -s https://domainbaru.com/llms.txt | head -n 5
+  curl -s https://domainbaru.com/pricing.md | head -n 5
+  # Pastikan Canonical URL mengarah ke https://domainbaru.com/
+  ```
+- [ ] **Admin & Editing CMS:**
+  * Login ke `https://domainbaru.com/_emdash/admin`
+  * Buka menu **Projects** -> Pilih salah satu project (contoh: `Starlight`).
+  * Lakukan edit deskripsi kecil lalu klik **Save Draft** atau **Publish**.
+  * Pastikan tidak terjadi error CSRF Origin `403` dan data tersimpan di PostgreSQL.

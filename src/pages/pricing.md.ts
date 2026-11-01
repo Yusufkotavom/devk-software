@@ -1,9 +1,12 @@
 import type { APIRoute } from "astro";
+import { getSiteOrigin } from "../utils/origin";
 
 export const prerender = false;
 
-const PRICING_MD = `# Kotacom Indonesia — Percetakan Buku & Solusi Digital
-> Canonical: https://staging.devk.my.id/pricing.md
+export const GET: APIRoute = async ({ site, url }) => {
+	const origin = getSiteOrigin(site, url.origin);
+	const content = `# Kotacom Indonesia — Percetakan Buku & Solusi Digital
+> Canonical: ${origin}/pricing.md
 > Updated: 2026-10-26
 > Contact: https://wa.me/6285799520350
 
@@ -16,8 +19,7 @@ const PRICING_MD = `# Kotacom Indonesia — Percetakan Buku & Solusi Digital
 Untuk estimasi harga custom dan konsultasi spesifikasi bahan/oplah, silakan hubungi tim kami via WhatsApp https://wa.me/6285799520350.
 `;
 
-export const GET: APIRoute = async () => {
-	return new Response(PRICING_MD, {
+	return new Response(content, {
 		status: 200,
 		headers: {
 			"Content-Type": "text/markdown; charset=utf-8",
