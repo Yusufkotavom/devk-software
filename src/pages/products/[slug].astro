@@ -14,6 +14,7 @@ import { formatDate } from "../../utils/locale";
 import { resolveBlogSiteIdentity } from "../../utils/site-identity";
 import { buildOgImageUrl } from "../../lib/og/url";
 import { getSiteOrigin } from "../../utils/origin";
+import ProductCategoryArchive from "../../components/ProductCategoryArchive.astro";
 import "../../styles/prose.css";
 
 const slug = decodeSlug(Astro.params.slug);
@@ -22,13 +23,55 @@ if (!slug) {
 	return Astro.rewrite("/404");
 }
 
-const { entry: product, cacheHint } = await getEmDashEntry("products", slug);
+const PRODUCT_CATEGORIES: Record<string, { title: string; desc: string }> = {
+	"akuntansi": {
+		title: "Software Akuntansi & Kasir",
+		desc: "Solusi aplikasi akuntansi, sistem POS kasir toko, dan pembukuan bisnis otomatis dari Kotacom.",
+	},
+	"game-pc": {
+		title: "Game PC & Hiburan Digital",
+		desc: "Koleksi game PC offline dan online update terbaru, paket flashdisk game, dan software hiburan.",
+	},
+	"monitor": {
+		title: "Monitor & Display",
+		desc: "Monitor LED dan layar display komputer berkualitas untuk kantor, kasir, dan produktivitas kerja.",
+	},
+	"pc-karaoke": {
+		title: "Sistem & Paket PC Karaoke",
+		desc: "Paket PC karaoke lengkap, flashdisk lagu klip asli, dan software karaoke profesional untuk rumah dan bisnis.",
+	},
+	"percetakan": {
+		title: "Percetakan & Desain",
+		desc: "Layanan cetak buku, company profile, kalender, majalah, spanduk, dan produk promosi komersial.",
+	},
+	"produk": {
+		title: "Katalog Produk Pilihan",
+		desc: "Produk hardware, software, dan aksesoris teknologi pilihan terbaik dari Kotacom.",
+	},
+	"rakit-pc": {
+		title: "Paket Rakit PC",
+		desc: "Paket komputer rakitan siap pakai untuk kantor, sekolah, kasir, desain grafis, dan gaming.",
+	},
+	"software": {
+		title: "Software & Aplikasi",
+		desc: "Aplikasi custom, sistem ERP UMKM, website terintegrasi, dan software utilitas resmi berlisensi.",
+	},
+};
 
-if (!product) {
-	return Astro.rewrite("/404");
+const categoryInfo = PRODUCT_CATEGORIES[slug];
+let isCategory = false;
+let product: any = null;
+
+if (categoryInfo) {
+	isCategory = true;
+} else {
+	const res = await getEmDashEntry("products", slug);
+	product = res?.entry;
+	if (!product) {
+		return Astro.rewrite("/404");
+	}
+	if (Astro.cache?.enabled && res.cacheHint) Astro.cache.set(res.cacheHint);
 }
-
-if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 
 const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
 
@@ -57,41 +100,61 @@ function getImageUrl(img: unknown): string | undefined {
 	}
 	return undefined;
 }
-const featuredImageUrl = getImageUrl(product.data.featured_image);
-// Plan B fallback: the auto-generated OG card doubles as the feature image.
-const productOgFallback = buildOgImageUrl(siteOrigin, "products", slug);
-const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
-
-const seo = getSeoMeta(product, {
-	siteTitle,
-	siteUrl: siteOrigin,
-	path: Astro.url.pathname.replace(/\/$/, ""),
-	defaultOgImage: featuredImageUrl ?? productOgFallback,
-});
-
-// A few other products, newest first (excluding the current one).
-const { entries: recentProducts, cacheHint: recentProductsCacheHint } =
-	await getEmDashCollection("products", {
-		orderBy: { created_at: "desc" },
-		limit: 4,
-	});
-if (Astro.cache?.enabled) Astro.cache.set(recentProductsCacheHint);
-const otherProducts = recentProducts.filter((p) => p.id !== product.id).slice(0, 3);
-
-const createdAt = product.data.createdAt ?? null;
-const createdDate = createdAt ? formatDate(createdAt, "long") : null;
 import { getWhatsAppSettings, buildWhatsAppHref } from "../../utils/whatsapp";
 
-const setting = await getWhatsAppSettings();
-const productUrl = `${siteOrigin}${Astro.url.pathname}`;
-const productWaUrl = buildWhatsAppHref(setting, {
-	pageUrl: productUrl,
-	pageTitle: product.data.title,
-	context: "product",
-});
-const buyLabel = setting?.product_cta_label || "Beli Sekarang / Tanya via WhatsApp";
+let featuredImageUrl: string | undefined = undefined;
+let productOgFallback = "";
+let siteTitle = "";
+let seo: any = {};
+let otherProducts: any[] = [];
+let createdAt = null;
+let createdDate = null;
+let productWaUrl = "";
+let buyLabel = "Beli Sekarang / Tanya via WhatsApp";
+
+if (!isCategory && product) {
+	featuredImageUrl = getImageUrl(product.data.featured_image);
+	productOgFallback = buildOgImageUrl(siteOrigin, "products", slug);
+	const siteSettings = await getSiteSettings();
+	siteTitle = resolveBlogSiteIdentity(siteSettings).siteTitle;
+
+	seo = getSeoMeta(product, {
+		siteTitle,
+		siteUrl: siteOrigin,
+		path: Astro.url.pathname.replace(/\/$/, ""),
+		defaultOgImage: featuredImageUrl ?? productOgFallback,
+	});
+
+	const { entries: recentProducts, cacheHint: recentProductsCacheHint } =
+		await getEmDashCollection("products", {
+			orderBy: { created_at: "desc" },
+			limit: 4,
+		});
+	if (Astro.cache?.enabled && recentProductsCacheHint) Astro.cache.set(recentProductsCacheHint);
+	otherProducts = recentProducts.filter((p) => p.id !== product.id).slice(0, 3);
+
+	createdAt = product.data.createdAt ?? null;
+	createdDate = createdAt ? formatDate(createdAt, "long") : null;
+
+	const setting = await getWhatsAppSettings();
+	const productUrl = `${siteOrigin}${Astro.url.pathname}`;
+	productWaUrl = buildWhatsAppHref(setting, {
+		pageUrl: productUrl,
+		pageTitle: product.data.title,
+		context: "product",
+	});
+	buyLabel = setting?.product_cta_label || "Beli Sekarang / Tanya via WhatsApp";
+}
 ---
 
+{
+	isCategory ? (
+		<ProductCategoryArchive
+			slug={slug}
+			title={categoryInfo.title}
+			description={categoryInfo.desc}
+		/>
+	) : (
 <Base
 	title={product.data.title}
 	pageTitle={product.data.title}
@@ -255,6 +318,8 @@ const buyLabel = setting?.product_cta_label || "Beli Sekarang / Tanya via WhatsA
 		)
 	}
 </Base>
+	)
+}
 
 <style>
 	.product-header-cta {

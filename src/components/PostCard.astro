@@ -34,7 +34,7 @@ const {
 } = Astro.props;
 
 const Heading = `h${headingLevel}` as const;
-const href = collection === "pages" ? `/${post.id}` : `/${collection}/${post.id}`;
+const href = collection === "posts" ? `/blog/${post.id}` : collection === "pages" ? `/${post.id}` : `/${collection}/${post.id}`;
 const titleId = `post-${variant}-${post.id}`;
 const title = post.data?.title || "Untitled";
 

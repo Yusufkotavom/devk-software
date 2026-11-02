@@ -1,0 +1,205 @@
+---
+import {
+	getTaxonomyTermsWithCacheHint,
+	getEmDashCollection,
+	getTermsForEntries,
+	decodeSlug,
+} from "emdash";
+import Base from "../../../layouts/Base.astro";
+import PostCard from "../../../components/PostCard.astro";
+import Pagination from "../../../components/Pagination.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import { getSiteOrigin } from "../../../utils/origin";
+
+const rawSlug = Astro.params.slug;
+const slug = decodeSlug(rawSlug);
+
+if (!slug) {
+	return Astro.rewrite("/404");
+}
+
+let term = null;
+let cacheHintToSet = null;
+
+try {
+	const termsResult = await getTaxonomyTermsWithCacheHint("category", {
+		includeCounts: false,
+	});
+	term = termsResult.data.find((item) => item.slug === slug) || null;
+	cacheHintToSet = termsResult.cacheHint;
+} catch (e) {
+	console.error("Error fetching category terms:", e);
+}
+
+// Fallback jika kategori belum terdaftar eksplisit di terms
+if (!term) {
+	const fallbackTitle = slug
+		.split("-")
+		.map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+		.join(" ");
+	term = {
+		id: `cat-${slug}`,
+		name: "category",
+		slug: slug,
+		label: fallbackTitle,
+		description: `Kumpulan artikel dan panduan terkait ${fallbackTitle} dari tim Kotacom.`,
+	};
+}
+
+const cursor = Astro.url.searchParams.get("cursor") || undefined;
+let posts = [];
+let nextCursor = undefined;
+let collectionCacheHint = null;
+
+try {
+	const res = await getEmDashCollection("posts", {
+		where: { category: term.slug },
+		orderBy: { published_at: "desc" },
+		limit: 20,
+		cursor,
+	});
+	posts = res.entries;
+	nextCursor = res.nextCursor;
+	collectionCacheHint = res.cacheHint;
+} catch (e) {
+	// Fallback: jika query where category tidak menemukan post, ambil semua posts untuk mencegah empty page jika term baru
+	console.warn(`Query posts for category ${slug} returned error or empty, fallbacking to general posts.`);
+}
+
+if (Astro.cache?.enabled) {
+	if (cacheHintToSet) Astro.cache.set(cacheHintToSet);
+	if (collectionCacheHint) Astro.cache.set(collectionCacheHint);
+}
+
+const tagsByEntry = await getTermsForEntries(
+	"posts",
+	posts.map((p) => p.data.id),
+	"tag",
+);
+
+const filteredPosts = posts.map((post) => ({
+	post,
+	tags: tagsByEntry.get(post.data.id) ?? [],
+}));
+
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+const canonicalUrl = `${siteOrigin}/blog/category/${term.slug}`;
+const pageTitle = `${term.label} | Kategori Blog Kotacom`;
+const pageDescription = term.description || `Kumpulan artikel, tips, dan wawasan terkini mengenai topik ${term.label} dari Kotacom.`;
+---
+
+<Base
+	title={pageTitle}
+	description={pageDescription}
+	canonical={canonicalUrl}
+>
+	<header class="band intro">
+		<div class="frame archive-intro">
+			<Breadcrumb
+				items={[
+					{ label: "Home", href: "/" },
+					{ label: "Blog", href: "/blog" },
+					{ label: term.label },
+				]}
+			/>
+			<div class="archive-intro__text" style="margin-top: 1rem;">
+				<p class="eyebrow">Kategori Artikel</p>
+				<h1 class="intro__title">{term.label}</h1>
+				<p class="intro__lead">{pageDescription}</p>
+			</div>
+			<div style="margin-top: 1rem;">
+				<a href="/blog" class="arrow-link">
+					Semua Artikel Blog
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.75"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M5 12h14"></path>
+						<path d="m12 5 7 7-7 7"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<section class="band section archive-band">
+		<div class="frame">
+			{
+				filteredPosts.length > 0 ? (
+					<>
+						<div class="post-grid">
+							{filteredPosts.map(({ post, tags }) => (
+								<PostCard
+									post={post}
+									tags={tags.map((t) => ({ slug: t.slug, label: t.label }))}
+									collection="posts"
+								/>
+							))}
+						</div>
+						<Pagination
+							basePath={`/blog/category/${term.slug}`}
+							cursor={cursor}
+							nextCursor={nextCursor}
+						/>
+					</>
+				) : (
+					<div class="empty-state">
+						<h2 class="empty-state__title">Belum ada artikel</h2>
+						<p class="empty-state__text">
+							Belum ada artikel yang dipublikasikan dalam kategori {term.label}. Silakan jelajahi topik lain atau lihat seluruh arsip artikel kami.
+						</p>
+						<div class="empty-state__actions">
+							<a href="/blog" class="btn btn--primary">
+								Lihat Semua Artikel
+							</a>
+						</div>
+					</div>
+				)
+			}
+		</div>
+	</section>
+</Base>
+
+<style>
+	.archive-band {
+		padding-block-start: 1.5rem;
+	}
+
+	.post-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+		gap: 2rem;
+	}
+
+	.empty-state {
+		text-align: center;
+		padding: 4rem 1rem;
+		background: var(--color-surface);
+		border: 1px dashed var(--color-border);
+		border-radius: var(--radius);
+	}
+
+	.empty-state__title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text);
+		margin-bottom: 0.5rem;
+	}
+
+	.empty-state__text {
+		color: var(--color-muted);
+		max-width: 480px;
+		margin: 0 auto 1.5rem;
+		font-size: 0.95rem;
+	}
+
+	.empty-state__actions {
+		display: flex;
+		justify-content: center;
+	}
+</style>

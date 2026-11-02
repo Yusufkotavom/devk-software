@@ -15,6 +15,30 @@ import {
 } from "./engine/runner.js";
 import { renderPluginUi, type ViewState } from "./ui/views.js";
 
+/** Parse "all" | "1-50" | "1,3,5" | "51-100" into a Set of 0-based indexes */
+function parseRowSelection(raw: string, totalRows: number): Set<number> {
+  const s = (raw || "all").trim().toLowerCase();
+  if (!s || s === "all") {
+    const all = new Set<number>();
+    for (let i = 0; i < totalRows; i++) all.add(i);
+    return all;
+  }
+  const result = new Set<number>();
+  for (const part of s.split(",")) {
+    const t = part.trim();
+    const rangeMatch = t.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (rangeMatch) {
+      const from = Math.max(1, parseInt(rangeMatch[1], 10)) - 1;
+      const to = Math.min(totalRows, parseInt(rangeMatch[2], 10)) - 1;
+      for (let i = from; i <= to; i++) result.add(i);
+    } else if (/^\d+$/.test(t)) {
+      const idx = parseInt(t, 10) - 1;
+      if (idx >= 0 && idx < totalRows) result.add(idx);
+    }
+  }
+  return result;
+}
+
 interface InteractionPayload {
   type: "page_load" | "block_action" | "form_submit";
   action_id?: string;
@@ -53,6 +77,7 @@ export function createPlugin() {
           let selectedTemplateId: string | undefined = (await kv.get("sel_template_id")) || undefined;
           let selectedDatasetId: string | undefined = (await kv.get("sel_dataset_id")) || undefined;
           let selectedTarget: "pages" | "posts" | undefined = (await kv.get("sel_target")) || undefined;
+          let genRowSelection: string = (await kv.get("gen_row_selection")) || "all";
           let previewRowIdx: number = (await kv.get("preview_row_idx")) || 1;
           let previewResult: RenderedContent | undefined = (await kv.get("preview_result")) || undefined;
           let aiEndpoint: string | undefined = (await kv.get("ai_endpoint")) || "http://172.18.0.1:20128/v1/chat/completions";
@@ -301,6 +326,35 @@ export function createPlugin() {
           }
 
           // -------------------------------------------------------------
+          // 4b. QUICK PREVIEW (from Generate tab)
+          // -------------------------------------------------------------
+          else if (input.type === "form_submit" && input.action_id === "quick_preview") {
+            const values = input.values || {};
+            const rowIdx = Math.max(1, parseInt(String(values.qp_row_idx || "1"), 10)) - 1;
+
+            const templates = await getTemplates();
+            const tplId = selectedTemplateId || templates[0]?.id;
+            const dsId = selectedDatasetId;
+
+            const tpl = templates.find((t) => t.id === tplId);
+            const ds = dsId ? (await storage.datasets.get(dsId)) as DatasetRecord | null : null;
+
+            if (!tpl || !ds) {
+              toast = { type: "error", message: "Select a template and dataset first (Generate form above), then preview." };
+            } else if (!ds.rows[rowIdx]) {
+              toast = { type: "error", message: `Row ${rowIdx + 1} does not exist (dataset has ${ds.rows.length} rows).` };
+            } else {
+              const effective = selectedTarget ? { ...tpl, targetCollection: selectedTarget } : tpl;
+              const aiConfig = { endpoint: aiEndpoint, apiKey: aiApiKey, model: aiModel };
+              previewResult = await renderRowAsync(effective, ds.rows[rowIdx], aiConfig);
+              previewRowIdx = rowIdx + 1;
+              await kv.set("preview_row_idx", previewRowIdx);
+              await kv.set("preview_result", previewResult);
+              toast = { type: "info", message: `Preview rendered for row #${rowIdx + 1}.` };
+            }
+          }
+
+          // -------------------------------------------------------------
           // 5. GENERATE
           // -------------------------------------------------------------
           else if (input.type === "form_submit" && input.action_id === "execute_generation") {
@@ -310,13 +364,16 @@ export function createPlugin() {
             const mode = String(values.gen_mode || "skip_existing") as any;
             const target = String(values.gen_target || "") as "pages" | "posts";
             const scheduleInterval = parseInt(String(values.gen_schedule_interval || "0"), 10);
+            const rowSelRaw = String(values.gen_row_selection || "all").trim();
 
             selectedTemplateId = tplId;
             selectedDatasetId = dsId;
             selectedTarget = target || undefined;
+            genRowSelection = rowSelRaw;
             await kv.set("sel_template_id", selectedTemplateId);
             await kv.set("sel_dataset_id", selectedDatasetId);
             await kv.set("sel_target", selectedTarget || null);
+            await kv.set("gen_row_selection", genRowSelection);
 
             const templates = await getTemplates();
             const tpl = templates.find((t) => t.id === tplId);
@@ -330,17 +387,27 @@ export function createPlugin() {
                 message: "Template has no content — fill Post Body Pattern or Page Blocks in Page Templates first.",
               };
             } else {
-              const effective = target ? { ...tpl, targetCollection: target } : tpl;
-              const aiConfig = { endpoint: aiEndpoint, apiKey: aiApiKey, model: aiModel };
-              const run = await executeRun(effective, ds, content, mode, scheduleInterval, aiConfig);
-              lastRunResult = run;
-              await storage.runs.put(run.id, run);
-              await kv.set("last_run_result", lastRunResult);
-
-              toast = {
-                type: "success",
-                message: `Generation completed! Created: ${run.stats.created}, Updated: ${run.stats.updated}, Skipped: ${run.stats.skipped}`,
+              const selectedIndexes = parseRowSelection(rowSelRaw, ds.rows.length);
+              const filteredDs: DatasetRecord = {
+                ...ds,
+                rows: ds.rows.filter((_, i) => selectedIndexes.has(i)),
               };
+
+              if (filteredDs.rows.length === 0) {
+                toast = { type: "error", message: `Row selection "${rowSelRaw}" matched 0 rows (dataset has ${ds.rows.length} rows).` };
+              } else {
+                const effective = target ? { ...tpl, targetCollection: target } : tpl;
+                const aiConfig = { endpoint: aiEndpoint, apiKey: aiApiKey, model: aiModel };
+                const run = await executeRun(effective, filteredDs, content, mode, scheduleInterval, aiConfig);
+                lastRunResult = run;
+                await storage.runs.put(run.id, run);
+                await kv.set("last_run_result", lastRunResult);
+
+                toast = {
+                  type: "success",
+                  message: `Generation completed! Created: ${run.stats.created}, Updated: ${run.stats.updated}, Skipped: ${run.stats.skipped} (${filteredDs.rows.length}/${ds.rows.length} rows processed)`,
+                };
+              }
             }
           }
 
@@ -408,6 +475,7 @@ export function createPlugin() {
             selectedTemplateId,
             selectedDatasetId,
             selectedTarget,
+            genRowSelection,
             aiEndpoint,
             aiApiKey,
             aiModel,

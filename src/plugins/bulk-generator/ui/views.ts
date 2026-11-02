@@ -13,6 +13,7 @@ export interface ViewState {
   selectedTemplateId?: string;
   selectedDatasetId?: string;
   selectedTarget?: "pages" | "posts";
+  genRowSelection?: string;
   aiEndpoint?: string;
   aiApiKey?: string;
   aiModel?: string;
@@ -252,6 +253,10 @@ export function renderPluginUi(
           ],
           { initialValue: "0" }
         ),
+        elements.textInput("gen_row_selection", "6. Row Selection", {
+          placeholder: "all  /  1-50  /  1,3,5,10  /  51-100",
+          initialValue: state.genRowSelection || "all",
+        }),
       ];
 
       result.push(
@@ -266,6 +271,61 @@ export function renderPluginUi(
           `Edit template content in [Page Templates](${PAGE_TEMPLATES_URL}). Output status follows the template's publish state (published → published, draft → draft).`
         )
       );
+
+      // Quick Preview inline
+      result.push(blocks.divider());
+      result.push(blocks.section("### 🔍 Quick Preview (Row)"));
+      result.push(
+        blocks.form({
+          fields: [
+            elements.textInput("qp_row_idx", "Row Number to Preview (1-based)", {
+              placeholder: "1",
+              initialValue: String(state.previewRowIdx || 1),
+            }),
+          ],
+          submit: { label: "Preview Row", actionId: "quick_preview" },
+        })
+      );
+
+      if (state.previewResult) {
+        const qpTemplateSlug = selectedTemplate?.slug || "template";
+        const qpDatasetId = state.selectedDatasetId || "";
+        const qpRowNum = state.previewRowIdx || 1;
+        const qpLiveUrl = `/templates/${encodeURIComponent(qpTemplateSlug)}?dataset=${encodeURIComponent(qpDatasetId)}&target=${encodeURIComponent(defaultTarget)}&row=${qpRowNum}`;
+
+        result.push(
+          blocks.banner({
+            title: `Preview: ${state.previewResult.title}`,
+            description: `Slug: /${defaultTarget === "posts" ? `posts/${state.previewResult.slug}` : state.previewResult.slug}`,
+            variant: "default",
+          })
+        );
+        result.push(
+          blocks.actions([
+            elements.link(
+              `👁️ Lihat Halaman Lengkap (Row #${qpRowNum})`,
+              { kind: "external", url: qpLiveUrl },
+              { appearance: "primary" }
+            ),
+          ])
+        );
+        result.push(
+          blocks.fields([
+            { label: "Title", value: state.previewResult.title },
+            { label: "Slug", value: state.previewResult.slug },
+            { label: "Excerpt", value: state.previewResult.excerpt || "—" },
+            { label: "SEO Title", value: state.previewResult.seoTitle || "(same as title)" },
+            { label: "SEO Desc", value: state.previewResult.seoDesc || "(same as excerpt)" },
+          ])
+        );
+        result.push(blocks.section("#### Konten Terender"));
+        result.push(
+          blocks.code({
+            code: formatPreviewBlocksAsReadable(state.previewResult.payload, state.previewResult.bodyText),
+            language: "markdown",
+          })
+        );
+      }
 
       if (lastRun) {
         result.push(blocks.divider());

@@ -1,0 +1,188 @@
+---
+import { getEmDashCollection } from "emdash";
+import Base from "../layouts/Base.astro";
+import PostCard from "./PostCard.astro";
+import Breadcrumb from "./Breadcrumb.astro";
+import Pagination from "./Pagination.astro";
+import { getSiteOrigin } from "../utils/origin";
+
+interface Props {
+	slug: string;
+	title: string;
+	description: string;
+}
+
+const { slug, title, description } = Astro.props;
+const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
+const canonicalUrl = `${siteOrigin}/products/${slug}`;
+
+const cursor = Astro.url.searchParams.get("cursor") || undefined;
+let products = [];
+let nextCursor = undefined;
+
+try {
+	const res = await getEmDashCollection("products", {
+		where: { category: slug },
+		orderBy: { created_at: "desc" },
+		limit: 24,
+		cursor,
+	});
+	products = res.entries;
+	nextCursor = res.nextCursor;
+} catch (e) {
+	products = [];
+}
+
+// Fallback jika where category query kosong, tampilkan produk umum
+if (products.length === 0) {
+	try {
+		const resAll = await getEmDashCollection("products", {
+			orderBy: { created_at: "desc" },
+			limit: 18,
+		});
+		products = resAll.entries;
+	} catch (e) {
+		products = [];
+	}
+}
+
+const CATEGORY_TABS = [
+	{ slug: "akuntansi", label: "Akuntansi" },
+	{ slug: "game-pc", label: "Game PC" },
+	{ slug: "monitor", label: "Monitor" },
+	{ slug: "pc-karaoke", label: "PC Karaoke" },
+	{ slug: "percetakan", label: "Percetakan & Desain" },
+	{ slug: "produk", label: "Produk" },
+	{ slug: "rakit-pc", label: "Rakit PC" },
+	{ slug: "software", label: "Software" },
+];
+---
+
+<Base
+	title={`${title} | Kategori Produk Kotacom`}
+	description={description}
+	canonical={canonicalUrl}
+>
+	<header class="band intro">
+		<div class="frame">
+			<Breadcrumb
+				items={[
+					{ label: "Home", href: "/" },
+					{ label: "Products", href: "/products" },
+					{ label: title },
+				]}
+			/>
+			<div style="margin-top: 1rem;">
+				<p class="eyebrow">Kategori Produk</p>
+				<h1 class="intro__title">{title}</h1>
+				<p class="intro__lead">{description}</p>
+			</div>
+
+			<!-- Category Filter Pills -->
+			<div class="category-pills" style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+				<a
+					href="/products"
+					class="chip"
+					style="padding: 6px 14px; border-radius: 9999px; text-decoration: none; font-size: 0.85rem; font-weight: 500; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);"
+				>
+					Semua Produk
+				</a>
+				{
+					CATEGORY_TABS.map((tab) => {
+						const isActive = tab.slug === slug;
+						return (
+							<a
+								href={`/products/${tab.slug}`}
+								class:list={["chip", { "chip--active": isActive }]}
+								style={
+									isActive
+										? "padding: 6px 14px; border-radius: 9999px; text-decoration: none; font-size: 0.85rem; font-weight: 600; background: var(--color-brand); border: 1px solid var(--color-brand); color: #fff;"
+										: "padding: 6px 14px; border-radius: 9999px; text-decoration: none; font-size: 0.85rem; font-weight: 500; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);"
+								}
+							>
+								{tab.label}
+							</a>
+						);
+					})
+				}
+			</div>
+		</div>
+	</header>
+
+	<section class="band section archive-band">
+		<div class="frame">
+			{
+				products.length === 0 ? (
+					<div class="empty-state">
+						<h2 class="empty-state__title">Belum ada produk</h2>
+						<p class="empty-state__text">
+							Produk untuk kategori {title} akan segera hadir.
+						</p>
+						<div class="empty-state__actions">
+							<a href="/products" class="btn btn--ghost">
+								Lihat Katalog Lengkap
+							</a>
+						</div>
+					</div>
+				) : (
+					<>
+						<div class="post-grid">
+							{products.map((product) => (
+								<PostCard
+									post={product as any}
+									collection="products"
+									variant="card"
+									headingLevel={2}
+								/>
+							))}
+						</div>
+						<Pagination
+							basePath={`/products/${slug}`}
+							cursor={cursor}
+							nextCursor={nextCursor}
+						/>
+					</>
+				)
+			}
+		</div>
+	</section>
+</Base>
+
+<style>
+	.archive-band {
+		padding-block-start: 1rem;
+	}
+
+	.post-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+		gap: 2rem;
+	}
+
+	.empty-state {
+		text-align: center;
+		padding: 4rem 1rem;
+		background: var(--color-surface);
+		border: 1px dashed var(--color-border);
+		border-radius: var(--radius);
+	}
+
+	.empty-state__title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--color-text);
+		margin-bottom: 0.5rem;
+	}
+
+	.empty-state__text {
+		color: var(--color-muted);
+		max-width: 480px;
+		margin: 0 auto 1.5rem;
+		font-size: 0.95rem;
+	}
+
+	.empty-state__actions {
+		display: flex;
+		justify-content: center;
+	}
+</style>
