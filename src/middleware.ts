@@ -18,7 +18,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
 	const response = await next();
 	const pathname = context.url.pathname;
 
-	// Intercept sitemap XML endpoints to ensure 100% W3C/ISO 8601 compliant <lastmod>
+	// Long cache for hashed/static assets
+	if (/\.(css|js|woff2?|png|jpg|jpeg|webp|avif|svg|ico|gif)$/i.test(pathname) &&
+	    (pathname.startsWith("/_astro/") || pathname.startsWith("/brand/") || pathname.startsWith("/og/") || pathname.startsWith("/fonts/"))) {
+		const h = new Headers(response.headers);
+		h.set("Cache-Control", "public, max-age=31536000, immutable");
+		return new Response(response.body, { status: response.status, statusText: response.statusText, headers: h });
+	}
 	if (pathname.endsWith(".xml") || pathname.includes("sitemap")) {
 		const contentType = response.headers.get("content-type") || "";
 		if (contentType.includes("xml")) {

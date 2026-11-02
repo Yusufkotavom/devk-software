@@ -45,7 +45,7 @@ const gaMeasurementId = seoRow?.ga_measurement_id?.trim();
 		<>
 			<script
 				is:inline
-				async
+				defer
 				src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
 			/>
 			<script is:inline define:vars={{ gaMeasurementId }}>
