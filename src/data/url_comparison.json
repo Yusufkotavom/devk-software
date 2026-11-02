@@ -835,9 +835,9 @@
     "path": "/jasa-cetak-buku-aceh-tengah",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-aceh-tengah",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-aceh-tengah",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/aceh"
   },
   {
     "path": "/jasa-cetak-buku-aceh-tenggara",
@@ -867,9 +867,9 @@
     "path": "/jasa-cetak-buku-agam",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-agam",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-agam",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
   },
   {
     "path": "/jasa-cetak-buku-alor",
@@ -891,9 +891,9 @@
     "path": "/jasa-cetak-buku-asahan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-asahan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-asahan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-utara"
   },
   {
     "path": "/jasa-cetak-buku-asmat",
@@ -915,9 +915,9 @@
     "path": "/jasa-cetak-buku-balangan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-balangan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-balangan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
   },
   {
     "path": "/jasa-cetak-buku-balikpapan",
@@ -963,17 +963,17 @@
     "path": "/jasa-cetak-buku-banggai-laut",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-banggai-laut",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-banggai-laut",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-tengah"
   },
   {
     "path": "/jasa-cetak-buku-bangka",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-bangka",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bangka",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kepulauan-bangka-belitung"
   },
   {
     "path": "/jasa-cetak-buku-bangka-barat",
@@ -1091,9 +1091,9 @@
     "path": "/jasa-cetak-buku-batam",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-batam",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-batam",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kepulauan-riau"
   },
   {
     "path": "/jasa-cetak-buku-batanghari",
@@ -1267,17 +1267,17 @@
     "path": "/jasa-cetak-buku-bolaang-mongondow",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-bolaang-mongondow",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bolaang-mongondow",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
   },
   {
     "path": "/jasa-cetak-buku-bolaang-mongondow-selatan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-bolaang-mongondow-selatan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bolaang-mongondow-selatan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
   },
   {
     "path": "/jasa-cetak-buku-bolaang-mongondow-timur",
@@ -1291,9 +1291,9 @@
     "path": "/jasa-cetak-buku-bolaang-mongondow-utara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-bolaang-mongondow-utara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bolaang-mongondow-utara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
   },
   {
     "path": "/jasa-cetak-buku-bombana",
@@ -1323,9 +1323,9 @@
     "path": "/jasa-cetak-buku-bontang",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-bontang",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bontang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-timur"
   },
   {
     "path": "/jasa-cetak-buku-boven-digoel",
@@ -1387,9 +1387,9 @@
     "path": "/jasa-cetak-buku-buru",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-buru",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-buru",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
   },
   {
     "path": "/jasa-cetak-buku-buru-selatan",
@@ -1403,9 +1403,9 @@
     "path": "/jasa-cetak-buku-buton",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-buton",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-buton",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-tenggara"
   },
   {
     "path": "/jasa-cetak-buku-buton-selatan",
@@ -1491,9 +1491,9 @@
     "path": "/jasa-cetak-buku-dompu",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-dompu",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-dompu",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-barat"
   },
   {
     "path": "/jasa-cetak-buku-donggala",
@@ -1507,9 +1507,9 @@
     "path": "/jasa-cetak-buku-dumai",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-dumai",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-dumai",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/riau"
   },
   {
     "path": "/jasa-cetak-buku-edisi-terbatas-untuk-komunitas-merchandise",
@@ -1523,9 +1523,9 @@
     "path": "/jasa-cetak-buku-empat-lawang",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-empat-lawang",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-empat-lawang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-selatan"
   },
   {
     "path": "/jasa-cetak-buku-ende",
@@ -1619,9 +1619,9 @@
     "path": "/jasa-cetak-buku-halmahera-barat",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-halmahera-barat",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-halmahera-barat",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
   },
   {
     "path": "/jasa-cetak-buku-halmahera-selatan",
@@ -1651,17 +1651,17 @@
     "path": "/jasa-cetak-buku-halmahera-utara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-halmahera-utara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-halmahera-utara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
   },
   {
     "path": "/jasa-cetak-buku-hulu-sungai-selatan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-hulu-sungai-selatan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-hulu-sungai-selatan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
   },
   {
     "path": "/jasa-cetak-buku-hulu-sungai-tengah",
@@ -1715,9 +1715,9 @@
     "path": "/jasa-cetak-buku-jambi",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-jambi",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-jambi",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/jambi"
   },
   {
     "path": "/jasa-cetak-buku-jayapura",
@@ -1739,9 +1739,9 @@
     "path": "/jasa-cetak-buku-jembrana",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-jembrana",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-jembrana",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/bali"
   },
   {
     "path": "/jasa-cetak-buku-jeneponto",
@@ -1819,17 +1819,17 @@
     "path": "/jasa-cetak-buku-kaur",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-kaur",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kaur",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/bengkulu"
   },
   {
     "path": "/jasa-cetak-buku-kayong-utara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-kayong-utara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kayong-utara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-barat"
   },
   {
     "path": "/jasa-cetak-buku-keerom",
@@ -1867,9 +1867,9 @@
     "path": "/jasa-cetak-buku-kepulauan-aru",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-kepulauan-aru",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kepulauan-aru",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
   },
   {
     "path": "/jasa-cetak-buku-kepulauan-mentawai",
@@ -1963,9 +1963,9 @@
     "path": "/jasa-cetak-buku-klungkung",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-klungkung",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-klungkung",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/bali"
   },
   {
     "path": "/jasa-cetak-buku-kolaka",
@@ -2091,9 +2091,9 @@
     "path": "/jasa-cetak-buku-kutai-kartanegara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-kutai-kartanegara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kutai-kartanegara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-timur"
   },
   {
     "path": "/jasa-cetak-buku-kutai-timur",
@@ -2179,9 +2179,9 @@
     "path": "/jasa-cetak-buku-lampung-utara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-lampung-utara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-lampung-utara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/lampung"
   },
   {
     "path": "/jasa-cetak-buku-landak",
@@ -2235,9 +2235,9 @@
     "path": "/jasa-cetak-buku-lhokseumawe",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-lhokseumawe",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-lhokseumawe",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/aceh"
   },
   {
     "path": "/jasa-cetak-buku-lima-puluh-kota",
@@ -2339,9 +2339,9 @@
     "path": "/jasa-cetak-buku-makassar",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-makassar",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-makassar",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-selatan"
   },
   {
     "path": "/jasa-cetak-buku-malaka",
@@ -2371,17 +2371,17 @@
     "path": "/jasa-cetak-buku-maluku-tengah",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-maluku-tengah",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-maluku-tengah",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
   },
   {
     "path": "/jasa-cetak-buku-maluku-tenggara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-maluku-tenggara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-maluku-tenggara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
   },
   {
     "path": "/jasa-cetak-buku-mamasa",
@@ -2435,9 +2435,9 @@
     "path": "/jasa-cetak-buku-mandailing-natal",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-mandailing-natal",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-mandailing-natal",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-utara"
   },
   {
     "path": "/jasa-cetak-buku-manggarai",
@@ -2595,9 +2595,9 @@
     "path": "/jasa-cetak-buku-minahasa-tenggara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-minahasa-tenggara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-minahasa-tenggara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
   },
   {
     "path": "/jasa-cetak-buku-minahasa-utara",
@@ -2651,9 +2651,9 @@
     "path": "/jasa-cetak-buku-mukomuko",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-mukomuko",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-mukomuko",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/bengkulu"
   },
   {
     "path": "/jasa-cetak-buku-muna",
@@ -2675,9 +2675,9 @@
     "path": "/jasa-cetak-buku-murung-raya",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-murung-raya",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-murung-raya",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-tengah"
   },
   {
     "path": "/jasa-cetak-buku-musi-banyuasin",
@@ -2715,9 +2715,9 @@
     "path": "/jasa-cetak-buku-nagan-raya",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-nagan-raya",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-nagan-raya",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/aceh"
   },
   {
     "path": "/jasa-cetak-buku-nagekeo",
@@ -2931,9 +2931,9 @@
     "path": "/jasa-cetak-buku-palopo",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-palopo",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-palopo",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-selatan"
   },
   {
     "path": "/jasa-cetak-buku-palu",
@@ -2979,9 +2979,9 @@
     "path": "/jasa-cetak-buku-pariaman",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-pariaman",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pariaman",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
   },
   {
     "path": "/jasa-cetak-buku-parigi-moutong",
@@ -3027,9 +3027,9 @@
     "path": "/jasa-cetak-buku-payakumbuh",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-payakumbuh",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-payakumbuh",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
   },
   {
     "path": "/jasa-cetak-buku-pegunungan-arfak",
@@ -3067,9 +3067,9 @@
     "path": "/jasa-cetak-buku-pematangsiantar",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-pematangsiantar",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pematangsiantar",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-penajam-paser-utara",
@@ -3091,9 +3091,9 @@
     "path": "/jasa-cetak-buku-pesawaran",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-pesawaran",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pesawaran",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/lampung"
   },
   {
     "path": "/jasa-cetak-buku-pesisir-barat",
@@ -3187,9 +3187,9 @@
     "path": "/jasa-cetak-buku-pulang-pisau",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-pulang-pisau",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pulang-pisau",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-tengah"
   },
   {
     "path": "/jasa-cetak-buku-pulau-morotai",
@@ -3203,17 +3203,17 @@
     "path": "/jasa-cetak-buku-pulau-taliabu",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-pulau-taliabu",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pulau-taliabu",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
   },
   {
     "path": "/jasa-cetak-buku-puncak",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-puncak",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-puncak",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/papua"
   },
   {
     "path": "/jasa-cetak-buku-puncak-jaya",
@@ -3275,9 +3275,9 @@
     "path": "/jasa-cetak-buku-sabu-raijua",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-sabu-raijua",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-sabu-raijua",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-timur"
   },
   {
     "path": "/jasa-cetak-buku-samarinda",
@@ -3507,9 +3507,9 @@
     "path": "/jasa-cetak-buku-solok-selatan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-solok-selatan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-solok-selatan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
   },
   {
     "path": "/jasa-cetak-buku-soppeng",
@@ -3571,17 +3571,17 @@
     "path": "/jasa-cetak-buku-sumba-tengah",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-sumba-tengah",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-sumba-tengah",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-timur"
   },
   {
     "path": "/jasa-cetak-buku-sumba-timur",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-sumba-timur",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-sumba-timur",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-timur"
   },
   {
     "path": "/jasa-cetak-buku-sumbawa",
@@ -3635,9 +3635,9 @@
     "path": "/jasa-cetak-buku-tabanan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-tabanan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tabanan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/bali"
   },
   {
     "path": "/jasa-cetak-buku-takalar",
@@ -3675,9 +3675,9 @@
     "path": "/jasa-cetak-buku-tanah-bumbu",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-tanah-bumbu",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tanah-bumbu",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
   },
   {
     "path": "/jasa-cetak-buku-tanah-datar",
@@ -3691,9 +3691,9 @@
     "path": "/jasa-cetak-buku-tanah-laut",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-tanah-laut",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tanah-laut",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
   },
   {
     "path": "/jasa-cetak-buku-tanggamus",
@@ -3739,9 +3739,9 @@
     "path": "/jasa-cetak-buku-tapanuli-selatan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-tapanuli-selatan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tapanuli-selatan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-utara"
   },
   {
     "path": "/jasa-cetak-buku-tapanuli-tengah",
@@ -3819,9 +3819,9 @@
     "path": "/jasa-cetak-buku-tidore-kepulauan",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-tidore-kepulauan",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tidore-kepulauan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
   },
   {
     "path": "/jasa-cetak-buku-timor-tengah-selatan",
@@ -3859,9 +3859,9 @@
     "path": "/jasa-cetak-buku-tolikara",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-tolikara",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tolikara",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/papua"
   },
   {
     "path": "/jasa-cetak-buku-tolitoli",
@@ -3891,9 +3891,9 @@
     "path": "/jasa-cetak-buku-tual",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-tual",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tual",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
   },
   {
     "path": "/jasa-cetak-buku-tulang-bawang",
@@ -3923,17 +3923,17 @@
     "path": "/jasa-cetak-buku-wakatobi",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-wakatobi",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-wakatobi",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-tenggara"
   },
   {
     "path": "/jasa-cetak-buku-waropen",
     "kotacom_url": "https://www.kotacom.id/jasa-cetak-buku-waropen",
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-waropen",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke /percetakan/cetak-buku/papua"
   },
   {
     "path": "/jasa-cetak-buku-way-kanan",

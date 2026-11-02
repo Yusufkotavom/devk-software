@@ -1,4 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
+import prunedCityRedirects from "./data/pruned_city_redirects.json";
 
 function cleanLastmod(raw: string): string {
 	const trimmed = raw.trim();
@@ -20,6 +21,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
 	// 301 Permanent Redirect semua subhalaman kota kalender ke pilar utama
 	if (pathname.startsWith("/percetakan/cetak-kalender/") && pathname !== "/percetakan/cetak-kalender") {
 		return context.redirect("/percetakan/cetak-kalender", 301);
+	}
+
+	// 301 Permanent Redirect kabupaten cetak buku 0 impresi ke Hub Provinsi masing-masing
+	const cityRedirectTarget = (prunedCityRedirects as Record<string, string>)[pathname];
+	if (cityRedirectTarget) {
+		return context.redirect(cityRedirectTarget, 301);
 	}
 
 	const response = await next();
