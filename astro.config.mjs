@@ -39,6 +39,9 @@ const database = getDatabaseAdapter();
 export default defineConfig({
 	site: process.env.EMDASH_SITE_URL || process.env.SITE_URL || "https://kotacom.id",
 	output: "server",
+	build: {
+		inlineStylesheets: "always",
+	},
 	i18n: {
 		defaultLocale: "id",
 		locales: ["id"],
