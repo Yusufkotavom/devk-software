@@ -20,7 +20,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
 	// Long cache for hashed/static assets
 	if (/\.(css|js|woff2?|png|jpg|jpeg|webp|avif|svg|ico|gif)$/i.test(pathname) &&
-	    (pathname.startsWith("/_astro/") || pathname.startsWith("/brand/") || pathname.startsWith("/og/") || pathname.startsWith("/fonts/"))) {
+	    (pathname.startsWith("/_astro/") || pathname.startsWith("/brand/") || pathname.startsWith("/fonts/"))) {
 		const h = new Headers(response.headers);
 		h.set("Cache-Control", "public, max-age=31536000, immutable");
 		return new Response(response.body, { status: response.status, statusText: response.statusText, headers: h });

@@ -15,6 +15,7 @@
 import type { APIRoute } from "astro";
 import { getEmDashEntry, getSiteSettings, decodeSlug } from "emdash";
 import { buildOgCard, renderOgPng, toGrayscaleDataUri, type OgCardData } from "../../../lib/og/og-card";
+import sharp from "sharp";
 import { resolveBlogSiteIdentity } from "../../../utils/site-identity";
 
 export const prerender = false;
@@ -152,7 +153,7 @@ function featuredImageUrl(img: unknown, origin: string): string | undefined {
 	return undefined;
 }
 
-function pngResponse(png: Buffer, etagSeed: string): Response {
+function pngResponse(png: Buffer, etagSeed: string, contentType = "image/png"): Response {
 	// Cheap, stable ETag: FNV-1a over the render inputs.
 	let h = 0x811c9dc5;
 	for (let i = 0; i < etagSeed.length; i++) {
@@ -163,7 +164,7 @@ function pngResponse(png: Buffer, etagSeed: string): Response {
 	return new Response(new Uint8Array(png), {
 		status: 200,
 		headers: {
-			"Content-Type": "image/png",
+			"Content-Type": contentType,
 			"Cache-Control": "public, max-age=3600, s-maxage=604800, stale-while-revalidate=86400",
 			ETag: etag,
 		},
@@ -180,7 +181,12 @@ async function renderSiteCard(origin: string): Promise<Response> {
 		excerpt: siteTagline,
 		domain: new URL(origin).host,
 	});
-	return pngResponse(await renderOgPng(node), "site");
+	let sitePng = await renderOgPng(node);
+	if (targetW !== 1200) {
+		const targetH = Math.round((targetW * 630) / 1200);
+		sitePng = await sharp(sitePng).resize(targetW, targetH).webp({ quality: 80 }).toBuffer();
+	}
+	return pngResponse(sitePng, "site", targetW !== 1200 ? "image/webp" : "image/png");
 }
 
 export const GET: APIRoute = async ({ params, request, url }) => {
@@ -191,6 +197,8 @@ export const GET: APIRoute = async ({ params, request, url }) => {
 	}
 
 	const origin = canonicalOrigin(url);
+	const wParam = Number(url.searchParams.get("w") ?? 1200);
+	const targetW = Number.isFinite(wParam) ? Math.min(1200, Math.max(320, Math.round(wParam))) : 1200;
 
 	let entry: Awaited<ReturnType<typeof getEmDashEntry>> | null = null;
 	try {
@@ -238,9 +246,13 @@ export const GET: APIRoute = async ({ params, request, url }) => {
 		imageDataUri,
 	};
 
-	const png = await renderOgPng(buildOgCard(card));
+	let png = await renderOgPng(buildOgCard(card));
+	if (targetW !== 1200) {
+		const targetH = Math.round((targetW * 630) / 1200);
+		png = await sharp(png).resize(targetW, targetH).webp({ quality: 80 }).toBuffer();
+	}
 	const seed = `${collection}|${slug}|${siteTitle}|${rawTitle}|${excerpt ?? ""}|${meta ?? ""}|${imgUrl ?? ""}`;
-	const res = pngResponse(png, seed);
+	const res = pngResponse(png, seed, targetW !== 1200 ? "image/webp" : "image/png");
 
 	// Conditional GET: scrapers and browsers can revalidate cheaply.
 	const inm = request.headers.get("if-none-match");
