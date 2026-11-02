@@ -15,8 +15,14 @@ function cleanLastmod(raw: string): string {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
-	const response = await next();
 	const pathname = context.url.pathname;
+
+	// 301 Permanent Redirect semua subhalaman kota kalender ke pilar utama
+	if (pathname.startsWith("/percetakan/cetak-kalender/") && pathname !== "/percetakan/cetak-kalender") {
+		return context.redirect("/percetakan/cetak-kalender", 301);
+	}
+
+	const response = await next();
 
 	// Long cache for hashed/static assets
 	if (/\.(css|js|woff2?|png|jpg|jpeg|webp|avif|svg|ico|gif)$/i.test(pathname) &&

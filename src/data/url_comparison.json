@@ -5403,273 +5403,273 @@
     "path": "/percetakan/cetak-kalender/ambon",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/ambon",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/ambon",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/balikpapan",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/balikpapan",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/balikpapan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/banda-aceh",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/banda-aceh",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/banda-aceh",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/bandar-lampung",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/bandar-lampung",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/bandar-lampung",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/bandung",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/bandung",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/bandung",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/banjarmasin",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/banjarmasin",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/banjarmasin",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/bengkulu",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/bengkulu",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/bengkulu",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/denpasar",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/denpasar",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/denpasar",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/gorontalo",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/gorontalo",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/gorontalo",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/jakarta",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/jakarta",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/jakarta",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/jambi",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/jambi",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/jambi",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/jayapura",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/jayapura",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/jayapura",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/kendari",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/kendari",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/kendari",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/kupang",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/kupang",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/kupang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/makassar",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/makassar",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/makassar",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/manado",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/manado",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/manado",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/manokwari",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/manokwari",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/manokwari",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/mataram",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/mataram",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/mataram",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/medan",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/medan",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/medan",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/padang",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/padang",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/padang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/palangkaraya",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/palangkaraya",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/palangkaraya",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/palembang",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/palembang",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/palembang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/palu",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/palu",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/palu",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/pangkal-pinang",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/pangkal-pinang",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/pangkal-pinang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/pekanbaru",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/pekanbaru",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/pekanbaru",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/pontianak",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/pontianak",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/pontianak",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/samarinda",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/samarinda",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/samarinda",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/semarang",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/semarang",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/semarang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/serang",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/serang",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/serang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/surabaya",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/surabaya",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/surabaya",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/tanjung-pinang",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/tanjung-pinang",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/tanjung-pinang",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/tanjung-selor",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/tanjung-selor",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/tanjung-selor",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/ternate",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/ternate",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/ternate",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kalender/yogyakarta",
     "kotacom_url": "https://www.kotacom.id/percetakan/cetak-kalender/yogyakarta",
     "staging_url": "https://staging.devk.my.id/percetakan/cetak-kalender/yogyakarta",
-    "status": "200",
-    "category": "matched",
-    "note": "Tersedia di kedua platform"
+    "status": "301",
+    "category": "redirected",
+    "note": "Redirect 301 ke pilar utama /percetakan/cetak-kalender"
   },
   {
     "path": "/percetakan/cetak-kaos",
