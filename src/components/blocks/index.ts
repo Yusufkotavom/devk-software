@@ -9,3 +9,4 @@ export { default as Stats } from "./Stats.astro";
 export { default as CTA } from "./CTA.astro";
 export { default as Contact } from "./Contact.astro";
 export { default as Text } from "./Text.astro";
+export { default as Section } from "./Section.astro";

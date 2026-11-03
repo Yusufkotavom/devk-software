@@ -1,0 +1,77 @@
+---
+import { getSection } from "emdash";
+import { PortableText } from "emdash/ui";
+import { blockComponents } from "../../plugins/marketing-blocks/astro";
+import "../../styles/prose.css";
+
+const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
+const { anchor_id, section_slug, slug, id, section_id, headline } = raw;
+
+const targetSlug = String(section_slug || slug || id || section_id || "").trim();
+
+let section: any = null;
+if (targetSlug) {
+	try {
+		section = await getSection(targetSlug);
+	} catch (err) {
+		console.warn(`[SectionBlock] Failed to load section '${targetSlug}':`, err);
+	}
+}
+
+const content = section?.content ?? [];
+const isMarketingBlockArray =
+	Array.isArray(content) &&
+	content.length > 0 &&
+	content.some(
+		(item: any) =>
+			item &&
+			typeof item === "object" &&
+			"_type" in item &&
+			item._type !== "block",
+	);
+---
+
+{
+	section ? (
+		<div id={anchor_id || undefined} class="reusable-section-container" data-section={section.slug}>
+			{headline && (
+				<div class="band section-header-band">
+					<div class="frame">
+						<h2 class="section-headline">{headline}</h2>
+					</div>
+				</div>
+			)}
+			{isMarketingBlockArray ? (
+				<PortableText value={content} components={{ type: blockComponents }} />
+			) : (
+				<section class="band section reusable-section-body">
+					<div class="frame">
+						<div class="prose mx-auto">
+							<PortableText value={content} components={{ type: blockComponents }} />
+						</div>
+					</div>
+				</section>
+			)}
+		</div>
+	) : (
+		targetSlug ? (
+			<div class="band section empty-section-placeholder" style="padding: 2rem 1rem; text-align: center; border: 1px dashed var(--color-border); border-radius: var(--radius); margin-block: 1rem;">
+				<p style="color: var(--color-muted); font-size: 0.9rem;">
+					Section <code>{targetSlug}</code> tidak ditemukan di pustaka Section.
+				</p>
+			</div>
+		) : null
+	)
+}
+
+<style>
+	.reusable-section-container {
+		width: 100%;
+	}
+	.reusable-section-body {
+		padding-block: clamp(2rem, 1.5rem + 2vw, 4rem);
+	}
+	.section-header-band {
+		padding-block-end: 0;
+	}
+</style>

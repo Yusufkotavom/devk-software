@@ -761,6 +761,29 @@ const definition: PluginDefinition = {
 					{ type: "text_input", action_id: "anchor_id", label: "Section ID (optional)" },
 				],
 			},
+			{
+				type: "marketing.section",
+				label: "Section (Reusable Library)",
+				description: "Embed an existing reusable section by slug or ID",
+				fields: [
+					{
+						type: "text_input",
+						action_id: "section_slug",
+						label: "Section Slug",
+						placeholder: "e.g. newsletter-signup, about-author",
+					},
+					{
+						type: "text_input",
+						action_id: "headline",
+						label: "Optional Override Headline",
+					},
+					{
+						type: "text_input",
+						action_id: "anchor_id",
+						label: "Section Anchor ID (optional)",
+					},
+				],
+			},
 		],
 	},
 };

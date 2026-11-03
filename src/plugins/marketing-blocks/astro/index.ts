@@ -20,8 +20,12 @@ import WhatsAppCTA from "../../../components/blocks/WhatsAppCTA.astro";
 import BentoGrid from "../../../components/blocks/BentoGrid.astro";
 import ComparisonTable from "../../../components/blocks/ComparisonTable.astro";
 import MarqueeLogos from "../../../components/blocks/MarqueeLogos.astro";
+import Section from "../../../components/blocks/Section.astro";
 
 export const blockComponents = {
+	"marketing.section": Section,
+	"marketing_section": Section,
+	"section": Section,
 	"marketing.hero": Hero,
 	"marketing_hero": Hero,
 	"marketing.capabilities": BentoGrid,
