@@ -837,7 +837,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-aceh-tengah",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/aceh"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-aceh-tenggara",
@@ -869,7 +869,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-agam",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-alor",
@@ -893,7 +893,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-asahan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-asmat",
@@ -917,7 +917,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-balangan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-balikpapan",
@@ -965,7 +965,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-banggai-laut",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-tengah"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-bangka",
@@ -973,7 +973,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bangka",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kepulauan-bangka-belitung"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-bangka-barat",
@@ -1093,7 +1093,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-batam",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kepulauan-riau"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-batanghari",
@@ -1269,7 +1269,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bolaang-mongondow",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-bolaang-mongondow-selatan",
@@ -1277,7 +1277,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bolaang-mongondow-selatan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-bolaang-mongondow-timur",
@@ -1293,7 +1293,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bolaang-mongondow-utara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-bombana",
@@ -1325,7 +1325,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-bontang",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-timur"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-boven-digoel",
@@ -1389,7 +1389,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-buru",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-buru-selatan",
@@ -1405,7 +1405,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-buton",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-tenggara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-buton-selatan",
@@ -1493,7 +1493,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-dompu",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-barat"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-donggala",
@@ -1509,7 +1509,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-dumai",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/riau"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-edisi-terbatas-untuk-komunitas-merchandise",
@@ -1525,7 +1525,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-empat-lawang",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-selatan"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-ende",
@@ -1621,7 +1621,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-halmahera-barat",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-halmahera-selatan",
@@ -1653,7 +1653,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-halmahera-utara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-hulu-sungai-selatan",
@@ -1661,7 +1661,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-hulu-sungai-selatan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-hulu-sungai-tengah",
@@ -1717,7 +1717,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-jambi",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/jambi"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-jayapura",
@@ -1741,7 +1741,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-jembrana",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/bali"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-jeneponto",
@@ -1821,7 +1821,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kaur",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/bengkulu"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-kayong-utara",
@@ -1829,7 +1829,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kayong-utara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-barat"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-keerom",
@@ -1869,7 +1869,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kepulauan-aru",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-kepulauan-mentawai",
@@ -1965,7 +1965,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-klungkung",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/bali"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-kolaka",
@@ -2093,7 +2093,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-kutai-kartanegara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-timur"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-kutai-timur",
@@ -2181,7 +2181,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-lampung-utara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/lampung"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-landak",
@@ -2237,7 +2237,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-lhokseumawe",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/aceh"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-lima-puluh-kota",
@@ -2341,7 +2341,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-makassar",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-selatan"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-malaka",
@@ -2373,7 +2373,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-maluku-tengah",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-maluku-tenggara",
@@ -2381,7 +2381,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-maluku-tenggara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-mamasa",
@@ -2437,7 +2437,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-mandailing-natal",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-manggarai",
@@ -2597,7 +2597,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-minahasa-tenggara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-minahasa-utara",
@@ -2653,7 +2653,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-mukomuko",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/bengkulu"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-muna",
@@ -2677,7 +2677,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-murung-raya",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-tengah"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-musi-banyuasin",
@@ -2717,7 +2717,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-nagan-raya",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/aceh"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-nagekeo",
@@ -2933,7 +2933,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-palopo",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-selatan"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-palu",
@@ -2981,7 +2981,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pariaman",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-parigi-moutong",
@@ -3029,7 +3029,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-payakumbuh",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-pegunungan-arfak",
@@ -3093,7 +3093,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pesawaran",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/lampung"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-pesisir-barat",
@@ -3189,7 +3189,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pulang-pisau",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-tengah"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-pulau-morotai",
@@ -3205,7 +3205,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-pulau-taliabu",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-puncak",
@@ -3213,7 +3213,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-puncak",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/papua"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-puncak-jaya",
@@ -3277,7 +3277,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-sabu-raijua",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-timur"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-samarinda",
@@ -3509,7 +3509,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-solok-selatan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-barat"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-soppeng",
@@ -3573,7 +3573,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-sumba-tengah",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-timur"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-sumba-timur",
@@ -3581,7 +3581,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-sumba-timur",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/nusa-tenggara-timur"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-sumbawa",
@@ -3637,7 +3637,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tabanan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/bali"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-takalar",
@@ -3677,7 +3677,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tanah-bumbu",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-tanah-datar",
@@ -3693,7 +3693,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tanah-laut",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/kalimantan-selatan"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-tanggamus",
@@ -3741,7 +3741,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tapanuli-selatan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sumatera-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-tapanuli-tengah",
@@ -3821,7 +3821,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tidore-kepulauan",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku-utara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-timor-tengah-selatan",
@@ -3861,7 +3861,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tolikara",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/papua"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-tolitoli",
@@ -3893,7 +3893,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-tual",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/maluku"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-tulang-bawang",
@@ -3925,7 +3925,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-wakatobi",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/sulawesi-tenggara"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-waropen",
@@ -3933,7 +3933,7 @@
     "staging_url": "https://staging.devk.my.id/jasa-cetak-buku-waropen",
     "status": "301",
     "category": "redirected",
-    "note": "Redirect 301 ke /percetakan/cetak-buku/papua"
+    "note": "Redirect 301 ke /percetakan/cetak-buku"
   },
   {
     "path": "/jasa-cetak-buku-way-kanan",

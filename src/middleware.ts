@@ -23,7 +23,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		return context.redirect("/percetakan/cetak-kalender", 301);
 	}
 
-	// 301 Permanent Redirect kabupaten cetak buku 0 impresi ke Hub Provinsi masing-masing
+	// 301 Permanent Redirect semua subhalaman provinsi cetak buku ke pilar utama
+	if (pathname.startsWith("/percetakan/cetak-buku/") && pathname !== "/percetakan/cetak-buku") {
+		return context.redirect("/percetakan/cetak-buku", 301);
+	}
+
+	// 301 Permanent Redirect kabupaten cetak buku 0 impresi ke Pilar Utama /percetakan/cetak-buku
 	const cityRedirectTarget = (prunedCityRedirects as Record<string, string>)[pathname];
 	if (cityRedirectTarget) {
 		return context.redirect(cityRedirectTarget, 301);
