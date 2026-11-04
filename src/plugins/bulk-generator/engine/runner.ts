@@ -247,6 +247,14 @@ export async function renderRowAsync(
         },
       ];
     } else {
+      for (const b of blocksContent) {
+        if (b && typeof b === "object" && (b as any)._type === "marketing_richtext") {
+          const rawB = (b as any).body;
+          if (typeof rawB === "string") {
+            (b as any).body = markdownToPortableText(rawB);
+          }
+        }
+      }
       bodyText = JSON.stringify(blocksContent, null, 2);
     }
 
@@ -354,6 +362,14 @@ export function renderRow(template: TemplateRecord, row: Record<string, string>)
         },
       ];
     } else {
+      for (const b of blocksContent) {
+        if (b && typeof b === "object" && (b as any)._type === "marketing_richtext") {
+          const rawB = (b as any).body;
+          if (typeof rawB === "string") {
+            (b as any).body = markdownToPortableText(rawB);
+          }
+        }
+      }
       bodyText = JSON.stringify(blocksContent, null, 2);
     }
 
