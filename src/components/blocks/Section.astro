@@ -1,5 +1,5 @@
 ---
-import { getSection } from "emdash";
+import { getSection, getEmDashEntry } from "emdash";
 import { PortableText } from "emdash/ui";
 import { blockComponents } from "../../plugins/marketing-blocks/astro";
 import "../../styles/prose.css";
@@ -9,31 +9,57 @@ const { anchor_id, section_slug, slug, id, section_id, headline } = raw;
 
 const targetSlug = String(section_slug || slug || id || section_id || "").trim();
 
-let section: any = null;
+let blocksToRender: any[] = [];
+let proseContent: any = null;
+
 if (targetSlug) {
+	// 1. Coba cari di koleksi Reusable Sections (Block Builder penuh)
 	try {
-		section = await getSection(targetSlug);
-	} catch (err) {
-		console.warn(`[SectionBlock] Failed to load section '${targetSlug}':`, err);
+		const entryRes = await getEmDashEntry("reusable_sections", targetSlug);
+		if (entryRes?.entry) {
+			const entryData = entryRes.entry.data as any;
+			if (Array.isArray(entryData.blocks) && entryData.blocks.length > 0) {
+				blocksToRender = entryData.blocks;
+			}
+		}
+	} catch (e) {
+		// ignore
+	}
+
+	// 2. Fallback ke legacy _emdash_sections jika belum ketemu
+	if (blocksToRender.length === 0) {
+		try {
+			const section = await getSection(targetSlug);
+			if (section) {
+				const content = section.content ?? [];
+				const isMarketingArray =
+					Array.isArray(content) &&
+					content.length > 0 &&
+					content.some(
+						(item: any) =>
+							item &&
+							typeof item === "object" &&
+							"_type" in item &&
+							item._type !== "block",
+					);
+				if (isMarketingArray) {
+					blocksToRender = content;
+				} else {
+					proseContent = content;
+				}
+			}
+		} catch (e) {
+			// ignore
+		}
 	}
 }
 
-const content = section?.content ?? [];
-const isMarketingBlockArray =
-	Array.isArray(content) &&
-	content.length > 0 &&
-	content.some(
-		(item: any) =>
-			item &&
-			typeof item === "object" &&
-			"_type" in item &&
-			item._type !== "block",
-	);
+const hasContent = blocksToRender.length > 0 || (Array.isArray(proseContent) ? proseContent.length > 0 : !!proseContent);
 ---
 
 {
-	section ? (
-		<div id={anchor_id || undefined} class="reusable-section-container" data-section={section.slug}>
+	hasContent ? (
+		<div id={anchor_id || undefined} class="reusable-section-container" data-section={targetSlug}>
 			{headline && (
 				<div class="band section-header-band">
 					<div class="frame">
@@ -41,13 +67,13 @@ const isMarketingBlockArray =
 					</div>
 				</div>
 			)}
-			{isMarketingBlockArray ? (
-				<PortableText value={content} components={{ type: blockComponents }} />
+			{blocksToRender.length > 0 ? (
+				<PortableText value={blocksToRender} components={{ type: blockComponents }} />
 			) : (
 				<section class="band section reusable-section-body">
 					<div class="frame">
 						<div class="prose mx-auto">
-							<PortableText value={content} components={{ type: blockComponents }} />
+							<PortableText value={proseContent} components={{ type: blockComponents }} />
 						</div>
 					</div>
 				</section>
@@ -57,7 +83,7 @@ const isMarketingBlockArray =
 		targetSlug ? (
 			<div class="band section empty-section-placeholder" style="padding: 2rem 1rem; text-align: center; border: 1px dashed var(--color-border); border-radius: var(--radius); margin-block: 1rem;">
 				<p style="color: var(--color-muted); font-size: 0.9rem;">
-					Section <code>{targetSlug}</code> tidak ditemukan di pustaka Section.
+					Reusable Section <code>{targetSlug}</code> belum memiliki blok atau tidak ditemukan di koleksi <strong>Reusable Sections</strong>.
 				</p>
 			</div>
 		) : null
