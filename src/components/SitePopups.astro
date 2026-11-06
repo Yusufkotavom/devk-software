@@ -92,6 +92,7 @@ const [popups, stickyBars] = await Promise.all([
 		width: min(560px, 100%);
 		max-height: min(86vh, 780px);
 		overflow-y: auto;
+		scrollbar-gutter: stable;
 		background: var(--color-surface, #fff);
 		color: var(--color-text, #111);
 		border: 1px solid var(--color-border, #e5e5e5);
@@ -100,7 +101,40 @@ const [popups, stickyBars] = await Promise.all([
 		animation: kc-pop 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.kc-modal__body {
-		padding: 0;
+		padding: 2.75rem 1.5rem 1.75rem;
+	}
+	/*
+	 * Blocks are authored for full-width page bands, so their page-level rhythm
+	 * (tall vertical padding, min-heights, band borders) only produces dead
+	 * space and pushes content out of view inside a dialog. Neutralise the
+	 * rhythm without touching each block's own typography or colours.
+	 */
+	.kc-modal__body :global(section),
+	.kc-modal__body :global(.band) {
+		min-height: 0;
+		padding-block: 0;
+		border-block: 0;
+	}
+	.kc-modal__body :global(.cta) {
+		min-height: 0;
+	}
+	.kc-modal__body :global(.cta--clean) {
+		padding-block: 0;
+		border-block: 0;
+	}
+	.kc-modal__body :global(.frame) {
+		padding-inline: 0;
+		max-width: none;
+	}
+	.kc-sticky__body :global(section),
+	.kc-sticky__body :global(.band) {
+		min-height: 0;
+		padding-block: 0;
+		border-block: 0;
+	}
+	.kc-sticky__body :global(.frame) {
+		padding-inline: 0;
+		max-width: none;
 	}
 	.kc-modal__close {
 		position: absolute;
@@ -141,7 +175,15 @@ const [popups, stickyBars] = await Promise.all([
 	.kc-sticky__body {
 		max-width: 1180px;
 		margin-inline: auto;
-		padding: 0.75rem 3rem 0.75rem 1rem;
+		padding: 0.75rem 2.75rem;
+	}
+	/*
+	 * A sticky bar already carries its own WhatsApp CTA; leaving the floating
+	 * button on top of it stacks two identical affordances. Hide the floating
+	 * button while a sticky bar is on screen.
+	 */
+	body:has(.kc-sticky:not([hidden])) :global(.floating-wa-container) {
+		display: none;
 	}
 	.kc-sticky__close {
 		position: absolute;
