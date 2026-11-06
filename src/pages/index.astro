@@ -53,6 +53,7 @@ const pageCanonical = seo.canonical || siteOrigin;
 	canonical={pageCanonical}
 	type="website"
 	content={hasHomePage ? { collection: "pages", id: homePage.data.id, slug: "home" } : undefined}
+	popupContext={{ collection: "pages", categories: [] }}
 >
 	{hasHomePage && <PageView page={homePage as any} heading={siteTitle} />}
 </Base>

@@ -172,7 +172,7 @@ function pngResponse(png: Buffer, etagSeed: string, contentType = "image/png"): 
 }
 
 /** Neutral fallback card (unknown entry, or one missing a usable title). */
-async function renderSiteCard(origin: string): Promise<Response> {
+async function renderSiteCard(origin: string, targetW = 1200): Promise<Response> {
 	const { siteTitle, siteTagline } = resolveBlogSiteIdentity(await getSiteSettings());
 	const node = buildOgCard({
 		siteTitle,
@@ -208,11 +208,11 @@ export const GET: APIRoute = async ({ params, request, url }) => {
 		entry = null;
 	}
 
-	if (!entry) return renderSiteCard(origin);
+	if (!entry) return renderSiteCard(origin, targetW);
 
 	const data = entry.data as Record<string, unknown>;
 	const rawTitle = typeof data.title === "string" ? data.title : "";
-	if (!rawTitle.trim()) return renderSiteCard(origin);
+	if (!rawTitle.trim()) return renderSiteCard(origin, targetW);
 
 	// Excerpt: prefer the explicit field, else derive from the content body.
 	const explicitExcerpt = typeof data.excerpt === "string" && data.excerpt.trim() ? data.excerpt : null;

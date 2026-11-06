@@ -37,6 +37,7 @@ const seo = getSeoMeta(page, {
 	canonical={seo.canonical}
 	robots={seo.robots}
 	content={{ collection: "pages", id: page.data.id, slug }}
+	popupContext={{ collection: "pages", categories: [] }}
 >
 	<PageView page={page as any} />
 </Base>

@@ -13,6 +13,7 @@ import { Comments, CommentForm } from "emdash/ui/comments";
 import Base from "../../layouts/Base.astro";
 import Byline from "../../components/Byline.astro";
 import PostCard from "../../components/PostCard.astro";
+import SectionSlot from "../../components/blocks/SectionSlot.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import { formatDate } from "../../utils/locale";
 import { getReadingTime } from "../../utils/reading-time";
@@ -170,6 +171,16 @@ const postWaUrl = buildWhatsAppHref(setting, {
 	context: "post",
 });
 const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via WhatsApp";
+
+// Category slugs for reusable-section targeting (popups, slots).
+const postCategorySlugs = (post.data.terms?.category ?? []).map((t) => String(t.slug));
+
+// Split the body so the middle slot can appear between two halves rather than
+// only before/after the whole article.
+const postBodyBlocks = post.data.content ?? [];
+const postBodySplit = Math.max(1, Math.floor(postBodyBlocks.length / 2));
+const postBodyTop = postBodyBlocks.slice(0, postBodySplit);
+const postBodyBottom = postBodyBlocks.slice(postBodySplit);
 ---
 
 <Base
@@ -183,6 +194,7 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 	publishedTime={post.data.publishedAt?.toISOString() ?? null}
 	modifiedTime={post.data.updatedAt.toISOString()}
 	content={{ collection: "posts", id: post.data.id, slug }}
+	popupContext={{ collection: "posts", categories: postCategorySlugs }}
 >
 	<article class="post">
 		<header class="intro post-header">
@@ -307,6 +319,8 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 				</div>
 
 				<div class="post-main">
+					<SectionSlot slot="after_title" collection="posts" categories={postCategorySlugs} />
+
 					<div class="post-wa-inline post-wa-inline--top">
 						<a
 							href={postWaUrl}
@@ -342,7 +356,9 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 					</nav>
 
 					<div class="prose" data-post-content>
-						<PortableText value={post.data.content} components={{ type: blockComponents }} />
+						<PortableText value={postBodyTop} components={{ type: blockComponents }} />
+						<SectionSlot slot="middle_content" collection="posts" categories={postCategorySlugs} />
+						<PortableText value={postBodyBottom} components={{ type: blockComponents }} />
 					</div>
 
 					<div class="post-wa-box">
@@ -379,6 +395,8 @@ const postCtaLabel = setting?.post_cta_label || "Konsultasi Jasa Software via Wh
 							<span>{postCtaLabel || "Hubungi Tim Jasa Kami"}</span>
 						</a>
 					</div>
+
+					<SectionSlot slot="bottom_content" collection="posts" categories={postCategorySlugs} />
 
 					<section class="post-comments" aria-labelledby="comments-title">
 						<h2 id="comments-title" class="eyebrow">Discussion</h2>

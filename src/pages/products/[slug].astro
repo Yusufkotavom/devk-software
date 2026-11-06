@@ -165,6 +165,7 @@ if (!isCategory && product) {
 	type="article"
 	modifiedTime={product.data.updatedAt.toISOString()}
 	content={{ collection: "products", id: product.data.id, slug }}
+	popupContext={{ collection: "products", categories: [] }}
 >
 	<article class="post">
 		<header class="intro post-header">

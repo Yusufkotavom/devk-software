@@ -12,3 +12,4 @@ public/images/
 
 # Generated test artifacts
 scripts/_slugs.json
+__pycache__/

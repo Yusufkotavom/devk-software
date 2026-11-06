@@ -1,0 +1,34 @@
+---
+/**
+ * SectionSlot — auto-injects reusable sections assigned to a page slot.
+ *
+ * Usage inside a page template:
+ *   <SectionSlot slot="after_title" collection="posts" categories={categorySlugs} />
+ */
+import { PortableText } from "emdash/ui";
+import { blockComponents } from "../../plugins/marketing-blocks/astro";
+import { getSectionsForSlot, type SlotName } from "../../lib/sections";
+
+interface Props {
+	slot: SlotName;
+	collection: string;
+	categories?: string[];
+}
+
+const { slot, collection, categories = [] } = Astro.props;
+const sections = await getSectionsForSlot(slot, collection, categories);
+---
+
+{
+	sections.map((section) => (
+		<div class="section-slot" data-slot={slot} data-section={section.slug}>
+			<PortableText value={section.blocks} components={{ type: blockComponents }} />
+		</div>
+	))
+}
+
+<style>
+	.section-slot {
+		display: contents;
+	}
+</style>

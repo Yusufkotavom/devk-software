@@ -10,6 +10,7 @@ import { createPublicPageContext } from "emdash/page";
 import LiveSearch from "emdash/ui/search";
 import { Font } from "astro:assets";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import SitePopups from "../components/SitePopups.astro";
 import StructuredData from "../components/StructuredData.astro";
 import AnalyticsAndAds from "../components/AnalyticsAndAds.astro";
 import { getSiteLocale } from "../utils/locale";
@@ -32,6 +33,8 @@ interface Props {
 	author?: string | null;
 	/** Pass content reference for plugin page contributions on content pages */
 	content?: { collection: string; id: string; slug?: string | null };
+	/** Enables reusable popups & sticky bars targeted at this page */
+	popupContext?: { collection: string; categories?: string[] };
 }
 
 const {
@@ -46,6 +49,7 @@ const {
 	modifiedTime,
 	author,
 	content,
+	popupContext,
 } = Astro.props;
 const [settingsResult, menuResult, footerMenuResult] = await Promise.all([
 	getSiteSettingsWithCacheHint(),
@@ -2080,6 +2084,14 @@ const year = new Date().getFullYear();
 			})();
 		</script>
 		<FloatingWhatsApp pageTitle={title} />
+		{
+			popupContext && (
+				<SitePopups
+					collection={popupContext.collection}
+					categories={popupContext.categories ?? []}
+				/>
+			)
+		}
 		<EmDashBodyEnd page={pageCtx} />
 	</body>
 </html>

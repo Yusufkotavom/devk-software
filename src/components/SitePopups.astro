@@ -1,0 +1,378 @@
+---
+/**
+ * SitePopups — renders every active popup and sticky-bar reusable section
+ * applicable to the current page, plus the client controller that drives
+ * triggers, focus handling and frequency capping.
+ *
+ * Usage (in Base layout, given a page context):
+ *   <SitePopups collection="posts" categories={categorySlugs} />
+ */
+import { PortableText } from "emdash/ui";
+import { blockComponents } from "../plugins/marketing-blocks/astro";
+import { getPopupsFor, getStickyBarsFor } from "../lib/sections";
+
+interface Props {
+	collection: string;
+	categories?: string[];
+}
+
+const { collection, categories = [] } = Astro.props;
+const [popups, stickyBars] = await Promise.all([
+	getPopupsFor(collection, categories),
+	getStickyBarsFor(collection, categories),
+]);
+---
+
+{
+	stickyBars.map((bar) => (
+		<div
+			class="kc-sticky"
+			data-kc-sticky
+			data-id={bar.slug}
+			data-frequency={bar.frequencyDays}
+			hidden
+			role="complementary"
+			aria-label={bar.title}
+		>
+			<button type="button" class="kc-sticky__close" data-kc-close aria-label="Tutup banner">
+				&times;
+			</button>
+			<div class="kc-sticky__body">
+				<PortableText value={bar.blocks} components={{ type: blockComponents }} />
+			</div>
+		</div>
+	))
+}
+
+{
+	popups.map((popup) => (
+		<div
+			class="kc-modal"
+			data-kc-popup
+			data-id={popup.slug}
+			data-trigger={popup.popupTrigger}
+			data-threshold={popup.popupThreshold}
+			data-frequency={popup.frequencyDays}
+			hidden
+		>
+			<div class="kc-modal__overlay" data-kc-close aria-hidden="true"></div>
+			<div class="kc-modal__dialog" role="dialog" aria-modal="true" aria-label={popup.title} tabindex="-1">
+				<button type="button" class="kc-modal__close" data-kc-close aria-label="Tutup">
+					&times;
+				</button>
+				<div class="kc-modal__body">
+					<PortableText value={popup.blocks} components={{ type: blockComponents }} />
+				</div>
+			</div>
+		</div>
+	))
+}
+
+<style>
+	.kc-modal {
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		display: grid;
+		place-items: center;
+		padding: 1rem;
+	}
+	.kc-modal[hidden] {
+		display: none;
+	}
+	.kc-modal__overlay {
+		position: absolute;
+		inset: 0;
+		background: color-mix(in srgb, var(--color-night, #000) 62%, transparent);
+		backdrop-filter: blur(2px);
+		animation: kc-fade 0.18s ease-out;
+	}
+	.kc-modal__dialog {
+		position: relative;
+		width: min(560px, 100%);
+		max-height: min(86vh, 780px);
+		overflow-y: auto;
+		background: var(--color-surface, #fff);
+		color: var(--color-text, #111);
+		border: 1px solid var(--color-border, #e5e5e5);
+		border-radius: var(--radius-lg, 14px);
+		box-shadow: 0 24px 60px -12px var(--color-shadow-strong, rgba(0, 0, 0, 0.4));
+		animation: kc-pop 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.kc-modal__body {
+		padding: 0;
+	}
+	.kc-modal__close {
+		position: absolute;
+		top: 0.6rem;
+		inset-inline-end: 0.6rem;
+		z-index: 2;
+		width: 2.1rem;
+		height: 2.1rem;
+		display: grid;
+		place-items: center;
+		font-size: 1.4rem;
+		line-height: 1;
+		cursor: pointer;
+		color: var(--color-text-secondary, #555);
+		background: var(--color-surface, #fff);
+		border: 1px solid var(--color-border, #e5e5e5);
+		border-radius: var(--radius-full, 999px);
+	}
+	.kc-modal__close:hover {
+		color: var(--color-text, #111);
+		border-color: var(--color-text, #111);
+	}
+
+	.kc-sticky {
+		position: fixed;
+		inset-inline: 0;
+		bottom: 0;
+		z-index: 9990;
+		background: var(--color-surface, #fff);
+		color: var(--color-text, #111);
+		border-top: 1px solid var(--color-border, #e5e5e5);
+		box-shadow: 0 -12px 32px -18px var(--color-shadow, rgba(0, 0, 0, 0.35));
+		animation: kc-slide-up 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.kc-sticky[hidden] {
+		display: none;
+	}
+	.kc-sticky__body {
+		max-width: 1180px;
+		margin-inline: auto;
+		padding: 0.75rem 3rem 0.75rem 1rem;
+	}
+	.kc-sticky__close {
+		position: absolute;
+		top: 0.35rem;
+		inset-inline-end: 0.6rem;
+		width: 1.9rem;
+		height: 1.9rem;
+		display: grid;
+		place-items: center;
+		font-size: 1.25rem;
+		line-height: 1;
+		cursor: pointer;
+		color: var(--color-text-secondary, #555);
+		background: transparent;
+		border: 0;
+		border-radius: var(--radius-full, 999px);
+	}
+
+	body.kc-modal-open {
+		overflow: hidden;
+	}
+
+	@keyframes kc-fade {
+		from {
+			opacity: 0;
+		}
+	}
+	@keyframes kc-pop {
+		from {
+			opacity: 0;
+			transform: translateY(12px) scale(0.98);
+		}
+	}
+	@keyframes kc-slide-up {
+		from {
+			transform: translateY(100%);
+		}
+	}
+	@media (max-width: 640px) {
+		.kc-modal {
+			padding: 0;
+			place-items: end stretch;
+		}
+		.kc-modal__dialog {
+			width: 100%;
+			max-height: 88vh;
+			border-radius: var(--radius-lg, 14px) var(--radius-lg, 14px) 0 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.kc-modal__overlay,
+		.kc-modal__dialog,
+		.kc-sticky {
+			animation: none;
+		}
+	}
+</style>
+
+<script>
+	(() => {
+		const store = {
+			get(id: string): number | null {
+				try {
+					const raw = localStorage.getItem(`kc:sec:${id}`);
+					return raw ? Number(raw) : null;
+				} catch {
+					return null;
+				}
+			},
+			set(id: string): void {
+				try {
+					localStorage.setItem(`kc:sec:${id}`, String(Date.now()));
+				} catch {
+					/* storage unavailable — the section simply reappears next visit */
+				}
+			},
+		};
+
+		const suppressed = (id: string, days: number): boolean => {
+			const ts = store.get(id);
+			if (!ts) return false;
+			return Date.now() - ts < days * 86_400_000;
+		};
+
+		// ---------- Sticky bars ----------
+		document.querySelectorAll<HTMLElement>("[data-kc-sticky]").forEach((el) => {
+			const id = el.dataset.id || "";
+			const freq = Number(el.dataset.frequency || 7);
+			if (suppressed(id, freq)) return;
+			el.hidden = false;
+			el.querySelectorAll("[data-kc-close]").forEach((btn) =>
+				btn.addEventListener("click", () => {
+					el.hidden = true;
+					store.set(id);
+				}),
+			);
+		});
+
+		// ---------- Popups ----------
+		interface ModalHandle {
+			el: HTMLElement;
+			close: () => void;
+			open: () => void;
+		}
+
+		const handles = new Map<string, ModalHandle>();
+		let openModal: HTMLElement | null = null;
+		let lastFocus: HTMLElement | null = null;
+
+		const closeModal = (el: HTMLElement, id: string) => {
+			el.hidden = true;
+			openModal = null;
+			document.body.classList.remove("kc-modal-open");
+			store.set(id);
+			lastFocus?.focus();
+		};
+
+		document.querySelectorAll<HTMLElement>("[data-kc-popup]").forEach((el) => {
+			const id = el.dataset.id || "";
+			const freq = Number(el.dataset.frequency || 7);
+			const dialog = el.querySelector<HTMLElement>(".kc-modal__dialog");
+
+			const open = () => {
+				if (openModal) return;
+				lastFocus = document.activeElement as HTMLElement;
+				el.hidden = false;
+				openModal = el;
+				document.body.classList.add("kc-modal-open");
+				dialog?.focus();
+			};
+
+			el.querySelectorAll("[data-kc-close]").forEach((btn) =>
+				btn.addEventListener("click", () => closeModal(el, id)),
+			);
+
+			// Focus trap: keep Tab inside the dialog while open.
+			el.addEventListener("keydown", (event) => {
+				if (event.key === "Escape") {
+					closeModal(el, id);
+					return;
+				}
+				if (event.key !== "Tab" || !dialog) return;
+				const focusables = dialog.querySelectorAll<HTMLElement>(
+					'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])',
+				);
+				if (focusables.length === 0) return;
+				const first = focusables[0];
+				const last = focusables[focusables.length - 1];
+				if (event.shiftKey && document.activeElement === first) {
+					event.preventDefault();
+					last.focus();
+				} else if (!event.shiftKey && document.activeElement === last) {
+					event.preventDefault();
+					first.focus();
+				}
+			});
+
+			handles.set(id, { el, open, close: () => closeModal(el, id) });
+		});
+
+		if (handles.size === 0) return;
+
+		// Trigger wiring — one listener pair per distinct strategy.
+		const arm = (el: HTMLElement) => {
+			const id = el.dataset.id || "";
+			const handle = handles.get(id);
+			if (!handle) return;
+			const freq = Number(el.dataset.frequency || 7);
+			if (suppressed(id, freq)) return;
+
+			const trigger = el.dataset.trigger || "scroll";
+			const threshold = Number(el.dataset.threshold || 50);
+
+			if (trigger === "timer") {
+				window.setTimeout(() => handle.open(), Math.max(1, threshold) * 1000);
+				return;
+			}
+
+			if (trigger === "exit_intent") {
+				// Desktop: cursor leaves through the top of the viewport.
+				const onMouseOut = (event: MouseEvent) => {
+					if (event.clientY <= 0 && !event.relatedTarget) {
+						handle.open();
+						document.removeEventListener("mouseout", onMouseOut);
+					}
+				};
+				document.addEventListener("mouseout", onMouseOut);
+				// Mobile has no exit intent — fall back to deep scroll.
+				window.addEventListener(
+					"scroll",
+					() => {
+						const scrolled =
+							(window.scrollY + window.innerHeight) /
+							Math.max(1, document.documentElement.scrollHeight);
+						if (scrolled > 0.7) {
+							handle.open();
+							document.removeEventListener("mouseout", onMouseOut);
+						}
+					},
+					{ passive: true },
+				);
+				return;
+			}
+
+			if (trigger === "click") {
+				// Opened by an external control: data-kc-popup-open="<slug>"
+				document
+					.querySelectorAll<HTMLElement>(`[data-kc-popup-open="${id}"]`)
+					.forEach((control) =>
+						control.addEventListener("click", (event) => {
+							event.preventDefault();
+							handle.open();
+						}),
+					);
+				return;
+			}
+
+			// Default: scroll depth
+			const pct = Math.min(99, Math.max(1, threshold)) / 100;
+			window.addEventListener(
+				"scroll",
+				() => {
+					const scrolled =
+						(window.scrollY + window.innerHeight) /
+						Math.max(1, document.documentElement.scrollHeight);
+					if (scrolled >= pct) handle.open();
+				},
+				{ passive: true },
+			);
+		};
+
+		document.querySelectorAll<HTMLElement>("[data-kc-popup]").forEach(arm);
+	})();
+</script>
