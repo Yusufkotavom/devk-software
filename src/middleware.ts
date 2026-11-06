@@ -18,6 +18,22 @@ function cleanLastmod(raw: string): string {
 export const onRequest = defineMiddleware(async (context, next) => {
 	const pathname = context.url.pathname;
 
+	// Public origin of THIS request (Cloudflare/Traefik forward the real host).
+	// EmDash builds sitemap <loc> values from a fixed site URL, so a site served
+	// on more than one hostname emitted cross-host sitemaps, which Google refuses
+	// to read. Rewrite them to the host the crawler actually asked for.
+	const forwardedProto = context.request.headers.get("x-forwarded-proto");
+	const proto = (forwardedProto ? forwardedProto.split(",")[0].trim() : "") ||
+		(context.url.protocol ? context.url.protocol.replace(":", "") : "https");
+	const rawHost = context.request.headers.get("x-forwarded-host") ||
+		context.request.headers.get("host") ||
+		context.url.host;
+	const host = (rawHost || "").split(",")[0].trim();
+	const requestOrigin =
+		host && host.includes(".") && !host.startsWith("localhost")
+			? `${proto}://${host}`
+			: null;
+
 	// 301 Permanent Redirect semua subhalaman kota kalender ke pilar utama
 	if (pathname.startsWith("/percetakan/cetak-kalender/") && pathname !== "/percetakan/cetak-kalender") {
 		return context.redirect("/percetakan/cetak-kalender", 301);
@@ -47,9 +63,18 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		const contentType = response.headers.get("content-type") || "";
 		if (contentType.includes("xml")) {
 			const text = await response.text();
-			const fixed = text.replace(/<lastmod>([^<]+)<\/lastmod>/g, (_match, raw) => {
+			let fixed = text.replace(/<lastmod>([^<]+)<\/lastmod>/g, (_match, raw) => {
 				return `<lastmod>${cleanLastmod(raw)}</lastmod>`;
 			});
+
+			// Re-point every <loc>/<image:loc> at the origin the crawler requested,
+			// so a sitemap served on an alias host references its own URLs.
+			if (requestOrigin) {
+				const originRe = /(<(?:loc|image:loc)>)(https?:\/\/[^/<]+)([^<]*)(<\/(?:loc|image:loc)>)/g;
+				fixed = fixed.replace(originRe, (_m, open, _origin, path, close) => {
+					return `${open}${requestOrigin}${path}${close}`;
+				});
+			}
 
 			const h = new Headers(response.headers);
 			h.delete("content-length");
