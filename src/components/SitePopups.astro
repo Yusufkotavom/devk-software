@@ -101,7 +101,7 @@ const [popups, stickyBars] = await Promise.all([
 		animation: kc-pop 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.kc-modal__body {
-		padding: 2.75rem 1.5rem 1.75rem;
+		padding: 2.75rem 1.5rem calc(1.75rem + env(safe-area-inset-bottom, 0px));
 	}
 	/*
 	 * Blocks are authored for full-width page bands, so their page-level rhythm
@@ -125,6 +125,58 @@ const [popups, stickyBars] = await Promise.all([
 	.kc-modal__body :global(.frame) {
 		padding-inline: 0;
 		max-width: none;
+	}
+	/*
+	 * Display typography is clamped against the viewport width, so a headline
+	 * authored for a 1280px band becomes a ~226px-tall box inside a 549px
+	 * dialog — it reads as dead space and pushes the CTA below the fold.
+	 * Cap heading scale to the dialog instead.
+	 */
+	.kc-modal__body :global(.display),
+	.kc-modal__body :global(h1),
+	.kc-modal__body :global(h2) {
+		font-size: clamp(1.35rem, 4.2vw, 1.85rem);
+		line-height: 1.22;
+		letter-spacing: -0.02em;
+	}
+	.kc-modal__body :global(.cta__headline) {
+		max-width: none;
+	}
+	/* The sticky bar sits behind the overlay; hide it while a dialog is open. */
+	body.kc-modal-open :global(.kc-sticky) {
+		display: none;
+	}
+	/*
+	 * `.scroll-reveal` starts at opacity 0 and is only shown when the layout's
+	 * IntersectionObserver adds `.is-revealed`. That observer never fires for
+	 * markup inside a `hidden` dialog, so any block placed in a popup would
+	 * stay invisible. Reveal it unconditionally inside the overlay surfaces.
+	 */
+	body .kc-modal__body :global(.scroll-reveal),
+	body .kc-sticky__body :global(.scroll-reveal) {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+	body .kc-modal__body :global(.rise),
+	body .kc-sticky__body :global(.rise) {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
+	/*
+	 * Third-party FadeInText (`@astroanimate/core`) hides itself with
+	 * `[data-astro-fade-in-text][data-ready="true"][data-state="hidden"] { opacity: 0 }`
+	 * and only switches to `animate` from an IntersectionObserver — which, like
+	 * `.scroll-reveal`, never fires inside a hidden dialog. Match that selector
+	 * with higher specificity (body + class + three attributes) so the copy is
+	 * readable the moment the modal opens.
+	 */
+	body .kc-modal__body :global([data-astro-fade-in-text][data-ready="true"][data-state="hidden"]),
+	body .kc-sticky__body :global([data-astro-fade-in-text][data-ready="true"][data-state="hidden"]) {
+		opacity: 1;
+		filter: none;
+		transform: none;
 	}
 	.kc-sticky__body :global(section),
 	.kc-sticky__body :global(.band) {
