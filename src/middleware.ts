@@ -34,6 +34,16 @@ export const onRequest = defineMiddleware(async (context, next) => {
 			? `${proto}://${host}`
 			: null;
 
+	// Canonicalise www → apex: one canonical host per site, so a domain-property
+	// GSC setup (which spans www + apex) never hits a 404 sitemap on www.
+	if (
+		host.toLowerCase().startsWith("www.") &&
+		!pathname.startsWith("/.well-known/")
+	) {
+		const apex = `${proto}://${host.toLowerCase().slice(4)}`;
+		return context.redirect(`${apex}${pathname}${context.url.search}`, 301);
+	}
+
 	// 301 Permanent Redirect semua subhalaman kota kalender ke pilar utama
 	if (pathname.startsWith("/percetakan/cetak-kalender/") && pathname !== "/percetakan/cetak-kalender") {
 		return context.redirect("/percetakan/cetak-kalender", 301);
