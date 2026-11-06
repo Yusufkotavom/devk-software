@@ -200,7 +200,7 @@ export const GET: APIRoute = async ({ params, request, url }) => {
 	const wParam = Number(url.searchParams.get("w") ?? 1200);
 	const targetW = Number.isFinite(wParam) ? Math.min(1200, Math.max(320, Math.round(wParam))) : 1200;
 
-	let entry: Awaited<ReturnType<typeof getEmDashEntry>> | null = null;
+	let entry: Awaited<ReturnType<typeof getEmDashEntry>>["entry"] | null = null;
 	try {
 		const { entry: e } = await getEmDashEntry(collection, slug);
 		entry = e;

@@ -2,7 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { getEmDashCollection, getTermsForEntries } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import PostCard from "../PostCard.astro";
 import { buildOgImageUrl } from "../../lib/og/url";
 
@@ -54,7 +54,7 @@ const ctaUrl = raw.cta_url ?? raw.ctaUrl ?? (
 const isPosts = collection === "posts";
 const origin = (Astro.site ?? Astro.url.origin).toString().replace(/\/$/, "");
 
-const where =
+const where: Record<string, string> | undefined =
 	mode === "tag" ? { tag: term } : mode === "category" ? { category: term } : undefined;
 
 const orderBy = isPosts

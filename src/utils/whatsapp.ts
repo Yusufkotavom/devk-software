@@ -5,14 +5,27 @@ export interface WhatsAppSetting {
 	whatsapp_number?: string;
 	callout_text?: string;
 	default_message?: string;
-	enabled?: boolean | number;
-	append_source_url?: boolean | number;
-	include_page_title?: boolean | number;
+	enabled?: boolean | number | string;
+	append_source_url?: boolean | number | string;
+	include_page_title?: boolean | number | string;
 	source_label?: string;
 	product_cta_label?: string;
 	post_cta_label?: string;
 	product_message_template?: string;
 	post_message_template?: string;
+}
+
+/**
+ * A settings toggle is written as a boolean in the admin but the collection
+ * stores scalars as text, so the same switch can arrive as `true`, `1`, `"1"`,
+ * `"true"` — or `0` / `"false"` when an editor turns it off.
+ */
+function isEnabled(value: unknown): boolean {
+	if (typeof value === "string") {
+		const normalised = value.trim().toLowerCase();
+		return normalised === "1" || normalised === "true" || normalised === "yes";
+	}
+	return value === true || value === 1;
 }
 
 export type WhatsAppContext =
@@ -88,20 +101,19 @@ export function buildWhatsAppMessage(
 
 	const parts: string[] = [baseMessage];
 
-	const includeTitle =
-		setting?.include_page_title === true ||
-		setting?.include_page_title === 1 ||
-		setting?.include_page_title === "1";
+	const includeTitle = isEnabled(setting?.include_page_title);
 
 	if (includeTitle && pageTitle && !baseMessage.includes(pageTitle)) {
 		parts.push(`*Halaman:* ${pageTitle}`);
 	}
 
+	// Default enabled for conversion tracking, so this is only false when an
+	// editor explicitly turns the setting off.
+	const rawAppendSource = setting?.append_source_url;
 	const appendSource =
-		setting?.append_source_url === true ||
-		setting?.append_source_url === 1 ||
-		setting?.append_source_url === "1" ||
-		true; // default enabled for conversion tracking
+		rawAppendSource === undefined || rawAppendSource === null
+			? true
+			: isEnabled(rawAppendSource);
 
 	if (appendSource && pageUrl) {
 		const label = setting?.source_label?.trim() || "Sumber";

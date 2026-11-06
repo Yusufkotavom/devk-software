@@ -39,7 +39,7 @@ export const GET: APIRoute = async ({ params, request, url }) => {
 
 	const origin = canonicalOrigin(url);
 
-	let entry: Awaited<ReturnType<typeof getEmDashEntry>> | null = null;
+	let entry: Awaited<ReturnType<typeof getEmDashEntry>>["entry"] | null = null;
 	try {
 		const { entry: e } = await getEmDashEntry(collection, slug);
 		entry = e;

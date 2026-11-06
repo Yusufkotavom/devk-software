@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-iconset/components";
 import type { BlockComponentProps } from "emdash/ui";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import { toParagraphs } from "../../utils/text";
 
 type FAQBlock = Extract<PageContentBlock, { _type: "marketing_faq" }>;
@@ -10,7 +10,9 @@ type Props = BlockComponentProps<FAQBlock>;
 const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
 const blockKey = (Astro.props as any).blockKey ?? raw._key ?? "faq";
 const { anchor_id, headline, subheadline } = raw;
-const items = Array.isArray(raw.items) ? raw.items : [];
+// Fields come straight from the CMS block payload, whose generated types do not
+// cover every registered block, so the shape is asserted at this boundary.
+const items: Record<string, any>[] = Array.isArray(raw.items) ? raw.items : [];
 const hasIntro = Boolean(headline || subheadline);
 
 const faqSchema =

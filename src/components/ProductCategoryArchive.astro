@@ -17,8 +17,8 @@ const siteOrigin = getSiteOrigin(Astro.site, Astro.url.origin);
 const canonicalUrl = `${siteOrigin}/products/${slug}`;
 
 const cursor = Astro.url.searchParams.get("cursor") || undefined;
-let products = [];
-let nextCursor = undefined;
+let products: Record<string, any>[] = [];
+let nextCursor: string | undefined;
 
 try {
 	const res = await getEmDashCollection("products", {

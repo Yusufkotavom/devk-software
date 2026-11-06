@@ -3,8 +3,16 @@ import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
 import ScaleIn from "@astroanimate/core/ScaleIn";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import { toParagraphs } from "../../utils/text";
+
+interface FeatureItem {
+	title: string;
+	description?: string;
+	icon?: string;
+	link_label?: string;
+	link_url?: string;
+}
 
 type FeaturesBlock = Extract<PageContentBlock, { _type: "marketing_features" }>;
 type Props = BlockComponentProps<FeaturesBlock>;

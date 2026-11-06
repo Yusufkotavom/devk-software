@@ -1,4 +1,4 @@
-import type { PageContentBlock } from "../../emdash-env";
+import type { PageContentBlock } from "../types/blocks";
 
 type HeroBlock = Extract<PageContentBlock, { _type: "marketing_hero" }>;
 type HeroImage = NonNullable<HeroBlock["image"]>;

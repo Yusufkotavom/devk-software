@@ -47,9 +47,9 @@ if (!term) {
 }
 
 const cursor = Astro.url.searchParams.get("cursor") || undefined;
-let posts = [];
-let nextCursor = undefined;
-let collectionCacheHint = null;
+let posts: Record<string, any>[] = [];
+let nextCursor: string | undefined;
+let collectionCacheHint: unknown = null;
 
 try {
 	const res = await getEmDashCollection("posts", {

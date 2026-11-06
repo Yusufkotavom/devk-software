@@ -2,7 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import { toParagraphs } from "../../utils/text";
 
 type SliderBlock = Extract<PageContentBlock, { _type: "marketing_slider" }>;

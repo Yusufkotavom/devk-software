@@ -7,6 +7,7 @@ import {
 	getSiteSettings,
 } from "emdash";
 import { Image, PortableText } from "emdash/ui";
+import type { ComponentProps } from "astro/types";
 import Base from "../../layouts/Base.astro";
 import PostCard from "../../components/PostCard.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
@@ -15,6 +16,27 @@ import { resolveBlogSiteIdentity } from "../../utils/site-identity";
 import { buildOgImageUrl } from "../../lib/og/url";
 import { getSiteOrigin } from "../../utils/origin";
 import "../../styles/prose.css";
+
+/**
+ * Whatever `<Image>` accepts, taken from the component itself so this stays
+ * correct if EmDash changes the prop type.
+ */
+type ImageSource = ComponentProps<typeof Image>["image"];
+
+/**
+ * The `projects` collection is not part of the generated `emdash-env` types, so
+ * `projectData` arrives as an opaque record. Assert the fields this template
+ * actually renders once, here, instead of casting at every use site.
+ */
+interface ProjectData {
+	id: string;
+	title: string;
+	excerpt?: string | null;
+	content?: unknown[];
+	createdAt?: Date | null;
+	updatedAt?: Date | null;
+	featured_image?: ImageSource;
+}
 
 const slug = decodeSlug(Astro.params.slug);
 
@@ -27,6 +49,8 @@ const { entry: project, cacheHint } = await getEmDashEntry("projects", slug);
 if (!project) {
 	return Astro.rewrite("/404");
 }
+
+const projectData = project.data as unknown as ProjectData;
 
 if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 
@@ -56,7 +80,7 @@ function getImageUrl(img: unknown): string | undefined {
 	return undefined;
 }
 
-const featuredImageUrl = getImageUrl(project.data.featured_image);
+const featuredImageUrl = getImageUrl(projectData.featured_image);
 const projectOgFallback = buildOgImageUrl(siteOrigin, "projects", slug);
 const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
 
@@ -75,21 +99,22 @@ const { entries: recentProjects, cacheHint: recentProjectsCacheHint } =
 if (Astro.cache?.enabled) Astro.cache.set(recentProjectsCacheHint);
 const otherProjects = recentProjects.filter((p) => p.id !== project.id).slice(0, 3);
 
-const createdAt = project.data.createdAt ?? null;
+const createdAt = projectData.createdAt ?? null;
 const createdDate = createdAt ? formatDate(createdAt, "long") : null;
-const client = (project.data as any).client || (project.data as any).clientName;
+const client = (project.data as Record<string, unknown>).client as string | undefined
+	?? (project.data as Record<string, unknown>).clientName as string | undefined;
 ---
 
 <Base
-	title={project.data.title}
-	pageTitle={project.data.title}
+	title={projectData.title}
+	pageTitle={projectData.title}
 	description={seo.description}
 	image={seo.ogImage}
 	canonical={seo.canonical}
 		robots="noindex, follow"
 	type="article"
-	modifiedTime={project.data.updatedAt?.toISOString ? project.data.updatedAt.toISOString() : undefined}
-	content={{ collection: "projects", id: project.data.id, slug }}
+	modifiedTime={projectData.updatedAt instanceof Date ? projectData.updatedAt.toISOString() : undefined}
+	content={{ collection: "projects", id: projectData.id, slug }}
 >
 	<article class="post">
 		<header class="intro post-header">
@@ -98,12 +123,12 @@ const client = (project.data as any).client || (project.data as any).clientName;
 					<Breadcrumb
 						items={[
 							{ label: "Portfolio", href: "/projects" },
-							{ label: project.data.title },
+							{ label: projectData.title },
 						]}
 					/>
 					<p class="eyebrow">Portfolio & Case Study</p>
 					<h1 class="intro__title post-header__title" {...project.edit.title}>
-						{project.data.title}
+						{projectData.title}
 					</h1>
 					{client && (
 						<p class="text-sm font-semibold text-brand mt-1 mb-2">
@@ -111,16 +136,16 @@ const client = (project.data as any).client || (project.data as any).clientName;
 						</p>
 					)}
 					{
-						project.data.excerpt && (
+						projectData.excerpt && (
 							<p class="intro__lead post-header__lead" {...project.edit.excerpt}>
-								{project.data.excerpt}
+								{projectData.excerpt}
 							</p>
 						)
 					}
 					{
 						createdDate && (
 							<p class="post-header__dateline">
-								<time datetime={createdAt.toISOString()}>{createdDate}</time>
+								<time datetime={createdAt instanceof Date ? createdAt.toISOString() : undefined}>{createdDate}</time>
 							</p>
 						)
 					}
@@ -132,17 +157,17 @@ const client = (project.data as any).client || (project.data as any).clientName;
 			<div class="frame">
 				<div class="post-hero__media" {...project.edit.featured_image}>
 					{
-						project.data.featured_image ? (
-							typeof project.data.featured_image === "string" ? (
+						projectData.featured_image ? (
+							typeof projectData.featured_image === "string" ? (
 								<img
-									src={project.data.featured_image}
-									alt={project.data.title}
+									src={projectData.featured_image}
+									alt={projectData.title}
 									class="post-hero__img"
 									loading="eager"
 								/>
 							) : (
 								<Image
-									image={project.data.featured_image}
+									image={projectData.featured_image}
 									sizes="(min-width: 1080px) 960px, 100vw"
 									priority
 									class="post-hero__img"
@@ -151,7 +176,7 @@ const client = (project.data as any).client || (project.data as any).clientName;
 						) : (
 							<img
 								src={`/og/projects/${encodeURIComponent(slug)}.png`}
-								alt={project.data.title}
+								alt={projectData.title}
 								class="post-hero__img post-hero__img--og-fallback"
 								width="1200"
 								height="630"
@@ -169,10 +194,10 @@ const client = (project.data as any).client || (project.data as any).clientName;
 				<div class="post-layout">
 					<main class="post-layout__main">
 						<div class="prose" {...project.edit.content}>
-							{project.data.content && Array.isArray(project.data.content) && project.data.content.length > 0 ? (
-								<PortableText value={project.data.content} />
+							{projectData.content && Array.isArray(projectData.content) && projectData.content.length > 0 ? (
+								<PortableText value={projectData.content} />
 							) : (
-								<p class="text-muted">{project.data.excerpt || "Informasi detail studi kasus proyek ini sedang dalam pembaruan."}</p>
+								<p class="text-muted">{projectData.excerpt || "Informasi detail studi kasus proyek ini sedang dalam pembaruan."}</p>
 							)}
 						</div>
 

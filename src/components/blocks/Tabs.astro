@@ -13,6 +13,10 @@ interface TabItem {
 }
 
 interface TabsBlock {
+	// Required by EmDash's BlockValue constraint on BlockComponentProps.
+	_type: "marketing_tabs";
+	_version: number;
+	_key: string;
 	headline?: string;
 	subheadline?: string;
 	eyebrow?: string;

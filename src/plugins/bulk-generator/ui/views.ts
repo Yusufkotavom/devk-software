@@ -322,7 +322,6 @@ export function renderPluginUi(
         result.push(
           blocks.code({
             code: formatPreviewBlocksAsReadable(state.previewResult.payload, state.previewResult.bodyText),
-            language: "markdown",
           })
         );
       }
@@ -565,7 +564,6 @@ export function renderPluginUi(
         result.push(
           blocks.code({
             code: formatPreviewBlocksAsReadable(state.previewResult.payload, state.previewResult.bodyText),
-            language: "markdown",
           })
         );
       }

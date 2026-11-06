@@ -7,7 +7,10 @@ import { formatAccentWords } from "../../utils/text";
 interface FeatureRow {
 	feature_name: string;
 	feature_desc?: string;
-	us_value: string; // "yes", "no", or custom text
+	/** "yes", "no", or custom text. */
+	us_value?: string;
+	/** Authoring alias for `us_value`; the renderer accepts either. */
+	our_value?: string;
 	competitor_value: string;
 }
 

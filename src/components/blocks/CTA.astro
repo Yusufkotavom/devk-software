@@ -2,7 +2,7 @@
 import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
 import FadeInText from "@astroanimate/core/FadeInText";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import { toParagraphs, formatAccentWords } from "../../utils/text";
 
 type CTABlock = Extract<PageContentBlock, { _type: "marketing_cta" }>;

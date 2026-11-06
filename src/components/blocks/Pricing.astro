@@ -3,7 +3,7 @@ import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
 import ScaleIn from "@astroanimate/core/ScaleIn";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import { toParagraphs, formatAccentWords } from "../../utils/text";
 
 type PricingBlock = Extract<PageContentBlock, { _type: "marketing_pricing" }>;
@@ -11,10 +11,39 @@ type Props = BlockComponentProps<PricingBlock>;
 
 const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
 const { anchor_id, headline } = raw;
-const rawPlans = Array.isArray(raw.plans) ? raw.plans : [];
+// Fields come straight from the CMS block payload, whose generated types do not
+// cover every registered block, so the shape is asserted at this boundary.
+interface PlanSource {
+	name?: string;
+	price?: string;
+	period?: string;
+	interval?: string;
+	description?: string;
+	features?: string;
+	badge?: string | null;
+	highlighted?: boolean;
+	cta_label?: string;
+	ctaLabel?: string;
+	cta_url?: string;
+	ctaUrl?: string;
+}
+
+interface Plan {
+	name?: string;
+	price?: string;
+	period?: string;
+	interval?: string;
+	badge?: string;
+	highlighted?: boolean;
+	description: string[];
+	features: string[];
+	cta: { label?: string; url: string };
+}
+
+const rawPlans: PlanSource[] = Array.isArray(raw.plans) ? raw.plans : [];
 const PlanHeading = headline ? "h3" : "h2";
 
-const plans = rawPlans.map((plan: any) => ({
+const plans: Plan[] = rawPlans.map((plan) => ({
 	...plan,
 	// Plans stored before the badge field existed have no badge value and keep their "Most popular" badge; an emptied field hides it.
 	badge:
@@ -22,9 +51,9 @@ const plans = rawPlans.map((plan: any) => ({
 			? (plan.highlighted ? "Most popular" : undefined)
 			: (typeof plan.badge === "string" ? plan.badge.trim() : undefined) || undefined,
 	description: toParagraphs(plan.description ?? ""),
-	features: (plan.features ?? "")
+	features: String(plan.features ?? "")
 		.split("\n")
-		.map((s: string) => s.trim())
+		.map((s) => s.trim())
 		.filter(Boolean),
 	cta: {
 		label: plan.cta_label ?? plan.ctaLabel,

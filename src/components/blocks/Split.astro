@@ -3,7 +3,7 @@ import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import { Image, type BlockComponentProps } from "emdash/ui";
 import BookMockup from "../ui/BookMockup.astro";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import { toParagraphs, formatAccentWords } from "../../utils/text";
 
 type SplitBlock = Extract<PageContentBlock, { _type: "marketing_split" }>;
@@ -24,9 +24,9 @@ const isFullMedia =
 	(!rawFit && isSquareImageObj);
 
 const paragraphs = toParagraphs(raw.body ?? "");
-const points = (raw.points ?? "")
+const points: string[] = String(raw.points ?? "")
 	.split("\n")
-	.map((point: string) => point.trim())
+	.map((point) => point.trim())
 	.filter(Boolean);
 const ctaLabel = raw.cta_label ?? raw.ctaLabel;
 const ctaUrl = raw.cta_url ?? raw.ctaUrl;

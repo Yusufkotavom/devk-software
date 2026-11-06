@@ -1,6 +1,6 @@
 ---
 import { PortableText, type BlockComponentProps } from "emdash/ui";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import "../../styles/prose.css";
 
 type TextBlock = Extract<PageContentBlock, { _type: "marketing_richtext" }>;

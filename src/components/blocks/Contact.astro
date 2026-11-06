@@ -2,7 +2,7 @@
 import { Icon } from "astro-iconset/components";
 import { sanitizeHref } from "emdash";
 import type { BlockComponentProps } from "emdash/ui";
-import type { PageContentBlock } from "../../../emdash-env";
+import type { PageContentBlock } from "../../types/blocks";
 import { toParagraphs } from "../../utils/text";
 
 type ContactBlock = Extract<PageContentBlock, { _type: "marketing_contact" }>;
@@ -10,7 +10,9 @@ type Props = BlockComponentProps<ContactBlock>;
 
 const raw = (Astro.props as any).node ?? (Astro.props as any).value ?? Astro.props ?? {};
 const { anchor_id, eyebrow, headline, subheadline } = raw;
-const options = Array.isArray(raw.options) ? raw.options : [];
+// Fields come straight from the CMS block payload, whose generated types do not
+// cover every registered block, so the shape is asserted at this boundary.
+const options: Record<string, any>[] = Array.isArray(raw.options) ? raw.options : [];
 const OptionHeading = headline ? "h3" : "h2";
 
 const iconMap: Record<string, string> = {
