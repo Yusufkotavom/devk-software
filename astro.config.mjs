@@ -191,10 +191,17 @@ export default defineConfig({
 		{
 			provider: fontProviders.google(),
 			name: "Instrument Serif",
-			cssVariable: "--font-display",
+			cssVariable: "--font-serif",
 			weights: [400],
 			styles: ["normal", "italic"],
 			fallbacks: ["serif"],
+		},
+		{
+			provider: fontProviders.google(),
+			name: "Space Grotesk",
+			cssVariable: "--font-display",
+			weights: [400, 500, 600, 700],
+			fallbacks: ["system-ui", "sans-serif"],
 		},
 		{
 			provider: fontProviders.google(),

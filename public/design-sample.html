@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kotacom — Sample Design (Editorial Print Warm)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F7F3EC; --sunken:#EFE8DD; --surface:#FFFFFF;
+    --ink:#17110D; --text:#1A1712; --text2:#5B5347; --muted:#877C6B;
+    --border:#E4DBCB; --border-strong:#D5C8B3;
+    --red:#B42318; --red-dk:#8F1B13; --amber:#D97706;
+    --on-night:#F3EFE6; --on-night-muted:#C9BEAC;
+    --display:"Instrument Serif",Georgia,serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --frame:min(100% - 2.5rem,1160px);
+    --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.5rem; --s5:2rem; --s6:3rem; --s7:4rem; --s8:6rem;
+    --space:clamp(3rem,2rem + 3vw,5rem);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-.01em;margin:0}
+  a{color:inherit}
+  .frame{width:var(--frame);margin-inline:auto}
+  .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:.5rem}
+  .eyebrow::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--red)}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--body);font-weight:600;font-size:.95rem;padding:.85rem 1.4rem;border-radius:2px;text-decoration:none;border:2px solid var(--ink);transition:transform .15s ease,background .15s ease,color .15s ease}
+  .btn--primary{background:var(--red);border-color:var(--red);color:#fff}
+  .btn--primary:hover{background:var(--red-dk);border-color:var(--red-dk);transform:translateY(-1px)}
+  .btn--ghost{background:transparent;color:var(--ink)}
+  .btn--ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn--on-night{background:var(--red);border-color:var(--red);color:#fff}
+  .section{padding-block:var(--space)}
+  .band{position:relative;border-top:1px solid var(--border)}
+  .band--tint{background:var(--sunken)}
+  .band--dark{background:var(--ink);color:var(--on-night);border-top:0}
+  .grid{display:grid;gap:1.25rem}
+  .head{max-width:720px;margin-bottom:var(--s6)}
+  .head h2{font-size:clamp(2rem,1.4rem + 2.2vw,3.25rem)}
+  .head p{margin-top:.85rem;color:var(--text2);font-size:1.05rem}
+
+  /* ---- top bar ---- */
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding-block:1rem}
+  .brand{display:flex;align-items:center;gap:.65rem;font-weight:700;letter-spacing:-.01em}
+  .brand .mark{width:38px;height:38px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-size:1.35rem;border-radius:2px}
+  .nav{display:flex;gap:1.6rem;font-size:.9rem;color:var(--text2)}
+  .nav a{text-decoration:none}.nav a:hover{color:var(--ink)}
+  .topbar .cta{display:flex;gap:.6rem}
+  .hamb{display:none}
+
+  /* ---- hero ---- */
+  .hero{padding-block:clamp(2.5rem,2rem + 4vw,5rem) var(--space);display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,4vw,4rem);align-items:center}
+  .hero h1{font-size:clamp(2.6rem,1.9rem + 3.6vw,4.75rem);margin-top:1.25rem}
+  .hero h1 em{font-style:italic;color:var(--red)}
+  .hero p.lead{margin-top:1.25rem;font-size:1.15rem;color:var(--text2);max-width:34ch}
+  .hero .actions{margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap}
+  .hero-visual{position:relative;aspect-ratio:4/5;border:2px solid var(--ink);border-radius:2px;overflow:hidden;background:
+     radial-gradient(120% 90% at 85% 8%, rgba(217,119,6,.28), transparent 55%),
+     radial-gradient(100% 90% at 10% 100%, rgba(180,35,24,.22), transparent 55%),
+     var(--sunken);}
+  .hero-visual .book{position:absolute;inset:auto auto 8% 8%;width:64%;aspect-ratio:3/4;background:var(--surface);border:2px solid var(--ink);box-shadow:14px 14px 0 rgba(23,17,13,.9)}
+  .hero-visual .book::before{content:"KOTACOM";position:absolute;top:14%;left:0;right:0;text-align:center;font-family:var(--display);font-size:1.9rem;letter-spacing:.02em}
+  .hero-visual .book::after{content:"CETAK • JILID • KIRIM";position:absolute;bottom:12%;left:0;right:0;text-align:center;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;color:var(--muted)}
+  .hero-visual .stamp{position:absolute;top:7%;right:7%;width:74px;height:74px;border-radius:50%;border:2px solid var(--red);color:var(--red);display:grid;place-items:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-align:center;line-height:1.3;transform:rotate(-8deg)}
+  .hero-visual .bar{position:absolute;inset:auto 0 0 0;height:14px;background:repeating-linear-gradient(90deg,var(--red) 0 22px,var(--ink) 22px 44px,var(--amber) 44px 66px)}
+
+  /* ---- proof ---- */
+  .proof{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .proof .lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .proof .logos{display:flex;gap:2.4rem;flex-wrap:wrap;font-family:var(--display);font-size:1.4rem;color:var(--text2);opacity:.85}
+
+  /* ---- services ---- */
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:1.6rem;transition:transform .15s ease,box-shadow .15s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:8px 8px 0 var(--sunken)}
+  .card .ico{width:44px;height:44px;border:2px solid var(--ink);display:grid;place-items:center;color:var(--red);border-radius:2px;margin-bottom:1.1rem}
+  .card h3{font-size:1.5rem;margin-bottom:.4rem}
+  .card p{color:var(--text2);font-size:.95rem;margin:0}
+
+  /* ---- process ---- */
+  .steps{grid-template-columns:repeat(4,1fr);counter-reset:step}
+  .step{position:relative;padding-top:1.4rem;border-top:2px solid var(--ink)}
+  .step .num{font-family:var(--display);font-size:2.6rem;color:var(--red);line-height:1}
+  .step h3{font-size:1.25rem;margin:.5rem 0 .3rem}
+  .step p{color:var(--text2);font-size:.9rem;margin:0}
+
+  /* ---- portfolio ---- */
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .work{position:relative;aspect-ratio:4/3;border:2px solid var(--ink);border-radius:2px;overflow:hidden;display:flex;align-items:flex-end;padding:1rem;color:#fff;text-decoration:none}
+  .work .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.35);padding:.25rem .5rem;border-radius:2px;margin-right:auto}
+  .work .t{font-family:var(--display);font-size:1.5rem;position:absolute;left:1rem;bottom:1rem;right:1rem}
+  .work.g1{background:linear-gradient(135deg,#8F1B13 10%,#B42318 55%,#D97706 100%)}
+  .work.g2{background:linear-gradient(135deg,#17110D 10%,#8F1B13 70%,#D97706 100%)}
+  .work.g3{background:linear-gradient(135deg,#B42318 0%,#17110D 100%)}
+  .work.g4{background:linear-gradient(135deg,#D97706 0%,#B42318 70%,#17110D 100%)}
+  .work.g5{background:linear-gradient(135deg,#8F1B13 0%,#D97706 55%,#F3EFE6 130%)}
+  .work.g6{background:linear-gradient(135deg,#17110D 0%,#5B5347 100%)}
+  .work::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 2px,transparent 2px 10px);mix-blend-mode:overlay}
+
+  /* ---- pricing ---- */
+  .price-grid{grid-template-columns:repeat(3,1fr);align-items:stretch}
+  .plan{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:1.8rem;display:flex;flex-direction:column}
+  .plan.feature{border:2px solid var(--red);box-shadow:10px 10px 0 var(--sunken);position:relative}
+  .plan.feature .badge{position:absolute;top:-14px;left:1.8rem;background:var(--red);color:#fff;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .6rem}
+  .plan h3{font-size:1.35rem}
+  .plan .amt{font-family:var(--display);font-size:2.6rem;margin:.6rem 0 .2rem}
+  .plan .amt small{font-family:var(--mono);font-size:.82rem;color:var(--muted);letter-spacing:.06em}
+  .plan ul{list-style:none;padding:0;margin:1.1rem 0 1.6rem;display:grid;gap:.55rem;font-size:.92rem;color:var(--text2)}
+  .plan li::before{content:"✓";color:var(--red);font-weight:700;margin-right:.5rem}
+  .plan .btn{margin-top:auto;justify-content:center}
+
+  /* ---- testimonial ---- */
+  .quote{max-width:820px;margin-inline:auto;text-align:center}
+  .quote blockquote{font-family:var(--display);font-size:clamp(1.7rem,1.2rem + 2vw,2.7rem);line-height:1.18;margin:0}
+  .quote blockquote b{color:var(--amber);font-weight:400;font-style:italic}
+  .quote .who{margin-top:1.5rem;font-family:var(--mono);font-size:.82rem;letter-spacing:.1em;color:var(--on-night);opacity:.85;text-transform:uppercase}
+  .band--dark .head h2,.band--dark .head p{color:var(--on-night)}
+  .band--dark .head p{color:var(--on-night-muted)}
+
+  /* ---- faq ---- */
+  .faq{max-width:820px}
+  .q{border-bottom:1px solid var(--border-strong);padding:1.15rem 0}
+  .q summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;font-weight:600;font-size:1.05rem}
+  .q summary::-webkit-details-marker{display:none}
+  .q summary::after{content:"+";font-family:var(--mono);color:var(--red);font-size:1.3rem}
+  .q[open] summary::after{content:"–"}
+  .q p{margin:.8rem 0 0;color:var(--text2)}
+
+  /* ---- dark cta ---- */
+  .cta-band{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .cta-band h2{font-size:clamp(2rem,1.4rem + 2.4vw,3.4rem);max-width:16ch}
+  .cta-band .sub{color:var(--on-night-muted);margin-top:.6rem;max-width:40ch}
+
+  /* ---- footer ---- */
+  footer{background:var(--ink);color:var(--on-night);padding-block:var(--s6) var(--s5)}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2rem}
+  .fcol h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 .9rem}
+  .fcol a{display:block;text-decoration:none;color:var(--on-night-muted);padding:.22rem 0;font-size:.92rem}
+  .fcol a:hover{color:var(--on-night)}
+  .fbrand .mark{background:var(--paper);color:var(--ink)}
+  .fbrand p{color:var(--on-night-muted);margin-top:.8rem;max-width:28ch;font-size:.9rem}
+  .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:var(--s5);padding-top:1.2rem;display:flex;justify-content:space-between;color:var(--on-night);opacity:.8;font-size:.85rem;font-family:var(--mono)}
+
+  /* ---- palette strip (self-documenting) ---- */
+  .palettes{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.75rem}
+  .sw{border:1px solid var(--border);border-radius:2px;overflow:hidden;font-family:var(--mono);font-size:.66rem}
+  .sw .chip{height:56px;box-shadow:inset 0 0 0 1px rgba(23,17,13,.10)}
+  .sw .meta{padding:.4rem .5rem;color:var(--text2)}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .hero-visual{order:-1;aspect-ratio:16/10}
+    .cards,.gallery,.price-grid,.steps{grid-template-columns:1fr 1fr}
+    .fgrid{grid-template-columns:1fr 1fr}
+    .nav{display:none}
+  }
+  @media(max-width:620px){
+    .cards,.gallery,.price-grid,.steps,.fgrid{grid-template-columns:1fr}
+    .cta-band{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="frame"><div class="topbar">
+    <div class="brand"><span class="mark">K</span> Kotacom</div>
+    <nav class="nav">
+      <a href="#">Percetakan</a><a href="#">Solusi IT</a><a href="#">Portofolio</a><a href="#">Harga</a><a href="#">Blog</a>
+    </nav>
+    <div class="cta"><a class="btn btn--ghost" href="#">Katalog</a><a class="btn btn--primary" href="#">Konsultasi</a></div>
+  </div></div>
+
+  <!-- HERO -->
+  <section class="frame hero">
+    <div>
+      <span class="eyebrow">Cetak Buku &amp; Solusi IT · Surabaya</span>
+      <h1>Cetak buku rapi, <em>sistem digital</em> yang jalan.</h1>
+      <p class="lead">Percetakan buku satuan hingga bulk, plus website, POS, dan layanan IT. Satu partner, hasil tangan pertama.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="#">Konsultasi Gratis →</a>
+        <a class="btn btn--ghost" href="#">Lihat Harga</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="stamp">SEJAK<br>2014</div>
+      <div class="book"></div>
+      <div class="bar"></div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <div class="band band--tint"><div class="frame section proof">
+    <span class="lbl">Dipercaya oleh</span>
+    <div class="logos"><span>Kemendikbud</span><span>Universitas&nbsp;Ciputra</span><span>Gramedia</span><span>Pemkot&nbsp;Surabaya</span></div>
+  </div></div>
+
+  <!-- SERVICES -->
+  <section class="frame section">
+    <div class="head"><span class="eyebrow">Layanan</span><h2>Satu atap untuk cetak &amp; digital</h2><p>Dari naskah jadi buku, sampai toko online dan sistem kasir.</p></div>
+    <div class="grid cards">
+      <div class="card"><div class="ico">📚</div><h3>Cetak Buku</h3><p>Satuan &amp; bulk, jilid lem, spiral, hardcover. Bookpaper &amp; HVS.</p></div>
+      <div class="card"><div class="ico">🖥️</div><h3>Website &amp; POS</h3><p>Website company profile, e-commerce, aplikasi kasir ritel.</p></div>
+      <div class="card"><div class="ico">🛠️</div><h3>Layanan IT</h3><p>Servis komputer, upgrade SSD, instalasi software &amp; jaringan.</p></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <div class="band band--tint"><div class="frame section">
+    <div class="head"><span class="eyebrow">Alur kerja</span><h2>Dari file ke buku, 4 langkah</h2></div>
+    <div class="grid steps">
+      <div class="step"><div class="num">1</div><h3>Kirim naskah</h3><p>Upload PDF/naskah, pilih ukuran &amp; kertas.</p></div>
+      <div class="step"><div class="num">2</div><h3>Proof digital</h3><p>Kami kirim preview &amp; estimasi biaya.</p></div>
+      <div class="step"><div class="num">3</div><h3>Produksi</h3><p>Cetak 1200 DPI, jilid rapi, QC ketat.</p></div>
+      <div class="step"><div class="num">4</div><h3>Kirim</h3><p>Packing aman, gratis ongkir area Surabaya.</p></div>
+    </div>
+  </div></div>
+
+  <!-- PORTFOLIO -->
+  <section class="frame section">
+    <div class="head"><span class="eyebrow">Portofolio</span><h2>Karya terbaru</h2><p>Contoh bergambar — bukan kotak abu.</p></div>
+    <div class="grid gallery">
+      <a class="work g1" href="#"><span class="tag">Buku</span><span class="t">Antologi Puisi</span></a>
+      <a class="work g2" href="#"><span class="tag">Softcover</span><span class="t">Buku Tahunan</span></a>
+      <a class="work g3" href="#"><span class="tag">Hardcover</span><span class="t">Modul Ajar</span></a>
+      <a class="work g4" href="#"><span class="tag">Website</span><span class="t">Toko Online</span></a>
+      <a class="work g5" href="#"><span class="tag">POS</span><span class="t">Kasir Ritel</span></a>
+      <a class="work g6" href="#"><span class="tag">Lainnya</span><span class="t">Kalender &amp; Profil</span></a>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <div class="band band--tint"><div class="frame section">
+    <div class="head"><span class="eyebrow">Harga</span><h2>Transparan, tanpa biaya tersembunyi</h2></div>
+    <div class="grid price-grid">
+      <div class="plan"><h3>Buku Satuan</h3><div class="amt">15rb<small> /buku</small></div>
+        <ul><li>Mulai 1 eksemplar</li><li>Bookpaper 57gsm</li><li>Jilid lem panas</li></ul>
+        <a class="btn btn--ghost" href="#">Pilih</a></div>
+      <div class="plan feature"><span class="badge">Populer</span><h3>Paket Penulis</h3><div class="amt">3,9jt<small> /100 buku</small></div>
+        <ul><li>ISBN &amp; layout</li><li>Cover custom</li><li>Gratis ongkir</li></ul>
+        <a class="btn btn--primary" href="#">Pilih Paket</a></div>
+      <div class="plan"><h3>Bulk &amp; Instansi</h3><div class="amt">Custom</div>
+        <ul><li>500+ eksemplar</li><li>Harga grosir</li><li>Invoice &amp; PO</li></ul>
+        <a class="btn btn--ghost" href="#">Hubungi</a></div>
+    </div>
+  </div></div>
+
+  <!-- TESTIMONIAL (dark) -->
+  <div class="band band--dark"><div class="frame section">
+    <div class="quote">
+      <span class="eyebrow" style="color:var(--amber)">Testimoni</span>
+      <blockquote style="margin-top:1.2rem">“Naskah saya jadi buku <b>rapi &amp; cepat</b>. Komunikasinya enak, hasilnya melebihi ekspektasi.”</blockquote>
+      <div class="who">— Rani P., Penulis Independen · Surabaya</div>
+    </div>
+  </div></div>
+
+  <!-- FAQ -->
+  <section class="frame section">
+    <div class="head"><span class="eyebrow">FAQ</span><h2>Pertanyaan yang sering ditanya</h2></div>
+    <div class="faq">
+      <details class="q" open><summary>Berapa minimal order cetak buku?</summary><p>Mulai dari 1 eksemplar. Cocok untuk proofing, sidang, atau koleksi pribadi.</p></details>
+      <details class="q"><summary>Berapa lama pengerjaan?</summary><p>Rata-rata 3–7 hari kerja tergantung jumlah dan jenis jilid.</p></details>
+      <details class="q"><summary>Bisa kirim ke luar Surabaya?</summary><p>Bisa ke seluruh Indonesia; ongkir dihitung sesuai tujuan.</p></details>
+      <details class="q"><summary>Format file apa yang diterima?</summary><p>PDF siap cetak (300 DPI, CMYK, ada bleed). Kami bantu cek gratis.</p></details>
+    </div>
+  </section>
+
+  <!-- DARK CTA -->
+  <div class="band band--dark"><div class="frame section cta-band">
+    <div><h2>Siap cetak atau bikin sistem?</h2><p class="sub">Konsultasi gratis — kami bantu pilih spesifikasi &amp; estimasi biaya.</p></div>
+    <a class="btn btn--on-night" href="#">Chat WhatsApp 0857-9902-0320 →</a>
+  </div></div>
+
+  <!-- FOOTER -->
+  <footer><div class="frame">
+    <div class="fgrid">
+      <div class="fcol fbrand"><div class="brand" style="color:var(--on-night)"><span class="mark">K</span> Kotacom</div><p>Percetakan buku &amp; solusi IT di Surabaya–Sidoarjo. Tangan pertama sejak 2014.</p></div>
+      <div class="fcol"><h4>Percetakan</h4><a href="#">Cetak Buku &amp; Novel</a><a href="#">Buku Tahunan</a><a href="#">Modul &amp; Brosur</a><a href="#">Kalender</a></div>
+      <div class="fcol"><h4>Digital</h4><a href="#">Pembuatan Website</a><a href="#">Sistem POS</a><a href="#">Layanan IT</a><a href="#">Konsultasi</a></div>
+      <div class="fcol"><h4>Kontak</h4><a href="#">0857-9902-0320</a><a href="#">info@kotacom.co.id</a><a href="#">Surabaya, Jawa Timur</a><a href="#">08.00–22.00 WIB</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Kotacom. All rights reserved.</span><span>design.md sample · Editorial Print Warm</span></div>
+  </div></footer>
+
+  <!-- PALETTE STRIP -->
+  <div class="band band--tint"><div class="frame section">
+    <div class="head"><span class="eyebrow">Palet (self-doc)</span><h2>Token warna</h2></div>
+    <div class="grid palettes">
+      <div class="sw"><div class="chip" style="background:#F7F3EC"></div><div class="meta">Paper<br>#F7F3EC</div></div>
+      <div class="sw"><div class="chip" style="background:#EFE8DD"></div><div class="meta">Sunken<br>#EFE8DD</div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #E4DBCB"></div><div class="meta">Surface<br>#FFFFFF</div></div>
+      <div class="sw"><div class="chip" style="background:#17110D"></div><div class="meta" style="color:#fff;background:#17110D">Ink<br>#17110D</div></div>
+      <div class="sw"><div class="chip" style="background:#B42318"></div><div class="meta" style="color:#fff;background:#B42318">Red<br>#B42318</div></div>
+      <div class="sw"><div class="chip" style="background:#D97706"></div><div class="meta" style="color:#fff;background:#D97706">Amber<br>#D97706</div></div>
+      <div class="sw"><div class="chip" style="background:#5B5347"></div><div class="meta" style="color:#fff;background:#5B5347">Text 2<br>#5B5347</div></div>
+      <div class="sw"><div class="chip" style="background:#E4DBCB"></div><div class="meta">Border<br>#E4DBCB</div></div>
+    </div>
+    <p style="margin-top:1.2rem;font-family:var(--mono);font-size:.78rem;color:var(--muted)">Tipografi: Instrument Serif (display) · Inter (body) · JetBrains Mono (label)</p>
+  </div></div>
+
+</body>
+</html>

@@ -1,35 +1,150 @@
 /*
-  theme.css -- your theme overrides. This is the file to edit to
-  retheme the site.
+  theme.css — Kotacom v2 "Modern Warm-Tech"
+  ---------------------------------------------------------------
+  Direction: modern & warm (rounded, soft shadows, gradient accents),
+  bridging print (red/orange) x IT (indigo/violet).
+  Overrides tokens.css (unlayered → wins) + a few structural overrides
+  with slightly higher specificity to beat Base.astro's global styles.
 
-  Every design token lives in src/styles/tokens.css (colors, glows,
-  type scale, spacing, layout, radii, shadows) with its default value.
-  Override any of them here: declarations in this file are unlayered,
-  so they always beat the @layer base defaults in tokens.css.
-
-  Colors are defined with light-dark(). Overriding with a plain color
-  changes light and dark mode at once; use light-dark(<light>, <dark>)
-  to set different values per mode.
-
-  Ink is the brand: --color-brand follows --color-text. To give the
-  buttons a color, set --color-brand and --color-on-brand together.
-  --color-accent colors the featured testimonial's quote mark. Set
-  --glow-daylight or --glow-dusk to none for flat panels.
-
-  Webfonts are loaded in astro.config.mjs (--font-body for text,
-  --font-display for headlines). Swap the loaded fonts there; use
-  overrides here for system fonts or a separate face for card titles.
-
-  Example:
-
-  :root {
-    --color-brand: light-dark(#14532d, #bbf7d0);
-    --color-on-brand: light-dark(#f0fdf4, #052e16);
-    --color-accent: light-dark(#15803d, #4ade80);
-    --glow-daylight: none;
-    --radius-sheet: 16px;
-  }
+  Revert to old look: `git checkout main -- src/styles/theme.css`.
 */
 
 :root {
+	/* ---- Brand ramp ---- */
+	--v2-red: #f04438;
+	--v2-orange: #fb923c;
+	--v2-indigo: #6366f1;
+	--v2-violet: #8b5cf6;
+	--v2-grad: linear-gradient(115deg, #f04438 0%, #fb923c 42%, #8b5cf6 100%);
+	--v2-grad-soft: linear-gradient(115deg, rgba(240, 68, 56, 0.14), rgba(139, 92, 246, 0.14));
+	--v2-mesh:
+		radial-gradient(42% 50% at 16% 6%, rgba(240, 68, 56, 0.16), transparent 60%),
+		radial-gradient(40% 55% at 84% 0%, rgba(99, 102, 241, 0.16), transparent 62%),
+		radial-gradient(50% 60% at 60% 28%, rgba(251, 146, 60, 0.12), transparent 65%);
+
+	/* ---- Surfaces (light) ---- */
+	--color-bg: light-dark(#fbfaf8, #0c0d10);
+	--color-surface: light-dark(#ffffff, #141519);
+	--color-fill: light-dark(#f3f1ec, #1a1c21);
+	--color-fill-strong: light-dark(#ece8e1, #23262d);
+	--color-bg-subtle: var(--color-fill);
+
+	/* ---- Text ---- */
+	--color-text: light-dark(#0f1013, #f2f3f5);
+	--color-text-secondary: light-dark(#3a3c43, #b8bcc4);
+	--color-muted: light-dark(#6b6e76, #8b90a0);
+
+	/* ---- Lines ---- */
+	--color-border: light-dark(rgba(15, 16, 19, 0.1), rgba(255, 255, 255, 0.1));
+	--color-border-subtle: light-dark(rgba(15, 16, 19, 0.06), rgba(255, 255, 255, 0.06));
+	--color-border-strong: light-dark(rgba(15, 16, 19, 0.16), rgba(255, 255, 255, 0.18));
+	--color-ring: light-dark(rgba(15, 16, 19, 0.06), rgba(255, 255, 255, 0.08));
+	--color-media-outline: light-dark(rgba(15, 16, 19, 0.1), rgba(255, 255, 255, 0.1));
+
+	/* ---- Brand (buttons) ---- */
+	--color-brand: light-dark(#0f1013, #fbfaf8);
+	--color-brand-hover: light-dark(#26272d, #e6e7ea);
+	--color-on-brand: light-dark(#ffffff, #0c0d10);
+	--color-brand-ring: color-mix(in srgb, var(--v2-red) 22%, transparent);
+
+	/* ---- Accents ---- */
+	--color-brand-accent: light-dark(#f04438, #ff6b5e);
+	--color-brand-accent-hover: light-dark(#d92d20, #ff7d70);
+	--color-brand-accent-subtle: light-dark(rgba(240, 68, 56, 0.1), rgba(240, 68, 56, 0.18));
+	--color-brand-accent-glow: light-dark(rgba(240, 68, 56, 0.35), rgba(240, 68, 56, 0.5));
+	--color-accent: light-dark(#fb923c, #fbbf24);
+
+	/* ---- Panels (marketing) ---- */
+	--color-sunken: light-dark(#f3f1ec, #16171b);
+	--color-night: light-dark(#0f1013, #0a0b0e);
+	--color-night-card: light-dark(#1a1c21, #1c1e24);
+	--color-night-text: #f3f4f6;
+	--color-night-muted: #a7abb6;
+	--color-night-border: rgba(255, 255, 255, 0.1);
+	--color-on-night: #f3f4f6;
+	--color-on-night-muted: rgba(243, 244, 246, 0.66);
+	--chip-bg: light-dark(rgba(255, 255, 255, 0.85), rgba(20, 21, 25, 0.8));
+	--chip-text: light-dark(#0f1013, #f3f4f6);
+
+	/* ---- Glows (replace paper-print glows with warm mesh) ---- */
+	--glow-daylight: var(--v2-mesh);
+	--glow-dusk:
+		radial-gradient(55% 90% at 88% 0%, rgba(139, 92, 246, 0.28), transparent 62%),
+		radial-gradient(45% 70% at 0% 100%, rgba(240, 68, 56, 0.24), transparent 66%);
+
+	/* ---- Radii: modern rounded ---- */
+	--radius-sm: 8px;
+	--radius: 12px;
+	--radius-lg: 16px;
+	--radius-xl: 20px;
+	--radius-sheet: clamp(20px, 2.2vw, 28px);
+	--radius-media: 16px;
+	--card-padding: 0px;
+
+	/* ---- Shadows: soft & warm ---- */
+	--color-shadow: light-dark(rgba(15, 16, 19, 0.05), rgba(0, 0, 0, 0.5));
+	--color-shadow-strong: light-dark(rgba(15, 16, 19, 0.16), rgba(0, 0, 0, 0.7));
+	--shadow-sm: 0 1px 2px var(--color-shadow);
+	--shadow-card: 0 1px 2px rgba(15, 16, 19, 0.04), 0 12px 30px -12px rgba(15, 16, 19, 0.16);
+	--shadow-card-hover: 0 2px 4px rgba(15, 16, 19, 0.05), 0 30px 60px -24px rgba(15, 16, 19, 0.28);
+	--shadow-lg: 0 2px 4px rgba(15, 16, 19, 0.05), 0 30px 60px -24px rgba(15, 16, 19, 0.28);
+
+	/* ---- Type ---- */
+	--font-heading: var(--font-display);
+	--font-weight-heading: 600;
+	--font-weight-display: 600;
+	--tracking-tight: -0.02em;
+	--tracking-snug: -0.015em;
+	--section-space: clamp(3.5rem, 2.4rem + 3.2vw, 6rem);
+}
+
+/* =========================================================
+   Structural overrides (beat Base.astro's global .site-header)
+   ========================================================= */
+
+/* Sticky frosted "glass" header */
+body .site-header {
+	position: sticky;
+	top: 0;
+	z-index: 60;
+	background: color-mix(in srgb, var(--color-bg) 78%, transparent);
+	-webkit-backdrop-filter: saturate(1.4) blur(16px);
+	backdrop-filter: saturate(1.4) blur(16px);
+	border-bottom: 1px solid var(--color-border);
+}
+
+/* Header primary CTA → gradient pill */
+body .site-header__actions .btn:not(.btn--ghost):not(.btn-secondary):not(.btn-glass):not(.btn-light) {
+	background: var(--v2-grad);
+	border-color: transparent;
+	color: #fff !important;
+	border-radius: var(--radius-full);
+	box-shadow: 0 10px 24px -12px rgba(240, 68, 56, 0.6);
+}
+body .site-header__actions .btn:not(.btn--ghost):not(.btn-secondary):not(.btn-glass):not(.btn-light):hover {
+	filter: brightness(1.05);
+	transform: translateY(-1px);
+}
+
+/* Gradient accent words (formatAccentWords {..}) */
+body .text-accent-gradient {
+	background: var(--v2-grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+body .highlight-marker {
+	background: linear-gradient(transparent 62%, color-mix(in srgb, var(--v2-orange) 40%, transparent) 0);
+}
+
+/* Rounded floating cards */
+body :is(.card, .post-card, .pricing-card, .plan, .testimonial-card, .bento-card) {
+	border-radius: var(--radius-xl);
+	border: 1px solid var(--color-border);
+	box-shadow: var(--shadow-card);
+	transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+body :is(.card, .post-card, .pricing-card, .plan, .testimonial-card, .bento-card):hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-card-hover);
 }

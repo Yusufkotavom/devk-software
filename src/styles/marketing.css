@@ -706,3 +706,55 @@ img.media__img.emdash-image-media,
 	right: -7px;
 }
 
+
+/* =========================================================
+   v2 "Modern Warm-Tech" — band rhythm, hero mesh, CTA gradient
+   (appended, unlayered → wins over @layer base defaults)
+   ========================================================= */
+.band { background: transparent; }
+
+/* alternating warm tint so sections stop being one white column */
+.page-blocks > .band:nth-child(even):not(.band--tint):not(.band--dark) {
+	background: var(--color-sunken);
+}
+.band--tint { background: var(--color-sunken); border-color: var(--color-border); }
+.band--dark {
+	background: var(--color-night);
+	color: var(--color-on-night);
+	border-color: var(--color-night-border);
+}
+
+/* warm mesh behind hero + page intros */
+:is(.hero, .intro) { position: relative; }
+:is(.hero, .intro)::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: var(--v2-mesh);
+	pointer-events: none;
+	opacity: 0.9;
+}
+:is(.hero, .intro) > * { position: relative; z-index: 1; }
+
+/* generous, even section rhythm */
+.section { padding-block: var(--section-space); }
+
+/* closing CTA becomes a gradient statement panel */
+.cta-section {
+	background: var(--v2-grad);
+	color: #fff;
+	border-radius: var(--radius-sheet);
+	border: 0;
+	overflow: hidden;
+}
+.cta-section :is(h1, h2, h3, .section-headline, p, .section-subheadline) { color: #fff; }
+.cta-section .btn,
+.cta-section .btn-primary {
+	background: #fff;
+	color: #0f1013 !important;
+	border-color: #fff;
+}
+
+/* subtle paper-free polish */
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
