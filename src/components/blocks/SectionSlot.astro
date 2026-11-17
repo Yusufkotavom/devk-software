@@ -22,7 +22,7 @@ const sections = await getSectionsForSlot(slot, collection, categories);
 {
 	sections.map((section) => (
 		<div class="section-slot" data-slot={slot} data-section={section.slug}>
-			<PortableText value={section.blocks} components={{ type: blockComponents }} />
+			<PortableText value={section.blocks as any} components={{ type: blockComponents }} />
 		</div>
 	))
 }

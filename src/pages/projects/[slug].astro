@@ -195,7 +195,7 @@ const client = (project.data as Record<string, unknown>).client as string | unde
 					<main class="post-layout__main">
 						<div class="prose" {...project.edit.content}>
 							{projectData.content && Array.isArray(projectData.content) && projectData.content.length > 0 ? (
-								<PortableText value={projectData.content} />
+								<PortableText value={projectData.content as any} />
 							) : (
 								<p class="text-muted">{projectData.excerpt || "Informasi detail studi kasus proyek ini sedang dalam pembaruan."}</p>
 							)}

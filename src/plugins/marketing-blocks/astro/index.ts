@@ -22,7 +22,7 @@ import ComparisonTable from "../../../components/blocks/ComparisonTable.astro";
 import MarqueeLogos from "../../../components/blocks/MarqueeLogos.astro";
 import Section from "../../../components/blocks/Section.astro";
 
-export const blockComponents = {
+export const blockComponents: Record<string, any> = {
 	"marketing.section": Section,
 	"marketing_section": Section,
 	"section": Section,

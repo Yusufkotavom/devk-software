@@ -38,7 +38,7 @@ const [popups, stickyBars] = await Promise.all([
 				&times;
 			</button>
 			<div class="kc-sticky__body">
-				<PortableText value={bar.blocks} components={{ type: blockComponents }} />
+				<PortableText value={bar.blocks as any} components={{ type: blockComponents }} />
 			</div>
 		</div>
 	))
@@ -61,7 +61,7 @@ const [popups, stickyBars] = await Promise.all([
 					&times;
 				</button>
 				<div class="kc-modal__body">
-					<PortableText value={popup.blocks} components={{ type: blockComponents }} />
+					<PortableText value={popup.blocks as any} components={{ type: blockComponents }} />
 				</div>
 			</div>
 		</div>
