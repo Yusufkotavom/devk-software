@@ -758,3 +758,368 @@ img.media__img.emdash-image-media,
 
 /* subtle paper-free polish */
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+/* =========================================================
+   v2 block styling — EmDash marketing blocks aligned to theme
+   (unlayered → wins over @layer base defaults)
+   ========================================================= */
+
+/* shared heading polish */
+.section-headline { letter-spacing: -0.02em; }
+.hero__headline, .split__headline, .cta__headline, .wa-block__headline { letter-spacing: -0.02em; }
+
+/* icon tiles everywhere */
+.icon-tile, .bento-card__icon, .feature__icon, .card .ico {
+	border-radius: 14px;
+	background: var(--v2-grad-soft);
+	border: 1px solid var(--color-border);
+	color: var(--v2-red);
+	display: grid;
+	place-items: center;
+}
+
+/* Hero */
+.hero__announce {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-full);
+	box-shadow: var(--shadow-sm);
+}
+.hero__media {
+	border-radius: var(--radius-xl);
+	border: 1px solid var(--color-border);
+	box-shadow: var(--shadow-card);
+	overflow: hidden;
+}
+
+/* Features cards */
+.features-section .card {
+	border-radius: var(--radius-xl);
+	border: 1px solid var(--color-border);
+	background: var(--color-surface);
+	box-shadow: var(--shadow-card);
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+.features-section .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+
+/* Pricing */
+.plan, .pricing-card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	box-shadow: var(--shadow-card);
+	padding: 1.7rem;
+	display: flex;
+	flex-direction: column;
+}
+.plan__amount, .plan__amount * { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
+.plan__badge {
+	background: var(--v2-grad);
+	color: #fff;
+	border-radius: var(--radius-full);
+	padding: .3rem .7rem;
+	font-size: .7rem;
+	font-weight: 600;
+	letter-spacing: .03em;
+}
+.plan--highlighted {
+	border: 1px solid transparent;
+	background:
+		linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+		var(--v2-grad) border-box;
+	box-shadow: var(--shadow-lg);
+}
+
+/* FAQ (accordion items as cards) */
+.faq__item, .faq-section details, .faq-item {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	margin-bottom: .65rem;
+	box-shadow: var(--shadow-sm);
+	padding-inline: 1.1rem;
+}
+.faq__question, .faq__item summary { font-weight: 600; }
+.faq__icon, .faq__item summary::after { color: var(--v2-red); }
+.faq__answer, .faq__intro { color: var(--color-muted); }
+
+/* Steps */
+.step-card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-card);
+	padding: 1.4rem;
+}
+.step-card__num-badge {
+	background: var(--v2-grad);
+	color: #fff;
+	border-radius: 12px;
+	font-family: var(--font-display);
+	font-weight: 600;
+}
+.steps-section .num { color: var(--v2-red); font-family: var(--font-display); }
+
+/* Stats */
+.stats__value { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
+.stats__item { padding: 1rem 0; }
+.stats__label { color: var(--color-muted); }
+
+/* Bento */
+.bento-card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	box-shadow: var(--shadow-card);
+	overflow: hidden;
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+.bento-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+.bento-card__badge {
+	background: var(--v2-grad-soft);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-full);
+	font-weight: 600;
+}
+
+/* Testimonials */
+.testimonials__card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	box-shadow: var(--shadow-card);
+	padding: 1.5rem;
+}
+.testimonials__featured {
+	background:
+		radial-gradient(50% 90% at 85% 0%, rgba(139,92,246,.35), transparent 60%),
+		radial-gradient(50% 90% at 10% 100%, rgba(240,68,56,.30), transparent 60%),
+		var(--color-night);
+	color: var(--color-on-night);
+	border-radius: var(--radius-sheet);
+	border: 0;
+}
+.testimonials__mark { color: var(--v2-orange); }
+.testimonials__featured-quote { font-family: var(--font-display); }
+
+/* Feed / post cards */
+.feed__slide .card, .feed-section .card, .post-card {
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--color-border);
+	box-shadow: var(--shadow-card);
+	overflow: hidden;
+}
+.feed__slide .card:hover, .post-card:hover { box-shadow: var(--shadow-card-hover); }
+
+/* Comparison table */
+.comparison-card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-card);
+	overflow: hidden;
+}
+.comparison-section th, .comparison-card thead {
+	background: var(--color-fill);
+}
+.comparison-section .icon-check { color: var(--v2-red); }
+
+/* Slider */
+.slide__media, .slide__media--fill { border-radius: var(--radius-lg); overflow: hidden; }
+.slider-section .card { border-radius: var(--radius-lg); }
+
+/* CTA gradient panel (ensure inner text/buttons read on gradient) */
+.cta-section .cta__headline, .cta-section h1, .cta-section h2, .cta-section p { color: #fff; }
+.cta-section .btn, .cta-section .btn-primary, .cta__actions .btn {
+	background: #fff; color: #0f1013 !important; border-color: #fff;
+}
+
+/* WhatsApp block */
+.wa-block-section {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sheet);
+	box-shadow: var(--shadow-card);
+}
+.wa-block__badge { background: var(--v2-grad-soft); border: 1px solid var(--color-border); border-radius: var(--radius-full); }
+.wa-block__badge-dot { background: var(--v2-red); }
+.wa-block__btn {
+	background: var(--v2-grad);
+	color: #fff !important;
+	border: 0;
+	border-radius: var(--radius-full);
+	box-shadow: 0 10px 24px -12px rgba(240,68,56,.6);
+}
+
+/* Contact */
+.contact__card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	box-shadow: var(--shadow-card);
+}
+
+/* Logos / marquee */
+.logos__track { color: var(--color-muted); }
+
+/* =========================================================
+   v2 blocks pass 2 — PostCard/Feed, CTA readability, pricing highlight, media fallback
+   ========================================================= */
+
+/* --- PostCard / Feed / list items (the real card class is .post) --- */
+.post-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.post, .post--card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-card);
+	overflow: hidden;
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+.post:hover, .post--card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+.post__media, .post__image {
+	background: var(--v2-grad-soft);
+	border-radius: 0;
+}
+.post__body { padding: 1.1rem 1.15rem 1.2rem; }
+.post__title { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.015em; }
+.post__meta { color: var(--color-muted); font-size: .8rem; }
+.post__cta { color: var(--v2-red); font-weight: 600; }
+.post__excerpt { color: var(--color-text-secondary); }
+.chip, .chip-badge {
+	border-radius: var(--radius-full);
+	background: var(--color-fill);
+	border: 1px solid var(--color-border);
+}
+
+/* media fallback (empty images look intentional, not broken) */
+.hero__media, .split__media, .slide__media, .slide__media--fill, .feed__slide .post__media {
+	background: var(--v2-grad-soft);
+	border-radius: var(--radius-lg);
+}
+
+/* --- CTA panel: force readable buttons/links --- */
+.cta-section { color: #fff; }
+.cta-section :is(a, .btn, .btn-primary, .btn-secondary, .btn--ghost, .arrow-link) {
+	background: #fff !important;
+	color: #0f1013 !important;
+	border-color: #fff !important;
+	border-radius: var(--radius-full);
+}
+.cta-section :is(a, .btn):hover { background: #f3f4f6 !important; }
+.cta-section :is(h1,h2,h3,p,span,strong) { color: #fff; }
+
+/* --- Pricing highlight: stronger gradient ring + lift --- */
+.plan--highlighted {
+	border: 2px solid transparent !important;
+	background:
+		linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+		var(--v2-grad) border-box !important;
+	box-shadow: 0 20px 50px -20px rgba(240,68,56,.35) !important;
+	transform: translateY(-4px);
+}
+.plan__amount, .plan__amount * { font-family: var(--font-display); font-weight: 600; }
+
+/* --- related/pages link block polish --- */
+.pages-related, .related-pages, .sitemap-links { }
+
+/* =========================================================
+   v2 pass 3 — button/label contrast fixes (must come last)
+   ========================================================= */
+
+/* CTA panel: anchors + ALL their descendants = dark ink (not white) */
+.cta-section :is(a, .btn, .btn-primary, .btn-secondary, .btn--ghost, .arrow-link),
+.cta-section :is(a, .btn, .btn-primary, .btn-secondary, .btn--ghost, .arrow-link) * {
+	color: #0f1013 !important;
+}
+.cta-section :is(a, .btn, .btn-primary, .btn-secondary, .btn--ghost, .arrow-link) {
+	background: #fff !important;
+	border-color: #fff !important;
+}
+
+/* Highlighted pricing card CTA */
+.plan--highlighted :is(.btn, .btn-primary, .btn--ghost, a.plan__action, .plan__action a) {
+	background: var(--v2-grad) !important;
+	color: #fff !important;
+	border: 0 !important;
+	border-radius: var(--radius-full);
+}
+.plan--highlighted :is(.btn, a) * { color: #fff !important; }
+
+/* WA / arrow-link pills and links on light surfaces */
+.arrow-link, .post__cta, .feed__all { color: var(--v2-red); font-weight: 600; }
+.wa-block__btn, a.wa-block__btn * { color: #fff !important; }
+
+/* ensure any solid .btn-primary / .btn keeps white label */
+.btn-primary, .btn:not(.btn-secondary):not(.btn--ghost):not(.btn-glass):not(.btn-light) { color: #fff !important; }
+
+/* =========================================================
+   v2 pass 4 — bulletproof CTA/pricing button contrast (final)
+   ========================================================= */
+/* On the gradient CTA panel: use DARK pills with white labels */
+.cta-section :is(a, button, .btn, [class*="btn"]),
+.cta-section :is(a, button, .btn, [class*="btn"]) * {
+	color: #ffffff !important;
+}
+.cta-section :is(a, button, .btn, [class*="btn"]) {
+	background: #0f1013 !important;
+	border: 1px solid #0f1013 !important;
+	border-radius: var(--radius-full);
+}
+.cta-section :is(a, button, .btn):hover { background: #26272d !important; }
+
+/* Highlighted pricing card: any action becomes a gradient button */
+.plan--highlighted :is(a, button, .btn, [class*="btn"]),
+.plan--highlighted :is(a, button, .btn, [class*="btn"]) * {
+	color: #ffffff !important;
+}
+.plan--highlighted :is(a, button, .btn, [class*="btn"]) {
+	background: var(--v2-grad) !important;
+	border: 0 !important;
+	border-radius: var(--radius-full);
+}
+
+/* v2 pass 5 (definitive) — CTA panel = white buttons + ink labels; highlight = gradient */
+.cta-section a, .cta-section button, .cta-section .btn,
+.cta-section a *, .cta-section button *, .cta-section .btn * {
+	color: #0f1013 !important;
+}
+.cta-section :is(a, button, .btn) {
+	background: #ffffff !important;
+	border: 1px solid #ffffff !important;
+	border-radius: var(--radius-full);
+}
+.plan--highlighted a, .plan--highlighted button, .plan--highlighted .btn,
+.plan--highlighted a *, .plan--highlighted button *, .plan--highlighted .btn * {
+	color: #ffffff !important;
+}
+.plan--highlighted :is(a, button, .btn) {
+	background: var(--v2-grad) !important;
+	border: 0 !important;
+	border-radius: var(--radius-full);
+}
+
+/* v2 FIX — CTA buttons: primary dark/brand, secondary translucent (readable on gradient) */
+.cta-section :is(a.btn, .btn, .btn-primary):not(.btn-secondary):not(.btn--ghost):not(.btn-glass) {
+	background: var(--color-brand) !important;
+	border-color: var(--color-brand) !important;
+}
+.cta-section :is(.btn-secondary, .btn--ghost) {
+	background: rgba(255, 255, 255, 0.14) !important;
+	border-color: rgba(255, 255, 255, 0.55) !important;
+	color: #ffffff !important;
+}
+.cta-section :is(.btn-secondary, .btn--ghost) * { color: #ffffff !important; }
+
+/* v2 final polish — decisive featured plan ring, anchor offset, hero secondary contrast */
+.pricing-section .plan--highlighted {
+	border: 2px solid var(--v2-red) !important;
+	box-shadow: 0 26px 60px -24px rgba(240, 68, 56, 0.42), 0 0 0 4px rgba(240, 68, 56, 0.08) !important;
+	background: var(--color-surface) !important;
+	transform: translateY(-4px) !important;
+}
+main :is(section[id], .section) { scroll-margin-top: 92px; }
+.hero :is(.btn-secondary, .btn--ghost) {
+	border-color: var(--color-border-strong) !important;
+	color: var(--color-text) !important;
+}
