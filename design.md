@@ -1,165 +1,141 @@
-# design.md — Kotacom (devk-software / EmDash)
+# design.md — Kotacom Design System v2 · "Modern Warm-Tech"
 
-> Dokumen arah visual yang **grounded ke referensi situs nyata** dan **dipetakan ke design token yang sudah ada** (`src/styles/tokens.css`, `marketing.css`, `Base.astro`).
-> Tujuan: mengubah tampilan yang sekarang monoton (semua `section.band` berlatar putih) menjadi **editorial-print warm** yang khas untuk bisnis percetakan + IT.
-
----
-
-## 1. Positioning & prinsip
-
-Kotacom = **studio percetakan buku + solusi IT**. Bukan SaaS, bukan agency motion. Audiens: penulis, sekolah, perusahaan yang butuh cetak & sistem. Maka estetika yang tepat:
-
-- **Craft & tactility** (kertas, tinta, jilid) → warm canvas + serif editorial + tekstur halus, bukan gradient-glass/SaaS.
-- **Editorial rhythm** → headline serif besar, label mono, section yang punya "bab" jelas (berganti warna/gambar), bukan tumpukan putih.
-- **Kredibilitas bisnis** → kontrak yang jelas: harga, proses, portofolio, garansi, FAQ.
-
-3 prinsip kerja:
-1. **Satu aksen, konsisten** — merah `#991b1b` (sudah ada) untuk CTA & angka penting; amber `#d97706` sebagai aksen sekunder (highlight/kicker).
-2. **Setiap section punya "signature"** — minimal beda di latar (putih ⇄ cream), sesekali band gelap penuh. Tidak ada dua section identik berurutan tanpa jeda visual.
-3. **Gambar karena bisnisnya visual** — buku/jilid/kertas adalah produk. Portofolio harus berupa foto/illustrasi, bukan kotak abu kosong.
+> **Status:** STANDAR (menggantikan draft "Editorial Print Warm" yang ditolak — terlalu kaku/kertas).
+> **Cocok untuk:** bisnis **IT + percetakan**. Modern & hangat, bukan Vercel-mono kaku, bukan paper/editorial.
+> **Sumber kebenaran kode:** `src/styles/tokens.css` (default) → di-override `src/styles/theme.css` → polish blok di `src/styles/marketing.css`. Font di `astro.config.mjs`.
+> **Preview:** `public/design-sample.v2.html`. **Branch kerja:** `design/v2-warm-tech`.
 
 ---
 
-## 2. Referensi (dari situs terkenal / terkurasi)
+## 1. Prinsip
 
-Diambil dari galeri terkurasi **Palate** (creative-studio), **Awwwards**, dan situs percetakan nyata (Mixam, Pixartprinting, Doxzoo):
-
-| Referensi | Yang diambil |
-|---|---|
-| **Awwwards site** (awwwards.com) | *Canvas warm abu `#e9e9e9`, satu display title ink-hitam 120px+, eyebrow mono kecil di pojok.* → pola **kanvas warm + headline serif besar + label mono**. |
-| **Reform Collective** (palatemcp.com/gallery/reform-collective) | *Krem ` #F9F8EE ` seperti kertas, wordmark serif/grotesk, bentuk organik stiker.* → **kanvas krem "kertas"** sebagai warna dasar. |
-| **Miux** (palatemcp.com/gallery/miux) | *Palet cream-and-stone, tipografi editorial tertahan, case-study horizontal.* → **cream + stone**, restraint. |
-| **Brand Appart** (palatemcp.com/gallery/brand-appart) | *Display chunky-sans, parchment cream, aksen oranye.* → **aksen hangat (amber/oranye)** di atas krem. |
-| **Letude** (palatemcp.com/gallery/letude) | *Latar merah bold + wordmark di atas fotografi.* → **band merah penuh** untuk momen CTA/penutup. |
-| **Huge** (palatemcp.com/gallery/huge) | *Brutalist, sudut tajam, blok warna berani.* → **section color-block tegas** (bukan serba lembut). |
-| **Geex Arts** (palatemcp.com/gallery/geex-arts) | *Pasangan serif display (Instrument Serif) + grotesk book.* → **Instrument Serif + Inter** (sudah ter-load!). |
-| **Mixam / Pixartprinting / Doxzoo** | Anatomi halaman cetak: **kalkulator/instan quote, pilihan jilid-kertas-ukuran, galeri portofolio, proses 1-4 langkah, FAQ**.* → **anatomi blok** di §6. |
-| **ui-ux-pro-max** (database) | Rekomendasi tipografi editorial/publishing: **Libre Bodoni / Public Sans** (mood: magazine, editorial, print). Di project digantikan **Instrument Serif / Inter** yang ekuivalen & sudah ada. |
-
-**Yang SENGAJA tidak diambil:** estetika green/biophilic (dari mesin rekomendasi)—tidak cocok untuk percetakan. Juga tidak full-Bauhaus 3-warna (terlalu keras untuk brand hangat ini).
+1. **Modern tapi hangat.** Sudut membulat (8–24px), soft shadow berwarna hangat, bukan garis tipis/kotak kaku.
+2. **Dua identitas dijembatani warna.** *Cetak* = merah→oranye; *IT* = ungu/indigo. Disatukan lewat **gradien brand** (bukan 3 warna blok ala Bauhaus, bukan monokrom).
+3. **Produk terasa.** Hero & fitur memakai bahasa "app/product" (mockup, bento, chip status), bukan katalog cetak jadul.
+4. **Satu aksen gradient, konsisten.** Gradient hanya untuk momen bernilai (headline accent, CTA, tile portofolio, badge populer). Sisanya ink/netral agar tak jadi "swatch sheet".
+5. **Gerak halus.** Reveal on-scroll & hover 150–220ms, selalu ada fallback `prefers-reduced-motion`.
 
 ---
 
-## 3. Palet (light mode) — dipetakan ke token
+## 2. Palette (light; dark tersedia via `light-dark()`)
 
-Semua memakai variabel yang SUDAH ada; cukup ubah nilainya (bukan sistem baru). Nilai usulan = token `light`.
-
-| Peran | Token | Sekarang | Usulan | Dipakai untuk |
+| Peran | Token | Light | Dark | Pakai untuk |
 |---|---|---|---|---|
-| Kanvas dasar | `--color-bg` | `#fafafa` | **`#F7F3EC`** (warm paper) | latar halaman, band default |
-| Permukaan (card) | `--color-surface` | `#ffffff` | `#FFFFFF` | card, form, nav |
-| Sunken / band selang | `--color-sunken` | `#f2f1ee` | **`#EFE8DD`** (cream stone) | band selang-seling, panel fitur |
-| Night / band gelap | `--color-night` | `#141312` | **`#17110D`** (ink hangat) | CTA band, footer aksen |
-| Teks utama | `--color-text` | `#171717` | `#1A1712` (ink) | headline, body |
-| Teks sekunder | `--color-text-secondary` | `#525252` | `#5B5347` (warm gray) | body sekunder |
-| Muted/label | `--color-muted` | `#6b6b6b` | `#877C6B` | label mono, meta |
-| Aksen utama | `--color-brand-accent` | `#991b1b` | **`#B42318`** (red) | CTA, angka, ikon kunci |
-| Aksen sekunder | `--color-accent` | `#d97706` | **`#D97706`** (amber) | eyebrow, highlight harga, underline |
-| Garis | `--color-border` | `#e5e5e5` | **`#E4DBCB`** (warm line) | pembatas band, hairline |
+| Kanvas | `--color-bg` | `#FBFAF8` | `#0C0D10` | latar halaman |
+| Permukaan | `--color-surface` | `#FFFFFF` | `#141519` | kartu, nav, form |
+| Fill | `--color-fill` / `--color-sunken` | `#F3F1EC` | `#16171B` | band selang, chip, input |
+| Ink | `--color-night` / `--color-text` | `#0F1013` | `#F2F3F5` | teks utama, band gelap |
+| Teks sekunder | `--color-text-secondary` | `#3A3C43` | `#B8BCC4` | body sekunder |
+| Muted | `--color-muted` | `#6B6E76` | `#8B90A0` | label, meta |
+| Garis | `--color-border` | `rgba(15,16,19,.10)` | `rgba(255,255,255,.10)` | hairline kartu/band |
+| Aksen cetak | `--color-brand-accent` | `#F04438` | `#FF6B5E` | CTA sekunder, ikon, harga |
+| Aksen hangat | `--color-accent` | `#FB923C` | `#FBBF24` | highlight, eyebrow dot |
+| Aksen IT | *(gradient)* | `#6366F1` / `#8B5CF6` | — | ujung gradien, aksen tech |
 
-Aturan kontras: body teks pada kanvas krem harus ≥ 4.5:1 (ink `#1A1712` di `#F7F3EC` = aman). Aksen merah hanya untuk elemen besar/bold atau ikon + label pendamping (jangan teks paragraf).
-
-Dark mode: pertahankan dukungan `light-dark()`; nilainya disesuaikan sewarna (kanvas gelap hangat `#141210`, teks krem, aksen merah/amber di-boost).
-
----
-
-## 4. Tipografi
-
-Yang **sudah ter-load** di `astro.config.mjs` — manfaatkan, tak perlu font baru:
-- `--font-display`: **Instrument Serif** → headline H1/H2, angka besar (harga).
-- `--font-body`: **Inter** → body, tombol, nav.
-- `--font-mono`: **JetBrains Mono** → *eyebrow/kicker*, label kecil, metadata ("12 Apr 2026 · 3 min").
-
-Skala (sesuaikan token `--font-size-*`):
-- Display hero: `clamp(2.75rem, 2rem + 3.4vw, 5rem)`, `--font-weight-display` 400 (serif tebal-lebar via optical size), `letter-spacing -0.02em`, `line-height 0.98`.
-- H2 section: `clamp(2rem, 1.4rem + 2.2vw, 3.25rem)` serif.
-- Body: 1rem–1.125rem Inter, `line-height 1.6`, warna `--color-text-secondary`.
-- Eyebrow: JetBrains Mono 0.75rem, uppercase, `letter-spacing .14em`, warna amber atau muted, dengan prefix `→`/titik merah.
-
-Aturan: **jangan** set headline pakai Inter bold lagi untuk hero/section — ganti ke serif display agar ada kontras "editorial". Minimal satu elemen mono per section sebagai penanda.
+**Gradien brand**
+```
+--v2-grad:      linear-gradient(115deg,#F04438 0%,#FB923C 42%,#8B5CF6 100%);
+--v2-grad-soft: linear-gradient(115deg, rgba(240,68,56,.14), rgba(139,92,246,.14));
+--v2-mesh:      radial-gradient(42% 50% at 16% 6%, rgba(240,68,56,.16), transparent 60%),
+                radial-gradient(40% 55% at 84% 0%, rgba(99,102,241,.16), transparent 62%),
+                radial-gradient(50% 60% at 60% 28%, rgba(251,146,60,.12), transparent 65%);
+```
+Aturan: gradient text/CTA **jangan** untuk paragraf. Kontras teks di atas gradient putih `#fff` harus ≥ 4.5:1.
 
 ---
 
-## 5. Ritme section (band system)
+## 3. Tipografi (sudah ter-load di `astro.config.mjs`)
 
-Sistem `.band` sudah ada (garis + crosshair rail). Yang kurang: **variasi latar**. Aturan:
+- **Display — `--font-display` = Space Grotesk** (400–700). Headline H1/H2, angka besar (harga, stat). Modern/techy tapi tetap hangat oleh warna. `letter-spacing -0.02em`, `line-height 1.05`.
+- **Body — `--font-body` = Inter** (400–700). Body, tombol, nav.
+- **Mono — `--font-mono` = JetBrains Mono**. Eyebrow/kicker, label kecil, meta ("12 Apr · 3 min").
+- *(Opsional legacy)* `--font-serif` = Instrument Serif — hanya untuk aksen italic testimoni/quote.
 
-- **Selang-seling**: band default (kanvas krem) → band `--sunken` (cream stone) → dst. Terapkan lewat utility optional di block (mis. `.band--tint`), atau auto `nth-of-type` ganjil/genap untuk band non-hero.
-- **Dark anchor**: `CTA` dan `WhatsAppCTA` jadi **band penuh gelap** (`--color-night` + `--glow-dusk`, teks `--color-on-night`, tombol merah). Sebelum footer → menutup halaman dengan kontras kuat.
-- **Signature hero**: hero beda dari semua — latar kanvas + blob/gradient halus (`--glow-daylight`) + display serif besar + eyebrow mono + visual (foto buku / diagram orbital yang sudah ada diberi warna aksen).
-- Spacing: `--section-space` tetap; tapi **beri jeda visual** lewat perubahan latar, bukan hanya whitespace.
-
-Target ritme satu halaman (tak ada dua section identik berturut-turut):
-`Hero (kanvas+visual)` → `Proof/logos (sunken)` → `Solusi grid (kanvas)` → `Proses 1-4 (sunken)` → `Portofolio galeri (kanvas, imagery)` → `Harga (sunken atau panel)` → `Testimoni (kanvas)` → `FAQ (sunken)` → `CTA (gelap)` → `Footer`.
+Skala: hero `clamp(2.5rem,1.6rem+4.6vw,5rem)`; H2 `clamp(2rem,1.4rem+2.4vw,3.2rem)`; body `1rem–1.125rem`; eyebrow `0.78rem` uppercase.
 
 ---
 
-## 6. Anatomi blok (komponennya sudah ada)
+## 4. Bentuk, radius, shadow
 
-| Blok (file `src/components/blocks/…`) | Treatment target |
+- Radius: `--radius-sm 8` · `--radius 12` · `--radius-lg 16` · `--radius-xl 20` · `--radius-sheet 20–28` · pill `999`.
+- Shadow hangat lembut:
+  - `--shadow-card: 0 1px 2px rgba(15,16,19,.04), 0 12px 30px -12px rgba(15,16,19,.16)`
+  - `--shadow-card-hover: … 0 30px 60px -24px rgba(15,16,19,.28)`
+- Kartu: 1px border `--color-border` + `--shadow-card`; hover → naik 3px + `--shadow-card-hover`.
+
+---
+
+## 5. Layout & ritme section (band)
+
+Sistem `.page-blocks > .band` (garis/crosshair rail dipertahankan sebagai identitas, warna garis dibuat hangat).
+
+- **Selang-seling**: band ganjil = kanvas (`--color-bg`), band genap = `--color-sunken` (auto lewat `.band:nth-child(even)`). Tujuannya: **tidak ada dua section putih identik berurutan**.
+- **Band gelap**: `CTA` & `WhatsAppCTA` = `.band--dark` (`--color-night`) ATAU panel gradient (`.cta-section` → `--v2-grad`). Ini "closing statement".
+- **Hero/intro**: diberi `--v2-mesh` (radial lembut) + boleh grid halus. Beda jelas dari section isi.
+- Container: `--frame` ~1180px, `--frame-padding`. Spacing `--section-space clamp(3.5rem…6rem)`.
+- Grid fitur → **bento** (2/3 + 1/3 + 3-up) untuk kesan produk modern, bukan 3 kolom rata kaku.
+
+Target urutan 1 halaman:
+`Hero (mesh + mockup)` → `Proof/logos` → `Layanan (bento)` → `Stats` → `Portofolio (tile bergradien)` → `Harga (kartu, 1 di-highlight gradient border)` → `Testimoni (panel gelap)` → `FAQ` → `CTA (gradient)` → `Footer`.
+
+---
+
+## 6. Komponen
+
+| Komponen | Spesifikasi |
 |---|---|
-| **Hero.astro** | Serif display besar + eyebrow mono + 2 CTA (merah solid + outline). Visual: foto buku/jilid atau diagram orbital diberi aksen merah/amber (bukan garis abu). Latar kanvas + glow halus. |
-| **Features/Stats** | Panel `--sunken` (sekali) atau `--night` (sekali) — bukan putih semua. Ikon aksen merah, angka besar serif. |
-| **Process/Steps** | Nomor besar serif + garis penghubung; latar sunken. Wajib ada (ekspektasi halaman cetak: 1 upload → 2 proof → 3 produksi → 4 kirim). |
-| **Pricing.astro** | Kartu harga di atas latar kontras; harga pakai serif besar + aksen amber untuk "Mulai 15rb"; highlight paket populer dengan border merah. |
-| **Feed/Portofolio** | **Ganti kotak abu → gambar**: pakai gradient brand yang sudah ada (`marketing.css` L625–657) sebagai placeholder berwarna, idealnya foto sampul/jilid. Grid 2–3 kolom, rasio konsisten. |
-| **Testimonials** | Band kontras (sunken/night), kartu putih, tanda kutip serif besar, aksen merah pada nama. |
-| **FAQ.astro** | Accordion; item aktif dapat border/aksen merah; latar sunken. |
-| **Tab/Comparison** | Tabel dengan header berwarna (bukan abu), baris stripe `--sunken`, aksen untuk kolom rekomendasi. |
-| **CTA / WhatsAppCTA** | **Band gelap penuh** + tombol merah/amber. Ini "closing statement". |
-| **Footer (Base.astro)** | Boleh ink gelap atau tetap terang dengan aksen merah pada heading kolom; jaga keterbacaan. |
-
-Hindari: kartu-berisi-kartu berlapis (card-in-card) — lihat aturan "surface rule" di skill.
-
----
-
-## 7. Gambar, motif, & tekstur
-
-- **Imagery wajib** di hero & portofolio. Kalau belum ada aset: pakai **gradient brand** (merah→amber) + label mono sebagai "tempat sampul buku" — jauh lebih hidup daripada abu.
-- **Motif**: garis/crosshair rail dipertahankan (itu identitas), tapi warna garis disesuaikan warm (`--color-border` krem). Boleh tambah bentuk geometris kecil (lingkaran/segitiga) warna aksen sebagai "stempel".
-- **Tekstur halus** (opsional): noise/paper grain sangat rendah opasitas pada hero — memperkuat kesan cetak. Jangan berlebihan.
+| **Header/nav** | Sticky, **glass** (`backdrop-blur`, bg `color-mix(bg 78%)`), border bawah hairline. CTA kanan = **pill gradient**. |
+| **Button** | Pill (`999`). `btn-primary` = ink solid; `btn--grad` = gradient; `btn--glass` = glass. Hover translateY(-1/-2px) + shadow. |
+| **Hero** | Mesh bg + grid halus; eyebrow pill ber-dot; H1 besar (gradient accent kata kunci via `{kata}`); 2 CTA; **mockup produk** (order-estimate card / buku + chip 1200 DPI & POS ready) + float chips. |
+| **Bento fitur** | Kartu rounded, ikon tile `--v2-grad-soft`, 1 kartu hero (span 4) + 1 tall (span 2) + 3-up. |
+| **Stats** | 4 kolom; angka Space Grotesk besar; 1–2 angka pakai gradient text. |
+| **Portofolio** | Grid 3×2 tile bergradien (g1..g6) + chip kategori; **hindari kotak abu**. Idealnya foto asli bila ada aset. |
+| **Harga** | Kartu; paket populer = gradient **border** (`background padding-box/border-box`) + badge gradient; CTA gradient. Ratakan tinggi kartu. |
+| **Testimoni** | Panel gelap rounded + mesh sudut; bintang amber; quote Space Grotesk; atribusi mono terang (≥ opacity .85). |
+| **FAQ** | Accordion kartu rounded ber-shadow; ikon +/− aksen merah; sejajar kiri dengan heading (jangan center-only). |
+| **CTA** | Panel gradient penuh; teks putih; tombol putih/ink. |
+| **Footer** | Ink (`--color-night`) atau terang; heading kolom uppercase muted; legal mono. |
+| **Floating WhatsApp** | Green bubble tetap; jangan dobel dengan CTA sticky. |
 
 ---
 
-## 8. Motion
+## 7. Motion & aksesibilitas
 
-- Reveal-on-scroll boleh, **tapi wajib fallback**: `@media (prefers-reduced-motion: reduce)` → tampil langsung (opacity 1, transform none). Dan jangan pernah `opacity:0` permanen bila JS gagal.
-- Transisi 150–300ms ease-out; hover pada kartu/tombol.
-
----
-
-## 9. Do / Don't
-
-Do:
-- Selang-seling latar tiap section; minimal 1 band gelap per halaman panjang.
-- Serif display untuk headline; mono untuk label; satu aksen konsisten.
-- Foto produk/portofolio; angka & harga besar.
-- Kontras teks ≥ 4.5:1; focus state jelas.
-
-Don't:
-- Semua section putih identik. ❌
-- Gradient-glass / aurora SaaS, emoji sebagai ikon. ❌
-- Kotak placeholder abu sebagai "gambar". ❌
-- Tiga warna solid penuh (Bauhaus) — terlalu keras untuk brand ini. ❌
+- Reveal on-scroll boleh; **wajib** `@media (prefers-reduced-motion: reduce){ opacity:1 !important; transform:none !important; }` dan jangan pernah `opacity:0` permanen bila JS gagal.
+- Hover 150–220ms ease-out. Focus ring terlihat (jangan hapus outline).
+- Kontras body ≥ 4.5:1; teks di atas gradient cek dulu.
+- Uji responsif 375/768/1024/1440.
 
 ---
 
-## 10. Peta implementasi (langkah teknis)
+## 8. Do / Don't
 
-1. **Token** (`src/styles/tokens.css` light + dark): ubah `--color-bg`, `--color-sunken`, `--color-night`, `--color-border`, `--color-brand-accent`→`#B42318`, `--color-accent`→amber sesuai §3.
-2. **Tipografi**: arahkan `.section-headline`/hero ke `--font-display` (Instrument Serif); eyebrow ke `--font-mono`.
-3. **Band**: tambah util `.band--tint` & `.band--dark` di `marketing.css`; auto-alternate untuk band non-hero; set `CTA`/`WhatsAppCTA` = `.band--dark`.
-4. **Feed/Portofolio**: ganti placeholder → gradient/foto (pakai warna di `marketing.css` L625–657).
-5. **Hero**: terapkan glow + serif display + aksen diagram.
-6. **Motion**: audit `opacity:0` → tambah reduced-motion fallback.
-7. **Verifikasi**: build + `astro check` bersih; screenshot before/after (home + service); cek kontras & mobile 375/768/1024/1440.
+**Do:** selang-seling band; satu gradient untuk momen penting; Space Grotesk untuk display; foto/tile berwarna (bukan abu); soft shadow hangat.
 
-Acceptance: halaman tidak lagi punya ≥2 section putih berturut tanpa jeda; hero punya visual; portofolio bergambar; ada 1 band gelap; semua kontras lulus.
+**Don't:** semua section putih identik ❌ · monokrom kaku ala Vercel ❌ · paper/editorial krem-kaku ❌ · 3 warna solid Bauhaus ❌ · gradient di mana-mana ❌ · teks abu di atas gradient ❌ · emoji sebagai ikon produksi ❌.
 
 ---
 
-## 11. Status saat init dokumen ini
-- Desain live: **monoton** — semua `.band` putih, satu kolom, warna aksen hampir tak terpakai, card abu. (Audit 2026-11-17.)
-- Token warm (`--color-sunken`, `--color-night`, amber) **sudah ada** tapi belum dipakai blok.
-- Font editorial (Instrument Serif) **sudah ter-load** tapi headline masih Inter.
-→ Semua lever di atas bisa dicapai tanpa menambah dependency.
+## 9. Peta file (di mana mengubah apa)
+
+- **Token & override tema** → `src/styles/theme.css` (palette, radius, shadow, glass header, gradient text). *File utama retheme.*
+- **Default token** (jangan edit kecuali reset) → `src/styles/tokens.css`.
+- **Polish blok** (band rhythm, hero mesh, CTA gradient) → `src/styles/marketing.css` (bagian "v2 Modern Warm-Tech" di akhir).
+- **Font** → `astro.config.mjs` (`fonts:[…]`). `--font-display`=Space Grotesk, `--font-serif`=Instrument Serif (opsional).
+- **Header/footer markup** → `src/layouts/Base.astro`.
+- **Blok** → `src/components/blocks/*.astro` (Hero, Features, Pricing, FAQ, CTA, Feed, …). Pakai `formatAccentWords()` (dari `src/utils/text.ts`) untuk accent `{kata}` → `.text-accent-gradient`.
+
+## 10. Cara menambah/menyesuaikan satu blok (standar)
+
+1. Pakai token yang ada (`--color-*`, `--radius-*`, `--shadow-*`, `--v2-grad`). Jangan hardcode warna kecuali kebutuhan sekali (dokumentasikan).
+2. Beri `class="band"` (+ `band--tint`/`band--dark` bila perlu jeda tonal).
+3. Headline: `<h2 class="section-headline"><Fragment set:html={formatAccentWords(headline)} /></h2>` agar accent jalan.
+4. Kartu: `.card` + otomatis dapat radius/shadow v2 (lihat theme.css).
+5. Verifikasi: `pnpm build` + `astro check` bersih; render lokal & screenshot; cek kontras & mobile.
+
+---
+
+## 11. Status & riwayat
+- v1 "Editorial Print Warm" (krem/kertas/serif) → **ditolak** (kaku, salah konteks).
+- **v2 "Modern Warm-Tech"** → dipilih & diterapkan di branch `design/v2-warm-tech`: token di `theme.css`, band/hero/CTA di `marketing.css`, Space Grotesk sebagai display. Build lolos.
+- Dark mode disiapkan via `light-dark()`; perlu pass QA terpisah.

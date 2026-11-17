@@ -55,7 +55,7 @@
 	--color-accent: light-dark(#fb923c, #fbbf24);
 
 	/* ---- Panels (marketing) ---- */
-	--color-sunken: light-dark(#f3f1ec, #16171b);
+	--color-sunken: light-dark(#f0ebe2, #16171b);
 	--color-night: light-dark(#0f1013, #0a0b0e);
 	--color-night-card: light-dark(#1a1c21, #1c1e24);
 	--color-night-text: #f3f4f6;
@@ -126,7 +126,16 @@ body .site-header__actions .btn:not(.btn--ghost):not(.btn-secondary):not(.btn-gl
 	transform: translateY(-1px);
 }
 
-/* Gradient accent words (formatAccentWords {..}) */
+/* Secondary/ghost buttons: strengthen contrast on near-white */
+body :is(.btn--ghost, .btn-secondary) {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
+	box-shadow: var(--shadow-sm);
+}
+body :is(.btn--ghost, .btn-secondary):hover {
+	background: var(--color-fill);
+	border-color: var(--color-text-secondary);
+}
 body .text-accent-gradient {
 	background: var(--v2-grad);
 	-webkit-background-clip: text;
