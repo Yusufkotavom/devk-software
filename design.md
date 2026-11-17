@@ -139,3 +139,17 @@ Target urutan 1 halaman:
 - v1 "Editorial Print Warm" (krem/kertas/serif) → **ditolak** (kaku, salah konteks).
 - **v2 "Modern Warm-Tech"** → dipilih & diterapkan di branch `design/v2-warm-tech`: token di `theme.css`, band/hero/CTA di `marketing.css`, Space Grotesk sebagai display. Build lolos.
 - Dark mode disiapkan via `light-dark()`; perlu pass QA terpisah.
+
+## Block styling standard (EmDash marketing blocks)
+
+All blocks live in `src/components/blocks/*.astro`. Theme them via overrides in
+`src/styles/marketing.css` (unlayered, wins over `@layer base`) — do not rewrite markup.
+
+- **Cards** (`.post`, `.plan`, `.card`, `.bento-card`, `.step-card`, `.faq__item`, `.testimonials__card`, `.comparison-card`, `.contact__card`): `--color-surface` bg, `1px --color-border`, `--radius-lg/xl` (12–20px), `--shadow-card`; hover lifts `translateY(-3px)` + `--shadow-card-hover`.
+- **Icons/media fallback**: `.icon-tile`, `.post__media`, empty media → `--v2-grad-soft` so blanks read as intentional, not broken.
+- **Pricing**: `.plan--highlighted` = 2px `--v2-red` ring + glow shadow + `translateY(-4px)`; `.plan__badge` & featured CTA = `--v2-grad`.
+- **Buttons**: primary = `--color-brand` (ink) + white label. On the gradient CTA panel primary stays ink; secondary = translucent white (bg `.14`, border `.55`, white text). Never white-bg + inherited-white-text.
+- **Stats**: `.stats__list` is a card with a 4px top `--v2-grad` bar; `.stats__value` is `--font-display`, `white-space: nowrap`, 4 columns with hairline dividers.
+- **Headings**: `--font-display` (Space Grotesk), `letter-spacing: -0.02em`.
+- **Anchors**: `section[id]{scroll-margin-top:92px}` so sticky header never covers a heading.
+- **Content caveat**: typos/placeholder copy/duplicate link lists are CMS data, not theme — fix in admin, not CSS.
