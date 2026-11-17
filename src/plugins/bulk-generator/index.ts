@@ -80,7 +80,7 @@ export function createPlugin() {
           let genRowSelection: string = (await kv.get("gen_row_selection")) || "all";
           let previewRowIdx: number = (await kv.get("preview_row_idx")) || 1;
           let previewResult: RenderedContent | undefined = (await kv.get("preview_result")) || undefined;
-          let aiEndpoint: string | undefined = (await kv.get("ai_endpoint")) || "http://172.18.0.1:20128/v1/chat/completions";
+          let aiEndpoint: string | undefined = (await kv.get("ai_endpoint")) || process.env.EMDASH_AI_ENDPOINT?.trim() || "http://172.18.0.1:20128/v1/chat/completions";
           let aiApiKey: string | undefined = (await kv.get("ai_api_key")) || "sk-e1c...b74e";
           let aiModel: string | undefined = (await kv.get("ai_model")) || "daily";
           let dryRunResult:
@@ -446,7 +446,7 @@ export function createPlugin() {
           // -------------------------------------------------------------
           else if (input.type === "form_submit" && input.action_id === "save_ai_settings") {
             const values = input.values || {};
-            aiEndpoint = String(values.ai_endpoint || "").trim() || "http://172.18.0.1:20128/v1/chat/completions";
+            aiEndpoint = String(values.ai_endpoint || "").trim() || process.env.EMDASH_AI_ENDPOINT?.trim() || "http://172.18.0.1:20128/v1/chat/completions";
             aiApiKey = String(values.ai_api_key || "").trim() || "sk-e1c...b74e";
             aiModel = String(values.ai_model || "").trim() || "daily";
 

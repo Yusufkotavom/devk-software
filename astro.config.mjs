@@ -3,7 +3,6 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-iconset";
 import { defineConfig, fontProviders } from "astro/config";
-import { betterAuthProvider, betterAuthSettingsPlugin } from "emdash-better-auth";
 import { emdashSmtp } from "emdash-smtp";
 import { seoPlugin } from "@jdevalk/emdash-plugin-seo";
 import emdash, { local } from "emdash/astro";
@@ -160,9 +159,7 @@ export default defineConfig({
 				directory: uploadsDirectory,
 				baseUrl: "/_emdash/api/media/file",
 			}),
-			authProviders: [betterAuthProvider()],
 			plugins: [
-				betterAuthSettingsPlugin(),
 				emdashSmtp(),
 				seoPlugin(),
 				{

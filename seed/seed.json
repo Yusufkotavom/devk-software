@@ -7551,6 +7551,76 @@
           "type": "string"
         },
         {
+          "slug": "workshop_surabaya_name",
+          "label": "Workshop Surabaya — Nama Cabang",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_surabaya_address",
+          "label": "Workshop Surabaya — Alamat (streetAddress)",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_surabaya_locality",
+          "label": "Workshop Surabaya — Kota (addressLocality)",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_surabaya_region",
+          "label": "Workshop Surabaya — Provinsi",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_surabaya_postal_code",
+          "label": "Workshop Surabaya — Kode Pos",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_surabaya_lat",
+          "label": "Workshop Surabaya — Latitude",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_surabaya_lng",
+          "label": "Workshop Surabaya — Longitude",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_sidoarjo_name",
+          "label": "Workshop Sidoarjo — Nama Cabang",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_sidoarjo_address",
+          "label": "Workshop Sidoarjo — Alamat (streetAddress)",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_sidoarjo_locality",
+          "label": "Workshop Sidoarjo — Kota (addressLocality)",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_sidoarjo_region",
+          "label": "Workshop Sidoarjo — Provinsi",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_sidoarjo_postal_code",
+          "label": "Workshop Sidoarjo — Kode Pos",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_sidoarjo_lat",
+          "label": "Workshop Sidoarjo — Latitude",
+          "type": "string"
+        },
+        {
+          "slug": "workshop_sidoarjo_lng",
+          "label": "Workshop Sidoarjo — Longitude",
+          "type": "string"
+        },
+        {
           "slug": "adsense_enabled",
           "label": "Aktifkan Google AdSense",
           "type": "boolean"

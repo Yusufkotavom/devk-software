@@ -97,7 +97,7 @@ export interface AiConfig {
  * Call local or remote OpenAI-compatible chat completion endpoint
  */
 export async function callAiCompletion(prompt: string, config?: AiConfig): Promise<string> {
-  const endpoint = config?.endpoint?.trim() || "http://172.18.0.1:20128/v1/chat/completions";
+  const endpoint = config?.endpoint?.trim() || process.env.EMDASH_AI_ENDPOINT?.trim() || "http://172.18.0.1:20128/v1/chat/completions";
   const model = config?.model?.trim() || "daily";
   const apiKey = config?.apiKey?.trim() || "sk-e1c...b74e";
 

@@ -13,17 +13,7 @@ interface Props {
 	author?: string | null;
 }
 
-const {
-	origin,
-	pathname,
-	pageTitle,
-	description,
-	image,
-	type = "website",
-	publishedTime,
-	modifiedTime,
-	author,
-} = Astro.props;
+const { origin, pathname, pageTitle, description, image } = Astro.props;
 
 interface SeoSettingRow {
 	title?: string;
@@ -38,6 +28,22 @@ interface SeoSettingRow {
 	same_as?: string;
 	services?: string;
 	default_og_image?: string;
+	// Workshop branches (CMS-driven). Fallbacks below keep the schema valid
+	// before these fields are populated in the CMS.
+	workshop_surabaya_name?: string;
+	workshop_surabaya_address?: string;
+	workshop_surabaya_locality?: string;
+	workshop_surabaya_region?: string;
+	workshop_surabaya_postal_code?: string;
+	workshop_surabaya_lat?: string;
+	workshop_surabaya_lng?: string;
+	workshop_sidoarjo_name?: string;
+	workshop_sidoarjo_address?: string;
+	workshop_sidoarjo_locality?: string;
+	workshop_sidoarjo_region?: string;
+	workshop_sidoarjo_postal_code?: string;
+	workshop_sidoarjo_lat?: string;
+	workshop_sidoarjo_lng?: string;
 }
 
 const DEFAULT_SERVICES = [
@@ -67,7 +73,7 @@ const orgDesc =
 	seoRow?.description?.trim() ||
 	description ||
 	"Percetakan buku terpercaya, cetak novel satuan, buku tahunan, majalah, dan solusi digital web IT profesional.";
-const orgPhone = seoRow?.phone?.trim() || "+6285799520350";
+const orgPhone = seoRow?.phone?.trim() || "";
 const orgEmail = seoRow?.email?.trim();
 const locality = seoRow?.address_locality?.trim() || "Surabaya & Sidoarjo";
 const region = seoRow?.address_region?.trim() || "Jawa Timur";
@@ -87,7 +93,7 @@ const servicesList = rawServices.length > 0 ? rawServices : DEFAULT_SERVICES;
 const currentUrl = `${origin}${pathname === "/" ? "" : pathname}`;
 const logoUrl = image || seoRow?.default_og_image || `${origin}/images/logo.png`;
 
-// Detect Target City from URL pathname for localized Service Schema
+// Detect target city from URL pathname for localized Service schema.
 let detectedCity: string | null = null;
 const pathLower = pathname.toLowerCase();
 if (pathLower.includes("surabaya")) detectedCity = "Surabaya";
@@ -97,18 +103,31 @@ else if (pathLower.includes("gresik")) detectedCity = "Gresik";
 else if (pathLower.includes("malang")) detectedCity = "Malang";
 else if (pathLower.includes("pasuruan")) detectedCity = "Pasuruan";
 
-// 1. Main Organization & Multi-Service Hub
+// Workshop branch data — CMS-first, with fallbacks so schema stays valid.
+const wsbyName = seoRow?.workshop_surabaya_name?.trim() || "Kotacom Surabaya - Percetakan Buku & Solusi IT";
+const wsbyAddr = seoRow?.workshop_surabaya_address?.trim() || "Jl. Tenggilis Mulya 76, Kendangsari, Kec. Tenggilis Mejoyo";
+const wsbyLoc = seoRow?.workshop_surabaya_locality?.trim() || "Kota Surabaya";
+const wsbyReg = seoRow?.workshop_surabaya_region?.trim() || "Jawa Timur";
+const wsbyPost = seoRow?.workshop_surabaya_postal_code?.trim() || "60292";
+const wsbyLat = Number(seoRow?.workshop_surabaya_lat) || -7.3195;
+const wsbyLng = Number(seoRow?.workshop_surabaya_lng) || 112.7562;
+
+const wsidName = seoRow?.workshop_sidoarjo_name?.trim() || "Kotacom Sidoarjo - Percetakan Buku & Solusi IT";
+const wsidAddr = seoRow?.workshop_sidoarjo_address?.trim() || "Graha Indraprasta G7/15";
+const wsidLoc = seoRow?.workshop_sidoarjo_locality?.trim() || "Kabupaten Sidoarjo";
+const wsidReg = seoRow?.workshop_sidoarjo_region?.trim() || "Jawa Timur";
+const wsidPost = seoRow?.workshop_sidoarjo_postal_code?.trim() || "61252";
+const wsidLat = Number(seoRow?.workshop_sidoarjo_lat) || -7.4478;
+const wsidLng = Number(seoRow?.workshop_sidoarjo_lng) || 112.7183;
+
+// 1. Main Organization & multi-service hub.
 const organizationSchema: Record<string, any> = {
 	"@type": ["LocalBusiness", "ProfessionalService"],
 	"@id": `${origin}/#organization`,
 	"name": orgName,
 	"url": origin,
-	"logo": {
-		"@type": "ImageObject",
-		"url": logoUrl,
-	},
+	"logo": { "@type": "ImageObject", "url": logoUrl },
 	"description": orgDesc,
-	"telephone": orgPhone,
 	"priceRange": "Rp 50.000 - Rp 35.000.000+",
 	"openingHoursSpecification": [
 		{
@@ -134,19 +153,13 @@ const organizationSchema: Record<string, any> = {
 		{ "@type": "City", "name": "Pasuruan" },
 		{ "@type": "Country", "name": "Indonesia" },
 	],
-	"aggregateRating": {
-		"@type": "AggregateRating",
-		"ratingValue": "4.9",
-		"reviewCount": "128",
-		"bestRating": "5",
-		"worstRating": "1",
-	},
 	"subOrganization": [
 		{ "@id": `${origin}/#workshop-surabaya` },
 		{ "@id": `${origin}/#workshop-sidoarjo` },
 	],
 };
 
+if (orgPhone) organizationSchema["telephone"] = orgPhone;
 if (orgEmail) organizationSchema["email"] = orgEmail;
 if (sameAsList.length > 0) organizationSchema["sameAs"] = sameAsList;
 
@@ -156,37 +169,28 @@ if (servicesList.length > 0) {
 		"name": "Kotacom Printing & IT Solutions Catalog",
 		"itemListElement": servicesList.map((service, idx) => ({
 			"@type": "Offer",
-			"itemOffered": {
-				"@type": "Service",
-				"name": service,
-			},
+			"itemOffered": { "@type": "Service", "name": service },
 			"position": idx + 1,
 		})),
 	};
 }
 
-// 2. Specific Workshop Branch 1: Surabaya
+// 2. Workshop branch: Surabaya.
 const workshopSurabayaSchema: Record<string, any> = {
 	"@type": ["LocalBusiness", "ProfessionalService"],
 	"@id": `${origin}/#workshop-surabaya`,
-	"name": "Kotacom Surabaya - Percetakan Buku & Solusi IT",
+	"name": wsbyName,
 	"url": origin,
-	"telephone": orgPhone,
-	"priceRange": "Rp 10.000 - Rp 35.000.000+",
 	"parentOrganization": { "@id": `${origin}/#organization` },
 	"address": {
 		"@type": "PostalAddress",
-		"streetAddress": "Jl. Tenggilis Mulya 76, Kendangsari, Kec. Tenggilis Mejoyo",
-		"addressLocality": "Kota Surabaya",
-		"addressRegion": "Jawa Timur",
-		"postalCode": "60292",
+		"streetAddress": wsbyAddr,
+		"addressLocality": wsbyLoc,
+		"addressRegion": wsbyReg,
+		"postalCode": wsbyPost,
 		"addressCountry": "ID",
 	},
-	"geo": {
-		"@type": "GeoCoordinates",
-		"latitude": -7.3195,
-		"longitude": 112.7562,
-	},
+	"geo": { "@type": "GeoCoordinates", "latitude": wsbyLat, "longitude": wsbyLng },
 	"openingHoursSpecification": [
 		{
 			"@type": "OpeningHoursSpecification",
@@ -195,37 +199,25 @@ const workshopSurabayaSchema: Record<string, any> = {
 			"closes": "22:00",
 		},
 	],
-	"aggregateRating": {
-		"@type": "AggregateRating",
-		"ratingValue": "4.9",
-		"reviewCount": "76",
-		"bestRating": "5",
-		"worstRating": "1",
-	},
 };
+if (orgPhone) workshopSurabayaSchema["telephone"] = orgPhone;
 
-// 3. Specific Workshop Branch 2: Sidoarjo
+// 3. Workshop branch: Sidoarjo.
 const workshopSidoarjoSchema: Record<string, any> = {
 	"@type": ["LocalBusiness", "ProfessionalService"],
 	"@id": `${origin}/#workshop-sidoarjo`,
-	"name": "Kotacom Sidoarjo - Percetakan Buku & Solusi IT",
+	"name": wsidName,
 	"url": origin,
-	"telephone": orgPhone,
-	"priceRange": "Rp 50.000 - Rp 35.000.000+",
 	"parentOrganization": { "@id": `${origin}/#organization` },
 	"address": {
 		"@type": "PostalAddress",
-		"streetAddress": "Graha Indraprasta G7/15",
-		"addressLocality": "Kabupaten Sidoarjo",
-		"addressRegion": "Jawa Timur",
-		"postalCode": "61252",
+		"streetAddress": wsidAddr,
+		"addressLocality": wsidLoc,
+		"addressRegion": wsidReg,
+		"postalCode": wsidPost,
 		"addressCountry": "ID",
 	},
-	"geo": {
-		"@type": "GeoCoordinates",
-		"latitude": -7.4478,
-		"longitude": 112.7183,
-	},
+	"geo": { "@type": "GeoCoordinates", "latitude": wsidLat, "longitude": wsidLng },
 	"openingHoursSpecification": [
 		{
 			"@type": "OpeningHoursSpecification",
@@ -234,63 +226,21 @@ const workshopSidoarjoSchema: Record<string, any> = {
 			"closes": "22:00",
 		},
 	],
-	"aggregateRating": {
-		"@type": "AggregateRating",
-		"ratingValue": "4.9",
-		"reviewCount": "52",
-		"bestRating": "5",
-		"worstRating": "1",
-	},
 };
+if (orgPhone) workshopSidoarjoSchema["telephone"] = orgPhone;
 
-// 4. WebSite schema
-const websiteSchema = {
-	"@type": "WebSite",
-	"@id": `${origin}/#website`,
-	"url": origin,
-	"name": orgName,
-	"publisher": { "@id": `${origin}/#organization` },
-	"inLanguage": "id-ID",
-	"potentialAction": {
-		"@type": "SearchAction",
-		"target": `${origin}/search?q={search_term_string}`,
-		"query-input": "required name=search_term_string",
-	},
-};
-
-// 5. Page / Article / Service schema
+// 4. Localized Service schema for service pages.
+// NOTE: WebSite, WebPage, BreadcrumbList and Article/BlogPosting are owned by
+// the @jdevalk SEO plugin, so they are intentionally NOT emitted here to avoid
+// duplicate / competing structured data. This file owns Organization +
+// workshop LocalBusiness + (on service pages) a Service node only.
 const isHome = pathname === "/" || pathname === "";
-const isServicePage = pathname.startsWith("/jasa-") || pathname.includes("service") || pathname.includes("software");
+const isServicePage =
+	pathname.startsWith("/jasa-") || pathname.includes("service") || pathname.includes("software");
 
-const pageSchema: Record<string, any> = type === "article"
-	? {
-			"@type": "Article",
-			"@id": `${currentUrl}/#article`,
-			"isPartOf": { "@id": `${origin}/#website` },
-			"author": {
-				"@type": "Organization",
-				"name": author || orgName,
-			},
-			"headline": pageTitle || orgName,
-			"datePublished": publishedTime || undefined,
-			"dateModified": modifiedTime || publishedTime || undefined,
-			"mainEntityOfPage": currentUrl,
-			"image": image || undefined,
-	  }
-	: {
-			"@type": isHome ? "WebPage" : "ItemPage",
-			"@id": `${currentUrl}/#webpage`,
-			"url": currentUrl,
-			"name": pageTitle || orgName,
-			"isPartOf": { "@id": `${origin}/#website` },
-			"about": { "@id": `${origin}/#organization` },
-			"description": description || orgDesc,
-			"inLanguage": "id-ID",
-	  };
+const graph: any[] = [organizationSchema, workshopSurabayaSchema, workshopSidoarjoSchema];
 
-const graph: any[] = [organizationSchema, workshopSurabayaSchema, workshopSidoarjoSchema, websiteSchema, pageSchema];
-
-if (isServicePage && !isHome && type !== "article") {
+if (isServicePage && !isHome) {
 	const serviceSchema: Record<string, any> = {
 		"@type": "Service",
 		"@id": `${currentUrl}/#service`,
@@ -306,13 +256,6 @@ if (isServicePage && !isHome && type !== "article") {
 			"priceCurrency": "IDR",
 			"availability": "https://schema.org/InStock",
 			"url": currentUrl,
-		},
-		"aggregateRating": {
-			"@type": "AggregateRating",
-			"ratingValue": "4.9",
-			"reviewCount": "128",
-			"bestRating": "5",
-			"worstRating": "1",
 		},
 	};
 	graph.push(serviceSchema);
