@@ -252,6 +252,67 @@ const [popups, stickyBars] = await Promise.all([
 		background: transparent;
 		border: 0;
 		border-radius: var(--radius-full, 999px);
+		z-index: 2;
+	}
+
+	/* Compact the embedded CTA block into a single-row bar (was a tall 35% panel). */
+	.kc-sticky__body {
+		padding: 0.75rem 3rem calc(0.75rem + env(safe-area-inset-bottom, 0px)) 1rem;
+		overflow-x: hidden;
+	}
+	.kc-sticky__body :global(.wa-block) {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		max-width: 100%;
+		min-width: 0;
+		background: none;
+		border: 0;
+		box-shadow: none;
+		padding: 0;
+	}
+	.kc-sticky__body :global(.wa-block__content) {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		width: 100%;
+		min-width: 0;
+		padding: 0;
+	}
+	.kc-sticky__body :global(.wa-block__badge),
+	.kc-sticky__body :global(.wa-block__body) {
+		display: none;
+	}
+	.kc-sticky__body :global(.wa-block__headline) {
+		flex: 1 1 auto;
+		min-width: 0;
+		margin: 0;
+		font-size: 0.98rem;
+		line-height: 1.35;
+		letter-spacing: -0.01em;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	.kc-sticky__body :global(.wa-block__action) {
+		flex: 0 0 auto;
+		margin: 0;
+	}
+	.kc-sticky__body :global(.wa-block__btn) {
+		white-space: nowrap;
+		padding: 0.5rem 0.9rem;
+		font-size: 0.85rem;
+		border-radius: var(--radius-full, 999px);
+	}
+	@media (max-width: 420px) {
+		.kc-sticky__body :global(.wa-block__headline) {
+			font-size: 0.9rem;
+		}
+		.kc-sticky__body :global(.wa-block__btn) {
+			padding: 0.5rem 0.7rem;
+			font-size: 0.8rem;
+		}
 	}
 
 	body.kc-modal-open {
@@ -276,13 +337,13 @@ const [popups, stickyBars] = await Promise.all([
 	}
 	@media (max-width: 640px) {
 		.kc-modal {
-			padding: 0;
-			place-items: end stretch;
+			padding: 1rem;
+			place-items: center;
 		}
 		.kc-modal__dialog {
 			width: 100%;
 			max-height: 88vh;
-			border-radius: var(--radius-lg, 14px) var(--radius-lg, 14px) 0 0;
+			border-radius: var(--radius-lg, 14px);
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
@@ -350,8 +411,13 @@ const [popups, stickyBars] = await Promise.all([
 			openModal = null;
 			document.body.classList.remove("kc-modal-open");
 			store.set(id);
+			// Mark closed for this page view so scroll/timer triggers can't reopen it.
+			closedIds.add(id);
 			lastFocus?.focus();
 		};
+
+		// Popups the visitor explicitly closed in this page view — never auto-reopen.
+		const closedIds = new Set<string>();
 
 		document.querySelectorAll<HTMLElement>("[data-kc-popup]").forEach((el) => {
 			const id = el.dataset.id || "";
@@ -360,6 +426,9 @@ const [popups, stickyBars] = await Promise.all([
 
 			const open = () => {
 				if (openModal) return;
+				if (closedIds.has(id)) return;
+				if (!el.hidden) return;
+				if (suppressed(id, freq)) return;
 				lastFocus = document.activeElement as HTMLElement;
 				el.hidden = false;
 				openModal = el;
