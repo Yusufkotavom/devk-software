@@ -14,6 +14,7 @@ import { formatDate } from "../../utils/locale";
 import { resolveBlogSiteIdentity } from "../../utils/site-identity";
 import { buildOgImageUrl } from "../../lib/og/url";
 import { getSiteOrigin } from "../../utils/origin";
+import { webpSrc } from "../../utils/imageSrc";
 import ProductCategoryArchive from "../../components/ProductCategoryArchive.astro";
 import "../../styles/prose.css";
 
@@ -224,7 +225,7 @@ if (!isCategory && product) {
 					{
 						product.data.featured_image ? (
 							typeof product.data.featured_image === "string" ? (
-								<img src={product.data.featured_image} alt={product.data.title} class="post-hero__image" />
+								<img src={webpSrc(product.data.featured_image)} alt={product.data.title} class="post-hero__image" fetchpriority="high" decoding="async" />
 							) : (
 								<Image
 									image={product.data.featured_image}

@@ -5,6 +5,18 @@ import Byline from "./Byline.astro";
 import { formatDate } from "../utils/locale";
 import { formatReadingTime, getReadingTime } from "../utils/reading-time";
 import { buildOgImageUrl } from "../lib/og/url";
+import { webpSrc } from "../utils/imageSrc";
+
+/** Resolve a featured-image URL from a string or EmDash image object. */
+function resolveImgSrc(img: unknown): string | undefined {
+	if (!img) return undefined;
+	if (typeof img === "string") return img;
+	if (typeof img !== "object") return undefined;
+	const o = img as Record<string, any>;
+	if (typeof o.src === "string" && o.src) return o.src;
+	const k = o.meta?.storageKey ?? o.id;
+	return typeof k === "string" ? `/_emdash/api/media/file/${k}` : undefined;
+}
 
 interface Props {
 	post: any;
@@ -74,15 +86,14 @@ const sizes = {
 		{
 			post.data.featured_image ? (
 				<div class="post__image" {...post.edit.featured_image}>
-					{typeof post.data.featured_image === "string" ? (
-						<img src={post.data.featured_image} alt={title} loading={priority ? "eager" : "lazy"} fetchpriority={priority ? "high" : undefined} decoding={priority ? "sync" : "async"} />
-					) : (
-						<Image
-							image={post.data.featured_image}
-							sizes={sizes}
-							priority={priority}
-						/>
-					)}
+					{(() => {
+						const resolved = webpSrc(resolveImgSrc(post.data.featured_image));
+						return resolved ? (
+							<img src={resolved} alt={title} loading={priority ? "eager" : "lazy"} fetchpriority={priority ? "high" : undefined} decoding={priority ? "sync" : "async"} />
+						) : (
+							<Image image={post.data.featured_image} sizes={sizes} priority={priority} />
+						);
+					})()}
 				</div>
 			) : (
 				<img

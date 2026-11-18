@@ -15,6 +15,7 @@ import { formatDate } from "../../utils/locale";
 import { resolveBlogSiteIdentity } from "../../utils/site-identity";
 import { buildOgImageUrl } from "../../lib/og/url";
 import { getSiteOrigin } from "../../utils/origin";
+import { webpSrc } from "../../utils/imageSrc";
 import "../../styles/prose.css";
 
 /**
@@ -160,7 +161,7 @@ const client = (project.data as Record<string, unknown>).client as string | unde
 						projectData.featured_image ? (
 							typeof projectData.featured_image === "string" ? (
 								<img
-									src={projectData.featured_image}
+									src={webpSrc(projectData.featured_image)}
 									alt={projectData.title}
 									class="post-hero__img"
 									loading="eager"

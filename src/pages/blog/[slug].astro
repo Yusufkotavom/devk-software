@@ -20,6 +20,7 @@ import { getReadingTime } from "../../utils/reading-time";
 import { resolveBlogSiteIdentity } from "../../utils/site-identity";
 import { buildOgImageUrl } from "../../lib/og/url";
 import { getSiteOrigin } from "../../utils/origin";
+import { webpSrc } from "../../utils/imageSrc";
 import "../../styles/prose.css";
 
 const slug = decodeSlug(Astro.params.slug);
@@ -252,7 +253,7 @@ const postBodyBottom = postBodyBlocks.slice(postBodySplit);
 					<div class="frame">
 						<div class="post-hero__media" {...post.edit.featured_image}>
 							{typeof post.data.featured_image === "string" ? (
-								<img src={post.data.featured_image} alt={post.data.title} class="post-hero__image" />
+								<img src={webpSrc(post.data.featured_image)} alt={post.data.title} class="post-hero__image" fetchpriority="high" />
 							) : (
 								<Image
 									image={post.data.featured_image}
