@@ -52,12 +52,13 @@ if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 				) : (
 					<>
 						<div class="post-grid">
-							{products.map((product) => (
+							{products.map((product, i) => (
 								<PostCard
 									post={product as any}
 									collection="products"
 									variant="card"
 									headingLevel={2}
+									priority={i === 0}
 								/>
 							))}
 						</div>

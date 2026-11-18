@@ -2043,45 +2043,6 @@ const year = new Date().getFullYear();
 				searchInput.focus();
 			});
 		</script>
-		<script is:inline>
-			(function () {
-				if (typeof window === "undefined") return;
-				if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-				function initScrollReveal() {
-					var targets = document.querySelectorAll(
-						"section.band:not(.hero), .split__grid, .fsplit, .cta, .testimonial-single, .tab-pane, .contact-card, .faq__item, .feed-grid"
-					);
-					if (!targets.length) return;
-
-					var observer = new IntersectionObserver(
-						function (entries) {
-							entries.forEach(function (entry) {
-								if (entry.isIntersecting) {
-									entry.target.classList.add("is-revealed");
-									observer.unobserve(entry.target);
-								}
-							});
-						},
-						{
-							rootMargin: "0px 0px -6% 0px",
-							threshold: 0.05,
-						}
-					);
-
-					targets.forEach(function (el) {
-						el.classList.add("scroll-reveal");
-						observer.observe(el);
-					});
-				}
-
-				if (document.readyState === "loading") {
-					document.addEventListener("DOMContentLoaded", initScrollReveal);
-				} else {
-					initScrollReveal();
-				}
-			})();
-		</script>
 		<FloatingWhatsApp pageTitle={title} />
 		{
 			popupContext && (

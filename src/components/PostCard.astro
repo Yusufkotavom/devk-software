@@ -75,7 +75,7 @@ const sizes = {
 			post.data.featured_image ? (
 				<div class="post__image" {...post.edit.featured_image}>
 					{typeof post.data.featured_image === "string" ? (
-						<img src={post.data.featured_image} alt={title} loading={priority ? "eager" : "lazy"} />
+						<img src={post.data.featured_image} alt={title} loading={priority ? "eager" : "lazy"} fetchpriority={priority ? "high" : undefined} decoding={priority ? "sync" : "async"} />
 					) : (
 						<Image
 							image={post.data.featured_image}
