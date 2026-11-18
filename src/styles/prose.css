@@ -43,6 +43,37 @@
 		margin-block-start: 1.25em;
 	}
 
+	/*
+	 * HTML blocks (legacy import) render inside `<div class="emdash-html-block">`.
+	 * The rules above are direct-child only, so they never reach the nested
+	 * elements. Restore heading/paragraph/list rhythm inside the wrapper.
+	 */
+	.prose .emdash-html-block > * {
+		margin-block: 0;
+	}
+	.prose .emdash-html-block > * + * {
+		margin-block-start: 1.25em;
+	}
+	.prose .emdash-html-block > :is(h1, h2) {
+		margin-block-start: 2em;
+	}
+	.prose .emdash-html-block > :is(h3, h4, h5, h6) {
+		margin-block-start: 1.75em;
+	}
+	.prose .emdash-html-block > :is(h1, h2, h3, h4, h5, h6) + * {
+		margin-block-start: 0.75em;
+	}
+	.prose .emdash-html-block > :first-child {
+		margin-block-start: 0;
+	}
+	/* Lists inside the wrapper keep markers + indentation. */
+	.prose .emdash-html-block :is(ul, ol) {
+		padding-inline-start: 1.4em;
+	}
+	.prose .emdash-html-block li + li {
+		margin-block-start: 0.4em;
+	}
+
 	.prose > :is(h1, h2) {
 		margin-block-start: 2em;
 	}
