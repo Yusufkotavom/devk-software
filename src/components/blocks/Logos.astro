@@ -155,7 +155,7 @@ const logos = Array.isArray(raw.logos) ? raw.logos : [];
 
 	@media (prefers-reduced-motion: no-preference) {
 		.marquee__group {
-			animation: logos-marquee calc(var(--logo-count, 6) * 8s) linear infinite;
+			/* marquee removed (perf/antislop) */
 		}
 
 		.marquee__group:dir(rtl) {

@@ -749,7 +749,7 @@ const schemaFields = [
 		background: var(--color-brand-accent);
 		border-radius: 50%;
 		box-shadow: 0 0 0 0 var(--color-brand-accent-glow);
-		animation: pulse-dot 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+		/* decorative pulse removed (perf/antislop) */
 		flex-shrink: 0;
 	}
 
@@ -950,7 +950,7 @@ const schemaFields = [
 		margin-inline-start: 1px;
 		vertical-align: -0.1em;
 		background: var(--color-primary);
-		animation: cap-caret 1.1s steps(1) infinite;
+		/* caret blink removed (perf) */
 	}
 
 	@keyframes cap-caret {
