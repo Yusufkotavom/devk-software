@@ -145,8 +145,7 @@
 		height: 7px;
 		border-radius: 50%;
 		background-color: var(--color-brand-accent);
-		box-shadow: 0 0 0 0 var(--color-brand-accent-glow);
-		animation: pulse-dot 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+		box-shadow: none;
 		flex-shrink: 0;
 	}
 
