@@ -1019,7 +1019,7 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
 .plan--highlighted :is(.btn, a) * { color: #fff !important; }
 
 /* WA / arrow-link pills and links on light surfaces */
-.arrow-link, .post__cta, .feed__all { color: var(--v2-red); font-weight: 600; }
+.arrow-link, .post__cta, .feed__all { color: var(--v2-red-ink); font-weight: 600; }
 .wa-block__btn, a.wa-block__btn * { color: #fff !important; }
 
 /* ensure any solid .btn-primary / .btn keeps white label */

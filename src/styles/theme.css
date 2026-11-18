@@ -12,6 +12,7 @@
 :root {
 	/* ---- Brand ramp ---- */
 	--v2-red: #f04438;
+	--v2-red-ink: #c4271c;
 	--v2-orange: #fb923c;
 	--v2-indigo: #6366f1;
 	--v2-violet: #8b5cf6;
@@ -48,7 +49,7 @@
 	--color-brand-ring: color-mix(in srgb, var(--v2-red) 22%, transparent);
 
 	/* ---- Accents ---- */
-	--color-brand-accent: light-dark(#f04438, #ff6b5e);
+	--color-brand-accent: light-dark(#c4271c, #ff6b5e);
 	--color-brand-accent-hover: light-dark(#d92d20, #ff7d70);
 	--color-brand-accent-subtle: light-dark(rgba(240, 68, 56, 0.1), rgba(240, 68, 56, 0.18));
 	--color-brand-accent-glow: light-dark(rgba(240, 68, 56, 0.35), rgba(240, 68, 56, 0.5));
