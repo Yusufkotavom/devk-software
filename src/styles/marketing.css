@@ -1188,3 +1188,7 @@ main :is(section[id], .section) { scroll-margin-top: 92px; }
 		font-size: clamp(1.6rem, 8.5vw, 2.3rem);
 	}
 }
+
+/* v2 — wa-block: prevent long unbreakable text overflowing on narrow screens */
+.wa-block, .wa-block__content, .wa-block__action { min-width: 0; max-width: 100%; }
+.wa-block__headline, .wa-block__body { overflow-wrap: anywhere; }

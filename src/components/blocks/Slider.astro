@@ -49,7 +49,7 @@ const slides = (Array.isArray(raw.slides) ? raw.slides : []).map((s: any) => {
 				<ul class="slider__track" data-track role="list">
 					{slides.map((slide: any, i: number) => (
 						<li class="slider__slide">
-							<article class="card slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
+							<div class="card slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
 								{slide.image ? (
 									<div class="slide__media">
 										<img
@@ -74,7 +74,7 @@ const slides = (Array.isArray(raw.slides) ? raw.slides : []).map((s: any) => {
 										</a>
 									)}
 								</div>
-							</article>
+							</div>
 						</li>
 					))}
 				</ul>
@@ -254,24 +254,33 @@ const slides = (Array.isArray(raw.slides) ? raw.slides : []).map((s: any) => {
 	.slider__dots {
 		display: flex;
 		justify-content: center;
-		gap: 8px;
+		gap: 0;
 		margin-block-start: 20px;
 	}
 
+	/* 24x24 tap target; the visible 9px dot is drawn by ::before. */
 	.slider__dot {
-		width: 9px;
-		height: 9px;
+		width: 24px;
+		height: 24px;
 		padding: 0;
 		border: 0;
+		background: none;
+		display: grid;
+		place-items: center;
+		cursor: pointer;
+	}
+	.slider__dot::before {
+		content: "";
+		width: 9px;
+		height: 9px;
 		border-radius: 50%;
 		background: var(--color-border-strong);
-		cursor: pointer;
 		transition:
 			background var(--transition-fast),
 			scale var(--transition-fast);
 	}
 
-	.slider__dot[aria-current="true"] {
+	.slider__dot[aria-current="true"]::before {
 		background: var(--color-brand);
 		scale: 1.25;
 	}
