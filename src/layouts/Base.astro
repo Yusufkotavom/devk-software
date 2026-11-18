@@ -170,7 +170,7 @@ const year = new Date().getFullYear();
 		<link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM context" />
 		<link rel="alternate" type="text/markdown" href="/pricing.md" title="Pricing (Markdown)" />
 		<Font cssVariable="--font-body" preload />
-		<Font cssVariable="--font-display" />
+		<Font cssVariable="--font-display" preload />
 		<Font cssVariable="--font-mono" />
 		<title>{fullTitle}</title>
 		<EmDashHead page={pageCtx} />
@@ -1260,9 +1260,7 @@ const year = new Date().getFullYear();
 				position: sticky;
 				top: 0;
 				z-index: 50;
-				background: color-mix(in srgb, var(--color-bg) 82%, transparent);
-				backdrop-filter: saturate(1.4) blur(12px);
-				-webkit-backdrop-filter: saturate(1.4) blur(12px);
+				background: var(--color-bg);
 				border-bottom: 1px solid var(--color-border);
 			}
 

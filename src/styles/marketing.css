@@ -278,8 +278,6 @@
 		color: #ffffff !important;
 		border: 1px solid rgb(255 255 255 / 0.3);
 		box-shadow: none;
-		-webkit-backdrop-filter: blur(12px);
-		backdrop-filter: blur(12px);
 	}
 
 	:is(.cta--photo, .sheet--night)
@@ -309,8 +307,6 @@
 		color: #ffffff !important;
 		border: 1px solid rgb(255 255 255 / 0.3);
 		box-shadow: none;
-		-webkit-backdrop-filter: blur(12px);
-		backdrop-filter: blur(12px);
 	}
 
 	.btn-glass:hover {
@@ -424,8 +420,6 @@
 		box-shadow:
 			inset 0 0 0 1px light-dark(rgb(255 255 255 / 0.6), rgb(255 255 255 / 0.1)),
 			0 10px 30px -10px light-dark(rgb(0 0 0 / 0.35), rgb(0 0 0 / 0.5));
-		-webkit-backdrop-filter: blur(16px) saturate(1.5);
-		backdrop-filter: blur(16px) saturate(1.5);
 	}
 
 	.tick {
@@ -510,44 +504,24 @@
 		}
 	}
 
-	/* Animations */
+	/* Animations (perf: scroll-reveal removed; content must be visible immediately) */
 	@media (prefers-reduced-motion: no-preference) {
 		.rise {
-			animation: rise-in 800ms var(--ease-out) both;
-			animation-delay: calc(var(--rise-index, 0) * 80ms);
+			animation: rise-in 520ms var(--ease-out) both;
+			animation-delay: calc(var(--rise-index, 0) * 60ms);
 		}
 
 		.scroll-reveal {
-			opacity: 0;
-			transform: translateY(24px);
-			transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-			will-change: opacity, transform;
+			opacity: 1;
+			transform: none;
 		}
 
 		.scroll-reveal.is-revealed {
 			opacity: 1;
-			transform: translateY(0);
+			transform: none;
 		}
 
-		/* Pure CSS scroll-driven reveal (0 KB JS, GPU accelerated) */
-		@supports (animation-timeline: view()) {
-			.section-headline,
-			.card,
-			.bento-card,
-			.plan,
-			.slide,
-			.comparison-table-wrapper {
-				animation: view-fade-up linear both;
-				animation-timeline: view();
-				animation-range: entry 0% cover 25%;
-			}
-
-			.settle img {
-				animation: media-settle linear both;
-				animation-timeline: view();
-				animation-range: entry 0% cover 45%;
-			}
-		}
+		/* Section/scroll reveal disabled for perf: no gated opacity, no view-timeline animations over content. */
 	}
 
 	@keyframes view-fade-up {
@@ -565,7 +539,6 @@
 		from {
 			opacity: 0;
 			translate: 0 14px;
-			filter: blur(4px);
 		}
 	}
 

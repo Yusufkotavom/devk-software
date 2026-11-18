@@ -102,14 +102,12 @@
    Structural overrides (beat Base.astro's global .site-header)
    ========================================================= */
 
-/* Sticky frosted "glass" header */
+/* Sticky solid header (perf: backdrop-filter removed) */
 body .site-header {
 	position: sticky;
 	top: 0;
 	z-index: 60;
-	background: color-mix(in srgb, var(--color-bg) 78%, transparent);
-	-webkit-backdrop-filter: saturate(1.4) blur(16px);
-	backdrop-filter: saturate(1.4) blur(16px);
+	background: var(--color-bg);
 	border-bottom: 1px solid var(--color-border);
 }
 

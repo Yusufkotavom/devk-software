@@ -57,19 +57,19 @@ const secondaryCta =
 	<div class="frame">
 		{
 			eyebrow && eyebrowUrl && (
-				<a href={eyebrowUrl} class="hero__announce rise">
+				<a href={eyebrowUrl} class="hero__announce">
 					{eyebrow}
 					<Icon name="ph:arrow-right" aria-hidden="true" class="arrow" />
 				</a>
 			)
 		}
-		{eyebrow && !eyebrowUrl && <p class="hero__announce rise">{eyebrow}</p>}
-		<FadeInText as="h1" class="hero__headline rise" duration={1.2} distance={24} enhance={true} easing="cubic-bezier(0.16, 1, 0.3, 1)">
+		{eyebrow && !eyebrowUrl && <p class="hero__announce">{eyebrow}</p>}
+		<FadeInText as="h1" class="hero__headline" duration={0.001} distance={0} enhance={false}>
 			<Fragment set:html={formatAccentWords(headline)} />
 		</FadeInText>
 		{
 			(subheadline || primaryCta || secondaryCta) && (
-				<div class="hero__row rise">
+				<div class="hero__row">
 					{subheadline && <p class="lead hero__lead">{subheadline}</p>}
 					{(primaryCta || secondaryCta) && (
 						<div class="actions">
