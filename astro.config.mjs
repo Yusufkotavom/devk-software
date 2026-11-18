@@ -185,7 +185,7 @@ export default defineConfig({
 			provider: fontProviders.google(),
 			name: "Inter",
 			cssVariable: "--font-body",
-			weights: [400, 500, 600, 700],
+			weights: [400, 600, 700],
 			fallbacks: ["sans-serif"],
 		},
 		{
@@ -200,7 +200,7 @@ export default defineConfig({
 			provider: fontProviders.google(),
 			name: "Space Grotesk",
 			cssVariable: "--font-display",
-			weights: [400, 500, 600, 700],
+			weights: [500, 600, 700],
 			fallbacks: ["system-ui", "sans-serif"],
 		},
 		{
