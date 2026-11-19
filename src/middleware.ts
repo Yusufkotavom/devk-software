@@ -80,6 +80,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
 				});
 			}
 
+			// Nested page slugs (e.g. "percetakan/cetak-kalender/mataram") are emitted
+			// with every "/" percent-encoded as %2F, producing sitemap URLs that don't
+			// match the served path. Decode all of them back to real "/".
+			fixed = fixed.replace(/%2[fF]/g, "/");
+
 			const h = new Headers(response.headers);
 			h.delete("content-length");
 			h.delete("etag");
