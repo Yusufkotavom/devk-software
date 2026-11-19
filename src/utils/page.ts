@@ -19,7 +19,7 @@ function absoluteImageUrl(image: HeroImage, origin: string): string | undefined 
 		return image.previewUrl ? absoluteUrl(image.previewUrl, origin) : undefined;
 	}
 	const storageKey = typeof image.meta?.storageKey === "string" ? image.meta.storageKey : image.id;
-	return `${origin}/_emdash/api/media/file/${storageKey}`;
+	return `${origin}/images/${storageKey}`;
 }
 
 /**

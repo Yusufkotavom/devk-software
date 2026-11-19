@@ -149,7 +149,7 @@ function featuredImageUrl(img: unknown, origin: string): string | undefined {
 	const storageKey =
 		(typeof meta?.storageKey === "string" ? meta.storageKey : undefined) ||
 		(typeof image.id === "string" ? image.id : undefined);
-	if (storageKey) return `${origin}/_emdash/api/media/file/${storageKey}`;
+	if (storageKey) return `${origin}/images/${storageKey}`;
 	return undefined;
 }
 

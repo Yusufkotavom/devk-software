@@ -15,7 +15,7 @@ function resolveImgSrc(img: unknown): string | undefined {
 	const o = img as Record<string, any>;
 	if (typeof o.src === "string" && o.src) return o.src;
 	const k = o.meta?.storageKey ?? o.id;
-	return typeof k === "string" ? `/_emdash/api/media/file/${k}` : undefined;
+	return typeof k === "string" ? `/images/${k}` : undefined;
 }
 
 interface Props {

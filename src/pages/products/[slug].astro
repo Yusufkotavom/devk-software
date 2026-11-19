@@ -97,7 +97,7 @@ function getImageUrl(img: unknown): string | undefined {
 		(typeof meta?.storageKey === "string" ? meta.storageKey : undefined) ||
 		(typeof image.id === "string" ? image.id : undefined);
 	if (storageKey) {
-		return `${siteOrigin}/_emdash/api/media/file/${storageKey}`;
+		return `${siteOrigin}/images/${storageKey}`;
 	}
 	return undefined;
 }

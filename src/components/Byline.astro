@@ -26,7 +26,7 @@ const people = bylines.map(({ byline, roleLabel }) => ({
 	role: roleLabel,
 	src: byline.avatarStorageKey
 		? (Astro.locals.emdash?.getPublicMediaUrl?.(byline.avatarStorageKey) ??
-			`/_emdash/api/media/file/${byline.avatarStorageKey.split("/").map(encodeURIComponent).join("/")}`)
+			`/images/${byline.avatarStorageKey.split("/").map(encodeURIComponent).join("/")}`)
 		: null,
 	initials: byline.displayName
 		.split(WHITESPACE)
