@@ -34,12 +34,16 @@ export const onRequest = defineMiddleware(async (context, next) => {
 			? `${proto}://${host}`
 			: null;
 
-	// Canonicalise www → apex: one canonical host per site, so a domain-property
-	// GSC setup (which spans www + apex) never hits a 404 sitemap on www.
-	if (
-		host.toLowerCase().startsWith("www.") &&
-		!pathname.startsWith("/.well-known/")
-	) {
+	// Canonical host enforcement. When CANONICAL_HOST is set (e.g. www.kotacom.id
+	// because Google already indexes www URLs), every other host 301s to it so
+	// ranking is preserved on the indexed host.
+	const canonicalHost = (process.env.CANONICAL_HOST || "").trim().toLowerCase();
+	if (canonicalHost && host && host.toLowerCase() !== canonicalHost && !pathname.startsWith("/.well-known/")) {
+		return context.redirect(`${proto}://${canonicalHost}${pathname}${context.url.search}`, 301);
+	}
+
+	// Legacy default (no CANONICAL_HOST): canonicalise www → apex.
+	if (!canonicalHost && host.toLowerCase().startsWith("www.") && !pathname.startsWith("/.well-known/")) {
 		const apex = `${proto}://${host.toLowerCase().slice(4)}`;
 		return context.redirect(`${apex}${pathname}${context.url.search}`, 301);
 	}
