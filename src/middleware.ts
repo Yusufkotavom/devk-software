@@ -44,15 +44,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		return context.redirect(`${apex}${pathname}${context.url.search}`, 301);
 	}
 
-	// 301 Permanent Redirect semua subhalaman kota kalender ke pilar utama
-	if (pathname.startsWith("/percetakan/cetak-kalender/") && pathname !== "/percetakan/cetak-kalender") {
-		return context.redirect("/percetakan/cetak-kalender", 301);
-	}
-
-	// 301 Permanent Redirect semua subhalaman provinsi cetak buku ke pilar utama
-	if (pathname.startsWith("/percetakan/cetak-buku/") && pathname !== "/percetakan/cetak-buku") {
-		return context.redirect("/percetakan/cetak-buku", 301);
-	}
+	// NOTE: per-city /percetakan/cetak-kalender/<kota> and /percetakan/cetak-buku/<x>
+	// now have real, published pages (nested slugs served by [...slug]). The old
+	// blanket 301-to-pillar pruning was removed so those pages are reachable.
 
 	// 301 Permanent Redirect kabupaten cetak buku 0 impresi ke Pilar Utama /percetakan/cetak-buku
 	const cityRedirectTarget = (prunedCityRedirects as Record<string, string>)[pathname];

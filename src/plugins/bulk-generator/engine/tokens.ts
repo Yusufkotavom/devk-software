@@ -99,14 +99,29 @@ export interface AiConfig {
   maxDelayMs?: number;
   /** Per-request timeout in ms (default 60000). */
   timeoutMs?: number;
+  /** Max tokens for the completion (default from env or 2000). */
+  maxTokens?: number;
 }
+
+const DEFAULT_MAX_TOKENS = 2000;
 
 /**
  * System prompt sent with every generation request. Kept as a named constant
  * so brand voice / SEO rules live in one place and are easy to tune.
  */
-export const SYSTEM_PROMPT =
-  "Anda adalah asisten penulis konten SEO profesional Bahasa Indonesia. Tulis konten berkualitas tinggi, natural, mengalir, tanpa basa-basi pembuka, langsung ke substansi inti.";
+export const SYSTEM_PROMPT = [
+  "Anda adalah penulis konten SEO senior untuk Kotacom, usaha percetakan buku dan solusi IT yang berbasis di Surabaya–Sidoarjo, Jawa Timur.",
+  "Layanan Kotacom: cetak buku satuan (print-on-demand) maupun grosir/offset, pilihan kertas bookpaper, opsi jilid, pengurusan ISBN, dan proofing sebelum cetak; serta layanan IT.",
+  "",
+  "Tugas: menulis PERSIS bagian konten yang diminta pada pesan pengguna, mengikuti format, panjang, dan bahasa yang diminta.",
+  "Aturan wajib:",
+  "- Bahasa Indonesia natural, jelas, profesional, langsung ke inti; tanpa pembuka basa-basi ('di era digital', 'tentu saja') dan tanpa penutup klise.",
+  "- SELALU relevan dengan topik yang diminta (cetak buku / percetakan / layanan Kotacom). JANGAN menulis tentang topik lain (mis. hosting, domain, software) kecuali diminta eksplisit.",
+  "- Sebut Kotacom dan area layanan Surabaya/Sidoarjo secara wajar bila relevan.",
+  "- JANGAN mengarang fakta, angka, harga pasti, alamat, nomor telepon, atau klaim sertifikasi. Untuk harga, gunakan rentang/kualitatif tanpa angka palsu; untuk kontak, arahkan ke WhatsApp Kotacom.",
+  "- Jika diminta meta description atau judul, patuhi batas panjangnya (meta 150–158 karakter).",
+  "- Bila membantu, gunakan subjudul markdown (##), daftar bernomor/bullet, dan tautan internal format markdown [teks](/path). Jangan menambah markdown lain bila tidak diminta.",
+].join("\n");
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
@@ -135,7 +150,7 @@ export async function callAiCompletion(prompt: string, config?: AiConfig): Promi
     ],
     stream: false,
     temperature: 0.7,
-    max_tokens: 1000,
+    max_tokens: config?.maxTokens ?? (Number.parseInt(process.env.EMDASH_AI_MAX_TOKENS || "", 10) || DEFAULT_MAX_TOKENS),
   });
 
   const headers: Record<string, string> = { "Content-Type": "application/json" };
@@ -178,24 +193,35 @@ export async function callAiCompletion(prompt: string, config?: AiConfig): Promi
     }
 
     const resText = await res.text();
-    let data: any;
+    let text = "";
     try {
-      data = JSON.parse(resText);
+      const data = JSON.parse(resText);
+      text = data?.choices?.[0]?.message?.content ?? "";
     } catch {
-      // If SSE streaming chunk
-      const lines = resText.split("\n");
-      let full = "";
-      for (const line of lines) {
+      // SSE streaming chunks
+      for (const line of resText.split("\n")) {
         if (line.startsWith("data: ") && line.trim() !== "data: [DONE]") {
           try {
             const chunk = JSON.parse(line.replace("data: ", ""));
-            full += chunk?.choices?.[0]?.delta?.content || "";
+            text += chunk?.choices?.[0]?.delta?.content || "";
           } catch {}
         }
       }
-      return full.trim();
     }
-    return data?.choices?.[0]?.message?.content?.trim() || "";
+    text = text.trim();
+    if (!text) {
+      // Empty completion (some models return 200 with no content) — treat it
+      // as a transient failure and retry so sections never render blank.
+      if (attempt < maxRetries) {
+        const wait = Math.min(maxDelayMs, baseDelayMs * 2 ** attempt) + Math.floor(Math.random() * 250);
+        console.warn(`[AI Completion] empty response; retry ${attempt + 1}/${maxRetries} in ${wait}ms (model=${model})`);
+        await sleep(wait);
+        continue;
+      }
+      console.warn(`[AI Completion] empty response after ${attempt} retries (model=${model})`);
+      return "";
+    }
+    return text;
   }
 }
 
