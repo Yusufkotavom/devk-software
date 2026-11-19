@@ -157,7 +157,11 @@ export default defineConfig({
 			database,
 			storage: local({
 				directory: uploadsDirectory,
-				baseUrl: "/_emdash/api/media/file",
+				// Media for this site is shipped as static files under /public/images.
+				// Serve storage keys from there (e.g. cetak-buku-universal/style-3.jpg →
+				// /images/cetak-buku-universal/style-3.jpg) instead of the empty media
+				// API route (which 404s because the uploads dir is not populated).
+				baseUrl: "/images",
 			}),
 			plugins: [
 				emdashSmtp(),
