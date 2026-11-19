@@ -91,6 +91,28 @@ export interface AiConfig {
   endpoint?: string;
   apiKey?: string;
   model?: string;
+  /** How many times to retry a 429/5xx/network failure (default from env or 4). */
+  maxRetries?: number;
+  /** First backoff delay in ms; doubles each attempt (default 1500). */
+  baseDelayMs?: number;
+  /** Upper bound for a single backoff wait in ms (default 30000). */
+  maxDelayMs?: number;
+  /** Per-request timeout in ms (default 60000). */
+  timeoutMs?: number;
+}
+
+/**
+ * System prompt sent with every generation request. Kept as a named constant
+ * so brand voice / SEO rules live in one place and are easy to tune.
+ */
+export const SYSTEM_PROMPT =
+  "Anda adalah asisten penulis konten SEO profesional Bahasa Indonesia. Tulis konten berkualitas tinggi, natural, mengalir, tanpa basa-basi pembuka, langsung ke substansi inti.";
+
+const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
+
+/** HTTP statuses worth retrying. 4xx (other than 429) are caller errors. */
+function isRetryableStatus(status: number): boolean {
+  return status === 429 || status === 500 || status === 502 || status === 503 || status === 504;
 }
 
 /**
@@ -99,59 +121,81 @@ export interface AiConfig {
 export async function callAiCompletion(prompt: string, config?: AiConfig): Promise<string> {
   const endpoint = config?.endpoint?.trim() || process.env.EMDASH_AI_ENDPOINT?.trim() || "http://172.18.0.1:20128/v1/chat/completions";
   const model = config?.model?.trim() || "daily";
-  const apiKey = config?.apiKey?.trim() || "sk-e1c...b74e";
+  const apiKey = config?.apiKey?.trim() || process.env.EMDASH_AI_API_KEY?.trim() || "";
+  const maxRetries = Math.max(0, config?.maxRetries ?? (Number.parseInt(process.env.EMDASH_AI_MAX_RETRIES || "", 10) || 4));
+  const baseDelayMs = config?.baseDelayMs ?? (Number.parseInt(process.env.EMDASH_AI_RETRY_BASE_MS || "", 10) || 1500);
+  const maxDelayMs = config?.maxDelayMs ?? 30000;
+  const timeoutMs = config?.timeoutMs ?? (Number.parseInt(process.env.EMDASH_AI_TIMEOUT_MS || "", 10) || 60000);
 
-  try {
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          {
-            role: "system",
-            content:
-              "Anda adalah asisten penulis konten SEO profesional Bahasa Indonesia. Tulis konten berkualitas tinggi, natural, mengalir, tanpa basa-basi pembuka, langsung ke substansi inti.",
-          },
-          { role: "user", content: prompt },
-        ],
-        stream: false,
-        temperature: 0.7,
-        max_tokens: 1000,
-      }),
-    });
+  const requestBody = JSON.stringify({
+    model,
+    messages: [
+      { role: "system", content: SYSTEM_PROMPT },
+      { role: "user", content: prompt },
+    ],
+    stream: false,
+    temperature: 0.7,
+    max_tokens: 1000,
+  });
 
-    if (!res.ok) {
-      console.warn(`[AI Completion] HTTP error: ${res.status}`);
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+
+  for (let attempt = 0; ; attempt++) {
+    let res: Response;
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        res = await fetch(endpoint, { method: "POST", headers, body: requestBody, signal: controller.signal });
+      } finally {
+        clearTimeout(timer);
+      }
+    } catch (err: any) {
+      if (attempt < maxRetries) {
+        const wait = Math.min(maxDelayMs, baseDelayMs * 2 ** attempt) + Math.floor(Math.random() * 250);
+        console.warn(`[AI Completion] network error (${err?.message || err}); retry ${attempt + 1}/${maxRetries} in ${wait}ms`);
+        await sleep(wait);
+        continue;
+      }
+      console.warn(`[AI Completion] network error after ${attempt} retries: ${err?.message || err}`);
       return "";
     }
 
-  const resText = await res.text();
-  let data: any;
-  try {
-    data = JSON.parse(resText);
-  } catch (e) {
-    // If SSE streaming chunk
-    const lines = resText.split("\n");
-    let full = "";
-    for (const line of lines) {
-      if (line.startsWith("data: ") && line.trim() !== "data: [DONE]") {
-        try {
-          const chunk = JSON.parse(line.replace("data: ", ""));
-          full += chunk?.choices?.[0]?.delta?.content || "";
-        } catch {}
-      }
+    if (isRetryableStatus(res.status) && attempt < maxRetries) {
+      const retryAfter = Number.parseFloat(res.headers.get("retry-after") || "");
+      let wait = Number.isNaN(retryAfter) ? baseDelayMs * 2 ** attempt : retryAfter * 1000;
+      wait = Math.min(maxDelayMs, wait) + Math.floor(Math.random() * 250);
+      console.warn(`[AI Completion] HTTP ${res.status}; retry ${attempt + 1}/${maxRetries} in ${wait}ms`);
+      try { await res.text(); } catch { /* drain body before retry */ }
+      await sleep(wait);
+      continue;
     }
-    return full.trim();
-  }
-  const text = data?.choices?.[0]?.message?.content?.trim() || "";
-  return text;
-  } catch (err: any) {
-    console.warn(`[AI Completion] Failed to call AI endpoint: ${err?.message}`);
-    return "";
+
+    if (!res.ok) {
+      console.warn(`[AI Completion] HTTP error: ${res.status} (not retried)`);
+      return "";
+    }
+
+    const resText = await res.text();
+    let data: any;
+    try {
+      data = JSON.parse(resText);
+    } catch {
+      // If SSE streaming chunk
+      const lines = resText.split("\n");
+      let full = "";
+      for (const line of lines) {
+        if (line.startsWith("data: ") && line.trim() !== "data: [DONE]") {
+          try {
+            const chunk = JSON.parse(line.replace("data: ", ""));
+            full += chunk?.choices?.[0]?.delta?.content || "";
+          } catch {}
+        }
+      }
+      return full.trim();
+    }
+    return data?.choices?.[0]?.message?.content?.trim() || "";
   }
 }
 
