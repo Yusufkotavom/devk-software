@@ -36,14 +36,19 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
 	// Canonical host enforcement. When CANONICAL_HOST is set (e.g. www.kotacom.id
 	// because Google already indexes www URLs), every other host 301s to it so
-	// ranking is preserved on the indexed host.
+	// ranking is preserved on the indexed host. Machine/crawler files
+	// (robots.txt, sitemaps, llms*, well-known) are exempt so a stale CDN-cached
+	// host redirect can never put them in a www↔apex loop.
+	const isMachineFile =
+		pathname === "/robots.txt" ||
+		/^\/(sitemap[\w-]*\.xml|llms[\w-]*\.txt|\.well-known\/)/.test(pathname);
 	const canonicalHost = (process.env.CANONICAL_HOST || "").trim().toLowerCase();
-	if (canonicalHost && host && host.toLowerCase() !== canonicalHost && !pathname.startsWith("/.well-known/")) {
+	if (canonicalHost && host && host.toLowerCase() !== canonicalHost && !isMachineFile) {
 		return context.redirect(`${proto}://${canonicalHost}${pathname}${context.url.search}`, 301);
 	}
 
 	// Legacy default (no CANONICAL_HOST): canonicalise www → apex.
-	if (!canonicalHost && host.toLowerCase().startsWith("www.") && !pathname.startsWith("/.well-known/")) {
+	if (!canonicalHost && host.toLowerCase().startsWith("www.") && !isMachineFile) {
 		const apex = `${proto}://${host.toLowerCase().slice(4)}`;
 		return context.redirect(`${apex}${pathname}${context.url.search}`, 301);
 	}
