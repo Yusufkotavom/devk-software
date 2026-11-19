@@ -112,6 +112,7 @@ let createdAt = null;
 let createdDate = null;
 let productWaUrl = "";
 let buyLabel = "Beli Sekarang / Tanya via WhatsApp";
+let productLd: any = null;
 
 if (!isCategory && product) {
 	featuredImageUrl = getImageUrl(product.data.featured_image);
@@ -145,6 +146,35 @@ if (!isCategory && product) {
 		context: "product",
 	});
 	buyLabel = setting?.product_cta_label || "Beli Sekarang / Tanya via WhatsApp";
+
+	const rawPrice = product.data.price;
+	const priceNum = rawPrice != null ? String(rawPrice).replace(/[^\d.]/g, "") : "";
+	productLd = {
+		"@context": "https://schema.org",
+		"@type": "Product",
+		name: product.data.title,
+		description:
+			(product.data.excerpt || seo.description || product.data.title)
+				.toString()
+				.replace(/<[^>]+>/g, "")
+				.trim()
+				.slice(0, 300) || undefined,
+		image: featuredImageUrl ? [featuredImageUrl] : undefined,
+		sku: slug,
+		brand: { "@type": "Brand", name: "Kotacom" },
+		url: seo.canonical || productUrl,
+		offers: priceNum
+			? {
+					"@type": "Offer",
+					url: seo.canonical || productUrl,
+					priceCurrency: "IDR",
+					price: priceNum,
+					availability: "https://schema.org/InStock",
+					itemCondition: "https://schema.org/NewCondition",
+					seller: { "@type": "Organization", name: "Kotacom" },
+				}
+			: undefined,
+	};
 }
 ---
 
@@ -168,6 +198,11 @@ if (!isCategory && product) {
 	content={{ collection: "products", id: product.data.id, slug }}
 	popupContext={{ collection: "products", categories: [] }}
 >
+	{productLd && (
+		<Fragment slot="head">
+			<script type="application/ld+json" is:inline set:html={JSON.stringify(productLd)} />
+		</Fragment>
+	)}
 	<article class="post">
 		<header class="intro post-header">
 			<div class="frame">
